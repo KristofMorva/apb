@@ -1,0 +1,104 @@
+#include "ui/menudef.h"
+
+{
+	menuDef 
+	{
+		name			"connect"
+		style			WINDOW_STYLE_FILLED
+		fullScreen		0
+		visible			0
+		backcolor		0 0 0 1
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		onOpen
+		{
+			execNowOnDvarIntValue ui_stat_intro 0 "statGetInDvar 3155 ui_stat_intro";
+			execNowOnDvarIntValue ui_stat_intro 0 "set ui_stat_intro 1; disconnect";
+			uiScript openMenuOnDvarNot com_playerProfile "APB" single_popmenu;
+			#include "ui_mp/getlang.inc"
+			setDvar temp "";
+			setDvar empty "";
+			setDvar temp0 "setfromdvar temp empty; wait 50; vstr temp1";
+			setDvar temp1 "set temp .; wait 50; vstr temp2";
+			setDvar temp2 "set temp ..; wait 50; vstr temp3";
+			setDvar temp3 "set temp ...; wait 50; vstr temp0";
+			execNow "selectStringTableEntryInDvar mp/tipTable.csv 0 dyk; setu info 0; setu info2 0; setu info3 0; vstr temp1";
+			exec "exec apb_mod";
+		}
+		onClose
+		{
+			setDvar temp "";
+			setDvar temp0 "";
+			setDvar temp1 "";
+			setDvar temp2 "";
+			setDvar temp3 "";
+		}
+
+		itemDef 
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 40 640 400
+			exp				material("loadscreen" + stat(3154))
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text(locString("@APB_LOADING_DISTRICT_" + dvarString("lang")) + ": " + locString("@APB_" + dvarString("mapname") + "_" + dvarString("lang")) + dvarString("temp"))
+			rect			0 0 640 40
+			textfont		UI_FONT_DEFAULT
+			textalign 		ITEM_ALIGN_CENTER
+			textscale		0.5
+			forecolor		1 1 1 1
+			textaligny 		32
+			visible			1
+			decoration
+		}
+		/*itemDef 
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			100 100 50 50
+			exp				rect W(GROW)
+			exp				rect H(GROW)
+			background		"skull"
+			visible			1
+			decoration
+		}*/
+		// load progress bar background
+		itemDef 
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 440 640 4
+			backcolor		0.1 0.1 0.1 1
+			visible			1
+			decoration
+		}
+		// load progress bar
+		itemDef 
+		{
+			name			"loadbar"
+			style			WINDOW_STYLE_LOADBAR
+			rect			1 441 638 2
+			background		"white"
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text("@APB_DYK" + dvarString("dyk") + "_" + dvarString("lang"))
+			rect			0 440 640 40
+			textfont		UI_FONT_DEFAULT
+			textalign 		ITEM_ALIGN_CENTER
+			textscale		0.35
+			forecolor		1 1 1 1
+			textaligny 		30
+			visible			1
+			decoration
+		}
+	}
+
+	menuDef
+	{
+		name			"single_popmenu"
+		onOpen			{ /*setDvar ui_playerProfileNameNew "APB"; uiScript createPlayerProfile; */setDvar com_playerProfile "APB"/*; setDvar ui_playerProfileSelected "APB"; setDvar ui_playerProfileAlreadyChosen 1; uiScript loadPlayerProfile*/; close self; }
+	}
+}

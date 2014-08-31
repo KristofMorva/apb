@@ -1,0 +1,569 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+#define infoElem(id) \
+itemDef \
+{ \
+	exp				text(dvarString("chat" + id)) \
+	style			WINDOW_STYLE_FILLED \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			9 (389 + id * 10) 218 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textfont		UI_FONT_CONSOLE \
+	textalign		ITEM_ALIGN_LEFT \
+	textscale		0.2 \
+	textaligny		10 \
+	forecolor		1 1 1 0.6 \
+	visible			1 \
+	decoration \
+}
+
+{
+	menuDef
+	{
+		name			"chat"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		onOpen
+		{
+			hide admin_hovers;
+			setLocalVarString adminpage "";
+			//setLocalVarBool admin_players 0;
+			setfocus message;
+		}
+		onClose
+		{
+			scriptMenuResponse "nochat";
+		}
+
+		// Title
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			5 380 222 18
+			backcolor		0.12 0.12 0.12 1
+			exp				text("@APB_CHAT_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		3
+			textaligny		18
+			textscale		0.35
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			5 398 222 77
+			backcolor		0.08 0.08 0.08 1
+			visible			1
+			decoration
+		}
+
+		// Horizontal gray
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			5 460 222 1
+			backcolor		0.19 0.19 0.19 1
+			visible			1
+			decoration
+		}
+
+		// Vertical gray
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			45 460 1 15
+			backcolor		0.19 0.19 0.19 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			say
+			exp				text("@APB_CHATTYPE_" + dvarString("chattype") + "_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			5 463 37 10
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		10
+			textscale		0.25
+			forecolor		1 1 1 1
+			visible			1
+		}
+
+		itemDef
+		{
+			name			message
+			type			ITEM_TYPE_EDITFIELD
+			text			" "
+			dvar			"cmd"
+			rect			5 461 300 14
+			textalignx		32
+			textaligny		12
+			maxchars		128
+			maxpaintchars	28
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_CONSOLE
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			style			WINDOW_STYLE_EMPTY
+			visible			1
+			accept
+			{
+				exec "setfromdvar info cmd";
+				scriptMenuResponse "send";
+				close self;
+			}
+		}
+
+		// Chat lines
+		infoElem(1)
+		infoElem(2)
+		infoElem(3)
+		infoElem(4)
+		infoElem(5)
+		infoElem(6)
+
+		// Admin
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			3 3 634 118
+			backcolor		0.1 0.1 0.1 1
+			border			WINDOW_BORDER_RAISED
+			bordercolor		0.3 0.3 0.3 0.6
+			visible			when(dvarBool("admin"))
+			decoration
+		}
+		itemDef
+		{
+			exp				text("@APB_ADMIN_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			5 5 630 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		20
+			textscale		0.4
+			backcolor		0 0 0 0.8
+			forecolor		1 1 1 1
+			visible			when(dvarBool("admin"))
+			decoration
+		}
+
+		#define adminbutton(id, title, cmd) \
+		itemDef \
+		{ \
+			exp				text("@APB_"title"_" + dvarString("lang")) \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_FILLED \
+			textstyle		ITEM_TEXTSTYLE_SHADOWED \
+			rect			15 (35 + id * 22) 144 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textfont		UI_FONT_NORMAL \
+			textalign		ITEM_ALIGN_LEFT \
+			textalignx		10 \
+			textaligny		17 \
+			textscale		0.35 \
+			forecolor		0.85 0.85 0.85 1 \
+			backcolor		0.2 0.2 0.2 1 \
+			background		"mainbutton" \
+			visible			when(dvarBool("admin")) \
+			action			{ cmd; } \
+			mouseEnter \
+			{ \
+				play "mouse_over"; \
+				setcolor backcolor 0.8 0.4 0 1; \
+			} \
+			mouseExit \
+			{ \
+				setcolor backcolor 0.2 0.2 0.2 1; \
+			} \
+		}
+
+		adminbutton(0, "SPECTATE", scriptMenuResponse "spectator")
+		adminbutton(1, "BUG_REPORTER", scriptMenuResponse "bug"; setLocalVarString adminpage "bug")
+		adminbutton(2, "PLAYERS", scriptMenuResponse "players"; setLocalVarString adminpage "players"; setLocalVarInt currentid 64)
+
+		// Background + hide elements
+		itemDef
+		{
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0.1 0.1 0.1 1
+			visible			when(localVarString(adminpage) != "")
+		}
+
+		// BUGS
+		#define bugbutton(index, id) \
+		itemDef \
+		{ \
+			rect			160 (25 + index * 18) 300 16 0 0 \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_FILLED \
+			exp				text("#" + dvarString("bug"id)) \
+			textstyle		ITEM_TEXTSTYLE_NORMAL \
+			textfont		UI_FONT_DEFAULT \
+			textalign		ITEM_ALIGN_LEFT \
+			textAlignX		5 \
+			textAlignY		14 \
+			textscale		0.3 \
+			forecolor		1 1 1 1 \
+			backcolor		0.05 0.05 0.05 0.8 \
+			exp				forecolor A(max(dvarInt("bug"id"_status"), 0.5)) \
+			border			1 \
+			bordercolor		0.1 0.1 0.1 1 \
+			visible			when(localVarString(adminpage) == "bug" && dvarString("bug"id) != "") \
+			mouseEnter		{ setcolor bordercolor 0.9 0.6 0.2 1 } \
+			mouseExit		{ setcolor bordercolor 0.1 0.1 0.1 1 } \
+			action			{ scriptMenuResponse id } \
+		}
+
+		itemDef
+		{
+			exp				text("@APB_BUG_REPORTER_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		20
+			textscale		0.4
+			backcolor		0 0 0 0.8
+			forecolor		1 1 1 1
+			visible			when(localVarString(adminpage) == "bug")
+			decoration
+		}
+		bugbutton(0, "0")
+		bugbutton(1, "1")
+		bugbutton(2, "2")
+		bugbutton(3, "3")
+		bugbutton(4, "4")
+		bugbutton(5, "5")
+		bugbutton(6, "6")
+		bugbutton(7, "7")
+		bugbutton(8, "8")
+		bugbutton(9, "9")
+
+		// Active
+		itemDef
+		{
+			rect			160 0 300 16 0 0
+			exp				rect Y(26 + dvarInt("bugid") * 18)
+			border			1
+			bordercolor		0.9 0.9 0.4 1
+			visible			when(localVarString(adminpage) == "bug" && dvarString("bugid") != "")
+			decoration
+		}
+
+		// Pages
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 210 640 20
+			backcolor		0.15 0.15 0.15 1
+			visible			when(localVarString(adminpage) == "bug")
+		}
+		itemDef
+		{
+			rect		270 212 100 16 0 0
+			forecolor	0.8 0.8 0.8 1
+			exp			text((dvarInt("bugpage") + 1) + " / " + int(dvarInt("bugs") / 10 + max(1, dvarInt("bugs") % 10)))
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			textalign	ITEM_ALIGN_CENTER
+			textscale	0.35
+			textaligny	16
+			visible		when(localVarString(adminpage) == "bug")
+			decoration
+		}
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		170 212 100 16 0 0
+			forecolor	1 1 1 0.85
+			exp			text("@APB_PREVPAGE_" + dvarString("lang"))
+			type		ITEM_TYPE_BUTTON
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			textalign	ITEM_ALIGN_RIGHT
+			textscale	0.35
+			textaligny	16
+			visible		when(localVarString(adminpage) == "bug")
+			action
+			{
+				scriptMenuResponse "bugprev";
+			}
+			mouseEnter
+			{
+				play "mouse_over";
+			}
+		}
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		370 212 100 16 0 0
+			forecolor	1 1 1 0.85
+			exp			text("@APB_NEXTPAGE_" + dvarString("lang"))
+			type		ITEM_TYPE_BUTTON
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.35
+			textaligny	16
+			visible		when(localVarString(adminpage) == "bug")
+			action
+			{
+				scriptMenuResponse "bugnext";
+			}
+			mouseEnter
+			{
+				play "mouse_over";
+			}
+		}
+
+		// Details
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 250 640 216
+			backcolor		0.2 0.2 0.2 0.5
+			visible			when(localVarString(adminpage) == "bug" && dvarString("bugid") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("bug" + dvarString("bugid") + "_sub"))
+			style			WINDOW_STYLE_FILLED
+			rect			0 230 640 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		16
+			textscale		0.275
+			forecolor		0.8 0.8 0.8 0.9
+			backcolor		0.05 0.05 0.05 1
+			visible			when(localVarString(adminpage) == "bug" && dvarString("bugid") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(locString("@APB_SENDER_" + dvarString("lang")) + ": " + dvarString("bug" + dvarString("bugid") + "_player"))
+			rect			0 230 640 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		-5
+			textaligny		16
+			textscale		0.275
+			forecolor		0.65 0.65 0.65 0.9
+			visible			when(localVarString(adminpage) == "bug" && dvarString("bugid") != "")
+			decoration
+		}
+		// Message ~ autowrapped requires separation
+		itemDef
+		{
+			exp				text(dvarString("bug" + dvarString("bugid") + "_msg"))
+			rect			0 250 630 216
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		20
+			textscale		0.4
+			forecolor		1 1 1 1
+			visible			when(localVarString(adminpage) == "bug" && dvarString("bugid") != "")
+			autowrapped
+			decoration
+		}
+
+		// Bottom
+		itemDef
+		{
+			exp				text(locString("@APB_DATE_" + dvarString("lang")) + ": " + dvarString("bug" + dvarString("bugid") + "_time"))
+			style			WINDOW_STYLE_FILLED
+			rect			0 456 640 24
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		18
+			textscale		0.275
+			forecolor		0.65 0.65 0.65 0.9
+			backcolor		0.05 0.05 0.05 1
+			visible			when(localVarString(adminpage) == "bug" && dvarString("bugid") != "")
+			decoration
+		}
+		APBBUTTON_HIDDEN(537, 459, 100, "ACCEPT", scriptMenuResponse "accept", when(localVarString(adminpage) == "bug" && dvarString("bugid") != ""), "a")
+		APBBUTTON_HIDDEN(433, 459, 100, "DELETE", scriptMenuResponse "delete"; setDvar bugid ""; hide over_d, when(localVarString(adminpage) == "bug" && dvarString("bugid") != ""), "d")
+
+		// PLAYERS
+
+		// No int() or 'div' in compiler
+		#define playerbutton(index, id) \
+		itemDef \
+		{ \
+			rect			(5 + (index < 16 ? 0 : (index < 32 ? 160 : (index < 48 ? 320 : 480)))) (5 + (index - (index < 16 ? 0 : (index < 32 ? 16 : (index < 48 ? 32 : 48)))) * 26) 150 25 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_FILLED \
+			exp				text(dvarString("temp"id)) \
+			textstyle		ITEM_TEXTSTYLE_NORMAL \
+			textfont		UI_FONT_DEFAULT \
+			textalign		ITEM_ALIGN_LEFT \
+			textAlignX		5 \
+			textAlignY		18 \
+			textscale		0.3 \
+			forecolor		0.9 0.9 0.9 1 \
+			backcolor		0.05 0.05 0.05 0.8 \
+			border			1 \
+			bordersize		0.5 \
+			bordercolor		0.1 0.1 0.1 1 \
+			visible			when(localVarString(adminpage) == "players" && id < dvarInt("temp_count")) \
+			mouseEnter		{ setcolor bordercolor 0.9 0.6 0.2 1 } \
+			mouseExit		{ setcolor bordercolor 0.1 0.1 0.1 1 } \
+			action			{ setLocalVarInt currentid index; scriptMenuResponse id } \
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			border			1
+			bordercolor		0.1 0.1 0.1 0.85
+			backcolor		0 0 0 0.85
+			visible			when(localVarString(adminpage) == "players")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 425
+			backcolor		0.2 0.2 0.2 0.85
+			visible			when(localVarString(adminpage) == "players")
+			decoration
+		}
+		playerbutton(0, "0")
+		playerbutton(1, "1")
+		playerbutton(2, "2")
+		playerbutton(3, "3")
+		playerbutton(4, "4")
+		playerbutton(5, "5")
+		playerbutton(6, "6")
+		playerbutton(7, "7")
+		playerbutton(8, "8")
+		playerbutton(9, "9")
+		playerbutton(10, "10")
+		playerbutton(11, "11")
+		playerbutton(12, "12")
+		playerbutton(13, "13")
+		playerbutton(14, "14")
+		playerbutton(15, "15")
+		playerbutton(16, "16")
+		playerbutton(17, "17")
+		playerbutton(18, "18")
+		playerbutton(19, "19")
+		playerbutton(20, "20")
+		playerbutton(21, "21")
+		playerbutton(22, "22")
+		playerbutton(23, "23")
+		playerbutton(24, "24")
+		playerbutton(25, "25")
+		playerbutton(26, "26")
+		playerbutton(27, "27")
+		playerbutton(28, "28")
+		playerbutton(29, "29")
+		playerbutton(30, "30")
+		playerbutton(31, "31")
+		playerbutton(32, "32")
+		playerbutton(33, "33")
+		playerbutton(34, "34")
+		playerbutton(35, "35")
+		playerbutton(36, "36")
+		playerbutton(37, "37")
+		playerbutton(38, "38")
+		playerbutton(39, "39")
+		playerbutton(40, "40")
+		playerbutton(41, "41")
+		playerbutton(42, "42")
+		playerbutton(43, "43")
+		playerbutton(44, "44")
+		playerbutton(45, "45")
+		playerbutton(46, "46")
+		playerbutton(47, "47")
+		playerbutton(48, "48")
+		playerbutton(49, "49")
+		playerbutton(50, "50")
+		playerbutton(51, "51")
+		playerbutton(52, "52")
+		playerbutton(53, "53")
+		playerbutton(54, "54")
+		playerbutton(55, "55")
+		playerbutton(56, "56")
+		playerbutton(57, "57")
+		playerbutton(58, "58")
+		playerbutton(59, "59")
+		playerbutton(60, "60")
+		playerbutton(61, "61")
+		playerbutton(62, "62")
+		playerbutton(63, "63")
+
+		// Active
+		itemDef
+		{
+			rect			0 0 150 25
+			exp				rect X(5.5 + (int(localVarInt(currentid) / 16) * 160))
+			exp				rect Y(5.5 + (localVarInt(currentid) - (int(localVarInt(currentid) / 16) * 16)) * 26)
+			border			1
+			bordersize		0.5
+			bordercolor		0.9 0.9 0.4 1
+			visible			when(localVarString(adminpage) == "players" && localVarInt(currentid) != 64)
+			decoration
+		}
+
+		APBBUTTON_HIDDEN(10, 433, 100, "REFRESH", scriptMenuResponse "players", when(localVarString(adminpage) == "players"), "refresh")
+		APBBUTTON_HIDDEN(10, 457, 100, "BACK", close self, when(localVarString(adminpage) == "players"), "back")
+
+		APBBUTTON_VIS(120, 433, 100, "SPECTATE", scriptMenuResponse "spectate", localVarInt(currentid) == 64, localVarString(adminpage) == "players", "spec")
+		APBBUTTON_VIS(120, 457, 100, "KILL", scriptMenuResponse "kill", localVarInt(currentid) == 64, localVarString(adminpage) == "players", "kill")
+
+		APBBUTTON_VIS(230, 457, 100, "KICK", execNow "setfromdvar info cmd"; scriptMenuResponse "kick", localVarInt(currentid) == 64, localVarString(adminpage) == "players", "kick")
+		itemDef
+		{
+			exp				text(locString("@APB_REASON_" + dvarString("lang")) + ": ")
+			type			ITEM_TYPE_EDITFIELD
+			style			WINDOW_STYLE_FILLED
+			dvar			cmd
+			rect			230 433 100 14
+			border			1
+			bordersize		0.5
+			bordercolor		0.3 0.3 0.3 1
+			backcolor		0.1 0.1 0.1 1
+			textalignx		3
+			textaligny		12
+			maxchars		256
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_DEFAULT
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			visible			when(localVarString(adminpage) == "players")
+			accept
+			{
+				scriptMenuResponse "kick";
+				execNow "setfromdvar info cmd";
+			}
+		}
+	}
+}

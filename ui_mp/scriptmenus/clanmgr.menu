@@ -1,0 +1,367 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+#define COL_PLAYER 20
+#define COL_RANK 140
+#define COL_STATUS 220
+
+#define info(title, x) \
+itemDef \
+{ \
+	exp				text("@APB_"title"_" + dvarString("lang")) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			20 52 398 14 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		x \
+	textaligny		12 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	visible			1 \
+	decoration \
+}
+
+#define playerInfo(id, var, col) \
+itemDef \
+{ \
+	exp				text(var) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			19 (66 + id * 14) 398 14 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		col \
+	textaligny		14 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	visible			when(id < dvarInt("temp_count")) \
+	decoration \
+}
+
+#define member(id) \
+itemDef \
+{ \
+	type		ITEM_TYPE_BUTTON \
+	style		WINDOW_STYLE_FILLED \
+	rect		20 (66 + id * 14) 398 14 0 0 \
+	backcolor	0.1 0.1 0.1 0.8 \
+	border		1 \
+	bordercolor	0 0 0 1 \
+	visible		when(id < dvarInt("temp_count")) \
+	action \
+	{ \
+		play "mouse_click"; \
+		scriptMenuResponse id; \
+	} \
+} \
+playerInfo(id, dvarString("temp" + id), COL_PLAYER) \
+playerInfo(id, "@APB_CLANRANK" + dvarString("temp" + id + "_type") + "_" + dvarString("lang"), COL_RANK) \
+playerInfo(id, dvarString("temp" + id + "_type2"), COL_STATUS)
+
+#undef buttonAlign
+#define buttonAlign 0 0
+
+// We have not enough itemDefs to show/hide the WARZONE!
+{
+	menuDef
+	{
+		name			"clanmgr"
+		rect			0 0 640 480
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		blurWorld		5
+		onOpen { hide inviteclan; hide create; hide quit; scriptMenuResponse "setup" }
+		onESC { close self }
+		onClose { hide inviteclan; hide create; hide quit; scriptMenuResponse "clear" }
+
+		// Background button blocker
+		itemDef
+		{
+			type		ITEM_TYPE_BUTTON
+			rect		0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			visible		1
+		}
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 35 600 425
+			backcolor		0.1 0.1 0.1 0.9
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			420 52 200 408
+			backcolor		0.1 0.1 0.1 0.75
+			visible			1
+			decoration
+		}
+
+		// Title
+		itemDef
+		{
+			exp				text("@APB_CLAN_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			20 5 600 30
+			backcolor		0 0 0 0.9
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		32
+			textaligny		27
+			textscale		0.5
+			forecolor		1 1 1 1
+			visible			when(dvarString("clan") == "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("clan"))
+			style			WINDOW_STYLE_FILLED
+			rect			20 5 600 30
+			backcolor		0 0 0 0.9
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		32
+			textaligny		27
+			textscale		0.5
+			forecolor		1 1 1 1
+			visible			when(dvarString("clan") != "")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			20 5 30 30
+			background		"social"
+			visible			1
+			decoration
+		}
+		closeButton(600, 5, 1, close self, ;)
+
+		#include "ui_mp/mgr.inc"
+		menuButton(0, "GROUP", groupmgr)
+		menuButton(1, "TEAM", teammgr)
+		menuButton(2, "FRIENDS", friendmgr)
+		menuPos(3, "CLAN")
+		//menuButton(4, "IGNORE", ignoremgr)
+
+		// Columns
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 52 399 14
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		info("PLAYERNAME", COL_PLAYER)
+		info("RANK", COL_RANK)
+		info("STATUS", COL_STATUS)
+
+		// No clan
+		itemDef
+		{
+			exp			text("@APB_NOT_IN_CLAN_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		20 76 400 12
+			textalign	ITEM_ALIGN_CENTER
+			textalignx	3
+			textaligny	12
+			textscale	0.3
+			forecolor	0.9 0.9 0.9 1
+			visible		when(dvarString("clan") == "")
+			decoration
+		}
+
+		// Members
+		member(0)
+		member(1)
+		member(2)
+		member(3)
+		member(4)
+		member(5)
+		member(6)
+		member(7)
+		member(8)
+		member(9)
+		member(10)
+		member(11)
+		member(12)
+		member(13)
+		member(14)
+		member(15)
+		member(16)
+		member(17)
+		member(18)
+		member(19)
+		member(20)
+		member(21)
+		member(22)
+		member(23)
+		member(24)
+		member(25)
+
+		// Selection
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		20 0 398 14
+			exp			rect Y(67 + dvarInt("clanid") * 14)
+			border		1
+			bordercolor	1 1 0 1
+			backcolor	1 1 0 0.1
+			visible		when(dvarString("clanid") != "")
+			decoration
+		}
+
+		// No place for Create and Treasury too
+		APBBUTTON_HIDDEN(425, 55, 190, "CREATE", show create; hide over_create0; hide over_create1; setfocus clanname, when(dvarString("clan") == ""), "create")
+		APBBUTTON_HIDDEN(425, 55, 190, "TREASURY", open treasury, when(dvarString("clan") != ""), "treasury")
+		APBBUTTON(425, 85, 190, "WARZONE", open warzone, when(dvarString("clan") == ""), "warzone")
+		APBBUTTON(425, 110, 190, "REFRESH", scriptMenuResponse "setup", when(dvarString("clan") == ""), "refresh")
+		APBBUTTON(425, 135, 190, "INVITE", show inviteclan; hide over_inviteclan0; hide over_inviteclan1; setfocus playername, when(dvarString("clan") == "" || dvarInt("clanrank") == 0), "0")
+		APBBUTTON(425, 160, 190, "QUIT", show quit; hide over_quit0; hide over_quit1, when(dvarString("clan") == ""), "1")
+		APBBUTTON(425, 190, 190, "INVITE_TO_GROUP", scriptMenuResponse "invitegroup", when(dvarString("clan") == "" || dvarString("clan" + dvarString("clanid")) == dvarString("showname")), "2")
+		APBBUTTON(425, 215, 190, "ADD_AS_FRIEND", scriptMenuResponse "addasfriend", when(dvarString("clanid") == "" || dvarString("clan" + dvarString("clanid")) == dvarString("showname")), "3")
+		APBBUTTON(425, 240, 190, "KICK", scriptMenuResponse "kick", when(dvarString("clanid") == "" || dvarInt("clanrank") < 2 || dvarString("clan" + dvarString("clanid")) == dvarString("showname")), "4")
+
+		itemDef
+		{
+			exp			text("@APB_RANK_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_EMPTY
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		425 263 190 20
+			textalign	ITEM_ALIGN_CENTER
+			textaligny	16
+			textscale	0.35
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		#define RANKBUTTON(index, id, cond) \
+		APBBUTTON(425, (285 + index * 35), 190, "CLANRANK"id, scriptMenuResponse "setrank:"id, when(dvarString("clanid") == "" || dvarInt("clan" + dvarString("clanid") + "_rank") == index || dvarString("clan" + dvarString("clanid")) == dvarString("showname") || cond), "r"id) \
+		itemDef \
+		{ \
+			exp			text("@APB_CLANRANK"id"_INFO_" + dvarString("lang")) \
+			textfont	UI_FONT_NORMAL \
+			style		WINDOW_STYLE_EMPTY \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			rect		425 (310 + index * 35) 190 10 0 0 \
+			textalign	ITEM_ALIGN_LEFT \
+			textaligny	5 \
+			textscale	0.225 \
+			forecolor	0.65 0.65 0.65 1 \
+			visible		1 \
+			decoration \
+		}
+
+		RANKBUTTON(0, "0", dvarInt("clanrank") < 3 || dvarInt("clanrank") <= dvarInt("temp" + dvarString("clanid") + "_type"));
+		RANKBUTTON(1, "1", dvarInt("clanrank") < 3 || dvarInt("clanrank") <= dvarInt("temp" + dvarString("clanid") + "_type"));
+		RANKBUTTON(2, "2", dvarInt("clanrank") < 3 || dvarInt("clanrank") <= dvarInt("temp" + dvarString("clanid") + "_type"));
+		RANKBUTTON(3, "3", dvarInt("clanrank") < 4 || dvarInt("clanrank") <= dvarInt("temp" + dvarString("clanid") + "_type"));
+		RANKBUTTON(4, "4", dvarInt("clanrank") != 5);
+
+		// Page
+		itemDef
+		{
+			exp				text((dvarInt("clanpage") * 26 + 1) + " - " + int(min(dvarInt("temp_count"), (dvarInt("clanpage") * 26) + 25)) + " / " + dvarInt("temp_count"))
+			style			WINDOW_STYLE_FILLED
+			rect			20 432 400 28
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		20
+			textscale		0.3
+			forecolor		0.8 0.8 0.8 1
+			backcolor		0.05 0.05 0.05 0.95
+			visible			1
+			decoration
+		}
+		APBBUTTON(25, 437, 100, "PREVPAGE", scriptMenuResponse "prevpage", when(dvarString("clanid") == "" || !dvarBool("clanpage")), "prev")
+		APBBUTTON(315, 437, 100, "NEXTPAGE", scriptMenuResponse "nextpage", when(dvarString("clanid") == "" || dvarInt("temp_count") <= (dvarInt("clanpage") + 1) * 26), "next")
+
+		POP("inviteclan", "playername", "INVITE", "INVITE_DESC", "PLAYERNAME")
+		POP("create", "clanname", "CREATE", "CREATE_DESC", "NAME")
+
+		// Quit
+		itemDef
+		{
+			group			quit
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor		0.4 0.4 0.4 0.5
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			group			quit
+			style			WINDOW_STYLE_FILLED
+			rect			220 190 200 100 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor		0.1 0.1 0.1 0.75
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			group		quit
+			style		WINDOW_STYLE_FILLED
+			rect		220 190 200 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor	0 0 0 0.75
+			visible		0
+			decoration
+		}
+		itemDef
+		{
+			group			quit
+			style			WINDOW_STYLE_FILLED
+			rect			340 190 80 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			background		"title_arrows"
+			backcolor		1 1 1 1
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			group		quit
+			exp			text("@APB_QUIT_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		220 190 200 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.4
+			textaligny	20
+			textalignx	5
+			forecolor	1 1 1 1
+			visible		0
+			decoration
+		}
+		itemDef
+		{
+			group		quit
+			exp			text("@APB_QUIT_SURE_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		220 210 200 50 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.25
+			textaligny	15
+			textalignx	5
+			forecolor	1 1 1 0.8
+			visible		0
+			decoration
+		}
+		APBBUTTON_EXT(330, 265, 80, "OK", scriptMenuResponse "quit"; hide quit;, "quit0", group quit)
+		APBBUTTON_EXT(230, 265, 80, "CANCEL", hide quit;, "quit1", group quit)
+	}
+}

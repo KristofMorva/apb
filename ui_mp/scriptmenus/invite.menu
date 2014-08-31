@@ -1,0 +1,10 @@
+#include "ui/menudef.h"
+#include "ui_mp/choices_setup_teams.menu"
+#include "ui_mp/global.inc"
+
+{
+	menuDef
+	{
+		APBPOPUP("invite", scriptMenuResponse 0;, "INVITE", dvarString("input_body"), "ACCEPT", scriptMenuResponse 1;, "DECLINE", scriptMenuResponse 0;)
+	}
+}

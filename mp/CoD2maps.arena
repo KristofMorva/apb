@@ -1,0 +1,10 @@
+{
+	map			"mp_apb_waterfront"
+	longname	"APB_FAKE"
+	gametype	"apb"
+}
+{
+	map			"mp_apb_social"
+	longname	"APB_FAKE"
+	gametype	"apb"
+}

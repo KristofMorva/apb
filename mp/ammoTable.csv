@@ -1,0 +1,13 @@
+name,max,size,cost,id,title
+rifle,4500,75,25,1,RIFLE
+machinegun,10000,100,13,2,MACHINEGUN
+pistol,7500,75,7,3,PISTOL
+desert,5000,50,20,4,DESERT
+shotgun,2550,25,20,5,SHOTGUN
+sniper,1500,15,13,6,SNIPER
+rocket,100,1,100,7,ROCKET
+frag,100,5,40,8,FRAG
+flash,100,5,75,9,FLASH
+concussion,100,5,75,10,CONCUSSION
+nonlethal,2550,20,10,11,NONLETHAL
+count,11

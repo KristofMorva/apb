@@ -1,0 +1,150 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+// We need a string and an int parameter because it is HORSESHIT ("" == 0)
+#define member(id, index) \
+itemDef \
+{ \
+	exp			text(dvarString("team" + index)) \
+	type		ITEM_TYPE_BUTTON \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		20 (50 + id * 14) 398 14 0 0 \
+	textalign	ITEM_ALIGN_LEFT \
+	textalignx	3 \
+	textaligny	12 \
+	textscale	0.25 \
+	forecolor	0.9 0.9 0.9 1 \
+	backcolor	0.1 0.1 0.1 0.8 \
+	border		1 \
+	bordercolor	0 0 0 1 \
+	visible		when(dvarBool("mission") && id < dvarInt("leftoffset")) \
+	action \
+	{ \
+		play "mouse_click"; \
+		scriptMenuResponse index; \
+	} \
+}
+
+#undef buttonAlign
+#define buttonAlign 0 0
+
+{
+	menuDef
+	{
+		name			"teammgr"
+		rect			0 0 640 480
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		blurWorld		5
+		onOpen { scriptMenuResponse 0 }
+		onESC { close self }
+		onClose { scriptMenuResponse clear }
+
+		// Background button blocker
+		itemDef
+		{
+			type		ITEM_TYPE_BUTTON
+			rect		0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			visible		1
+		}
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 35 600 425
+			backcolor		0.1 0.1 0.1 0.9
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			420 50 200 410
+			backcolor		0.1 0.1 0.1 0.75
+			visible			1
+			decoration
+		}
+
+		// Title
+		itemDef
+		{
+			exp				text("@APB_TEAM_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			20 5 600 30
+			backcolor		0 0 0 0.9
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		32
+			textaligny		27
+			textscale		0.5
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			20 5 30 30
+			background		"social"
+			visible			1
+			decoration
+		}
+		closeButton(600, 5, 1, close self, ;)
+
+		#include "ui_mp/mgr.inc"
+		menuButton(0, "GROUP", groupmgr)
+		menuPos(1, "TEAM")
+		menuButton(2, "FRIENDS", friendmgr)
+		menuButton(3, "CLAN", clanmgr)
+		//menuButton(4, "IGNORE", ignoremgr)
+
+		// "You are not in team."
+		itemDef
+		{
+			exp			text("@APB_NOT_IN_TEAM_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		20 60 400 12 0 0
+			textalign	ITEM_ALIGN_CENTER
+			textalignx	3
+			textaligny	12
+			textscale	0.3
+			forecolor	0.9 0.9 0.9 1
+			visible		when(!dvarBool("mission"))
+			decoration
+		}
+
+		// Members
+		member(0, "0")
+		member(1, "1")
+		member(2, "2")
+		member(3, "3")
+		member(4, "4")
+		member(5, "5")
+		member(6, "6")
+		member(7, "7")
+
+		// Selection
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		20 0 398 14
+			exp			rect Y(50 + dvarInt("teamid") * 14)
+			border		1
+			bordercolor	1 1 0 1
+			backcolor	1 1 0 0.1
+			visible		when(dvarString("teamid") != "")
+			decoration
+		}
+
+		#undef buttonAlign
+		#define buttonAlign 0 0
+		APBBUTTON(425, 55, 190, "KICK", scriptMenuResponse "kick", when(!dvarBool("right")), "0")
+		APBBUTTON(425, 80, 190, "SET_LEADER", scriptMenuResponse "setleader", when(!dvarBool("right")), "1")
+		APBBUTTON(425, 105, 190, "ADD_AS_FRIEND", scriptMenuResponse "addasfriend", when(!dvarBool("right")), "2")
+	}
+}

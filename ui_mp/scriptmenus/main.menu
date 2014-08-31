@@ -1,0 +1,96 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+// "@APB_"title"_" + dvarString("lang")
+#define BUTTON(id, title, cmd) \
+itemDef \
+{ \
+	exp				text("@APB_"title"_" + dvarString("lang")) \
+	type			ITEM_TYPE_BUTTON \
+	style			WINDOW_STYLE_FILLED \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			15 (175 + id * 22) 144 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		10 \
+	textaligny		17 \
+	textscale		0.35 \
+	forecolor		0.85 0.85 0.85 1 \
+	backcolor		0.1 0.1 0.1 1 \
+	background		"mainbutton" \
+	visible			1 \
+	action			{ cmd; } \
+	mouseEnter \
+	{ \
+		play "mouse_over"; \
+		setcolor backcolor 0.8 0.4 0 1; \
+	} \
+	mouseExit \
+	{ \
+		setcolor backcolor 0.1 0.1 0.1 1; \
+	} \
+}
+
+{
+	menuDef
+	{
+		name			"main"
+		fullScreen		1
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focusColor		COLOR_FOCUSED
+		soundloop 		"Theme"
+		onOpen
+		{
+			execNowOnDvarIntValue ui_stat_intro 2 "set ui_stat_intro 3; reconnect";
+			execOnDvarIntValue ui_stat_intro 1 "cinematic cod_intro; ui_stat_intro 2";
+			open main_text;
+			uiScript addPlayerProfiles;
+			uiScript openMenuOnDvar com_playerProfile "" player_profile;
+			uiScript openMenuOnDvarNot ui_playerProfileCount 1 player_profile;
+			uiScript openMenuOnDvarNot kicked "" menu_challenges;
+			uiScript stopRefresh;
+		}
+		onClose { }
+		onESC { }
+	}
+
+	menuDef
+	{
+		name			"main_text"
+		fullScreen		1
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focusColor		COLOR_FOCUSED
+		soundloop 		"Theme"
+		onOpen
+		{
+			#include "ui_mp/getlang.inc"
+		}
+		onClose { }
+		onESC { }
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 640 480
+			background		"mainback"
+			visible			1
+			decoration
+		}
+
+		BUTTON(0, "JOIN", execNow "exec servers"; open pc_join_unranked)
+		BUTTON(1, "PROFILE", setDvar ui_playerProfileAlreadyChosen 0; open player_profile)
+
+		BUTTON(2, "CONTROLS", open main_controls)
+		BUTTON(3, "OPTIONS", open main_options)
+
+		BUTTON(4, "MODS", close self; open mods_menu)
+		BUTTON(5, "QUIT", exec "quit")
+	}
+
+	// Overwrite original menu
+	menuDef
+	{
+		APBPOPUP_EXT("menu_challenges", ;, "KICKED", locString("@APB_REASON_" + dvarString("lang")) + ": " + dvarString("kicked"), APBBUTTON_CMD_ON(330, 265, 80, "OK", setDvar kicked ""; close self))
+	}
+	#include "ui_mp/options.inc"
+}

@@ -1,0 +1,418 @@
+#include "ui/menudef.h"
+
+// Should be map dependent (with dvar) later
+#define LOOKOUT_SIZE_X 1280
+#define LOOKOUT_SIZE_Y 740
+
+#define ZOOM dvarFloat("zoom")
+
+#define placeX(o, q) dvarInt("scrollX") + dvarInt("width") / 2 - (dvarInt("respawn_x") - o) * ZOOM * 0.1 - (q)
+#define placeY(o, q) dvarInt("scrollY") + dvarInt("height") / 2 + (dvarInt("respawn_y") - o) * ZOOM * 0.1 - (q)
+
+// We can save itemDefs here if we want by making only 1 hover and changing the x y coordinates!
+#define point(id) \
+itemDef \
+{ \
+	type			ITEM_TYPE_BUTTON \
+	rect			0 0 0 0 HORIZONTAL_ALIGN_NOSCALE VERTICAL_ALIGN_NOSCALE \
+	exp				rect X(placeX(dvarInt("respawn_point"id"_x"), ZOOM * 16)) \
+	exp				rect Y(placeY(dvarInt("respawn_point"id"_y"), ZOOM * 16)) \
+	exp				rect W(ZOOM * 32) \
+	exp				rect H(ZOOM * 32) \
+	visible			when(id < dvarInt("respawn_points")) \
+	mouseEnter		{ show "hover"id; hide "norm"id } \
+	mouseExit		{ hide "hover"id; show "norm"id } \
+	action \
+	{ \
+		scriptMenuResponse id; \
+		setitemcolor hover backcolor 1 1 1 1; \
+		setitemcolor norm backcolor 1 1 1 1; \
+		setitemcolor "hover"id backcolor 0 1 0 1; \
+		setitemcolor "norm"id backcolor 0 1 0 1; \
+	} \
+} \
+itemDef \
+{ \
+	name			"norm"id \
+	group			norm \
+	style			WINDOW_STYLE_FILLED \
+	rect			0 0 0 0 HORIZONTAL_ALIGN_NOSCALE VERTICAL_ALIGN_NOSCALE \
+	exp				rect X(placeX(dvarInt("respawn_point"id"_x"), ZOOM * 16)) \
+	exp				rect Y(placeY(dvarInt("respawn_point"id"_y"), ZOOM * 16)) \
+	exp				rect W(ZOOM * 32) \
+	exp				rect H(ZOOM * 32) \
+	background		"choose" \
+	backcolor		1 1 1 1 \
+	visible			when(id < dvarInt("respawn_points")) \
+	decoration \
+} \
+itemDef \
+{ \
+	name			"hover"id \
+	group			hover \
+	style			WINDOW_STYLE_FILLED \
+	rect			0 0 0 0 HORIZONTAL_ALIGN_NOSCALE VERTICAL_ALIGN_NOSCALE \
+	exp				rect X(placeX(dvarInt("respawn_point"id"_x"), ZOOM * 16)) \
+	exp				rect Y(placeY(dvarInt("respawn_point"id"_y"), ZOOM * 16)) \
+	exp				rect W(ZOOM * 32) \
+	exp				rect H(ZOOM * 32) \
+	background		"choose_over" \
+	backcolor		1 1 1 1 \
+	visible			0 \
+	decoration \
+}
+
+#define obj(id) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			0 0 0 0 HORIZONTAL_ALIGN_NOSCALE VERTICAL_ALIGN_NOSCALE \
+	exp				rect X(placeX(dvarInt("respawn_obj"id"_x"), ZOOM * 16)) \
+	exp				rect Y(placeY(dvarInt("respawn_obj"id"_y"), ZOOM * 16)) \
+	exp				rect W(ZOOM * 32) \
+	exp				rect H(ZOOM * 32) \
+	exp				material("compass_" + dvarString("respawn_obj"id"_type")) \
+	visible			when(id < dvarInt("respawn_objs")) \
+	decoration \
+}
+
+{
+	menuDef
+	{
+		name			"map"
+		style			WINDOW_STYLE_FILLED
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		1 1 1 1
+		backcolor		0 0 0 1
+		onOpen
+		{
+			show norm;
+			hide hover;
+			setitemcolor hover backcolor 1 1 1 1;
+			setitemcolor norm backcolor 1 1 1 1;
+			setDvar zoom 0.75;
+			setDvar scrollX 0;
+			setDvar scrollY 0;
+
+			// Two strings are concatenated (wtf squared??? If stupidity could be specified by a float number between 0 and 1, it would be the fucking 1!!!)
+			/*execNowOnDvarStringValue r_mode "640x480" "set width 640; set height 480";
+			execNowOnDvarStringValue r_mode "720x480" "set width 720; set height 480";
+			execNowOnDvarStringValue r_mode "720x576" "set width 720; set height 576";
+			execNowOnDvarStringValue r_mode "800x600" "set width 800; set height 600";
+			execNowOnDvarStringValue r_mode "1024x576" "set width 1024; set height 576";
+			execNowOnDvarStringValue r_mode "1024x768" "set width 1024; set height 768";
+			execNowOnDvarStringValue r_mode "1152x864" "set width 1152; set height 864";
+			execNowOnDvarStringValue r_mode "1280x720" "set width 1280; set height 720";
+			execNowOnDvarStringValue r_mode "1280x768" "set width 1280; set height 768";
+			execNowOnDvarStringValue r_mode "1280x800" "set width 1280; set height 800";
+			execNowOnDvarStringValue r_mode "1280x960" "set width 1280; set height 960";
+			execNowOnDvarStringValue r_mode "1280x1024" "set width 1280; set height 1024";
+			execNowOnDvarStringValue r_mode "1360x768" "set width 1360; set height 768";
+			execNowOnDvarStringValue r_mode "1366x768" "set width 1366; set height 768";
+			execNowOnDvarStringValue r_mode "1600x900" "set width 1600; set height 900";
+			execNowOnDvarStringValue r_mode "1600x1024" "set width 1600; set height 1024";
+			execNowOnDvarStringValue r_mode "1680x1050" "set width 1680; set height 1050";
+			execNowOnDvarStringValue r_mode "1920x1080" "set width 1920; set height 1080";*/
+
+			// Exceeded 640 menu assets (I think about 600 of them is the default CAC shit)
+			/*uiScript openMenuOnDvar r_mode "640x480" menu640x480;
+			uiScript openMenuOnDvar r_mode "720x480" menu720x480;
+			uiScript openMenuOnDvar r_mode "720x576" menu720x576;
+			uiScript openMenuOnDvar r_mode "800x600" menu800x600;
+			uiScript openMenuOnDvar r_mode "1024x576" menu1024x576;
+			uiScript openMenuOnDvar r_mode "1024x768" menu1024x768;
+			uiScript openMenuOnDvar r_mode "1152x864" menu1152x864;
+			uiScript openMenuOnDvar r_mode "1280x720" menu1280x720;
+			uiScript openMenuOnDvar r_mode "1280x768" menu1280x768;
+			uiScript openMenuOnDvar r_mode "1280x800" menu1280x800;
+			uiScript openMenuOnDvar r_mode "1280x960" menu1280x960;
+			uiScript openMenuOnDvar r_mode "1280x1024" menu1280x1024;
+			uiScript openMenuOnDvar r_mode "1360x768" menu1360x768;
+			uiScript openMenuOnDvar r_mode "1366x768" menu1366x768;
+			uiScript openMenuOnDvar r_mode "1600x900" menu1600x900;
+			uiScript openMenuOnDvar r_mode "1600x1024" menu1600x1024;
+			uiScript openMenuOnDvar r_mode "1680x1050" menu1680x1050;
+			uiScript openMenuOnDvar r_mode "1920x1080" menu1920x1080;*/
+
+			// We don't want delay
+			/*scriptMenuRespondOnDvarStringValue r_mode "640x480" menu640x480;
+			scriptMenuRespondOnDvarStringValue r_mode "720x480" menu720x480;
+			scriptMenuRespondOnDvarStringValue r_mode "720x576" menu720x576;
+			scriptMenuRespondOnDvarStringValue r_mode "800x600" menu800x600;
+			scriptMenuRespondOnDvarStringValue r_mode "1024x576" menu1024x576;
+			scriptMenuRespondOnDvarStringValue r_mode "1024x768" menu1024x768;
+			scriptMenuRespondOnDvarStringValue r_mode "1152x864" menu1152x864;
+			scriptMenuRespondOnDvarStringValue r_mode "1280x720" menu1280x720;
+			scriptMenuRespondOnDvarStringValue r_mode "1280x768" menu1280x768;
+			scriptMenuRespondOnDvarStringValue r_mode "1280x800" menu1280x800;
+			scriptMenuRespondOnDvarStringValue r_mode "1280x960" menu1280x960;
+			scriptMenuRespondOnDvarStringValue r_mode "1280x1024" menu1280x1024;
+			scriptMenuRespondOnDvarStringValue r_mode "1360x768" menu1360x768;
+			scriptMenuRespondOnDvarStringValue r_mode "1366x768" menu1366x768;
+			scriptMenuRespondOnDvarStringValue r_mode "1600x900" menu1600x900;
+			scriptMenuRespondOnDvarStringValue r_mode "1600x1024" menu1600x1024;
+			scriptMenuRespondOnDvarStringValue r_mode "1680x1050" menu1680x1050;
+			scriptMenuRespondOnDvarStringValue r_mode "1920x1080" menu1920x1080;*/
+		}
+		onESC { scriptMenuResponse "close" }
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 0 0 HORIZONTAL_ALIGN_NOSCALE VERTICAL_ALIGN_NOSCALE
+			exp				rect X(placeX(0, ZOOM * LOOKOUT_SIZE_X))
+			exp				rect Y(placeY(0, ZOOM * LOOKOUT_SIZE_Y))
+			exp				rect W(ZOOM * LOOKOUT_SIZE_X * 2)
+			exp				rect H(ZOOM * LOOKOUT_SIZE_Y * 2)
+			exp				material("lookout_" + dvarString("mapname"))
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 0 0 HORIZONTAL_ALIGN_NOSCALE VERTICAL_ALIGN_NOSCALE
+			exp				rect X(placeX(dvarInt("death_x"), ZOOM * 16))
+			exp				rect Y(placeY(dvarInt("death_y"), ZOOM * 16))
+			exp				rect W(ZOOM * 32)
+			exp				rect H(ZOOM * 32)
+			background		"killiconsuicide"
+			visible			when(dvarString("death_x") != "")
+			decoration
+		}
+
+		point("0")
+		point("1")
+		point("2")
+		point("3")
+		point("4")
+		point("5")
+		point("6")
+		point("7")
+		point("8")
+		point("9")
+		point("10")
+		point("11")
+		point("12")
+		point("13")
+		point("14")
+		point("15")
+		point("16")
+		point("17")
+		point("18")
+		point("19")
+		point("21")
+		point("22")
+		point("23")
+		point("24")
+		point("25")
+		point("26")
+		point("27")
+		point("28")
+		point("29")
+		point("30")
+		point("31")
+
+		obj("0")
+		obj("1")
+		obj("2")
+		obj("3")
+		obj("4")
+		obj("5")
+		obj("6")
+		obj("7")
+		obj("8")
+		obj("9")
+
+		// Panel
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			460 0 180 70
+			backcolor		0.2 0.2 0.2 0.75
+			visible			1
+			decoration
+		}
+
+		// Zoom
+		itemDef
+		{
+			exp				text(locString("@APB_ZOOM_" + dvarString("lang")) + ":")
+			rect			420 4 94 18
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		15
+			textscale		0.25
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_SLIDER
+			dvarfloat		zoom 0.5 0.5 1
+			rect			516 4 100 18
+			style			WINDOW_STYLE_FILLED
+			visible			1
+			onFocus			{ play "mouse_over" }
+			action			{ play "mouse_click" }
+		}
+
+		// Horizontal scroll
+		itemDef
+		{
+			exp				text("X:")
+			rect			418 24 94 18
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		15
+			textscale		0.25
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_SLIDER
+			dvarfloat		scrollX 0 -1000 1000
+			rect			516 24 100 18
+			style			WINDOW_STYLE_FILLED
+			visible			1
+			onFocus			{ play "mouse_over" }
+			action			{ play "mouse_click" }
+		}
+
+		// Vertical scroll
+		itemDef
+		{
+			exp				text("Y:")
+			rect			418 44 94 18
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		15
+			textscale		0.25
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_SLIDER
+			dvarfloat		scrollY 0 -1000 1000
+			rect			516 44 100 18
+			style			WINDOW_STYLE_FILLED
+			visible			1
+			onFocus			{ play "mouse_over" }
+			action			{ play "mouse_click" }
+		}
+	}
+
+	/*menuDef
+	{
+		name			"menu640x480"
+		onOpen			{ setDvar width 640; setDvar height 480; close self }
+	}
+
+	menuDef
+	{
+		name			"menu720x480"
+		onOpen			{ setDvar width 720; setDvar height 480; close self }
+	}
+
+	menuDef
+	{
+		name			"menu720x576"
+		onOpen			{ setDvar width 720; setDvar height 576; close self }
+	}
+
+	menuDef
+	{
+		name			"menu800x600"
+		onOpen			{ setDvar width 800; setDvar height 600; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1024x576"
+		onOpen			{ setDvar width 1024; setDvar height 576; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1024x768"
+		onOpen			{ setDvar width 1024; setDvar height 768; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1152x864"
+		onOpen			{ setDvar width 1152; setDvar height 864; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1280x720"
+		onOpen			{ setDvar width 1280; setDvar height 720; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1280x768"
+		onOpen			{ setDvar width 1280; setDvar height 768; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1280x800"
+		onOpen			{ setDvar width 1280; setDvar height 800; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1280x960"
+		onOpen			{ setDvar width 1280; setDvar height 960; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1280x1024"
+		onOpen			{ setDvar width 1280; setDvar height 1024; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1360x768"
+		onOpen			{ setDvar width 1360; setDvar height 768; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1366x768"
+		onOpen			{ setDvar width 1366; setDvar height 768; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1600x900"
+		onOpen			{ setDvar width 1600; setDvar height 900; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1600x1024"
+		onOpen			{ setDvar width 1600; setDvar height 1024; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1680x1050"
+		onOpen			{ setDvar width 1680; setDvar height 1050; close self }
+	}
+
+	menuDef
+	{
+		name			"menu1920x1080"
+		onOpen			{ setDvar width 1920; setDvar height 1080; close self }
+	}*/
+}

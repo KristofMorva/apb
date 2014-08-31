@@ -1,0 +1,146 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+{
+	#define soundlist(id) \
+	itemDef \
+	{ \
+		exp				text(dvarString("studio_theme" + id)) \
+		style			WINDOW_STYLE_FILLED \
+		type			ITEM_TYPE_BUTTON \
+		rect			159 (119 + id * 30) 240 30 0 0 \
+		textstyle		ITEM_TEXTSTYLE_NORMAL \
+		textfont		UI_FONT_DEFAULT \
+		textalign		ITEM_ALIGN_LEFT \
+		textalignx		31 \
+		textaligny		12 \
+		textscale		0.25 \
+		forecolor		1 1 1 1 \
+		border			1 \
+		bordercolor		0 0 0 1 \
+		visible			when(dvarString("studio_theme" + id) != "") \
+		backcolor		0.1 0.1 0.1 0.8 \
+		action			{ scriptMenuResponse id } \
+	} \
+	itemDef \
+	{ \
+		exp				text(dvarString("studio_theme" + id + "_time") + " " + locString("@APB_SECONDS_" + dvarString("lang"))) \
+		style			WINDOW_STYLE_EMPTY \
+		rect			160 (120 + id * 30) 240 30 0 0 \
+		textstyle		ITEM_TEXTSTYLE_NORMAL \
+		textfont		UI_FONT_DEFAULT \
+		textalign		ITEM_ALIGN_LEFT \
+		textalignx		32 \
+		textaligny		22 \
+		textscale		0.2 \
+		forecolor		0.8 0.8 0.8 0.8 \
+		visible			when(dvarString("studio_theme" + id) != "") \
+		decoration \
+	} \
+	itemDef \
+	{ \
+		style			WINDOW_STYLE_SHADER \
+		background		"theme" \
+		rect			161 (121 + id * 30) 28 28 0 0 \
+		visible			when(dvarString("studio_theme" + id) != "") \
+		decoration \
+	} \
+
+	menuDef
+	{
+		name			studio
+		style			WINDOW_STYLE_EMPTY
+		rect			0 0 640 480
+		focuscolor		1 1 1 1
+		blurWorld		4
+		onOpen			{ scriptMenuResponse "setup" }
+
+		itemDef
+		{
+			exp				text("@APB_STUDIO_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			155 90 325 25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		22
+			textscale		0.4
+			forecolor		1 1 1 1
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			155 115 325 255
+			backcolor		0.2 0.2 0.2 0.8
+			visible			1
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			158 118 242 247
+			border			1
+			bordercolor		0.3 0.3 0.3 0.9
+			backcolor		0 0 0 0.6
+			visible			1
+		}
+
+		soundlist(0)
+		soundlist(1)
+		soundlist(2)
+		soundlist(3)
+		soundlist(4)
+		soundlist(5)
+		soundlist(6)
+		soundlist(7)
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			background		"equipped"
+			rect			372 0 28 28
+			exp				rect Y(121 + dvarInt("studio_theme_active") * 30)
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_EMPTY
+			type			ITEM_TYPE_BUTTON
+			rect			159 0 240 30
+			exp				rect Y(120 + dvarInt("weaponid") * 30)
+			border			1
+			bordercolor		1 0.75 0 1
+			visible			1
+			action			{ scriptMenuResponse id }
+		}
+
+		#undef buttonAlign
+		#define buttonAlign 0 0
+		APBBUTTON_CMD(405, 121, 70, "EDIT", scriptMenuResponse "load"; open composer; close self, "s0")
+		APBBUTTON(405, 143, 70, "CHANGE", scriptMenuResponse "default", when(dvarInt("studio_theme_active") == dvarInt("weaponid")), "s1")
+		APBBUTTON(405, 165, 70, "DELETE", scriptMenuResponse "delete", when(dvarInt("studio_theme_active") == dvarInt("weaponid")), "s2")
+		APBBUTTON(405, 187, 70, "ADD", scriptMenuResponse "setupcomposer"; open composer; close self, when(dvarInt("themes") == 8), "s3")
+		APBBUTTON_CMD(405, 209, 70, "BACK", close self, "s4")
+
+		itemDef
+		{
+			exp				text(dvarString("themes") + "/8")
+			style			WINDOW_STYLE_EMPTY
+			rect			405 365 1 1
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			textscale		0.3
+			forecolor		0.9 0.9 0.9 1
+			visible			1
+			decoration
+		}
+	}
+}

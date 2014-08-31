@@ -1,0 +1,291 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+#define cat(id, title, g) \
+itemDef \
+{ \
+	exp			text("@APB_"title"_" + dvarString("lang")) \
+	rect		0 (40 + id * 20) 150 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	type		ITEM_TYPE_BUTTON \
+	textfont	UI_FONT_OBJECTIVE \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	textalign	ITEM_ALIGN_LEFT \
+	textscale	0.3 \
+	textalignx	5 \
+	textaligny	16 \
+	forecolor	1 1 1 0.85 \
+	backcolor	0.05 0.05 0.05 0.75 \
+	visible		1 \
+	mouseEnter { setcolor backcolor 0 0 0 0.85; play "mouse_over" } \
+	mouseExit { setcolor backcolor 0.05 0.05 0.05 0.75 } \
+	action \
+	{ \
+		play "mouse_click"; \
+		hide items; \
+		show g; \
+	} \
+}
+
+#define item_clear(id, sid, g) \
+itemDef \
+{ \
+	exp			text("@APB_"g"_" + tableLookUp("mp/hatTable.csv", 0, g + sid, 3) + "_" + dvarString("lang")) \
+	group		items \
+	name		g \
+	rect		0 (101 + id * 20) 150 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	type		ITEM_TYPE_BUTTON \
+	textfont	UI_FONT_DEFAULT \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	textalign	ITEM_ALIGN_LEFT \
+	textscale	0.3 \
+	textalignx	5 \
+	textaligny	16 \
+	forecolor	1 1 1 0.85 \
+	backcolor	0.05 0.05 0.05 0.75 \
+	visible		0 \
+	mouseEnter { setcolor backcolor 0 0 0 0.85; play "mouse_over" } \
+	mouseExit { setcolor backcolor 0.05 0.05 0.05 0.75 } \
+	action \
+	{ \
+		play "mouse_click"; \
+		scriptMenuResponse "wear:"g":"sid; \
+	} \
+} \
+itemDef \
+{ \
+	group			items \
+	name			g \
+	type			ITEM_TYPE_BUTTON \
+	style			WINDOW_STYLE_FILLED \
+	rect			128 (101 + id * 20) 19 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	border			1 \
+	bordersize		1 \
+	bordercolor		0 0 0 1 \
+	background		"button" \
+	backcolor		0.5 0.5 0.5 1 \
+	visible			when(dvarInt("hasitem_"g"_"sid) != 0) \
+	mouseEnter \
+	{ \
+		play "mouse_over"; \
+		show "imgover"g"_"sid; \
+	} \
+	mouseExit \
+	{ \
+		hide "imgover"g"_"sid; \
+	} \
+	action \
+	{ \
+		play "mouse_click"; \
+		scriptMenuResponse "action:"g":"sid; \
+	} \
+} \
+itemDef \
+{ \
+	group			items \
+	name			"imgover"g"_"sid \
+	style			WINDOW_STYLE_FILLED \
+	rect			130 (103 + id * 20) 16 16 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"button" \
+	backcolor		0.66 0.66 0.66 1 \
+	visible			0 \
+	decoration \
+} \
+itemDef \
+{ \
+	group			items \
+	name			g \
+	type			ITEM_TYPE_BUTTON \
+	style			WINDOW_STYLE_SHADER \
+	rect			130 (103 + id * 20) 16 16 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"x" \
+	visible			when(dvarInt("hasitem_"g"_"sid) == 2) \
+	decoration \
+} \
+itemDef \
+{ \
+	group			items \
+	name			g \
+	type			ITEM_TYPE_BUTTON \
+	style			WINDOW_STYLE_SHADER \
+	rect			130 (103 + id * 20) 16 16 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"statusarrow" \
+	visible			when(dvarInt("hasitem_"g"_"sid) == 1) \
+	decoration \
+}
+
+#define item_buy(id, sid, g) \
+itemDef \
+{ \
+	group			items \
+	name			g \
+	style			WINDOW_STYLE_SHADER \
+	rect			95 (103 + id * 20) 51 16 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"button" \
+	visible			when(dvarInt("hasitem_"g"_"sid) == 0) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp				text("$" + tableLookup("mp/hatTable.csv", 0, g + sid, 2)) \
+	group			items \
+	name			g \
+	style			WINDOW_STYLE_FILLED \
+	type			ITEM_TYPE_BUTTON \
+	textfont		UI_FONT_DEFAULT \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	textalign		ITEM_ALIGN_RIGHT \
+	textscale		0.25 \
+	textalignx		-4 \
+	textaligny		14 \
+	forecolor		1 1 1 0.85 \
+	rect			93 (101 + id * 20) 54 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	border			1 \
+	bordersize		1 \
+	bordercolor		0 0 0 1 \
+	backcolor		0 0 0 0.5 \
+	visible			when(dvarInt("hasitem_"g"_"sid) == 0) \
+	mouseEnter \
+	{ \
+		play "mouse_over"; \
+		setcolor backcolor 0 0 0 0.25; \
+	} \
+	mouseExit \
+	{ \
+		setcolor backcolor 0 0 0 0.5; \
+	} \
+	action \
+	{ \
+		play "mouse_click"; \
+		setcolor backcolor 0 0 0 0.5; \
+		scriptMenuResponse "action:"g":"sid; \
+	} \
+} \
+itemDef \
+{ \
+	group			items \
+	name			g \
+	type			ITEM_TYPE_BUTTON \
+	style			WINDOW_STYLE_SHADER \
+	rect			96 (104 + id * 20) 14 14 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"cash" \
+	visible			when(dvarInt("hasitem_"g"_"sid) == 0) \
+	decoration \
+} \
+itemDef \
+{ \
+	group			items \
+	name			g \
+	type			ITEM_TYPE_BUTTON \
+	style			WINDOW_STYLE_FILLED \
+	rect			95 (103 + id * 20) 54 16 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	backcolor		0 0 0 0.5 \
+	visible			when(dvarInt("hasitem_"g"_"sid) == 0 && dvarInt("money") < int(tableLookup("mp/hatTable.csv", 0, g + sid, 2))) \
+}
+
+#define item(id, sid, g) \
+item_clear(id, sid, g) \
+item_buy(id, sid, g)
+
+{
+	menuDef
+	{
+		name			"dress"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		1 1 1 1
+		style			WINDOW_STYLE_EMPTY
+		onOpen			{ hide items; show hat; scriptMenuResponse load }
+		onESC { close self }
+		onClose { hide imgover; scriptMenuResponse "save" }
+		execKeyInt 13 { close self }
+		execKeyInt 156 { scriptMenuResponse "left" } // Right
+		execKeyInt 157 { scriptMenuResponse "right" } // Left
+		execKeyInt 154 { scriptMenuResponse "right" } // Up
+		execKeyInt 155 { scriptMenuResponse "left" } // Down
+		//onOpen { exec "vstr saveacc"; setDvar saveacc "" }
+
+		// Items
+		// Backcolor
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 40 150 440
+			backcolor		0.1 0.1 0.1 0.85
+			visible			1
+			decoration
+		}
+		// Categories
+		cat(0, "HATS", "hat")
+		cat(1, "BACKPACKS", "backpack")
+		cat(2, "MISC", "misc")
+		// Separator
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 100 150 1
+			backcolor		0.3 0.3 0.3 1
+			visible			1
+			decoration
+		}
+		// Buttons
+		item(0, "1", "hat")
+		item(1, "2", "hat")
+		item(2, "3", "hat")
+		item(3, "4", "hat")
+		item_clear(4, "5", "hat")
+
+		// Change model
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 40
+			backcolor		0 0 0 0.75
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			text		"<<"
+			type		ITEM_TYPE_BUTTON
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		290 10 35 20
+			textalign	ITEM_ALIGN_CENTER
+			textscale	1
+			textaligny	30
+			forecolor	1 1 1 0.85
+			visible		1
+			mouseEnter { play "mouse_over" }
+			action
+			{
+				play "mouse_click";
+				scriptMenuResponse "prev";
+			}
+		}
+		itemDef
+		{
+			text		">>"
+			type		ITEM_TYPE_BUTTON
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		350 10 35 20
+			textalign	ITEM_ALIGN_CENTER
+			textscale	1
+			textaligny	30
+			forecolor	1 1 1 0.85
+			visible		1
+			mouseEnter { play "mouse_over" }
+			action
+			{
+				play "mouse_click";
+				scriptMenuResponse "next";
+			}
+		}
+
+		IMGBUTTON(155, 312, "left", "left", "0")
+		IMGBUTTON(467, 312, "right", "right", "1")
+
+		APBBUTTON_CMD_ON(540, 450, 80, "SAVE", close self)
+	}
+}

@@ -1,0 +1,224 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+{
+	// We can't query the serverlist ingame.
+	menuDef
+	{
+		name			servers
+		fullscreen		0
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		COLOR_FOCUSED
+		onOpen			{ setDvar temp 0; setLocalVarString tempid ""; setitemcolor servers bordercolor 0.4 0.4 0.4 1; hide radio_on; show radio_off; hide radio_off_all; show radio_on_all; scriptMenuResponse "query" }
+		onESC			{ close self }
+		onClose			{ scriptMenuResponse "close" }
+
+		// Fade & Button blocker
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			type			ITEM_TYPE_BUTTON
+			rect			0 0 640 480
+			backcolor		0.1 0.1 0.1 0.75
+			visible			1
+			//decoration
+		}
+
+		#define COL0 0
+		#define COL1 120
+		#define COL2 240
+		#define COL3 300
+		#define COL4 360
+
+		#define head(t, c) \
+		itemDef \
+		{ \
+			exp			text(t) \
+			rect		50 80 440 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textfont	UI_FONT_NORMAL \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			textalign	ITEM_ALIGN_LEFT \
+			textscale	0.25 \
+			textalignx	(5 + c) \
+			textaligny	16 \
+			forecolor	1 1 1 0.85 \
+			visible		1 \
+			decoration \
+		}
+
+		#define col(id, d, c) \
+		itemDef \
+		{ \
+			exp			text(d) \
+			rect		50 (100 + id * 20) 440 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textfont	UI_FONT_NORMAL \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			textalign	ITEM_ALIGN_LEFT \
+			textscale	0.25 \
+			textalignx	(5 + c) \
+			textaligny	16 \
+			forecolor	1 1 1 0.85 \
+			visible		when(id < dvarInt("temp_count")) \
+			decoration \
+		}
+
+		#define server(id) \
+		itemDef \
+		{ \
+			group		servers \
+			exp			text(dvarString("temp" + id + "_name")) \
+			style		WINDOW_STYLE_FILLED \
+			type		ITEM_TYPE_BUTTON \
+			rect		49 (100 + id * 20) 440 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textfont	UI_FONT_NORMAL \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			textalign	ITEM_ALIGN_LEFT \
+			textscale	0.25 \
+			textalignx	5 \
+			textaligny	15 \
+			border		1 \
+			bordercolor	0.4 0.4 0.4 1 \
+			forecolor	1 1 1 0.85 \
+			backcolor	0.3 0.3 0.3 0.5 \
+			visible		when(id < dvarInt("temp_count")) \
+			action \
+			{ \
+				setitemcolor servers bordercolor 0.4 0.4 0.4 1; \
+				setcolor bordercolor 1 0.75 0 1; \
+				setLocalVarString tempid id; \
+				execNow "setdvartotime temp"; \
+				scriptMenuResponse id; \
+			} \
+		} \
+		col(id, dvarString("temp" + id), COL1) \
+		col(id, dvarString("temp" + id + "_type"), COL2) \
+		col(id, dvarString("temp" + id + "_type2"), COL3) \
+		col(id, dvarString("temp" + id + "_type3") + "/" + dvarString("temp" + id + "_type4"), COL4) \
+		itemDef \
+		{ \
+			style		WINDOW_STYLE_SHADER \
+			rect		478 (106 + id * 20) 8 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background	"compass_friendly" \
+			visible		when(id < dvarInt("temp_count") && dvarString("ip") == dvarString("temp" + id)) \
+			decoration \
+		}
+
+		// Background
+		itemDef
+		{
+			rect		48 58 542 362
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			border		1
+			bordercolor	0.2 0.2 0.2 0.9
+			backcolor	0 0 0 0.8
+			visible		1
+			decoration
+		}
+
+		// Right panel
+		APBBUTTON_CMD(492, 80, 94, "REFRESH", scriptMenuResponse "query"; setitemcolor servers bordercolor 0.4 0.4 0.4 1, "query")
+		APBBUTTON(492, 105, 94, "JOIN", scriptMenuResponse "connect", when(localVarString(tempid) == ""), "connect")
+
+		#define radio(id, sid, v1, v2) \
+		itemDef \
+		{ \
+			name		"radio_off_"sid \
+			group		radio_off \
+			rect		492 (135 + id * 12) 10 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			type		ITEM_TYPE_BUTTON \
+			style		WINDOW_STYLE_SHADER \
+			background	"choose_on" \
+			visible		v1 \
+			action		{ hide radio_on; show radio_off; hide "radio_off_"sid; show "radio_on_"sid; scriptMenuResponse "filter:"sid; setitemcolor servers bordercolor 0.4 0.4 0.4 1 } \
+		} \
+		itemDef \
+		{ \
+			name		"radio_on_"sid \
+			group		radio_on \
+			rect		492 (135 + id * 12) 10 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			style		WINDOW_STYLE_SHADER \
+			background	"choose_over" \
+			visible		v2 \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			exp			text("@APB_DISTRICT_"sid"_" + dvarString("lang")) \
+			rect		504 (135 + id * 12) 50 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textfont	UI_FONT_NORMAL \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			textalign	ITEM_ALIGN_LEFT \
+			textscale	0.25 \
+			textaligny	11 \
+			forecolor	0.9 0.9 0.9 1 \
+			visible		1 \
+			decoration \
+		}
+
+		radio(0, "all", 0, 1)
+		radio(1, "action", 1, 0)
+		radio(2, "social", 1, 0)
+		radio(3, "tutorial", 1, 0)
+
+		APBBUTTON_CMD(492, 399, 94, "CLOSE", close self, "close")
+
+		// Title
+		itemDef
+		{
+			exp			text("@APB_SERVERS_" + dvarString("lang"))
+			rect		50 60 540 20
+			style		WINDOW_STYLE_FILLED
+			textfont	UI_FONT_OBJECTIVE
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.3
+			textalignx	5
+			textaligny	17
+			forecolor	1 1 1 1
+			backcolor	0 0 0 1
+			visible		1
+			decoration
+		}
+
+		// Header
+		itemDef
+		{
+			rect		50 80 440 20
+			style		WINDOW_STYLE_FILLED
+			backcolor	0.1 0.1 0.1 1
+			visible		1
+			decoration
+		}
+		head("@APB_NAME_" + dvarString("lang"), COL0)
+		head("IP", COL1)
+		head("@APB_ENFORCERS_LOWER_" + dvarString("lang"), COL2)
+		head("@APB_CRIMINALS_LOWER_" + dvarString("lang"), COL3)
+		head("@APB_ALL_" + dvarString("lang"), COL4)
+
+		// List
+		server(0)
+		server(1)
+		server(2)
+		server(3)
+		server(4)
+		server(5)
+		server(6)
+		server(7)
+		server(8)
+		server(9)
+
+		// Doubleclick selection
+		itemDef
+		{
+			type		ITEM_TYPE_BUTTON
+			rect		50 0 440 18
+			exp			rect Y(100 + localVarInt(tempid) * 20)
+			visible		when(dvarInt("temp") + 500 >= milliseconds())
+			action
+			{
+				scriptMenuResponse "connect";
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+{
+	menuDef
+	{
+		APBPOPUP("popup_leavegame", ;, "QUIT", "@APB_QUIT_SURE_" + dvarString("lang"), "YES", exec "writeconfig apb_mod; quit";, "NO", close self;)
+	}
+}

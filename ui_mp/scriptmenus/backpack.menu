@@ -1,0 +1,238 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+#define itemBorderolor 0.4 0.4 0.4 1
+
+{
+	menuDef
+	{
+		name			"backpack"
+		rect			0 0 640 480
+		focuscolor		COLOR_FOCUSED
+		onOpen			{ scriptMenuResponse "setup"; setitemcolor items bordercolor itemBorderolor; setDvar temp ""; setLocalvarBool selected 0 }
+		onESC			{ close self }
+		onClose			{ scriptMenuResponse "clear"; hide popup }
+
+		// Background
+		itemDef
+		{
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor		0.171875 0.15625 0.1484375 1
+			visible			1
+		}
+
+		// Strings
+		itemDef
+		{
+			exp				text("^1>> ^7" + locString("@APB_INVENTORY_" + dvarString("lang")))
+			rect			0 0 640 40 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalignx		10
+			textaligny		25
+			textscale		0.4
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("temp_page") + "/" + dvarString("temp_pages"))
+			style			WINDOW_STYLE_FILLED
+			rect			0 60 640 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_OBJECTIVE
+			textalignx		5
+			textaligny		15
+			textscale		0.25
+			forecolor		0.7 0.4 0 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text(locString("@APB_ALL_" + dvarString("lang")) + ": " + dvarString("temp_stat"))
+			style			WINDOW_STYLE_FILLED
+			rect			0 60 640 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textfont		UI_FONT_OBJECTIVE
+			textalignx		-5
+			textaligny		15
+			textscale		0.25
+			forecolor		0.7 0.4 0 1
+			visible			1
+			decoration
+		}
+
+		// No 'div' in menu without int() so we need exp rect Y()
+		#define item(id, sid) \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_FILLED \
+			rect			(5 + (id % 6) * 106) 0 100 100 0 0 \
+			exp				rect Y(79 + int(id / 6) * 106) \
+			border			1 \
+			bordercolor		0.1 0.1 0.1 1 \
+			backcolor		0.2 0.15 0.1 1 \
+			visible			when(id >= dvarInt("temp_count")) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			group			items \
+			type			ITEM_TYPE_BUTTON \
+			rect			(5 + (id % 6) * 106) 0 100 100 0 0 \
+			exp				rect Y(79 + int(id / 6) * 106) \
+			border			1 \
+			bordercolor		itemBorderolor \
+			visible			when(id < dvarInt("temp_count")) \
+			action			{ scriptMenuResponse sid; setitemcolor items bordercolor itemBorderolor; setcolor bordercolor 1 1 0 0.8; setLocalvarBool selected 1 } \
+			mouseEnter		{ setDvar temp id; play "mouse_over" } \
+			mouseExit		{ setDvar temp "" } \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			(24 + (id % 6) * 106) 0 64 64 0 0 \
+			exp				rect Y(97 + int(id / 6) * 106) \
+			exp				material(dvarString("temp"sid"_type2")) \
+			visible			when(id < dvarInt("temp_count") && dvarString("temp"sid"_type2") != "") \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			(24 + (id % 6) * 106) 0 64 64 0 0 \
+			exp				rect Y(97 + int(id / 6) * 106) \
+			exp				material(dvarString("temp"sid"_type")) \
+			visible			when(id < dvarInt("temp_count")) \
+			decoration \
+		}
+
+		item(0, "0")
+		item(1, "1")
+		item(2, "2")
+		item(3, "3")
+		item(4, "4")
+		item(5, "5")
+		item(6, "6")
+		item(7, "7")
+		item(8, "8")
+		item(9, "9")
+		item(10, "10")
+		item(11, "11")
+		item(12, "12")
+		item(13, "13")
+		item(14, "14")
+		item(15, "15")
+		item(16, "16")
+		item(17, "17")
+
+		// Bottom
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			-1 420 640 60
+			border			WINDOW_BORDER_HORZ
+			bordercolor		0.1 0.1 0.1 1
+			backcolor		0 0 0 0.2
+			visible			1
+			decoration
+		}
+
+		#define btn(title, x, w, do) \
+		itemDef \
+		{ \
+			title \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_FILLED \
+			rect			x 440 w 20 0 0 \
+			textstyle		ITEM_TEXTSTYLE_NORMAL \
+			textfont		UI_FONT_OBJECTIVE \
+			textscale		0.3 \
+			textalign		ITEM_ALIGN_CENTER \
+			textaligny		15 \
+			forecolor		0.9 0.9 0.9 1 \
+			backcolor		0.25 0.2 0.15 1 \
+			border			1 \
+			bordercolor		0.3 0.3 0.3 1 \
+			visible			1 \
+			mouseEnter		{ setcolor backcolor 0.3 0.25 0.2 1 } \
+			mouseExit		{ setcolor backcolor 0.25 0.2 0.15 1 } \
+			action			{ do } \
+		}
+
+		#define btn_off(title, x, w, do, cond) \
+		btn(title, x, w, do) \
+		itemDef \
+		{ \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_FILLED \
+			rect			x 440 w 20 0 0 \
+			backcolor		0 0 0 0.2 \
+			border			1 \
+			bordercolor		0.1 0.1 0.1 1 \
+			visible			when(cond) \
+		}
+
+		#define reset setitemcolor items bordercolor itemBorderolor; setLocalvarBool selected 0; setDvar temp_bool 0
+
+		btn_off(exp text("@APB_USE_" + dvarString("lang")), 380, 100, scriptMenuResponse "use"; reset, !dvarBool("temp_bool"))
+		btn_off(exp text("@APB_DELETE_" + dvarString("lang")), 270, 100, scriptMenuResponse "delete"; reset, !localVarBool(selected))
+		btn(exp text("@APB_QUIT_" + dvarString("lang")), 160, 100, close self)
+
+		btn_off(text "<" textalignx -1, 5, 20, scriptMenuResponse "prev"; reset, dvarInt("page") == 0)
+		btn_off(text ">" textalignx -1, 615, 20, scriptMenuResponse "next"; reset, dvarInt("page") == dvarInt("pages"))
+
+		// Current item
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 100 100
+			exp				rect X(6 + (dvarInt("temp") % 6) * 106)
+			exp				rect Y(79 + int(dvarInt("temp") / 6) * 106)
+			border			1
+			bordercolor		1 1 0 0.25
+			backcolor		0 0 0 0.1
+			visible			when(dvarString("temp") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("temp" + dvarString("temp")))
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 150 75
+			exp				rect X(21 + (dvarInt("temp") % 6) * 90)
+			exp				rect Y(150 + int(dvarInt("temp") / 6) * 106)
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalignx		3
+			textaligny		15
+			textscale		0.25
+			forecolor		1 1 1 1
+			backcolor		0.25 0.2 0.15 1
+			border			1
+			bordercolor		0.4 0.4 0.4 0.8
+			visible			when(dvarString("temp") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("temp" + dvarString("temp") + "_desc"))
+			rect			0 0 140 40
+			exp				rect X(26 + (dvarInt("temp") % 6) * 90)
+			exp				rect Y(185 + int(dvarInt("temp") / 6) * 106)
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textscale		0.25
+			forecolor		0.8 0.8 0.8 1
+			visible			when(dvarString("temp") != "")
+			autowrapped
+			decoration
+		}
+	}
+}

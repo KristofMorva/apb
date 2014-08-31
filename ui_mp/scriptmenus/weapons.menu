@@ -1,0 +1,572 @@
+#include "ui/menudef.h"
+
+{
+	menuDef
+	{
+		name			"weapons"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		1 1 1 1
+		blurWorld		4
+		style			WINDOW_STYLE_EMPTY
+		onOpen
+		{
+			scriptMenuResponse "type:assault";
+		}
+		onClose
+		{
+			scriptMenuResponse "close";
+		}
+
+		#include "ui_mp/items.inc"
+
+		#define weapon(index, weaponid) \
+		itemDef \
+		{ \
+			style		WINDOW_STYLE_FILLED \
+			rect		50 (50 + 35 * index) 302 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			backcolor	0.8 0.8 0 1 \
+			visible		when(dvarString("weaponid") == weaponid) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			exp			text(tableLookUp("mp/weaponTable.csv", 0, weaponid, 2)) \
+			type		ITEM_TYPE_BUTTON \
+			textfont	UI_FONT_NORMAL \
+			style		WINDOW_STYLE_FILLED \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			rect		50 (50 + 35 * index) 300 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textalign	ITEM_ALIGN_LEFT \
+			textscale	0.4 \
+			textaligny	19 \
+			textalignx	74 \
+			forecolor	0.8 0.8 0.8 1 \
+			backcolor	0.1 0.1 0.1 1 \
+			border		1 \
+			bordercolor	0.15 0.15 0.15 1 \
+			visible		when(weaponid) \
+			mouseEnter { play "mouse_over" } \
+			action \
+			{ \
+				play "mouse_click"; \
+				scriptMenuResponse index; \
+			} \
+		} \
+		itemDef \
+		{ \
+			exp			text(locString("@APB_EXPIRES_IN_X_DAYS_" + dvarString("lang"), int(tableLookUp("mp/weaponTable.csv", 0, weaponid, 13)))) \
+			textfont	UI_FONT_NORMAL \
+			style		WINDOW_STYLE_FILLED \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			rect		60 (50 + 35 * index) 300 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textalign	ITEM_ALIGN_LEFT \
+			textscale	0.2 \
+			textaligny	28 \
+			textalignx	67 \
+			forecolor	0.5 0.5 0.5 1 \
+			visible		when(weaponid && dvarString("weaponclass") != "grenades") \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			0 0 0 0 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(55 + 16 * (2 - tableLookUp("mp/weaponTable.csv", 0, weaponid, 4))) \
+			exp				rect Y(50 + 35 * index + 8 * (2 - tableLookUp("mp/weaponTable.csv", 0, weaponid, 5))) \
+			exp				rect W(tableLookUp("mp/weaponTable.csv", 0, weaponid, 4) * 32) \
+			exp				rect H(tableLookUp("mp/weaponTable.csv", 0, weaponid, 5) * 16) \
+			exp material	(tableLookUp("mp/weaponTable.csv", 0, weaponid, 3)) \
+			visible			when(weaponid && dvarString("weaponclass") != "grenades") \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			0 0 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(55 + 16) \
+			exp				rect Y(52 + 35 * index) \
+			exp material	(tableLookUp("mp/weaponTable.csv", 0, weaponid, 3)) \
+			visible			when(weaponid && dvarString("weaponclass") == "grenades") \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_FILLED \
+			rect			51 (51 + 35 * index) 300 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			backcolor		0 0 0 0.5 \
+			visible			when(weaponid && (dvarInt("money") < tableLookUp("mp/weaponTable.csv", 0, weaponid, 11) || dvarInt("rating") < tableLookUp("mp/weaponTable.csv", 0, weaponid, 12) || dvarInt("role_" + tableLookup("mp/weaponTable.csv", 0, weaponid, 18) + "_rank") < tableLookup("mp/weaponTable.csv", 0, weaponid, 19) || tableLookup("mp/weaponTable.csv", 0, weaponid, 25) == dvarString("enemy"))) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			286 (54 + 35 * index) 8 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"dollar" \
+			visible			when(weaponid) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			exp			text(tableLookUp("mp/weaponTable.csv", 0, weaponid, 11)) \
+			textfont	UI_FONT_NORMAL \
+			style		WINDOW_STYLE_FILLED \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			rect		296 (53 + 35 * index) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textalign	ITEM_ALIGN_LEFT \
+			textaligny	10 \
+			textscale	0.2 \
+			forecolor	1 1 1 1 \
+			visible		when(weaponid && dvarInt("money") >= tableLookUp("mp/weaponTable.csv", 0, weaponid, 11)) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			exp			text(tableLookUp("mp/weaponTable.csv", 0, weaponid, 11)) \
+			textfont	UI_FONT_NORMAL \
+			style		WINDOW_STYLE_FILLED \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			rect		296 (53 + 35 * index) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textalign	ITEM_ALIGN_LEFT \
+			textaligny	10 \
+			textscale	0.2 \
+			forecolor	1 0 0 1 \
+			visible		when(weaponid && dvarInt("money") < tableLookUp("mp/weaponTable.csv", 0, weaponid, 11)) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			286 (66 + 35 * index) 8 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"rating" \
+			visible			when(weaponid) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			exp			text(int(tableLookUp("mp/weaponTable.csv", 0, weaponid, 12)) + 1) \
+			textfont	UI_FONT_NORMAL \
+			style		WINDOW_STYLE_FILLED \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			rect		296 (65 + 35 * index) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textalign	ITEM_ALIGN_LEFT \
+			textaligny	10 \
+			textscale	0.2 \
+			forecolor	1 1 1 1 \
+			visible		when(weaponid && dvarInt("rating") >= tableLookUp("mp/weaponTable.csv", 0, weaponid, 12)) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			exp			text(int(tableLookUp("mp/weaponTable.csv", 0, weaponid, 12)) + 1) \
+			textfont	UI_FONT_NORMAL \
+			style		WINDOW_STYLE_FILLED \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			rect		296 (65 + 35 * index) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textalign	ITEM_ALIGN_LEFT \
+			textaligny	10 \
+			textscale	0.2 \
+			forecolor	1 0 0 1 \
+			visible		when(weaponid && dvarInt("rating") < tableLookUp("mp/weaponTable.csv", 0, weaponid, 12)) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			322 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"equipped" \
+			visible			when(weaponid && dvarBool("hasweapon" + weaponid)) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_FILLED \
+			rect			322 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"locked" \
+			backcolor		1 1 1 0.7 \
+			visible			when(weaponid && dvarInt("role_" + tableLookup("mp/weaponTable.csv", 0, weaponid, 18) + "_rank") < tableLookup("mp/weaponTable.csv", 0, weaponid, 19) && tableLookup("mp/weaponTable.csv", 0, dvarString("weaponid"), 25) != dvarString("enemy")) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			322 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"faction_128_usmc_silver" \
+			visible			when(tableLookup("mp/weaponTable.csv", 0, weaponid, 25) == "allies" && dvarString("enemy") == "allies") \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			322 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"faction_128_arab_gold" \
+			visible			when(tableLookup("mp/weaponTable.csv", 0, weaponid, 25) == "axis" && dvarString("enemy") == "axis") \
+			decoration \
+		}
+
+		#define weaponStat(id, txt) \
+		itemDef \
+		{ \
+			exp			text("@APB_STAT_"txt"_" + dvarString("lang")) \
+			textfont	UI_FONT_NORMAL \
+			style		WINDOW_STYLE_FILLED \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			rect		395 (130 + id * 15) 50 14 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textalign	ITEM_ALIGN_RIGHT \
+			textscale	0.25 \
+			forecolor	0.8 0.8 0.6 1 \
+			visible		when(dvarString("weaponclass") != "grenades") \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_FILLED \
+			rect			448 (119 + id * 15) 102 12 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			backcolor		0.3 0.3 0.3 1 \
+			border			1 \
+			bordercolor		0.5 0.5 0.5 1 \
+			visible			when(dvarString("weaponclass") != "grenades") \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_FILLED \
+			rect			450 (121 + id * 15) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect W(tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 6 + id)) \
+			backcolor		0.75 0.5 0 1 \
+			visible			when(dvarString("weaponclass") != "grenades") \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			450 (120 + id * 15) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect W(tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 6 + id)) \
+			background		"line_horizontal" \
+			forecolor		1 1 1 0.5 \
+			visible			when(dvarString("weaponclass") != "grenades") \
+			decoration \
+		}
+
+		#define class(id, title) \
+		itemDef \
+		{ \
+			exp			text("> " + locString("@APB_CLASS_"title"_" + dvarString("lang"))) \
+			type		ITEM_TYPE_BUTTON \
+			textfont	UI_FONT_NORMAL \
+			style		WINDOW_STYLE_FILLED \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			rect		355 (290 + id * 18) 240 15 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textalign	ITEM_ALIGN_LEFT \
+			textalignx	5 \
+			textaligny	13 \
+			textscale	0.25 \
+			forecolor	0.75 0.75 0.75 1 \
+			backcolor	0.05 0.05 0.05 1 \
+			visible		1 \
+			mouseEnter { play "mouse_over" } \
+			action { scriptMenuResponse "type:"title } \
+		}
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0 0 0 0.25
+			visible			1
+			decoration
+		}
+
+		// List background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			45 45 310 425 0 0
+			backcolor		0.15 0.15 0.15 0.8
+			visible			1
+			decoration
+		}
+
+		// Detail-top background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			355 45 240 35 0 0
+			backcolor		0.1 0.1 0.1 0.8
+			visible			when(dvarString("weaponclass") != "grenades")
+			decoration
+		}
+
+		// Perk background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			355 80 240 35 0 0
+			backcolor		0.3 0.3 0.3 0.5
+			visible			when(dvarString("weaponclass") != "grenades")
+			decoration
+		}
+
+		// Detail-bottom background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			355 115 240 355 0 0
+			backcolor		0.1 0.1 0.1 0.8
+			visible			when(dvarString("weaponclass") != "grenades")
+			decoration
+		}
+
+		// Offhand detail background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			355 45 240 425 0 0
+			backcolor		0.1 0.1 0.1 0.8
+			visible			when(dvarString("weaponclass") == "grenades")
+			decoration
+		}
+
+		// Weapon classes
+		class(0, "assault")
+		class(1, "smg")
+		class(2, "semi")
+		class(3, "hvr")
+		class(4, "shotgun")
+		class(5, "lmg")
+		class(6, "secondary")
+		class(7, "explosive")
+		class(8, "grenades")
+		class(9, "nonlethal")
+
+		// Weapon name
+		itemDef
+		{
+			exp			text(tableLookUp("mp/weaponTable.csv", 0, dvarString("weaponid"), 2))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			textalignx	5
+			textaligny	25
+			rect		355 50 290 20 0 0
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.55
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		// Maybe modifiers can be in function
+
+		// Modifier #1
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			360 85 24 24 0 0
+			exp material	("specialty_" + dvarString("mod1"))
+			visible			when(dvarString("weaponclass") != "grenades")
+			mouseEnter { show modtext1 }
+			mouseExit { hide modtext1 }
+		}
+
+		// Modifier #2
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			390 85 24 24 0 0
+			exp material	("specialty_" + dvarString("mod2"))
+			visible			when(dvarString("weaponclass") != "grenades")
+			mouseEnter { show modtext2 }
+			mouseExit { hide modtext2 }
+		}
+
+		// Modifier #3
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			420 85 24 24 0 0
+			exp material	("specialty_" + dvarString("mod3"))
+			visible			when(dvarString("weaponclass") != "grenades")
+			mouseEnter { show modtext3 }
+			mouseExit { hide modtext3 }
+		}
+
+		// Modifier description #1
+		itemDef
+		{
+			name		"modtext1"
+			exp			text("@APB_MOD_" + dvarString("mod1") + "_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			rect		370 100 70 15 0 0
+			textalign	ITEM_ALIGN_LEFT
+			textalignx	2
+			textaligny	12
+			textscale	0.25
+			forecolor	0 0 0 1
+			backcolor	0.85 0.5 0 1
+			border		1
+			bordercolor	0.1 0.1 0.1 1
+			visible		0
+			decoration
+		}
+
+		// Modifier description #2
+		itemDef
+		{
+			name		"modtext2"
+			exp			text("@APB_MOD_" + dvarString("mod2") + "_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			rect		400 100 70 15 0 0
+			textalign	ITEM_ALIGN_LEFT
+			textalignx	2
+			textaligny	12
+			textscale	0.25
+			forecolor	0 0 0 1
+			backcolor	0.85 0.5 0 1
+			border		1
+			bordercolor	0.1 0.1 0.1 1
+			visible		0
+			decoration
+		}
+
+		// Modifier description #3
+		itemDef
+		{
+			name		"modtext3"
+			exp			text("@APB_MOD_" + dvarString("mod3") + "_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			rect		430 100 70 15 0 0
+			textalign	ITEM_ALIGN_LEFT
+			textalignx	2
+			textaligny	12
+			textscale	0.25
+			forecolor	0 0 0 1
+			backcolor	0.85 0.5 0 1
+			border		1
+			bordercolor	0.1 0.1 0.1 1
+			visible		0
+			decoration
+		}
+
+		// Weapon statistics
+		weaponStat(0, "ACCURACY")
+		weaponStat(1, "DAMAGE")
+		weaponStat(2, "RANGE")
+		weaponStat(3, "RATE")
+		weaponStat(4, "MOBILITY")
+
+		// Offhand description
+		itemDef
+		{
+			exp			text("@APB_OFFHAND_" + dvarString("weaponid") + "_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		360 80 230 100 0 0
+			textalign	ITEM_ALIGN_LEFT
+			textaligny	15
+			textscale	0.3
+			forecolor	1 1 1 1
+			visible		when(dvarString("weaponclass") == "grenades")
+			autowrapped
+			decoration
+		}
+
+		// Ammo type
+		itemDef
+		{
+			exp			text("@APB_AMMO_" + tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 16) + "_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			rect		360 197 228 30
+			textalign	ITEM_ALIGN_LEFT
+			textalignx	32
+			textaligny	23
+			textscale	0.4
+			forecolor	1 1 1 1
+			backcolor	0.2 0.2 0.2 0.5
+			border		1
+			bordercolor	0.25 0.25 0.25 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			362 198 30 30
+			exp material	("ammo_" + tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 16))
+			visible			when(dvarBool("weaponid"))
+			decoration
+		}
+
+		// Needed class rank
+		itemDef
+		{
+			exp			text(locString("@APB_NEEDED_ROLE_" + dvarString("lang")) + ": " + locString("@APB_ROLE_" + tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 18) + "_" + dvarString("lang")) + " " + tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 19))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			rect		360 231 228 22
+			textalign	ITEM_ALIGN_LEFT
+			textalignx	22
+			textaligny	15
+			textscale	0.25
+			forecolor	1 0.4 0.2 1
+			backcolor	0.2 0.2 0.2 0.4
+			border		1
+			bordercolor	0.35 0.35 0.35 1
+			visible		when(tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 19) > 0)
+			decoration
+		}
+		itemDef
+		{
+			exp			text("@APB_NO_NEEDED_ROLE_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			rect		360 231 228 22
+			textalign	ITEM_ALIGN_LEFT
+			textalignx	5
+			textaligny	15
+			textscale	0.25
+			forecolor	0.8 0.4 0.2 1
+			backcolor	0.2 0.2 0.2 0.3
+			border		1
+			bordercolor	0.3 0.3 0.3 1
+			visible		when(tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 19) == 0)
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			362 233 20 20
+			exp material	(tableLookUp("mp/roleTable.csv", 1, tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 18), 2))
+			visible			when(tableLookUp("mp/weaponTable.csv", 0, dvarInt("weaponid"), 19) > 0)
+			decoration
+		}
+
+		// Purchase button
+		NEWBUTTON(435, 262, 80, "BUY", "buy", when(dvarInt("money") < tableLookUp("mp/weaponTable.csv", 0, dvarString("weaponid"), 11) || dvarInt("rating") < tableLookUp("mp/weaponTable.csv", 0, dvarString("weaponid"), 12) || dvarInt("role_" + tableLookup("mp/weaponTable.csv", 0, dvarString("weaponid"), 18) + "_rank") < tableLookup("mp/weaponTable.csv", 0, dvarString("weaponid"), 19) || tableLookup("mp/weaponTable.csv", 0, dvarString("weaponid"), 25) == dvarString("enemy"))) // dvarBool("hasweapon" + dvarString("weaponid")) || - We can buy more time too
+
+		// Buttons
+		weapon(0, dvarInt("list0"))
+		weapon(1, dvarInt("list1"))
+		weapon(2, dvarInt("list2"))
+		weapon(3, dvarInt("list3"))
+		weapon(4, dvarInt("list4"))
+		weapon(5, dvarInt("list5"))
+		weapon(6, dvarInt("list6"))
+		weapon(7, dvarInt("list7"))
+		weapon(8, dvarInt("list8"))
+		weapon(9, dvarInt("list9"))
+		weapon(10, dvarInt("list10"))
+		weapon(11, dvarInt("list11"))
+	}
+}

@@ -1,0 +1,5 @@
+id,name,title,img,types
+0,invexp,EXP_INV,expander,3;5;10
+1,weapexp,EXP_WEAP,expander,3;5;10
+2,modexp,EXP_MOD,expander,3;5;10
+count,3

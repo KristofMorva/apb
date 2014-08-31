@@ -1,0 +1,786 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+#undef buttonAlign
+#define buttonAlign 0 0
+
+{
+	#define cols(id) \
+	itemDef \
+	{ \
+		style			WINDOW_STYLE_EMPTY \
+		type			ITEM_TYPE_BUTTON \
+		rect			(255 + id * 10) 60 10 0 0 0 \
+		exp				rect H(dvarInt("studio_cur_rows") * 10) \
+		visible			1 \
+		mouseEnter		{ setDvar "studio_col" id } \
+		action			{ setDvar "studio_col" id } \
+	} \
+	itemDef \
+	{ \
+		style			WINDOW_STYLE_FILLED \
+		rect			(254 + id * 10) 0 10 10 0 0 \
+		backcolor		1 0.5 0 1 \
+		border			1 \
+		bordercolor		1 0.3 0 1 \
+		exp				rect Y(60 + dvarInt("studio_node" + id) * 10) \
+		visible			when(dvarString("studio_node" + id) != "") \
+		decoration \
+	}
+
+	#define rows(id) \
+	itemDef \
+	{ \
+		style			WINDOW_STYLE_EMPTY \
+		type			ITEM_TYPE_BUTTON \
+		rect			235 (60 + id * 10) 340 10 0 0 \
+		visible			when(id < dvarInt("studio_cur_rows")) \
+		mouseEnter		{ setLocalVarInt keyid id } \
+		action			{ exec "setfromdvar info studio_col"; scriptMenuResponse id } \
+	}
+
+	/* // visible when(id < dvarInt("studio_cur_rows")) - Menu will be uglier
+	#define key(id, index) \
+	itemDef \
+	{ \
+		style			WINDOW_STYLE_FILLED \
+		type			ITEM_TYPE_BUTTON \
+		rect			235 (60.5 + id * 10) 20 9 0 0 \
+		backcolor		(0.1 + 0.1 * (id % 2)) (0.1 + 0.1 * (id % 2)) (0.1 + 0.1 * (id % 2)) 1 \
+		visible			1 \
+		mouseEnter		{ setLocalVarString keyid index } \
+		action			{ scriptMenuResponse "key:"index } \
+	}*/
+
+	#define inst(id, sid, s) \
+	itemDef \
+	{ \
+		group			instrument \
+		text 			s \
+		type			ITEM_TYPE_BUTTON \
+		style			WINDOW_STYLE_EMPTY \
+		rect			100 (91 + id * 10) 130 10 0 0 \
+		textstyle		ITEM_TEXTSTYLE_NORMAL \
+		textfont		UI_FONT_DEFAULT \
+		textalign		ITEM_ALIGN_LEFT \
+		textalignx		5 \
+		textaligny		10 \
+		textscale		0.2 \
+		forecolor		1 1 1 0.8 \
+		visible			0 \
+		action \
+		{ \
+			scriptMenuResponse sid; \
+			setLocalVarInt over 0; \
+			hide instrument; \
+			hide subover; \
+		} \
+		mouseEnter \
+		{ \
+			play "mouse_over"; \
+			setLocalVarInt over id; \
+		} \
+	}
+
+	#define instbase(id, s) \
+	itemDef \
+	{ \
+		group			instrument \
+		text 			s \
+		type			ITEM_TYPE_BUTTON \
+		style			WINDOW_STYLE_EMPTY \
+		rect			100 (91 + id * 10) 130 10 0 0 \
+		textstyle		ITEM_TEXTSTYLE_NORMAL \
+		textfont		UI_FONT_DEFAULT \
+		textalign		ITEM_ALIGN_LEFT \
+		textalignx		5 \
+		textaligny		10 \
+		textscale		0.2 \
+		forecolor		1 1 1 0.8 \
+		visible			0 \
+		mouseEnter \
+		{ \
+			play "mouse_over"; \
+			setLocalVarInt over id; \
+		} \
+	} \
+	itemDef \
+	{ \
+		group			instrument \
+		style			WINDOW_STYLE_SHADER \
+		rect			217 (91 + id * 10) 10 10 0 0 \
+		background		"hud_arrow_right" \
+		visible			0 \
+		decoration \
+	}
+
+	#define instsub(id, subid, sid, index) \
+	itemDef \
+	{ \
+		group			instrument \
+		text 			index \
+		type			ITEM_TYPE_BUTTON \
+		style			WINDOW_STYLE_FILLED \
+		rect			(229 + subid * 11) (89 + id * 10) 11 11 0 0 \
+		textstyle		ITEM_TEXTSTYLE_NORMAL \
+		textfont		UI_FONT_DEFAULT \
+		textalign		ITEM_ALIGN_CENTER \
+		textalignx		-1 \
+		textaligny		9 \
+		textscale		0.2 \
+		forecolor		1 1 1 0.8 \
+		backcolor		0.05 0.05 0.05 1 \
+		border			1 \
+		bordercolor		0 0 0 1 \
+		visible			0 \
+		action \
+		{ \
+			scriptMenuResponse sid; \
+			hide instrument; \
+			setLocalVarInt suboverx 0; \
+			setLocalVarInt subovery 0; \
+		} \
+		mouseEnter \
+		{ \
+			play "mouse_over"; \
+			setLocalVarInt suboverx subid; \
+			setLocalVarInt subovery id; \
+		} \
+	}
+
+	#define track(id, index) \
+	itemDef \
+	{ \
+		type			ITEM_TYPE_BUTTON \
+		exp				text(locString("@APB_TRACK_" + dvarString("lang")) + " " + id) \
+		style			WINDOW_STYLE_FILLED \
+		rect			99 (105 + (id - 1) * 19) 130 18 0 0 \
+		textstyle		ITEM_TEXTSTYLE_NORMAL \
+		textfont		UI_FONT_DEFAULT \
+		textalign		ITEM_ALIGN_LEFT \
+		textalignx		20 \
+		textaligny		15 \
+		textscale		0.3 \
+		forecolor		1 1 1 0.8 \
+		backcolor		0.1 0.1 0.1 1 \
+		border			1 \
+		bordercolor		0.2 0.2 0.2 0.8 \
+		visible			1 \
+		mouseEnter \
+		{ \
+			play "mouse_over"; \
+		} \
+		action \
+		{ \
+			scriptMenuResponse "track:"index; \
+		} \
+	} \
+	itemDef \
+	{ \
+		style			WINDOW_STYLE_SHADER \
+		rect			101 (107 + (id - 1) * 19) 16 16 0 0 \
+		background		"track" \
+		visible			1 \
+		decoration \
+	} \
+	itemDef \
+	{ \
+		type			ITEM_TYPE_BUTTON \
+		style			WINDOW_STYLE_SHADER \
+		rect			211 (107 + (id - 1) * 19) 16 16 0 0 \
+		exp				material("sound" + dvarInt("studio_track"index"_sound")) \
+		visible			1 \
+		action			{ scriptMenuResponse "sound:"index } \
+	}
+
+	#define SAVEBUTTON(x, y, w, title, act, id) \
+	itemDef \
+	{ \
+		group			save \
+		style			WINDOW_STYLE_EMPTY \
+		rect			(x - 2) (y - 2) (w + 2) 20 0 0 \
+		border			1 \
+		bordersize		1 \
+		bordercolor		0 0 0 1 \
+		visible			0 \
+		decoration \
+	} \
+	itemDef \
+	{ \
+		group			save \
+		name			"default"id \
+		style			WINDOW_STYLE_FILLED \
+		rect			x y w 18 0 0 \
+		background		"button" \
+		backcolor		0.5 0.5 0.5 1 \
+		visible			0 \
+		decoration \
+	} \
+	itemDef \
+	{ \
+		group			save \
+		name			"over"id \
+		style			WINDOW_STYLE_FILLED \
+		rect			x y w 18 0 0 \
+		background		"button" \
+		backcolor		0.66 0.66 0.66 1 \
+		visible			0 \
+		decoration \
+	} \
+	itemDef \
+	{ \
+		group		save \
+		style		WINDOW_STYLE_FILLED \
+		rect		x y w 18 0 0 \
+		forecolor	1 1 1 0.85 \
+		exp			text("@APB_"title"_" + dvarString("lang")) \
+		type		ITEM_TYPE_BUTTON \
+		textfont	UI_FONT_NORMAL \
+		textstyle	ITEM_TEXTSTYLE_SHADOWED \
+		textalign	ITEM_ALIGN_CENTER \
+		textscale	0.3 \
+		textaligny	15.5 \
+		visible		0 \
+		mouseEnter \
+		{ \
+			play "mouse_over"; \
+			show "over"id; \
+			hide "default"id; \
+		} \
+		mouseExit \
+		{ \
+			show "default"id; \
+			hide "over"id; \
+		} \
+		action \
+		{ \
+			act \
+		} \
+	}
+
+	/*itemDef \
+	{ \
+		style			WINDOW_STYLE_FILLED \
+		type			ITEM_TYPE_BUTTON \
+		rect			(235 + id * 10) 100 10 10 0 0 \
+		border			1 \
+		bordersize		0.25 \
+		bordercolor		0.3 0.3 0.3 1 \
+		backcolor		0.6 0.6 0.6 1 \
+		visible			1 \
+	}*/
+
+	menuDef
+	{
+		name			"composer"
+		style			WINDOW_STYLE_EMPTY
+		rect			0 0 640 480
+		focuscolor		1 1 1 1
+		blurWorld		4
+		onOpen
+		{
+			hide instrument;
+			hide subover;
+			hide save;
+			hide curkey;
+			setLocalVarInt over 0;
+			setLocalVarInt suboverx 0;
+			setLocalVarInt subovery 0;
+			setLocalVarString keyid "";
+		}
+		onClose
+		{
+			scriptMenuResponse "clear";
+			open studio;
+		}
+
+		// Body
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			type			ITEM_TYPE_BUTTON
+			rect			235 60 340 330
+			background		"studio_bg"
+			visible			1
+			decoration
+		}
+
+		// Left background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			95 60 160 330
+			backcolor		0 0 0 0.75
+			visible			1
+			decoration
+		}
+
+		// Key column
+		itemDef
+		{
+			type			ITEM_TYPE_BUTTON
+			rect			235 60 20 0
+			exp				rect H(dvarInt("studio_cur_rows") * 10)
+			visible			1
+			mouseEnter		{ setDvar "studio_col" 32; show curkey }
+			mouseExit		{ hide curkey }
+			action			{ setDvar "studio_col" 32; hide curkey }
+		}
+
+		// Timeline
+		cols(0)
+		cols(1)
+		cols(2)
+		cols(3)
+		cols(4)
+		cols(5)
+		cols(6)
+		cols(7)
+		cols(8)
+		cols(9)
+		cols(10)
+		cols(11)
+		cols(12)
+		cols(13)
+		cols(14)
+		cols(15)
+		cols(16)
+		cols(17)
+		cols(18)
+		cols(19)
+		cols(20)
+		cols(21)
+		cols(22)
+		cols(23)
+		cols(24)
+		cols(25)
+		cols(26)
+		cols(27)
+		cols(28)
+		cols(29)
+		cols(30)
+		cols(31)
+		rows(0)
+		rows(1)
+		rows(2)
+		rows(3)
+		rows(4)
+		rows(5)
+		rows(6)
+		rows(7)
+		rows(8)
+		rows(9)
+		rows(10)
+		rows(11)
+		rows(12)
+		rows(13)
+		rows(14)
+		rows(15)
+		rows(16)
+		rows(17)
+		rows(18)
+		rows(19)
+		rows(20)
+		rows(21)
+		rows(22)
+		rows(23)
+		rows(24)
+		rows(25)
+		rows(26)
+		rows(27)
+		rows(28)
+		rows(29)
+		rows(30)
+		rows(31)
+		rows(32)
+
+		// Current column
+		itemDef
+		{
+			name			curcol
+			style			WINDOW_STYLE_FILLED
+			rect			0 60 10 330
+			exp				rect X(255 + dvarInt("studio_cell") * 10)
+			exp				rect H(dvarInt("studio_cur_rows") * 10)
+			visible			when(dvarString("studio_cell") != "")
+			backcolor		1 0.5 0 0.4
+			decoration
+		}
+
+		// Keys
+		/*key(0, "0")
+		key(1, "1")
+		key(2, "2")
+		key(3, "3")
+		key(4, "4")
+		key(5, "5")
+		key(6, "6")
+		key(7, "7")
+		key(8, "8")
+		key(9, "9")
+		key(10, "10")
+		key(11, "11")
+		key(12, "12")
+		key(13, "13")
+		key(14, "14")
+		key(15, "15")
+		key(16, "16")
+		key(17, "17")
+		key(18, "18")
+		key(19, "19")
+		key(20, "20")
+		key(21, "21")
+		key(22, "22")
+		key(23, "23")
+		key(24, "24")
+		key(25, "25")
+		key(26, "26")
+		key(27, "27")
+		key(28, "28")
+		key(29, "29")
+		key(30, "30")
+		key(31, "31")
+		key(32, "32")*/
+
+		// Current key
+		itemDef
+		{
+			name			curkey
+			style			WINDOW_STYLE_FILLED
+			rect			235 0 20 10
+			backcolor		1 0.5 0 0.35
+			exp				rect Y(60 + localVarInt(keyid) * 10)
+			visible			0
+			decoration
+		}
+
+		// Fader of needless rows
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			235 0 340 0
+			exp				rect Y(390 - (33 - dvarInt("studio_cur_rows")) * 10)
+			exp				rect H((33 - dvarInt("studio_cur_rows")) * 10)
+			backcolor		0 0 0 0.95
+			visible			when(dvarInt("studio_cur_rows") != 33)
+		}
+
+		// Music buttons
+		IMGBUTTON_SIZE(115, 63, "play", setItemColor curcol backcolor 1 0.5 0 0.4; scriptMenuResponse "play", 32, "0")
+		IMGBUTTON_SIZE(150, 63, "pause", setItemColor curcol backcolor 0 0.5 1 0.4; scriptMenuResponse "pause", 32, "1")
+		IMGBUTTON_SIZE(185, 63, "stop", scriptMenuResponse "stop", 32, "2")
+
+		// Track buttons
+		track(1, "1")
+		track(2, "2")
+		track(3, "3")
+		track(4, "4")
+		track(5, "5")
+		track(6, "6")
+
+		// Manage buttons
+		APBBUTTON_CMD(100, 345, 130, "SAVE", show save, "3")
+		APBBUTTON_CMD(100, 367, 130, "BACK", close self, "4")
+
+		// Sound indicator
+		itemDef
+		{
+			text			"Stereo Mix"
+			rect			100 312 130 10
+			textaligny		12
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			ownerdraw	UI_RECORDLEVEL
+			rect		100 325 130 10
+			visible		1
+			decoration
+		}
+
+		// Track active
+		itemDef
+		{
+			exp				text(locString("@APB_TRACK_" + dvarString("lang")) + " " + dvarInt("studio_cur_track"))
+			style			WINDOW_STYLE_EMPTY
+			rect			99 0 130 18
+			exp				rect Y(106 + (dvarInt("studio_cur_track") - 1) * 19)
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		20
+			textaligny		15
+			textscale		0.3
+			forecolor		1 0.5 0 1
+			border			1
+			bordercolor		1 0.8 0 1
+			visible			when(dvarInt("studio_cur_track") > 0)
+			decoration
+		}
+
+		// Instrument Selector
+		itemDef
+		{
+			type			ITEM_TYPE_BUTTON
+			exp				text(locString("@APB_INSTRUMENT_" + dvarString("lang")) + ": " + dvarString("studio_cur_instrument"))
+			style			WINDOW_STYLE_FILLED
+			rect			99 82 130 18
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		15
+			textscale		0.3
+			forecolor		1 1 1 0.8
+			backcolor		0.1 0.1 0.1 1
+			border			1
+			bordercolor		0.2 0.2 0.2 0.8
+			visible			1
+			mouseEnter
+			{
+				play "mouse_over";
+			}
+			action
+			{
+				show instrument;
+			}
+		}
+
+		// Instrument Reseter
+		itemDef
+		{
+			group			instrument
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			backcolor		1 1 1 0
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			visible			0
+			action
+			{
+				setLocalVarInt over 0;
+				setLocalVarInt suboverx 0;
+				setLocalVarInt subovery 0;
+				hide instrument;
+				hide subover;
+			}
+		}
+
+		// Instrument Background
+		itemDef
+		{
+			group			instrument
+			style			WINDOW_STYLE_FILLED
+			rect			100 101 130 350
+			backcolor		0.05 0.05 0.05 1
+			visible			0
+			mouseEnter
+			{
+				setLocalVarInt suboverx 0;
+				setLocalVarInt subovery 0;
+			}
+			mouseExit
+			{
+				setLocalVarInt over 0;
+			}
+		}
+
+		// Instrument Selection
+		itemDef
+		{
+			group			instrument
+			style			WINDOW_STYLE_FILLED
+			rect			100 0 130 10
+			exp				rect Y(91 + localVarInt(over) * 10)
+			backcolor		1 1 0 0.4
+			visible			when(localVarInt(over) > 0)
+			decoration
+		}
+
+		// Instrument Elements
+		inst(1, "8bit", "8Bit")
+		inst(2, "acguitar", "Acoustic Guitar")
+		inst(3, "acpiano", "Acoustic Piano")
+		instbase(4, "Britney Blood Bass")
+		instsub(4, 0, "bbbass1", "1")
+		instsub(4, 1, "bbbass2", "2")
+		instsub(4, 2, "bbbass3", "3")
+		inst(5, "bbdrum", "Britney Blood Drum Kit")
+		instbase(6, "Britney Blood Guitar")
+		instsub(6, 0, "bbguitar1", "1")
+		instsub(6, 1, "bbguitar2", "2")
+		instsub(6, 2, "bbguitar3", "3")
+		instsub(6, 3, "bbguitar4", "4")
+		instsub(6, 4, "bbguitar5", "5")
+		inst(7, "bbstring", "Britney Blood Strings")
+		inst(8, "dbbass", "DoubleB Synth Bass")
+		inst(9, "dbdrum", "DoubleB Drum Kit")
+		instbase(10, "DoubleB Guitar")
+		instsub(10, 0, "dbguitar1", "1")
+		instsub(10, 1, "dbguitar2", "2")
+		instsub(10, 2, "dbguitar3", "3")
+		inst(11, "dblead", "DoubleB Synth Lead")
+		inst(12, "dbpad", "DoubleB Synth Pad")
+		inst(13, "dbsfx", "DoubleB SFX")
+		inst(14, "eguitar", "Electric Guitar")
+		inst(15, "epiano", "Electric Piano")
+		inst(16, "ekit", "Electro Kit")
+		inst(17, "rock", "Rock Guitar Riff")
+		inst(18, "rocksolo", "Rock Guitar Solo Riff")
+		instbase(19, "Hip Hop Kit")
+		instsub(19, 0, "hh1", "1")
+		instsub(19, 1, "hh2", "2")
+		instsub(19, 2, "hh3", "3")
+		instsub(19, 3, "hh4", "4")
+		instsub(19, 4, "hh5", "5")
+		instsub(19, 5, "hh6", "6")
+		instsub(19, 6, "hh7", "7")
+		inst(20, "lbbass", "LeBoyce Bass")
+		inst(21, "lbclav", "LeBoyce Clav")
+		inst(22, "lbdrum", "LeBoyce Drums")
+		instbase(23, "LeBoyce Guitar")
+		instsub(23, 0, "lbguitar1", "1")
+		instsub(23, 1, "lbguitar2", "2")
+		inst(24, "lbvox", "LeBoyce Vox")
+		inst(25, "nobass", "Nocturnal Synth Bass")
+		inst(26, "nobees", "Nocturnal Synth Bees")
+		inst(27, "nodrums", "Nocturnal Drums")
+		instbase(28, "Nocturnal Orchestral")
+		instsub(28, 0, "noorch1", "1")
+		instsub(28, 1, "noorch2", "2")
+		instsub(28, 2, "noorch3", "3")
+		inst(29, "norise", "Nocturnal Synth Rise")
+		inst(30, "nostring", "Nocturnal Stac Strings")
+		inst(31, "noarp", "Nocturnal Synth Arp")
+		inst(32, "stdrum", "SimonTren Drums")
+		inst(33, "stharp", "SimonTren Harp")
+		inst(34, "ststr", "SimonTren Strings")
+		instbase(35, "Synth Kit")
+		instsub(35, 0, "synth1", "1")
+		instsub(35, 1, "synth2", "2")
+
+		// Sub selection
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 11 11
+			exp				rect X(230 + localVarInt(suboverx) * 11)
+			exp				rect Y(90 + localVarInt(subovery) * 10)
+			backcolor		1 1 0 0.4
+			visible			when(localVarInt(subovery) != 0 && localVarInt(over) == 0)
+			decoration
+		}
+
+		// Save popup
+		itemDef
+		{
+			group			save
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor		0.4 0.4 0.4 0.5
+			visible			1
+			//decoration
+		}
+		itemDef
+		{
+			group			save
+			style			WINDOW_STYLE_FILLED
+			rect			220 130 200 100 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor		0.1 0.1 0.1 0.75
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			group		save
+			style		WINDOW_STYLE_FILLED
+			rect		220 130 200 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor	0 0 0 0.75
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			group			save
+			style			WINDOW_STYLE_FILLED
+			rect			340 130 80 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			background		"title_arrows"
+			backcolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			group		save
+			exp			text("@APB_SAVE_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		220 130 200 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.4
+			textaligny	20
+			textalignx	5
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			group		save
+			exp			text("@APB_STUDIO_SAVE_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		220 150 200 50 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.25
+			textaligny	15
+			textalignx	5
+			forecolor	1 1 1 0.8
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			group		save
+			style		WINDOW_STYLE_FILLED
+			rect		222 173 196 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor	0.3 0.3 0.3 0.75
+			border		1
+			bordercolor	0 0 0 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			group			save
+			type			ITEM_TYPE_EDITFIELD
+			exp				text(locString("@APB_NAME_" + dvarString("lang")) + ": ")
+			dvar			"save"
+			rect			220 175 200 14 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textalignx		5
+			textaligny		13
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			style			WINDOW_STYLE_FILLED
+			visible			1
+			accept
+			{
+				exec "setfromdvar info save";
+				scriptMenuResponse "save";
+				hide save;
+			}
+		}
+		SAVEBUTTON(330, 205, 80, "OK", exec "setfromdvar info save"; scriptMenuResponse "save"; hide save;, "0")
+		SAVEBUTTON(230, 205, 80, "CANCEL", hide save;, "1")
+	}
+}

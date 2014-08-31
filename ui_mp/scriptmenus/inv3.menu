@@ -1,0 +1,40 @@
+#include "ui/menudef.h"
+
+{
+	menuDef
+	{
+		name			"inv3"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		1 1 1 1
+		blurWorld		4
+		style			WINDOW_STYLE_EMPTY
+		onOpen 	{ scriptMenuResponse "offhand:1" }
+		onESC	{ scriptMenuResponse "clear"; close self }
+		//onClose	{ scriptMenuResponse "clear" }
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0 0 0 0.75
+			visible			1
+			decoration
+		}
+
+		#define weaptype "offhand"
+		#include "ui_mp/invoffhand.inc"
+		weapon(0, "1", 1)
+		weapon(1, "2", 2)
+		weapon(2, "3", 3)
+		weapon(3, "4", 4)
+		weapon(4, "5", 5)
+		weapon(5, "6", 6)
+		weapon(6, "7", 7)
+		weapon(7, "8", 8)
+		weapon(8, "9", 9)
+		weapon(9, "10", 10)
+		weapon(10, "11", 11)
+		//weapon(11, "12")
+	}
+}

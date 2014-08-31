@@ -1,0 +1,760 @@
+#include "ui/menudef.h"
+#include "ui_mp/rankcolor.inc"
+
+// Assists is merged with kills due to itemDef limit
+#define COL_PLAYER 30
+#define COL_KILLS 140
+#define COL_ARRESTS 190
+//#define COL_ASSISTS 240
+#define COL_DEATHS 290
+#define COL_TARGETS 340
+#define COL_MEDALS 390
+#define COL_CASH 440
+#define COL_STANDING 535
+
+#define info(title, x) \
+itemDef \
+{ \
+	exp				text("@APB_"title"_" + dvarString("lang")) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			20 56 600 14 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		x \
+	textaligny		12 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	visible			1 \
+	decoration \
+}
+
+#define playerInfo(id, var, col) \
+itemDef \
+{ \
+	exp				text(dvarString("ui_friend_" + var + id)) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			20 (100 + id * 14) 600 14 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		col \
+	textaligny		14 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	visible			when(dvarInt("ui_friend_count") > id) \
+	decoration \
+}
+
+#define player(id) \
+itemDef \
+{ \
+	exp				text(dvarString("ui_friend_name" + id)) \
+	style			WINDOW_STYLE_FILLED \
+	type			1 \
+	rect			19 (100 + id * 14) 600 14 0 0 \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		COL_PLAYER \
+	textaligny		12 \
+	textscale		0.25 \
+	backcolor		0 0 0 0.25 \
+	border			1 \
+	bordercolor		0 0 0 1 \
+	visible			when(dvarInt("ui_friend_count") > id) \
+	action \
+	{ \
+		setDvar "playerid" id; \
+		scriptMenuResponse id; \
+	} \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			(COL_PLAYER + 5) (102 + id * 14) 12 12 0 0 \
+	exp				material("rank" + dvarString("ui_friend_icon" + id) + "_silver") \
+	visible			when(dvarInt("ui_friend_count") > id && dvarString("ui_friend_threat" + id) == "silver") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			(COL_PLAYER + 5) (102 + id * 14) 12 12 0 0 \
+	backcolor		RANK_GOLD \
+	exp				material("rank" + dvarString("ui_friend_icon" + id) + "_silver") \
+	visible			when(dvarInt("ui_friend_count") > id && dvarString("ui_friend_threat" + id) == "gold") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			(COL_PLAYER + 5) (102 + id * 14) 12 12 0 0 \
+	backcolor		RANK_BRONZE \
+	exp				material("rank" + dvarString("ui_friend_icon" + id) + "_silver") \
+	visible			when(dvarInt("ui_friend_count") > id && dvarString("ui_friend_threat" + id) == "bronze") \
+	decoration \
+} \
+playerInfo(id, "kills", COL_KILLS) \
+playerInfo(id, "arrests", COL_ARRESTS) \
+playerInfo(id, "deaths", COL_DEATHS) \
+playerInfo(id, "targets", COL_TARGETS) \
+playerInfo(id, "medals", COL_MEDALS) \
+playerInfo(id, "cash", COL_CASH) \
+playerInfo(id, "standing", COL_STANDING)
+//playerInfo(id, "assists", COL_ASSISTS) \
+
+#define enemyPlayerInfo(id, var, col) \
+itemDef \
+{ \
+	exp				text(dvarString("ui_enemy_" + var + (id - 8))) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			20 (242 + (id - 8) * 14) 600 14 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		col \
+	textaligny		14 \
+	textscale		0.25 \
+	forecolor		1 0 0 1 \
+	visible			when(dvarInt("ui_enemy_count") > id - 8) \
+	decoration \
+}
+
+#define enemyPlayer(id) \
+itemDef \
+{ \
+	exp				text(dvarString("ui_enemy_name" + (id - 8))) \
+	style			WINDOW_STYLE_FILLED \
+	type			1 \
+	rect			19 (242 + (id - 8) * 14) 600 14 0 0 \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		COL_PLAYER \
+	textaligny		12 \
+	textscale		0.25 \
+	backcolor		0 0 0 0.25 \
+	border			1 \
+	bordercolor		0 0 0 1 \
+	visible			when(dvarInt("ui_enemy_count") > id - 8) \
+	action \
+	{ \
+		setDvar "playerid" id; \
+		scriptMenuResponse id; \
+	} \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			(COL_PLAYER + 5) (244 + (id - 8) * 14) 12 12 0 0 \
+	exp				material("rank" + dvarString("ui_enemy_icon" + (id - 8)) + "_silver") \
+	visible			when(dvarInt("ui_enemy_count") > id - 8 && dvarString("ui_enemy_threat" + (id - 8)) == "silver") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			(COL_PLAYER + 5) (244 + (id - 8) * 14) 12 12 0 0 \
+	backcolor		RANK_GOLD \
+	exp				material("rank" + dvarString("ui_enemy_icon" + (id - 8)) + "_silver") \
+	visible			when(dvarInt("ui_enemy_count") > id - 8 && dvarString("ui_enemy_threat" + (id - 8)) == "gold") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			(COL_PLAYER + 5) (244 + (id - 8) * 14) 12 12 0 0 \
+	backcolor		RANK_BRONZE \
+	exp				material("rank" + dvarString("ui_enemy_icon" + (id - 8)) + "_silver") \
+	visible			when(dvarInt("ui_enemy_count") > id - 8 && dvarString("ui_enemy_threat" + (id - 8)) == "bronze") \
+	decoration \
+} \
+enemyPlayerInfo(id, "kills", COL_KILLS) \
+enemyPlayerInfo(id, "arrests", COL_ARRESTS) \
+enemyPlayerInfo(id, "deaths", COL_DEATHS) \
+enemyPlayerInfo(id, "targets", COL_TARGETS) \
+enemyPlayerInfo(id, "medals", COL_MEDALS) \
+enemyPlayerInfo(id, "cash", COL_CASH) \
+enemyPlayerInfo(id, "standing", COL_STANDING)
+//enemyPlayerInfo(id, "assists", COL_ASSISTS) \
+
+#define banner(title, y, cond, color1, color2, color3) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			20 y 600 30 0 0 \
+	backcolor		color1 1 \
+	visible			when(cond) \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			20 y 600 30 0 0 \
+	background		"gradient_bottom" \
+	backcolor		color2 0.25 \
+	visible			when(cond) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp				text("@APB_"title"_" + dvarString("lang")) \
+	style			WINDOW_STYLE_FILLED \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			20 (y + 25) 600 5 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		25 \
+	textaligny		5 \
+	textscale		0.5 \
+	forecolor		color3 1 \
+	backcolor		color3 1 \
+	visible			when(cond) \
+	decoration \
+}
+
+#define perk(id) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			(235 + (id - 1) * 26) 395 24 24 0 0 \
+	exp				material("specialty_" + dvarString("ui_selected_perk" + id)) \
+	backcolor		1 1 1 1 \
+	visible			1 \
+	decoration \
+} \
+
+#define weapperk(id) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			(537 + (id - 1) * 26) 395 24 24 0 0 \
+	exp				material("specialty_" + dvarString("ui_selected_weapperk" + id)) \
+	backcolor		1 1 1 1 \
+	visible			1 \
+	decoration \
+} \
+
+#define medal(index, id) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			(324 + index * 22) 427 20 20 0 0 \
+	exp				material("medal_" + dvarString("ui_selected_medal" + id)) \
+	visible			when(dvarString("ui_selected_medal" + id) != "") \
+	mouseEnter		{ setLocalVarString curMedal id } \
+	mouseExit		{ setLocalVarString curMedal "" } \
+}
+
+#define topcolor(col, cond) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			20 20 600 36 0 0 \
+	backcolor		col 1 \
+	visible			when(dvarString("missionstatus") == cond) \
+	decoration \
+}
+
+#define crown(img, cond) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			22 22 32 32 0 0 \
+	background		"match_"img \
+	backcolor		1 1 1 1 \
+	visible			when(dvarString("missionstatus") == cond) \
+	decoration \
+}
+
+#define rankIcon(dvar, thvar, org, vis) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			org 24 24 0 0 \
+	exp				material("rank" + dvarString("ui_selected_"dvar) + "_silver") \
+	visible			when(vis && dvarString("ui_selected_"thvar) == "silver") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			org 24 24 0 0 \
+	backcolor		RANK_GOLD \
+	exp				material("rank" + dvarString("ui_selected_"dvar) + "_silver") \
+	visible			when(vis && dvarString("ui_selected_"thvar) == "gold") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			org 24 24 0 0 \
+	backcolor		RANK_BRONZE \
+	exp				material("rank" + dvarString("ui_selected_"dvar) + "_silver") \
+	visible			when(vis && dvarString("ui_selected_"thvar) == "bronze") \
+	decoration \
+}
+
+{
+	menuDef
+	{
+		name			"stat"
+		rect			0 0 640 480
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		//blurWorld		5
+		execKeyInt 9	{ close self }
+		onOpen
+		{
+			setLocalVarString curMedal "";
+		}
+		onClose { scriptMenuResponse "nostat" }
+
+		// Profile image
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 768 576
+			exp				rect X(20 - (dvarInt("ui_selected_symbol") % 16) * 48)
+			exp				rect Y(376 - int(dvarInt("ui_selected_symbol") / 16) * 48)
+			background		"symbols"
+			visible			1
+			decoration
+		}
+
+		// Fade (due to profile image) [+1000 to fill safearea]
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			-1000 0 2640 376
+			backcolor		0.2 0.2 0.2 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			-1000 376 1020 48
+			backcolor		0.2 0.2 0.2 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			68 376 1524 48
+			backcolor		0.2 0.2 0.2 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			-1000 424 2640 56
+			backcolor		0.2 0.2 0.2 1
+			visible			1
+			decoration
+		}
+
+		// Background (more parts due to profile image)
+		/*itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 56 600 404
+			backcolor		0.08 0.08 0.08 0.75
+			visible			1
+			decoration
+		}*/
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 56 600 320
+			backcolor		0.08 0.08 0.08 0.75
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			68 376 552 48
+			backcolor		0.08 0.08 0.08 0.75
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 424 600 36
+			backcolor		0.08 0.08 0.08 0.75
+			visible			1
+			decoration
+		}
+
+		// Top background
+		topcolor(0.1 0.3 0.5, "PROGRESS")
+		topcolor(0.1 0.5 0.3, "WIN")
+		topcolor(0.5 0.1 0.1, "LOSE")
+		topcolor(0.3 0.3 0.3, "TIED")
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 20 600 36
+			background		"gradient_bottom"
+			backcolor		0.1 0.3 0.35 0.5
+			visible			1
+			decoration
+		}
+
+		// Crown
+		crown("progress", "PROGRESS")
+		crown("win", "WIN")
+		crown("lost", "LOSE")
+		crown("tied", "TIED")
+
+		// Progress
+		itemDef
+		{
+			exp				text("@APB_MISSION_" + dvarString("missionstatus") + "_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			20 22 600 36
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		36
+			textaligny		22
+			textscale		0.5
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		// Info
+		itemDef
+		{
+			exp				text("@APB_MISSIONDESC_" + dvarString("missionstatus_desc") + "_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			20 24 600 36
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		36
+			textaligny		30
+			textscale		0.25
+			forecolor		1 1 1 1
+			visible			when(dvarString("missionstatus_desc") != "")
+			decoration
+		}
+
+		// Column title background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 56 600 14
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+		// Columns
+		info("PLAYERNAME", COL_PLAYER)
+		info("KILLS", COL_KILLS)
+		info("ARRESTS", COL_ARRESTS)
+		//info("ASSISTS", COL_ASSISTS)
+		info("DEATHS", COL_DEATHS)
+		info("TARGETS", COL_TARGETS)
+		info("MEDALS", COL_MEDALS)
+		info("CASH", COL_CASH)
+		info("STANDING", COL_STANDING)
+
+		// Banners
+		#define ALLIES_BACK 0.15 0.15 0.2
+		#define ALLIES_GRADIENT 0.1 0.1 0.125
+		#define ALLIES_TEXT 0.2 0.4 0.8
+		#define AXIS_BACK 0.2 0.15 0.15
+		#define AXIS_GRADIENT 0.125 0.1 0.1
+		#define AXIS_TEXT 1 0 0
+
+		banner("ENFORCERS", 70, team(name) == "TEAM_ALLIES", ALLIES_BACK, ALLIES_GRADIENT, ALLIES_TEXT);
+		banner("CRIMINALS", 212, team(name) == "TEAM_ALLIES", AXIS_BACK, AXIS_GRADIENT, AXIS_TEXT);
+
+		banner("CRIMINALS", 70, team(name) == "TEAM_AXIS", AXIS_BACK, AXIS_GRADIENT, AXIS_TEXT);
+		banner("ENFORCERS", 212, team(name) == "TEAM_AXIS", ALLIES_BACK, ALLIES_GRADIENT, ALLIES_TEXT);
+
+		// Allied players
+		player(0)
+		player(1)
+		player(2)
+		player(3)
+		player(4)
+		player(5)
+		player(6)
+		player(7)
+
+		// Enemy players
+		enemyPlayer(8)
+		enemyPlayer(9)
+		enemyPlayer(10)
+		enemyPlayer(11)
+		enemyPlayer(12)
+		enemyPlayer(13)
+		enemyPlayer(14)
+		enemyPlayer(15)
+
+		// MVP
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			22 0 12 12
+			background		"medal"
+			exp				rect Y(102 + (dvarInt("mvp") * 14) + int(dvarInt("mvp") / 8) * 30)
+			visible			when(dvarString("mvp") != "")
+			decoration
+		}
+
+		// Selection
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			19 0 600 14
+			exp				rect Y(101 + (int(dvarInt("playerid") / 8) * 30) + dvarInt("playerid") * 14)
+			backcolor		0 0 0 0.25
+			border			1
+			bordercolor		1 1 0 1
+			visible			1
+			decoration
+		}
+
+		// Selected player's details
+		itemDef
+		{
+			exp				text("@APB_SELECTED_PLAYER_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			rect			20 355 600 20
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		3
+			textaligny		18
+			textscale		0.35
+			forecolor		1 1 1 1
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		// Block #1
+		// Background & Player name (moved due to profile image)
+		/*itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 376 298 48
+			exp				text(dvarString("ui_selected_name"))
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		55
+			textaligny		17
+			textscale		0.3
+			forecolor		0.85 0.85 0.85 1
+			backcolor		0 0 0 0.25
+			visible			1
+			decoration
+		}*/
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			68 376 250 48
+			exp				text(dvarString("ui_selected_name"))
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		7
+			textaligny		17
+			textscale		0.3
+			forecolor		0.85 0.85 0.85 1
+			backcolor		0 0 0 0.25
+			visible			1
+			decoration
+		}
+
+		// Profile image
+		/*itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			20 376 48 48
+			exp				material("symbol" + dvarString("ui_selected_symbol"))
+			visible			1
+			decoration
+		}*/
+		// Rank icon
+		rankIcon("icon", "threat", 74 395, 1)
+		// Faction icon
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			102 395 24 24
+			background		"faction_128_usmc_silver"
+			visible			when(dvarString("ui_selected_team") == "allies")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			102 395 24 24
+			background		"faction_128_arab_gold"
+			visible			when(dvarString("ui_selected_team") == "axis")
+			decoration
+		}
+		// Rating
+		itemDef
+		{
+			text			"R"
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			283 376 5 5
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		14
+			textscale		0.25
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("ui_selected_rating"))
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			300 376 10 5
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		14
+			textscale		0.25
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		// Perks
+		perk(1)
+		perk(2)
+		perk(3)
+
+		// Block #2
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			322 376 298 48
+			backcolor		0 0 0 0.25
+			visible			1
+			decoration
+		}
+		// Weapon icon
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			330 0 0 0
+			exp				rect W(dvarString("ui_selected_weapon_width") * 32)
+			exp				rect H(dvarString("ui_selected_weapon_height") * 16)
+			exp				rect Y(391 + 8 * (2 - dvarString("ui_selected_weapon_height")))
+			exp				material(dvarString("ui_selected_weapon_icon"))
+			backcolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		// Weapon name
+		itemDef
+		{
+			exp				text(dvarString("ui_selected_weapon"))
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			335 376 298 20
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textaligny		17
+			textscale		0.3
+			forecolor		0.85 0.85 0.85 1
+			visible			1
+			decoration
+		}
+		// Weapon perks
+		weapperk(1)
+		weapperk(2)
+		weapperk(3)
+
+		// Block #3
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 426 298 34
+			exp				text(dvarString("ui_selected_clan"))
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		28
+			textaligny		16
+			textscale		0.3
+			forecolor		0.85 0.85 0.85 1
+			backcolor		0 0 0 0.25
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			rect			20 426 298 34
+			exp				text("@APB_CLANRANK" + dvarString("ui_selected_clan_mrank") + "_" + dvarString("lang"))
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		28
+			textaligny		27
+			textscale		0.25
+			forecolor		0.85 0.65 0.5 1
+			visible			when(dvarString("ui_selected_clan") != "")
+			decoration
+		}
+		rankIcon("clan_crank", "clan_threat", 22 431, dvarString("ui_selected_clan") != "")
+
+		// Block #4
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			322 426 298 34
+			backcolor		0 0 0 0.25
+			visible			1
+			decoration
+		}
+		// Medals - No more place, so pray for not having more than 13 medals
+		itemDef
+		{
+			name		"medaltext"
+			exp			text("@APB_MEDAL_" + tableLookup("mp/medalTable.csv", 1, dvarString("ui_selected_medal" + localVarString(curMedal)), 2) + "_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			rect		324 449 596 10 0 0
+			textalign	ITEM_ALIGN_LEFT
+			textaligny	10
+			textscale	0.25
+			forecolor	1 1 1 1
+			visible		when(localVarString(curMedal) != "")
+			decoration
+		}
+		medal(0, "1")
+		medal(1, "2")
+		medal(2, "3")
+		medal(3, "4")
+		medal(4, "5")
+		medal(5, "6")
+		medal(6, "7")
+		medal(7, "8")
+		medal(8, "9")
+		medal(9, "10")
+		medal(10, "11")
+		medal(11, "12")
+		medal(12, "13")
+	}
+}

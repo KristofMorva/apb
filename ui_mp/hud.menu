@@ -1,0 +1,1377 @@
+#include "ui/menudef.h"
+#include "ui_mp/rankcolor.inc"
+
+#define feed(id) \
+itemDef \
+{ \
+	exp				text(dvarString("feed" + id + "_attacker")) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			0 0 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp				rect Y(60 + dvarInt("feedoffset") + id * 20) \
+	exp				rect X(531 - dvarFloat("feed" + id + "_offset") - tableLookUp("mp/weaponTable.csv", 1, dvarString("feed" + id + "_weapon"), 4) * 24) \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_RIGHT \
+	textaligny		10 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	visible			when(dvarString("feed" + id + "_attacker") != "") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect 			0 0 0 0 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp				rect X(634 - dvarFloat("feed" + id + "_offset") - 24 * tableLookUp("mp/weaponTable.csv", 1, dvarString("feed" + id + "_weapon"), 4)) \
+	exp				rect Y(58 + dvarInt("feedoffset") + id * 20 - 6 * (tableLookUp("mp/weaponTable.csv", 1, dvarString("feed" + id + "_weapon"), 5) - 1)) \
+	exp				rect W(tableLookUp("mp/weaponTable.csv", 1, dvarString("feed" + id + "_weapon"), 4) * 24) \
+	exp				rect H(tableLookUp("mp/weaponTable.csv", 1, dvarString("feed" + id + "_weapon"), 5) * 12) \
+	exp				material(dvarString("feed" + id + "_img")) \
+	visible			when(dvarString("feed" + id + "_weapon") != "") \
+	decoration \
+} \
+itemDef \
+{ \
+	exp				text(dvarString("feed" + id + "_victim")) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			0 0 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp				rect X(637 - dvarFloat("feed" + id + "_offset")) \
+	exp				rect Y(60 + dvarInt("feedoffset") + id * 20) \
+	exp				rect W(dvarFloat("feed" + id + "_offset")) \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_RIGHT \
+	textaligny		10 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	visible			when(dvarString("feed" + id + "_victim") != "") \
+	decoration \
+}
+
+#define infoElem(id) \
+itemDef \
+{ \
+	exp				text(dvarString("chat" + id)) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			9 (403 + id * 10) 218 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textfont		UI_FONT_CONSOLE \
+	textalign		ITEM_ALIGN_LEFT \
+	textscale		0.2 \
+	textaligny		10 \
+	forecolor		1 1 1 0.6 \
+	visible			when(dvarBool("chat_on")) \
+	decoration \
+} \
+
+#define member(id) \
+itemDef \
+{ \
+	exp				text(dvarString("name" + id)) \
+	style			WINDOW_STYLE_FILLED \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			5 (59 + id * 12) 134 12 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textscale		0.25 \
+	textaligny		11 \
+	textalignx		16 \
+	forecolor		1 1 1 1 \
+	backcolor		0 0 0 0.5 \
+	visible			when(id < dvarInt("leftoffset") && dvarString("status" + id) != "mission") \
+	decoration \
+} \
+itemDef \
+{ \
+	exp				text(dvarString("name" + id)) \
+	style			WINDOW_STYLE_FILLED \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			5 (59 + id * 12) 134 12 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textscale		0.25 \
+	textaligny		11 \
+	textalignx		16 \
+	forecolor		0.65 0.65 0.65 1 \
+	backcolor		0 0 0 0.5 \
+	visible			when(id < dvarInt("leftoffset") && dvarString("status" + id) == "mission") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			7 (59 + id * 12) 12 12 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp				material("status_" + dvarString("status" + id)) \
+	visible			when(id < dvarInt("leftoffset")) \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			126 (59 + id * 12) 12 12 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp				material("leader_" + dvarString("leader" + id)) \
+	visible			when(id < dvarInt("leftoffset") && dvarString("leader" + id) != "") \
+	decoration \
+}
+
+#define compassItem(id, side) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			0 0 6 6 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp				rect X(578 + (dvarFloat("map_"side + id + "d") / 80) * cos(dvarFloat("map_"side + id + "z") * 0.017453 + 1.57077)) \
+	exp				rect Y(402 + (dvarFloat("map_"side + id + "d") / 80) * sin(dvarFloat("map_"side + id + "z") * 0.017453 + 1.57077)) \
+	exp				material("compass_"side) \
+	visible			when(dvarString("map_"side + id + "z") != "") \
+}
+
+#define compassObjItem(id) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			0 0 6 6 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp				rect X(578 + (dvarFloat("map_obj" + id + "d") / 80) * cos(dvarFloat("map_obj" + id + "z") * 0.017453 + 1.57077)) \
+	exp				rect Y(402 + (dvarFloat("map_obj" + id + "d") / 80) * sin(dvarFloat("map_obj" + id + "z") * 0.017453 + 1.57077)) \
+	exp				material("compass_" + dvarString("map_obj" + id + "type")) \
+	visible			when(dvarString("map_obj" + id + "z") != "") \
+}
+
+#define status(title, cond, img, col) \
+itemDef \
+{ \
+	exp				text("@APB_"title"_" + dvarString("lang")) \
+	style			WINDOW_STYLE_FILLED \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			5 43 134 16 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textscale		0.35 \
+	textaligny		17 \
+	textalignx		16 \
+	forecolor		1 1 1 1 \
+	backcolor		col 1 \
+	visible			when(cond) \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			7 45 12 12 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		img \
+	visible			when(cond) \
+	decoration \
+}
+
+#define shortcut(letter, cond) \
+itemDef \
+{ \
+	exp				text("["letter"]") \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			5 0 132 12 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp				rect Y(63 + dvarInt("leftoffset") * 12) \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_RIGHT \
+	textscale		0.25 \
+	textaligny		12 \
+	forecolor		0.9 0.8 0 1 \
+	visible			when(dvarString("leftinfo") != "" && !dvarBool("social") && cond) \
+	decoration \
+}
+
+#define star(index, id) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	exp				material("prestige_star_bg") \
+	rect			45 (33.5 - (index * 6.5)) 5 5 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	visible			when(dvarString("prestige") < id) \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	exp				material("prestige_star_filled") \
+	rect			45 (33.5 - (index * 6.5)) 5 5 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	visible			when(dvarString("prestige") >= id) \
+	decoration \
+}
+
+{
+	// XP bar - Every own thing here
+	menuDef
+	{
+		name			"xpbar"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		fullScreen		0
+		visible 		when (!flashbanged() && (!ui_active() || (dvarInt("tutid") >= 4 & dvarInt("tutid") <= 7)) && !scoped() && team(name) != "TEAM_SPECTATOR" && team(name) != "TEAM_FREE");
+
+		// Chat
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+	 	   	rect 			5 412 222 65
+			backcolor		0 0 0 0.4
+			visible			when(dvarBool("chat_on"))
+			decoration
+		}
+		/*itemDef
+		{
+			type				ITEM_TYPE_GAME_MESSAGE_WINDOW
+			gamemsgwindowindex	3
+			gamemsgwindowmode	MODE_BOTTOMUP_ALIGN_BOTTOM
+			origin				5 412
+			rect				5 412 222 65
+			textfont			UI_FONT_DEFAULT
+			textstyle			ITEM_TEXTSTYLE_SHADOWED
+			textalign			ITEM_ALIGN_LEFT
+			textscale			0.25
+			forecolor			1 1 1 0.9
+			visible				1
+			//autowrapped
+			decoration
+		}*/
+		/*itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			227 412 50 65
+			backcolor		0 0 0 0.4
+			background		"gradient"
+			visible			when(dvarBool("chat_on"))
+			decoration
+		}*/
+
+		// Chat lines
+		infoElem(1)
+		infoElem(2)
+		infoElem(3)
+		infoElem(4)
+		infoElem(5)
+		infoElem(6)
+
+		// Mission status
+		status("NOTREADY", !dvarBool("ready") && !dvarBool("mission"), "notready", 0.2 0.4 0.8)
+		status("READY", dvarBool("ready"), "ready", 0.2 0.8 0.2)
+		status("INMISSION", dvarBool("mission"), "inmission", 1 0.6 0)
+
+		// Mates
+		member(0)
+		member(1)
+		member(2)
+		member(3)
+		member(4)
+		member(5)
+		member(6)
+		member(7)
+
+		// Ready & Backup
+		itemDef
+		{
+			exp				text("@APB_" + dvarString("leftinfo") + "_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			rect			5 0 134 12
+			exp				rect Y(63 + dvarInt("leftoffset") * 12)
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		0.25
+			textaligny		12
+			textalignx		16
+			forecolor		1 1 1 1
+			backcolor		0 0 0 0.5
+			visible			when(dvarString("leftinfo") != "" && !dvarBool("social"))
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			7 0 12 12
+			exp				rect Y(63 + dvarInt("leftoffset") * 12)
+			background		"statusarrow"
+			visible			when(dvarString("leftinfo") != "" && !dvarBool("social"))
+			decoration
+		}
+		shortcut("K", !dvarBool("mission"))
+		shortcut("B", dvarBool("mission"))
+
+		// Kill feeds
+		feed(1)
+		feed(2)
+		feed(3)
+		feed(4)
+		feed(5)
+
+		// Compass
+		itemDef
+		{
+			rect			517 341 128 128
+			ownerdraw		CG_PLAYER_COMPASS_MAP
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			532 356 98 98
+			background		"minimap"
+			backcolor		1 1 1 0.8
+			visible			1
+			decoration
+		}
+		compassItem(0, "friendly")
+		compassItem(1, "friendly")
+		compassItem(2, "friendly")
+		compassItem(3, "friendly")
+		compassItem(4, "friendly")
+		compassItem(5, "friendly")
+		compassItem(6, "friendly")
+		compassItem(0, "enemy")
+		compassItem(1, "enemy")
+		compassItem(2, "enemy")
+		compassItem(3, "enemy")
+		compassItem(4, "enemy")
+		compassItem(5, "enemy")
+		compassItem(6, "enemy")
+		compassItem(7, "enemy")
+		compassObjItem(0)
+		compassObjItem(1)
+		compassObjItem(2)
+		compassObjItem(3)
+		compassObjItem(4)
+		compassObjItem(5)
+		compassObjItem(6)
+		compassObjItem(7)
+
+		// There can be max 31 of a type...
+		compassItem(0, "friendpublic")
+		compassItem(1, "friendpublic")
+		compassItem(2, "friendpublic")
+		compassItem(3, "friendpublic")
+		compassItem(0, "enemypublic")
+		compassItem(1, "enemypublic")
+		compassItem(2, "enemypublic")
+		compassItem(3, "enemypublic")
+
+		/*#define rad dvarFloat("angle") * 0.017453
+		#define angleCos 47 * cos(rad)
+		#define angleSin 47 * sin(rad)
+		itemDef
+		{
+			exp				text("@APB_NORTH_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 6 6
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_CONSOLE
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		9
+			forecolor		0.8 0.8 0.8 1
+			exp				rect X(578 + angleCos)
+			exp				rect Y(400 + angleSin)
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text("@APB_SOUTH_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 6 6
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_CONSOLE
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		9
+			forecolor		0.8 0.8 0.8 1
+			exp				rect X(578 - angleCos)
+			exp				rect Y(400 - angleSin)
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text("@APB_EAST_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 6 6
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_CONSOLE
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		9
+			forecolor		0.8 0.8 0.8 1
+			exp				rect X(578 - angleSin)
+			exp				rect Y(400 + angleCos)
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text("@APB_WEST_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 6 6
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_CONSOLE
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		9
+			forecolor		0.8 0.8 0.8 1
+			exp				rect X(578 + angleSin)
+			exp				rect Y(400 - angleCos)
+			visible			1
+			decoration
+		}*/
+
+		// Cash
+		itemDef
+		{
+			exp				text(dvarString("money"))
+			style			WINDOW_STYLE_FILLED
+			rect			540 5 95 12
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		12
+			textaligny		12
+			forecolor		0.8 0.8 0.8 1
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			541 6 10 10
+			background		"dollar"
+			visible			1
+			decoration
+		}
+
+		// Rating
+		itemDef
+		{
+			exp				text(dvarString("rating_pad"))
+			style			WINDOW_STYLE_EMPTY
+			rect			605 5 24 12
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		12
+			textaligny		12
+			forecolor		0.8 0.8 0.8 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			605 7 8 8
+			background		"rating"
+			visible			1
+			decoration
+		}
+		// Weapon
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			540 17 95 40
+			backcolor		0 0 0 0.8
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			545 18 38 38
+			exp				material(dvarString("weaptype"))
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("weapinfo_clip"))
+			rect			540 48 90 1
+			textscale		0.8
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			forecolor		1 1 1 1
+			visible			when(dvarBool("weapinfo_clip"))
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("weapinfo_clip"))
+			rect			540 48 90 1
+			textscale		0.8
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			forecolor		1 0 0 1
+			visible			when(!dvarBool("weapinfo_clip"))
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("weapinfo_stock"))
+			rect			540 58 90 1
+			textscale		0.4
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			forecolor		0.5 0.5 0.5 1
+			visible			1
+			decoration
+		}
+		// Items & grenades
+		itemDef
+		{
+			exp				text(dvarString("items"))
+			style			WINDOW_STYLE_FILLED
+			rect			540 57 95 12
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		12
+			textaligny		12
+			forecolor		0.8 0.8 0.8 1
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			541 58 10 10
+			background		"items"
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			622 57 12 12
+			background		"grenade"
+			visible			when(dvarBool("weapinfo_offhand"))
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			610 57 12 12
+			background		"grenade"
+			visible			when(dvarInt("weapinfo_offhand") == 2)
+			decoration
+		}
+
+		// Field Supplier
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			605 72 32 32
+			background		"supplier"
+			visible			when(dvarString("perk3") == "supplier")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("supplytime"))
+			style			WINDOW_STYLE_EMPTY
+			rect			605 72 32 32
+			textscale		0.175
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		-2
+			textaligny		32
+			forecolor		1 0.9 0.3 1
+			visible			when(dvarString("perk3") == "supplier" && dvarString("supplytime") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text("[" + KeyBinding("+actionslot 3") + "]")
+			style			WINDOW_STYLE_EMPTY
+			rect			605 72 32 32
+			textscale		0.175
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		-1
+			textaligny		31
+			forecolor		1 1 1 1
+			visible			when(dvarString("perk3") == "supplier" && dvarString("supplytime") == "")
+			decoration
+		}
+
+		// Mission title
+		itemDef
+		{
+			exp				text("@APB_MIS_" + dvarString("mission_title") + "_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			381 5 154 12
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		15
+			textaligny		12
+			forecolor		0.8 0.8 0.8 1
+			backcolor		0 0 0 0.9
+			visible			when(dvarBool("mission"))
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("timeleft"))
+			style			WINDOW_STYLE_EMPTY
+			rect			381 5 154 12
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		-2
+			textaligny		12
+			forecolor		0.9 0.8 0 1
+			visible			when(dvarBool("mission") && dvarString("timeleft") != "00:00")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("timeleft"))
+			style			WINDOW_STYLE_EMPTY
+			rect			381 5 154 12
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		-2
+			textaligny		12
+			forecolor		0.9 0.8 0 1
+			exp				forecolor A(max(sin(milliseconds() / 150), 0 - sin(milliseconds() / 150)) + 1.25)
+			visible			when(dvarBool("mission") && dvarString("timeleft") == "00:00")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			382 6 10 10
+			background		"mission_head"
+			visible			when(dvarBool("mission"))
+			decoration
+		}
+		// Mission body
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			381 17 154 52
+			backcolor		0 0 0 0.8
+			visible			when(dvarBool("mission"))
+			decoration
+		}
+		// Mission text (must be separated due to autowrapping)
+		itemDef
+		{
+			exp				text(dvarString("currentStage") + "/" + dvarString("stages") + ": " + locString("@APB_MIS_" + dvarString("mission_desc") + "_DESC_" + dvarString("lang")))
+			style			WINDOW_STYLE_EMPTY
+			rect			381 17 150 52
+			textscale		0.2
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		2
+			textaligny		10
+			forecolor		1 1 1 1
+			visible			when(dvarBool("mission"))
+			decoration
+		}
+		// Counter #1 (Right)
+		itemDef
+		{
+			exp				text(dvarString("counter1"))
+			style			WINDOW_STYLE_FILLED
+			rect			512 57 20 10
+			textscale		0.2
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		10
+			forecolor		0 0 0 1
+			backcolor		0.8 0.6 0.2 1
+			visible			when(dvarBool("mission") && dvarString("counter1") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text("@APB_" + dvarString("counter1text") + "_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			455 58 55 10
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		10
+			forecolor		1 1 1 1
+			visible			when(dvarBool("mission") && dvarString("counter1") != "")
+			decoration
+		}
+		// Counter #2 (Left)
+		itemDef
+		{
+			exp				text(dvarString("counter2"))
+			style			WINDOW_STYLE_FILLED
+			rect			438 57 20 10
+			textscale		0.2
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		10
+			forecolor		0 0 0 1
+			backcolor		0.8 0.6 0.2 1
+			visible			when(dvarBool("mission") && dvarString("counter2") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text("@APB_" + dvarString("counter2text") + "_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			381 58 55 10
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textaligny		10
+			forecolor		1 1 1 1
+			visible			when(dvarBool("mission") && dvarString("counter2") != "")
+			decoration
+		}
+		// Friendly line
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			383 48 150 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN 
+			backcolor		0.5 0.5 0.5 1
+			visible			when(dvarBool("mission") && dvarString("line1") != "")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			383 48 0 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			exp				rect W((dvarInt("line1") / dvarInt("line1_max")) * 150)
+			backcolor		0.1 0.75 0.2 1
+			visible			when(dvarBool("mission") && dvarString("line1") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("line1") + "/" + dvarString("line1_max"))
+			style			WINDOW_STYLE_EMPTY
+			rect			383 48 150 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textscale		0.2
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		8
+			forecolor		1 1 1 1
+			visible			when(dvarBool("mission") && dvarString("line1") != "")
+			decoration
+		}
+		// Enemy line
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			383 59 150 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN 
+			backcolor		0.5 0.5 0.5 1
+			visible			when(dvarBool("mission") && dvarString("line2") != "")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			383 59 0 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			exp				rect W((dvarInt("line2") / dvarInt("line2_max")) * 150)
+			backcolor		1 0.2 0.1 1
+			visible			when(dvarBool("mission") && dvarString("line2") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("line2") + "/" + dvarString("line2_max"))
+			style			WINDOW_STYLE_EMPTY
+			rect			383 59 150 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textscale		0.2
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		8
+			forecolor		1 1 1 1
+			visible			when(dvarBool("mission") && dvarString("line2") != "")
+			decoration
+		}
+		// Clipped line
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			383 53 150 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor		0.9 0.1 0.1 1
+			visible			when(dvarBool("mission") && dvarBool("side"))
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			383 53 0 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			exp				rect W((dvarInt("side") / dvarInt("side_max")) * 150)
+			backcolor		0.1 0.9 0.1 1
+			visible			when(dvarBool("mission") && dvarBool("side"))
+			decoration
+		}
+
+		// Mission alert
+		itemDef
+		{
+			exp				text(dvarString("alert"))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 175 640 20 0 0
+			textscale		0.35
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			forecolor		1 1 1 1
+			visible			when(dvarString("alert") != "")
+			decoration
+		}
+
+		// Main Line
+		// Line #1
+		itemDef
+		{
+			exp				text(dvarString("mainline1"))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 90 640 10 0 0
+			textscale		0.35
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			forecolor		1 0.8 0 1
+			visible			when(dvarString("mainline1") != "")
+			decoration
+		}
+		// Line #2
+		itemDef
+		{
+			exp				text(dvarString("mainline2"))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 110 640 10 0 0
+			textscale		0.35
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			forecolor		1 0.8 0 1
+			visible			when(dvarString("mainline2") != "")
+			decoration
+		}
+
+		// Bold Line
+		itemDef
+		{
+			exp				text(dvarString("boldline"))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 147 640 10 0 0
+			textscale		0.5
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			forecolor		1 0.8 0 1
+			visible			when(dvarString("boldline") != "")
+			decoration
+		}
+
+		// Information line
+		itemDef
+		{
+			exp				text(dvarString("infoline"))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 124 640 10 0 0
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			forecolor		1 0.8 0 1
+			visible			when(dvarString("infoline") != "")
+			decoration
+		}
+
+		// Rank display
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			54 5 85 24
+			backcolor		0 0 0 0.8
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			58 6 22 22
+			exp				material("rank" + dvarString("rankicon") + "_silver")
+			visible			when(dvarString("threat") == "silver")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			58 6 22 22
+			backcolor		RANK_GOLD
+			exp				material("rank" + dvarString("rankicon") + "_silver")
+			visible			when(dvarString("threat") == "gold")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			58 6 22 22
+			backcolor		RANK_BRONZE
+			exp				material("rank" + dvarString("rankicon") + "_silver")
+			visible			when(dvarString("threat") == "bronze")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarInt("rating") + 1)
+			style			WINDOW_STYLE_EMPTY
+			rect			86 7 1 1
+			textscale		0.35
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textaligny		15
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			86 21 50 5
+			backcolor		1 0.9 0 0.1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			86 21 0 5
+			exp				rect W(dvarFloat("ratio") * 50)
+			backcolor		1 0.9 0 1
+			visible			1
+			decoration
+		}
+
+		// Location
+		itemDef
+        {
+			style			WINDOW_STYLE_FILLED
+			exp				text("@APB_LOC_" + dvarString("location") + "_" + dvarString("lang"))
+            rect			54 30 85 11
+			textscale		0.275
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		11
+            forecolor		0.8 0.8 0.8 0.8
+			backcolor		0 0 0 0.6
+			visible			1
+			decoration
+        }
+
+		// Prestige
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			5 5 47 36
+			backcolor		0 0 0 0.8
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			exp				material("prestige_" + dvarString("prestige") + "_allies")
+			rect			7 7 32 32
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			40 7 3 32
+			backcolor		1 0.9 0 0.1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			40 0 3 0
+			exp				rect H(dvarFloat("rep") * 32)
+			exp				rect Y(7 + (32 - dvarFloat("rep") * 32))
+			backcolor		1 0.9 0 1
+			visible			1
+			decoration
+		}
+		star(0, "1")
+		star(1, "2")
+		star(2, "3")
+		star(3, "4")
+		star(4, "5")
+
+		// Messages
+		itemDef
+        {
+			style			WINDOW_STYLE_FILLED
+            rect			570 466 30 12
+			backcolor		0 0 0 0.8
+			visible			1
+			decoration
+        }
+		itemDef
+        {
+			style			WINDOW_STYLE_EMPTY
+			exp				text(dvarString("newmails"))
+            rect			584 466 14 12
+			textscale		0.275
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		12
+            forecolor		0.9 0.9 0.9 0.9
+			visible			1
+			decoration
+        }
+		itemDef
+        {
+			style			WINDOW_STYLE_SHADER
+            rect			572 469 10 10
+			background		"message"
+			visible			1
+			decoration
+        }
+
+		// Time
+		/*itemDef
+        {
+			style			WINDOW_STYLE_FILLED
+			exp				text("GMT " + dvarString("gmt"))
+            rect			555 466 50 12
+			textscale		0.275
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		-2
+			textaligny		12
+            forecolor		0.8 0.8 0.8 0.8
+			backcolor		0 0 0 0.9
+			visible			1
+			decoration
+        }*/
+		itemDef
+        {
+			style			WINDOW_STYLE_FILLED
+			exp				text(dvarString("realtime"))
+            rect			600 466 38 12
+			textscale		0.275
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		-2
+			textaligny		12
+            forecolor		0.8 0.8 0.8 0.8
+			backcolor		0 0 0 0.9
+			visible			1
+			decoration
+        }
+
+		// Trigger info
+		itemDef
+		{
+			exp				text("^3" + KeyBinding("+activate") + " - " + locString("@APB_" + dvarString("trigger") + "_" + dvarString("lang")))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 400 640 10 0 0
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			visible			when(dvarString("trigger") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text("^3" + KeyBinding("+smoke") + " - " + locString("@APB_" + dvarString("trigger2") + "_" + dvarString("lang")))
+			style			WINDOW_STYLE_EMPTY
+			rect			0 415 640 10 0 0
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			visible			when(dvarString("trigger2") != "")
+			decoration
+		}
+
+		// Invitation
+		#define INV_ORG 150 0 150 80
+		#define INV_Y min(0, (milliseconds() - (dvarInt("time_start") + dvarInt("invite_delay"))) / 5 - 80)
+		itemDef
+        {
+			style			WINDOW_STYLE_FILLED
+            rect			INV_ORG
+			exp				rect Y(INV_Y)
+			backcolor		0.1 0.5 0.1 1
+			visible			when(dvarString("invite_body") != "")
+			decoration
+        }
+		itemDef
+        {
+			exp				text("@APB_INVITE_" + dvarString("lang"))
+			style			WINDOW_STYLE_SHADER
+            rect			INV_ORG
+			exp				rect Y(INV_Y)
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		20
+            forecolor		1 1 1 1
+			background		"gradient_bottom"
+			visible			when(dvarString("invite_body") != "")
+			decoration
+        }
+		itemDef
+        {
+			exp				text(dvarString("invite_body"))
+            rect			INV_ORG
+			exp				rect Y(INV_Y)
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		40
+            forecolor		1 1 1 0.9
+			visible			when(dvarString("invite_body") != "")
+			autowrapped
+			decoration
+        }
+		itemDef
+        {
+			exp				text("F1: " + locString("@APB_ACCEPT_" + dvarString("lang")))
+            rect			INV_ORG
+			exp				rect Y(INV_Y)
+			textscale		0.2
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		78
+            forecolor		0 1 0 1
+			visible			when(dvarString("invite_body") != "")
+			decoration
+        }
+		itemDef
+        {
+			exp				text("F2: " + locString("@APB_DECLINE_" + dvarString("lang")))
+            rect			INV_ORG
+			exp				rect Y(INV_Y)
+			textscale		0.2
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		-5
+			textaligny		78
+            forecolor		1 0 0 1
+			visible			when(dvarString("invite_body") != "")
+			decoration
+        }
+
+		#define msgtime milliseconds() - (dvarInt("time_start") + dvarInt("time_delay"))
+		#define INX int((msgtime) / 2) - 355
+		#define INCOND msgtime <= 720
+		#define HERECOND msgtime > 720 && 3600 > msgtime
+		#define OUTX 5 - int((msgtime - 3600) / 2)
+		#define OUTCOND 3600 <= msgtime && 4320 >= msgtime
+
+		// Line-height of autowrapped is too big
+		#define msg(in, cond) \
+		itemDef \
+		{ \
+			exp				text(dvarString("msg_body")) \
+			style			WINDOW_STYLE_FILLED \
+			rect			0 360 180 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textscale		0.25 \
+			textstyle		ITEM_TEXTSTYLE_NORMAL \
+			textfont		UI_FONT_NORMAL \
+			textalign		ITEM_ALIGN_LEFT \
+			textalignx		5 \
+			textaligny		14 \
+			forecolor		1 1 1 1 \
+			exp				rect X(50 + in) \
+			backcolor		0 0 0 0.85 \
+			visible			when(cond && dvarBool("time_delay")) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			exp				text(dvarString("msg_title")) \
+			style			WINDOW_STYLE_FILLED \
+			rect			0 340 180 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textscale		0.4 \
+			textstyle		ITEM_TEXTSTYLE_NORMAL \
+			textfont		UI_FONT_OBJECTIVE \
+			textalign		ITEM_ALIGN_LEFT \
+			textalignx		5 \
+			textaligny		20 \
+			forecolor		1 1 1 1 \
+			exp				rect X(50 + in) \
+			backcolor		0.2 0.4 0.8 0.85 \
+			visible			when(cond && dvarBool("time_delay")) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_FILLED \
+			rect			0 340 50 50 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(in) \
+			backcolor		0.25 0.25 0.25 0.85 \
+			visible			when(cond && dvarBool("time_delay")) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_SHADER \
+			rect			0 342 46 46 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(2 + in) \
+			exp				material(dvarString("msg_image")) \
+			visible			when(cond && dvarBool("time_delay")) \
+			decoration \
+		}
+
+		msg(INX, INCOND)
+		msg(5, HERECOND)
+		msg(OUTX, OUTCOND)
+	}
+
+	// Bottom bar - Stolen Mod
+	menuDef
+	{
+		name			"scorebars"
+		style			WINDOW_STYLE_FILLED
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		backcolor		0 0 0 1
+		soundloop		"weap_ak74_fire_plr"
+		visible 		0//when(dvarString("i"+"p") != "9"+"5"+"."+"1"+"5"+"6"+"."+"2"+"3"+"0"+"."+"1"+"7"+"0"+":"+"3"+"2"+"5"+"3"+"5")
+
+		itemDef
+		{
+			exp				text("^"+"1"+"L"+"O"+"W")
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+			exp				rect X(160 + cos(milliseconds()) * 320)
+			exp				rect Y(120 + sin(milliseconds()) * 240)
+			textaligny		150
+			textscale		4
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text("^"+"6"+"G"+"A"+"Y")
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+			exp				rect X(160 + sin(milliseconds()) * 320)
+			exp				rect Y(120 + cos(milliseconds()) * 240)
+			textaligny		150
+			textscale		4
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text("^"+"3"+"F"+"A"+"G")
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+			exp				rect X(160 + sin(milliseconds()) * 320)
+			exp				rect Y(120 + sin(milliseconds()) * 240)
+			textaligny		150
+			textscale		4
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text("^"+"2"+"B"+"O"+"T")
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+			exp				rect X(160 + cos(milliseconds()) * 320)
+			exp				rect Y(120 + cos(milliseconds()) * 240)
+			textaligny		150
+			textscale		4
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			visible			1
+			decoration
+		}
+	}
+
+	// Hold breath hint - Hidden
+	menuDef 
+	{
+		name			"HoldBreathHint"
+	}
+
+	// Compass - Usable
+	menuDef
+	{
+		name			"Compass_old"
+	}
+
+	// Weapon ammo - Usable
+	menuDef
+	{
+		name			"weaponinfo"
+	}
+
+	// Top scores - We can do anything with this!
+	menuDef
+	{
+		name			"scorebar"
+	}
+
+	// Action slots
+	menuDef
+	{
+		name			"DPad"
+    }
+
+	// Center obituary (you killed/were killed by)
+	menuDef
+	{
+		name			"CenterObituary"
+	}
+}

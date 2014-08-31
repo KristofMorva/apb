@@ -1,0 +1,647 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+#define COL_SENDER 20
+#define COL_SUBJECT 140
+#define COL_DATE 500
+
+#define info(title, x) \
+itemDef \
+{ \
+	exp				text("@APB_"title"_" + dvarString("lang")) \
+	style			WINDOW_STYLE_FILLED \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			20 76 600 14 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		x \
+	textaligny		12 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	visible			1 \
+	decoration \
+}
+
+#define msg(id) \
+itemDef \
+{ \
+	type		ITEM_TYPE_BUTTON \
+	style		WINDOW_STYLE_FILLED \
+	rect		20 (90 + id * 14) 598 14 0 0 \
+	backcolor	0.1 0.1 0.1 0.8 \
+	border		1 \
+	bordercolor	0 0 0 1 \
+	visible		when(dvarString("message" + id + "_sender") != "") \
+	action \
+	{ \
+		play "mouse_click"; \
+		scriptMenuResponse id; \
+	} \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			24 (92 + id * 14) 12 12 0 0 \
+	exp				material("attachment") \
+	visible			when(dvarString("message" + id + "_attachment") != "") \
+	decoration \
+} \
+msgInfo(id, "sender", COL_SENDER) \
+msgInfo(id, "subject", COL_SUBJECT) \
+msgInfo(id, "date", COL_DATE)
+
+#define msgInfo(id, var, col) \
+itemDef \
+{ \
+	exp				text(dvarString("message" + id + "_"var)) \
+	style			WINDOW_STYLE_FILLED \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			19 (90 + id * 14) 598 14 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		col \
+	textaligny		14 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	exp				forecolor A(1.3 - dvarInt("message" + id + "_read")) \
+	visible			when(dvarString("message" + id + "_"var) != "") \
+	decoration \
+}
+
+#undef buttonAlign
+#define buttonAlign 0 0
+
+{
+	menuDef
+	{
+		name			"mail"
+		rect			0 0 640 480
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		blurWorld		5
+		onOpen	{ scriptMenuResponse "query"/*; setDvar fade 0*/ }
+		onClose { scriptMenuResponse "clear"; hide newmessage; hide overstartsend; /*setDvar fade 0; */setDvar error "" }
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 20 600 440
+			backcolor		0.2 0.2 0.2 0.75
+			visible			1
+			decoration
+		}
+
+		// Title
+		itemDef
+		{
+			exp				text("@APB_MAIL_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			20 20 600 30
+			backcolor		0 0 0 0.9
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		32
+			textaligny		27
+			textscale		0.5
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			20 20 30 30
+			background		"mail"
+			visible			1
+			decoration
+		}
+
+		// New Message
+		itemDef
+		{
+			exp				text("@APB_INBOX_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			20 52 600 22
+			backcolor		0.05 0.05 0.05 0.8
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		20
+			textscale		0.4
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		APBBUTTON_CMD(497, 54, 120, "NEW_MESSAGE", setDvar mail_to ""; setDvar mail_subject ""; setDvar mail_body ""; show newmessage, "0")
+
+		// Column title background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 76 600 14
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+		// Columns
+		info("SENDER", COL_SENDER)
+		info("SUBJECT", COL_SUBJECT)
+		info("DATE", COL_DATE)
+
+		// Messages
+		msg(0)
+		msg(1)
+		msg(2)
+		msg(3)
+		msg(4)
+		msg(5)
+		msg(6)
+		msg(7)
+		msg(8)
+		msg(9)
+
+		// Selection
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		20 0 598 14
+			exp			rect Y(91 + dvarInt("weaponid") * 14)
+			border		1
+			bordercolor	1 1 0 1
+			backcolor	1 1 0 0.05
+			visible		when(dvarString("weaponid") != "-1")
+			decoration
+		}
+
+		// Pages
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 232 560 16
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text(locString("@APB_DISPLAYING_MESSAGES_" + dvarString("lang")) + ": " + (dvarInt("pageindex") * 10 + 1) + "-" + (dvarInt("pageindex") * 10 + dvarInt("mails")) + " / " + dvarString("allmails"))
+			style			WINDOW_STYLE_EMPTY
+			rect			20 232 560 16
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		3
+			textaligny		14
+			textscale		0.25
+			forecolor		0.85 0.85 0.85 1
+			visible			when(dvarBool("mails"))
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarInt("pageindex") + 1)
+			style			WINDOW_STYLE_EMPTY
+			rect			580 232 20 16
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		14
+			textscale		0.25
+			forecolor		0.85 0.6 0 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			text			">>"
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			600 232 20 16
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		14
+			textscale		0.3
+			forecolor		0.8 0.8 0.8 1
+			backcolor		0 0 0 1
+			visible			1
+			action			{ scriptMenuResponse "next" }
+			mouseEnter		{ show hover_next }
+			mouseExit		{ hide hover_next }
+		}
+		itemDef
+		{
+			name			hover_next
+			text			">>"
+			style			WINDOW_STYLE_EMPTY
+			rect			600 232 20 16
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		14
+			textscale		0.3
+			forecolor		1 1 0 1
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			text			"<<"
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			560 232 20 16
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		14
+			textscale		0.3
+			forecolor		0.8 0.8 0.8 1
+			backcolor		0 0 0 1
+			visible			1
+			action			{ scriptMenuResponse "prev" }
+			mouseEnter		{ show hover_prev }
+			mouseExit		{ hide hover_prev }
+		}
+		itemDef
+		{
+			name			hover_prev
+			text			"<<"
+			style			WINDOW_STYLE_EMPTY
+			rect			560 232 20 16
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		14
+			textscale		0.3
+			forecolor		1 1 0 1
+			visible			0
+			decoration
+		}
+
+		// Message Infos
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 249 600 50
+			backcolor		0.1 0.1 0.1 0.8
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("message" + dvarInt("weaponid") + "_subject"))
+			style			WINDOW_STYLE_EMPTY
+			rect			20 249 600 15
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		3
+			textaligny		15
+			textscale		0.3
+			forecolor		1 1 1 1
+			visible			when(dvarString("weaponid") != "-1")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("message" + dvarInt("weaponid") + "_sender"))
+			style			WINDOW_STYLE_EMPTY
+			rect			20 264 600 20
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		3
+			textaligny		20
+			textscale		0.4
+			forecolor		1 1 1 1
+			visible			when(dvarString("weaponid") != "-1")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("message" + dvarInt("weaponid") + "_date"))
+			style			WINDOW_STYLE_EMPTY
+			rect			20 284 600 15
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		3
+			textaligny		12
+			textscale		0.25
+			forecolor		1 1 1 1
+			visible			when(dvarString("weaponid") != "-1")
+			decoration
+		}
+
+		// Attachment
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			419 248 200 25
+			backcolor		0.05 0.05 0.05 0.5
+			border			1
+			bordercolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("message" + dvarInt("weaponid") + "_attachment"))
+			style			WINDOW_STYLE_EMPTY
+			rect			419 248 200 25
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		20
+			textscale		0.3
+			forecolor		1 1 1 1
+			visible			when(dvarString("weaponid") != "-1" && dvarString("message" + dvarInt("weaponid") + "_attachment") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text("@APB_NO_ATTACHMENT_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			419 248 200 25
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		20
+			textscale		0.3
+			forecolor		1 1 1 1
+			visible			when(dvarString("weaponid") != "-1" && dvarString("message" + dvarInt("weaponid") + "_attachment") == "")
+			decoration
+		}
+		IMGBUTTON_HID(600, 253, "attachment", "getatt", when(dvarString("message" + dvarInt("weaponid") + "_attachment") == ""), "att")
+
+		// Message
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 301 600 134
+			backcolor		0.1 0.1 0.1 0.8
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("message" + dvarInt("weaponid") + "_body"))
+			style			WINDOW_STYLE_EMPTY
+			rect			20 301 600 134
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		4
+			textaligny		15
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			visible			when(dvarString("weaponid") != "-1")
+			autowrapped
+			decoration
+		}
+
+		// Reactions
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 437 600 23
+			backcolor		0.05 0.05 0.05 0.8
+			visible			1
+			decoration
+		}
+		IMGBUTTON_RED(495, 441, "delete", "del", when(dvarString("weaponid") == "-1"), "del")
+
+		APBBUTTON_CMD(23, 440, 100, "BACK", close self;, "back")
+		APBBUTTON(517, 440, 100, "REPLY", scriptMenuResponse "reply"; setDvar mail_to ""; setDvar mail_subject ""; setDvar mail_body ""; show newmessage, when(dvarString("weaponid") == "-1"), "reply")
+
+		// New message
+		itemDef
+		{
+			group			newmessage
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			backcolor		0 0 0 0.5
+			visible			0
+		}
+		itemDef
+		{
+			exp				text("@APB_NEW_MESSAGE_" + dvarString("lang"))
+			group			newmessage
+			style			WINDOW_STYLE_FILLED
+			rect			160 110 320 20
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		4
+			textaligny		18
+			textscale		0.35
+			forecolor		1 1 1 1
+			backcolor		0 0 0 1
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			group			newmessage
+			style			WINDOW_STYLE_FILLED
+			rect			160 130 320 52
+			backcolor		0.1 0.1 0.1 0.8
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			group			newmessage
+			type			ITEM_TYPE_EDITFIELD
+			exp				text(locString("@APB_RECIPIENT_" + dvarString("lang")) + ": ")
+			dvar			"mail_to"
+			rect			162 132 316 14
+			textalignx		2
+			textaligny		11
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_DEFAULT
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			backcolor		0.2 0.2 0.2 0.8
+			border			1
+			bordercolor		0 0 0 1
+			style			WINDOW_STYLE_FILLED
+			visible			0
+			accept
+			{
+				//setDvar fade 1;
+				scriptMenuResponse "send";
+				exec "setfromdvar info mail_to; setfromdvar info2 mail_subject; setfromdvar info3 mail_body";
+			}
+		}
+		itemDef
+		{
+			group			newmessage
+			type			ITEM_TYPE_EDITFIELD
+			exp				text(locString("@APB_SUBJECT_" + dvarString("lang")) + ": ")
+			dvar			"mail_subject"
+			rect			162 148 316 14
+			textalignx		2
+			textaligny		11
+			maxchars		32
+			maxpaintchars	32
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_DEFAULT
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			backcolor		0.2 0.2 0.2 0.8
+			border			1
+			bordercolor		0 0 0 1
+			style			WINDOW_STYLE_FILLED
+			visible			0
+			accept
+			{
+				//setDvar fade 1;
+				scriptMenuResponse "send";
+				exec "setfromdvar info mail_to; setfromdvar info2 mail_subject; setfromdvar info3 mail_body";
+			}
+		}
+		itemDef
+		{
+			group			newmessage
+			type			ITEM_TYPE_EDITFIELD
+			exp				text(locString("@APB_MESSAGE_" + dvarString("lang")) + ": ")
+			dvar			"mail_body"
+			rect			162 164 316 14
+			textalignx		2
+			textaligny		11
+			maxchars		960
+			maxpaintchars	43
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_CONSOLE
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			backcolor		0.2 0.2 0.2 0.8
+			border			1
+			bordercolor		0 0 0 1
+			style			WINDOW_STYLE_FILLED
+			visible			0
+			accept
+			{
+				//setDvar fade 1;
+				scriptMenuResponse "send";
+				exec "setfromdvar info mail_to; setfromdvar info2 mail_subject; setfromdvar info3 mail_body";
+			}
+		}
+		itemDef
+		{
+			group			newmessage
+			style			WINDOW_STYLE_FILLED
+			rect			160 182 320 20
+			backcolor		0.1 0.1 0.1 1
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			group			newmessage
+			exp				text(locString("@APB_" + dvarString("error") + "_" + dvarString("lang")) + "!")
+			style			WINDOW_STYLE_EMPTY
+			rect			160 182 320 20
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		4
+			textaligny		15
+			textscale		0.25
+			forecolor		1 0 0 1
+			visible			when(dvarString("error") != "")
+			decoration
+		}
+		// Button functions are shit and I'm not in the mood to make one more for this + close button...
+		itemDef
+		{
+			group			newmessage
+			style			WINDOW_STYLE_EMPTY
+			rect			398 180 80 20
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 1
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			name			"defaultstartsend"
+			group			newmessage
+			style			WINDOW_STYLE_FILLED
+			rect			400 182 78 18
+			background		"button"
+			backcolor		0.5 0.5 0.5 1
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			name			"overstartsend"
+			style			WINDOW_STYLE_FILLED
+			rect			400 182 78 18
+			background		"button"
+			backcolor		0.66 0.66 0.66 1
+			visible			0
+			decoration
+		}
+		itemDef
+		{
+			group		newmessage
+			style		WINDOW_STYLE_FILLED
+			rect		400 182 78 18
+			forecolor	1 1 1 0.85
+			exp			text("@APB_SEND_" + dvarString("lang"))
+			type		ITEM_TYPE_BUTTON
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			textalign	ITEM_ALIGN_CENTER
+			textscale	0.3
+			textaligny	15.5
+			visible		0
+			mouseEnter
+			{
+				play "mouse_over";
+				show "overstartsend";
+				hide "defaultstartsend";
+			}
+			mouseExit
+			{
+				show "defaultstartsend";
+				hide "overstartsend";
+			}
+			action
+			{
+				//setDvar fade 1;
+				scriptMenuResponse "send";
+				exec "setfromdvar info mail_to; setfromdvar info2 mail_subject; setfromdvar info3 mail_body";
+			}
+		}
+		// Close button
+		closeButton(460, 110, 0, hide newmessage; setDvar error "", group newmessage)
+
+		// Loading
+		/*itemDef
+		{
+			exp				text(locString("@APB_PROCESSING_" + dvarString("lang")) + "...")
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		210
+			textscale		0.4
+			forecolor		1 1 1 0.75
+			backcolor		0.1 0.1 0.1 0.85
+			visible			when(dvarString("mix") == "login" && dvarBool("fade"))
+		}
+		itemDef
+		{
+			exp				text("@APB_PROCESSING" + int(milliseconds() / 100) % 4)
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 640 480
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_CONSOLE
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		235
+			textscale		0.4
+			forecolor		1 1 1 0.75
+			visible			when(dvarString("mix") == "login" && dvarBool("fade"))
+			decoration
+		}*/
+	}
+}

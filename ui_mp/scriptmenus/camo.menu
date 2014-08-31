@@ -1,0 +1,629 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+{
+	menuDef
+	{
+		name			"camo"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		1 1 1 1
+		style			WINDOW_STYLE_EMPTY
+		onOpen			{ setDvar camo_count0 "-"; hide mods }
+		onClose			{ scriptMenuResponse "save" }
+
+		#define camo(id, sid) \
+		itemDef \
+		{ \
+			exp				text(tableLookup("mp/camoTable.csv", 0, id, 1)) \
+			rect			0 (61 + id * 20) 150 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			type			ITEM_TYPE_BUTTON \
+			textfont		UI_FONT_DEFAULT \
+			style			WINDOW_STYLE_FILLED \
+			textstyle		ITEM_TEXTSTYLE_SHADOWED \
+			textalign		ITEM_ALIGN_LEFT \
+			textscale		0.3 \
+			textalignx		25 \
+			textaligny		16 \
+			forecolor		1 1 1 0.85 \
+			backcolor		0.05 0.05 0.05 0.75 \
+			/*exp				material("ui_camoskin_" + tableLookup("mp/camoTable.csv", 0, id, 2))*/ \
+			visible			1 \
+			mouseEnter		{ setcolor backcolor 0 0 0 0.85 } \
+			mouseExit		{ setcolor backcolor 0.05 0.05 0.05 0.75 } \
+			action \
+			{ \
+				play "mouse_click"; \
+				scriptMenuResponse "wear:"sid; \
+			} \
+		} \
+		itemDef \
+		{ \
+			exp				text(dvarString("camo_count"sid)) \
+			rect			1 (62 + id * 20) 18 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			textfont		UI_FONT_OBJECTIVE \
+			style			WINDOW_STYLE_FILLED \
+			textstyle		ITEM_TEXTSTYLE_SHADOWED \
+			textalign		ITEM_ALIGN_CENTER \
+			textscale		0.3 \
+			textaligny		16 \
+			forecolor		0.6 0.6 0.6 0.85 \
+			backcolor		0.2 0.2 0.2 0.75 \
+			visible			1 \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_FILLED \
+			rect			128 (61 + id * 20) 19 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			border			1 \
+			bordersize		1 \
+			bordercolor		0 0 0 1 \
+			background		"button" \
+			backcolor		0.5 0.5 0.5 1 \
+			visible			when(dvarInt("camo_skin") != id && (sid == "0" || dvarBool("camo_count"sid))) \
+			mouseEnter \
+			{ \
+				show "imgover"sid; \
+			} \
+			mouseExit \
+			{ \
+				hide "imgover"sid; \
+			} \
+			action \
+			{ \
+				play "mouse_click"; \
+				scriptMenuResponse "action:"sid; \
+			} \
+		} \
+		itemDef \
+		{ \
+			name			"imgover"sid \
+			style			WINDOW_STYLE_FILLED \
+			rect			130 (63 + id * 20) 16 16 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"button" \
+			backcolor		0.66 0.66 0.66 1 \
+			visible			0 \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_SHADER \
+			rect			130 (63 + id * 20) 16 16 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"statusarrow" \
+			visible			when(dvarInt("camo_skin") != id && (sid == "0" || dvarBool("camo_count"sid))) \
+			decoration \
+		}
+
+		// Change weapon
+		itemDef
+		{
+			exp				text(tableLookup("mp/weaponTable.csv", 0, dvarString("camo"), 2))
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 40
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textalign		ITEM_ALIGN_CENTER
+			textscale		0.6
+			textaligny		34
+			forecolor		1 1 1 1
+			backcolor		0 0 0 0.85
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			text		"<<"
+			type		ITEM_TYPE_BUTTON
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		140 10 35 20 // 290
+			textalign	ITEM_ALIGN_CENTER
+			textscale	1
+			textaligny	30
+			forecolor	1 1 1 0.85
+			visible		1
+			mouseEnter { play "mouse_over" }
+			action
+			{
+				play "mouse_click";
+				scriptMenuResponse "prev";
+			}
+		}
+		itemDef
+		{
+			text		">>"
+			type		ITEM_TYPE_BUTTON
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		500 10 35 20 // 350
+			textalign	ITEM_ALIGN_CENTER
+			textscale	1
+			textaligny	30
+			forecolor	1 1 1 0.85
+			visible		1
+			mouseEnter { play "mouse_over" }
+			action
+			{
+				play "mouse_click";
+				scriptMenuResponse "next";
+			}
+		}
+
+		APBBUTTON_CMD_ON(540, 450, 80, "SAVE", close self)
+
+		// Camos
+		itemDef
+		{
+			exp				text("@APB_CAMOS_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			0 40 150 20
+			textfont		UI_FONT_OBJECTIVE
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textalign		ITEM_ALIGN_CENTER
+			textscale		0.35
+			textaligny		17
+			forecolor		1 1 1 1
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 60 150 460
+			backcolor		0.1 0.1 0.1 0.85
+			visible			1
+			decoration
+		}
+		camo(0, "0")
+		camo(1, "1")
+		camo(2, "2")
+		camo(3, "3")
+		camo(4, "4")
+		camo(5, "5")
+		APBBUTTON_CMD(5, 457, 140, "CLASS_WEAPON", exec "setdvartotime temp"; show mods, "2")
+
+		#define x (min(150, (milliseconds() - dvarInt(temp)) / 2) - 150)
+
+		#define mod(id, sid) \
+		itemDef \
+		{ \
+			group			mods \
+			exp				text("@APB_MOD_" + tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 3) + "_" + dvarString("lang")) \
+			rect			0 (111 + id * 21) 150 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(x) \
+			type			ITEM_TYPE_BUTTON \
+			textfont		UI_FONT_DEFAULT \
+			style			WINDOW_STYLE_FILLED \
+			textstyle		ITEM_TEXTSTYLE_SHADOWED \
+			textalign		ITEM_ALIGN_LEFT \
+			textscale		0.3 \
+			textalignx		25 \
+			textaligny		16 \
+			forecolor		1 1 1 0.85 \
+			backcolor		0.05 0.05 0.05 0.75 \
+			background		"button" \
+			visible			when(dvarString("weapperk"sid) != "") \
+			mouseEnter		{ setcolor backcolor 0.15 0.15 0.15 0.75; play "mouse_over" } \
+			mouseExit		{ setcolor backcolor 0.05 0.05 0.05 0.75 } \
+			action \
+			{ \
+				play "mouse_click"; \
+				scriptMenuResponse "perk:"sid; \
+			} \
+		} \
+		itemDef \
+		{ \
+			group			mods \
+			rect			0 (111 + id * 21) 20 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(x + 1) \
+			exp				material("specialty_" + tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 1)) \
+			style			WINDOW_STYLE_SHADER \
+			visible			when(dvarString("weapperk"sid) != "") \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			group			mods \
+			rect			0 (111 + id * 21) 20 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(x + 130) \
+			background		"locked" \
+			style			WINDOW_STYLE_SHADER \
+			visible			when( \
+				dvarString("weapperk"sid) != "" && \
+				dvarString("mod" + dvarInt("page")) != "vacant" && \
+				( \
+					dvarString("mod" + dvarInt("page")) == tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 1) || \
+					( \
+						dvarInt("page") != 1 && \
+						tableLookup("mp/modTable.csv", 1, dvarString("mod1"), 2) == tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 2) \
+					) || \
+					( \
+						dvarInt("page") != 2 && \
+						tableLookup("mp/modTable.csv", 1, dvarString("mod2"), 2) == tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 2) \
+					) || \
+					( \
+						dvarInt("page") != 3 && \
+						tableLookup("mp/modTable.csv", 1, dvarString("mod3"), 2) == tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 2) \
+					) || \
+					tableLookup("mp/modTable.csv", 1, dvarString("mod" + dvarString("page")), 9) & tableLookup("mp/weaponTable.csv", 0, dvarString("camo"), 14) || \
+					dvarString("mod" + dvarInt("page")) == "empty" \
+				) \
+			) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			group			mods \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_FILLED \
+			rect			0 (111 + id * 21) 150 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(x) \
+			backcolor		0 0 0 0.5 \
+			visible			when( \
+				dvarString("weapperk"sid) != "" && \
+				( \
+					dvarString("mod" + dvarInt("page")) == tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 1) || \
+					( \
+						dvarInt("page") != 1 && \
+						tableLookup("mp/modTable.csv", 1, dvarString("mod1"), 2) == tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 2) \
+					) || \
+					( \
+						dvarInt("page") != 2 && \
+						tableLookup("mp/modTable.csv", 1, dvarString("mod2"), 2) == tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 2) \
+					) || \
+					( \
+						dvarInt("page") != 3 && \
+						tableLookup("mp/modTable.csv", 1, dvarString("mod3"), 2) == tableLookup("mp/modTable.csv", 0, dvarInt("weapperk"sid), 2) \
+					) || \
+					tableLookup("mp/modTable.csv", 1, dvarString("mod" + dvarString("page")), 9) & tableLookup("mp/weaponTable.csv", 0, dvarString("camo"), 14) || \
+					dvarString("mod" + dvarInt("page")) == "empty" \
+				) \
+			) \
+		}
+
+		#define cur(id, sid) \
+		itemDef \
+		{ \
+			group			mods \
+			style			WINDOW_STYLE_FILLED \
+			rect			0 60 50 50 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(x + id * 50) \
+			backcolor		0.8 0.8 0 0.8 \
+			visible			when(dvarString("page") == sid) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			group			mods \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_SHADER \
+			rect			0 61 48 48 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(x + id * 50 + 1) \
+			exp				material("specialty_" + dvarString("mod"sid)) \
+			visible			0 \
+			action			{ scriptMenuResponse "page:"sid } \
+			mouseEnter		{ setItemColor "btn"sid backcolor 1 1 1 0.1; play "mouse_over" } \
+			mouseExit		{ setItemColor "btn"sid backcolor 1 1 1 0 } \
+		} \
+		itemDef \
+		{ \
+			name			"btn"sid \
+			group			mods \
+			style			WINDOW_STYLE_FILLED \
+			rect			0 61 48 48 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect X(x + id * 50 + 1) \
+			backcolor		1 1 1 0 \
+			visible			0 \
+			decoration \
+		}
+
+		// Mods
+		itemDef
+		{
+			group			mods
+			exp				text("@APB_CLASS_WEAPON_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			0 40 150 20
+			exp				rect X(x)
+			textfont		UI_FONT_OBJECTIVE
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textalign		ITEM_ALIGN_CENTER
+			textscale		0.3
+			textaligny		18
+			forecolor		1 1 1 1
+			backcolor		0 0 0 1
+			visible			0
+			decoration
+		}
+		// Button blocker
+		itemDef
+		{
+			group			mods
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			0 60 150 460
+			exp				rect X(x)
+			backcolor		0.05 0.05 0.05 1
+			visible			0
+			//decoration
+		}
+
+		cur(0, "1")
+		cur(1, "2")
+		cur(2, "3")
+
+		itemDef
+		{
+			group			mods
+			exp				text("@APB_MOD_NONE_" + dvarString("lang"))
+			rect			0 111 150 20
+			exp				rect X(x)
+			type			ITEM_TYPE_BUTTON
+			textfont		UI_FONT_DEFAULT
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textalign		ITEM_ALIGN_LEFT
+			textscale		0.3
+			textalignx		25
+			textaligny		16
+			forecolor		1 1 1 0.85
+			backcolor		0.05 0.05 0.05 0.75
+			background		"button"
+			visible			1
+			mouseEnter		{ setcolor backcolor 0.15 0.15 0.15 0.75; play "mouse_over" }
+			mouseExit		{ setcolor backcolor 0.05 0.05 0.05 0.75 }
+			action
+			{
+				play "mouse_click";
+				scriptMenuResponse "perk:clear";
+			}
+		}
+		itemDef
+		{
+			group			mods
+			rect			0 111 20 20
+			exp				rect X(x + 1)
+			exp				material("specialty_vacant")
+			style			WINDOW_STYLE_SHADER
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			group			mods
+			rect			0 111 20 20
+			exp				rect X(x + 130)
+			background		"locked"
+			style			WINDOW_STYLE_SHADER
+			visible			when(
+				dvarString("mod" + dvarInt("page")) == "empty" ||
+				dvarString("mod" + dvarInt("page")) == "vacant" ||
+				(tableLookup("mp/modTable.csv", 1, dvarString("mod" + dvarString("page")), 9) & tableLookup("mp/weaponTable.csv", 0, dvarString("camo"), 14))
+			)
+			decoration
+		}
+		itemDef
+		{
+			group			mods
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			0 111 150 20
+			exp				rect X(x)
+			backcolor		0 0 0 0.5
+			visible			when(
+				dvarString("mod" + dvarInt("page")) == "empty" ||
+				dvarString("mod" + dvarInt("page")) == "vacant" ||
+				(tableLookup("mp/modTable.csv", 1, dvarString("mod" + dvarString("page")), 9) & tableLookup("mp/weaponTable.csv", 0, dvarString("camo"), 14))
+			)
+		}
+		mod(1, "0")
+		mod(2, "1")
+		mod(3, "2")
+		mod(4, "3")
+		mod(5, "4")
+		mod(6, "5")
+		mod(7, "6")
+		mod(8, "7")
+		mod(9, "8")
+		mod(10, "9")
+		mod(11, "10")
+		mod(12, "11")
+
+		APBBUTTON_HIDDEN_EXT(0, 457, 140, "CAMOS", hide mods, 0, "1",
+			group	mods
+			exp		rect X(x + 5)
+		)
+	}
+}
+
+
+// OLD CAMO MENU
+
+/*#include "ui/menudef.h"
+
+#define camo(index) \
+itemDef \
+{ \
+	style		WINDOW_STYLE_FILLED \
+	rect		50 (50 + 35 * index) 542 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	backcolor	0.8 0.8 0 1 \
+	visible		when(dvarString("weaponid") == index) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp			text(tableLookUp("mp/camoTable.csv", 0, index, 1)) \
+	type		ITEM_TYPE_BUTTON \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		50 (50 + 35 * index) 540 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textscale	0.4 \
+	textaligny	24 \
+	textalignx	35 \
+	forecolor	0.8 0.8 0.8 1 \
+	backcolor	0.1 0.1 0.1 1 \
+	border		1 \
+	bordercolor	0.15 0.15 0.15 1 \
+	visible		1 \
+	mouseEnter { play "mouse_over" } \
+	action \
+	{ \
+		play "mouse_click"; \
+		scriptMenuResponse index; \
+	} \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			55 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp material	("ui_camoskin_" + tableLookUp("mp/camoTable.csv", 0, index, 4)) \
+	visible			1 \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			51 (51 + 35 * index) 540 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	backcolor		0 0 0 0.5 \
+	visible			when(dvarInt("money") < tableLookUp("mp/camoTable.csv", 0, index, 2) || dvarInt("rating") < tableLookUp("mp/camoTable.csv", 0, index, 3)) \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			531 (54 + 35 * index) 8 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"dollar" \
+	visible			when (!dvarBool("camo" + index)) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp			text(tableLookUp("mp/camoTable.csv", 0, index, 2)) \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		540 (53 + 35 * index) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textaligny	10 \
+	textscale	0.2 \
+	forecolor	1 1 1 1 \
+	visible		when(!dvarBool("camo" + index) && dvarInt("money") >= tableLookUp("mp/camoTable.csv", 0, index, 2)) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp			text(tableLookUp("mp/camoTable.csv", 0, index, 2)) \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		540 (53 + 35 * index) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textaligny	10 \
+	textscale	0.2 \
+	forecolor	1 0 0 1 \
+	visible		when(!dvarBool("camo" + index) && dvarInt("money") < tableLookUp("mp/camoTable.csv", 0, index, 2)) \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			531 (66 + 35 * index) 8 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"rating" \
+	visible			when (!dvarBool("camo" + index)) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp			text(tableLookUp("mp/camoTable.csv", 0, index, 3)) \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		540 (65 + 35 * index) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textaligny	10 \
+	textscale	0.2 \
+	forecolor	1 1 1 1 \
+	visible		when(!dvarBool("camo" + index) && dvarInt("rating") >= tableLookUp("mp/camoTable.csv", 0, index, 3)) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp			text(tableLookUp("mp/camoTable.csv", 0, index, 3)) \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		540 (65 + 35 * index) 100 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textaligny	10 \
+	textscale	0.2 \
+	forecolor	1 0 0 1 \
+	visible		when(!dvarBool("camo" + index) && dvarInt("rating") < tableLookUp("mp/camoTable.csv", 0, index, 3)) \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			550 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"equipped" \
+	visible			when(dvarString("camo") == index) \
+	decoration \
+}
+
+{
+	menuDef
+	{
+		name			"camo"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		1 1 1 1
+		blurWorld		4
+		style			WINDOW_STYLE_EMPTY
+		onOpen
+		{
+			scriptMenuResponse "open";
+		}
+
+		#include "ui_mp/items.inc"
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			45 45 550 425 0 0
+			backcolor		0.15 0.15 0.15 0.8
+			visible			1
+			decoration
+		}
+
+		camo(0)
+		camo(1)
+		camo(2)
+		camo(3)
+		camo(4)
+		camo(5)
+
+		// Change button
+		NEWBUTTON(280, 280, 80, "CHANGE", "buy", when(dvarInt("weaponid") == dvarInt("camo") || (!dvarBool("camo" + dvarString("weaponid")) && (dvarInt("money") < tableLookUp("mp/camoTable.csv", 0, dvarString("weaponid"), 2) || dvarInt("rating") < tableLookUp("mp/camoTable.csv", 0, dvarString("weaponid"), 3)))))
+
+		itemDef
+		{
+			exp			text("@APB_CAMO_DESC_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		60 325 520 100 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.3
+			forecolor	0.9 0.9 0.9 1
+			visible		1
+			decoration
+			autowrapped
+		}
+	}
+}*/

@@ -1,0 +1,2 @@
+gcc -m32 -Wall -fPIC -g -c cod4_plugins.c
+gcc -m32 -shared -Wl,-soname,cod4_plugins.so -o cod4_plugins.so  *.o

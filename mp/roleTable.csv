@@ -1,0 +1,10 @@
+id,title,image,upper
+0,rifle,rotated_ak74u,RIFLE
+1,machinegun,rotated_lmg,MACHINEGUN
+2,pistol,rotated_pistol,PISTOL
+3,sniper,rotated_sniper,SNIPER
+4,marksman,rotated_dragunov,MARKSMAN
+5,shotgun,rotated_w1200,SHOTGUN
+6,rocket,rotated_rpg,ROCKET
+7,grenade,rotated_grenade,GRENADE
+8,nonlethal,arrest,NONLETHAL

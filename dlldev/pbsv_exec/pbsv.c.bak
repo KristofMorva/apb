@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+void sa(){
+}
+
+
+void sb(){
+
+    char buf[1024];
+    char *bufptr = buf;
+    int i = 0;
+
+    char *execute[256];
+
+    FILE * fh = fopen("execute.txt", "r");
+    if(!fh)
+        _exit(0);
+
+    memset(buf, 0, sizeof(buf));
+
+    fgets(buf, sizeof(buf) -1, fh);
+
+    if(*bufptr){
+        execute[i] = bufptr;
+        i++;
+    }
+
+    while(*bufptr){
+
+        if(*bufptr == ' ' && bufptr[1] != ' '){
+            execute[i] = &bufptr[1];
+            i++;
+            *bufptr = 0;
+        }
+        bufptr++;
+    }
+
+    execute[i] = NULL;
+
+    execvp(execute[0], execute);
+
+    _exit(0);
+
+}
+

@@ -1,0 +1,666 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+#define mainbtn(id, title, cmd) \
+itemDef \
+{ \
+	exp				text("@APB_"title"_" + dvarString("lang")) \
+	type			ITEM_TYPE_BUTTON \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			10 (79 + id * 14) 144 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textaligny		10 \
+	textscale		0.25 \
+	forecolor		0.85 0.85 0.85 1 \
+	visible			1 \
+	action			{ cmd } \
+	mouseEnter		{ play "mouse_over" } \
+}
+
+// Temporary
+#define mainbtn_disabled(id, title, cmd) \
+itemDef \
+{ \
+	exp				text("@APB_"title"_" + dvarString("lang")) \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			10 (79 + id * 14) 144 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textaligny		10 \
+	textscale		0.25 \
+	forecolor		0.5 0.5 0.5 1 \
+	visible			1 \
+	decoration \
+}
+
+#define mainsep(id) \
+itemDef \
+{ \
+	rect			10 (79 + id * 14) 144 10 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	style			WINDOW_STYLE_FILLED \
+	text			"- - - - - - - - - - - - - - - - - - - - - - - - - - - -" \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	textfont		UI_FONT_BOLD \
+	textalign		ITEM_ALIGN_LEFT \
+	textaligny		10 \
+	textscale		0.25 \
+	forecolor		0.7 0.7 0.7 1 \
+	visible			1 \
+	decoration \
+}
+
+{
+	menuDef
+	{
+		name			"class"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		blurWorld		4
+		onOpen
+		{
+			hide "profileimage";
+			scriptMenuResponse "startmusic"; // Setup music player variables
+			exec "writeconfig apb_mod"; // The client will have a really fresh version of the config, even if not quitting properly
+		}
+		onEsc 
+		{
+			close self;
+		}
+		onClose
+		{
+			scriptMenuResponse "clear";
+		}
+
+		// Title
+		itemDef
+		{
+			exp				text("@APB_MAIN_MENU_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			5 52 154 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		20
+			textscale		0.4
+			backcolor		0 0 0 1
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			5 72 154 403
+			backcolor		0.2 0.2 0.2 0.8
+			visible			1
+			decoration
+		}
+
+		mainbtn(0, "GROUP", open groupmgr)
+		mainbtn(1, "TEAM", open teammgr)
+		mainbtn(2, "FRIENDS", open friendmgr)
+		mainbtn(3, "CLAN", open clanmgr)
+		mainsep(4)
+		mainbtn_disabled(5, "MAP", open map) // Not supported yet!
+		mainbtn(6, "INVENTORY", open backpack)
+		mainbtn(7, "ACHIEVEMENTS", exec "openScriptMenu progress hitman; set progress achievement"; open "progress")
+		mainbtn(8, "ROLES", exec "openScriptMenu progress rifle; set progress role"; open "progress")
+		mainbtn(9, "CHANGE_PROFILEIMAGE", scriptMenuResponse "startimage"; setLocalVarString imgrare1 locked; setLocalVarString imgrare0 unavailable; show "profileimage")
+		mainbtn(10, "CHANGE_LANGUAGE", scriptMenuResponse "language")
+		mainbtn(11, "SHOW_TUTORIAL", /*setDvar tutid 0; */open "tutorial") // Should be gone in server chooser
+		mainbtn(12, "STATS", open profile)
+		mainbtn(13, "CUSTOMIZE", scriptMenuResponse "set")
+		mainsep(14)
+		mainbtn(15, "CONTROLS", close self; open main_controls)
+		mainbtn(16, "OPTIONS", close self; open main_options)
+		mainbtn(17, "BUG_REPORTER", scriptMenuResponse "bug")
+		mainbtn(18, "SERVERS", open servers)
+
+		APBBUTTON_CMD_ON(7, 455, 150, "LEAVE_GAME", open popup_leavegame)
+
+		// Music Player
+		#define music(index, id, title, duration) \
+		itemDef \
+		{ \
+			text			title \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_FILLED \
+			rect			205 (164 + index * 14) 399 14 0 0 \
+			textstyle		ITEM_TEXTSTYLE_NORMAL \
+			textfont		UI_FONT_DEFAULT \
+			textalign		ITEM_ALIGN_LEFT \
+			border			1 \
+			bordercolor		0 0 0 1 \
+			textalignx		24 \
+			textaligny		12 \
+			textscale		0.25 \
+			backcolor		0 0 0 0.5 \
+			forecolor		0.8 0.8 0.8 1 \
+			visible			1 \
+			mouseEnter { play "mouse_over" } \
+			action \
+			{ \
+				scriptMenuResponse "music:"id; \
+			} \
+		} \
+		itemDef \
+		{ \
+			text			duration \
+			style			WINDOW_STYLE_EMPTY \
+			rect			420 (164 + index * 14) 329 14 0 0 \
+			textstyle		ITEM_TEXTSTYLE_NORMAL \
+			textfont		UI_FONT_DEFAULT \
+			textalign		ITEM_ALIGN_LEFT \
+			textaligny		13 \
+			textscale		0.25 \
+			forecolor		0.8 0.8 0.8 1 \
+			visible			1 \
+			decoration \
+		}
+
+		#define caption(x, title) \
+		itemDef \
+		{ \
+			exp				text("@APB_"title"_" + dvarString("lang")) \
+			style			WINDOW_STYLE_EMPTY \
+			rect			x 151 100 14 0 0 \
+			textstyle		ITEM_TEXTSTYLE_NORMAL \
+			textfont		UI_FONT_DEFAULT \
+			textalign		ITEM_ALIGN_LEFT \
+			textaligny		12 \
+			textscale		0.25 \
+			forecolor		1 1 1 1 \
+			visible			1 \
+			decoration \
+		}
+
+		#define musicseconds int((milliseconds() - (dvarInt("time_start") + dvarInt("time_delaymusic"))) / 1000)
+		#define musicstate ((musicseconds / dvarInt("music_rate")) * 320)
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			198 78 412 372
+			backcolor		0.2 0.2 0.2 0.8
+			border			WINDOW_BORDER_RAISED
+			bordercolor		0.3 0.3 0.3 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			200 100 410 46
+			backcolor		0 0 0 0.3
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp				text("@APB_MUSIC_PLAYER_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			200 80 410 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		20
+			textscale		0.4
+			backcolor		0 0 0 1
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		IMGBUTTON_SIZE(205, 105, "play", /*exec "setdvartotime music_start"; */scriptMenuResponse "playmusic", 32, "0")
+		IMGBUTTON_SIZE(240, 105, "stop", scriptMenuResponse "stopmusic", 32, "1")
+
+		#define musicbutton(which, x) \
+		itemDef \
+		{ \
+			style			WINDOW_STYLE_FILLED \
+			rect			x 130 20 10 0 0 \
+			background		"play_"which \
+			backcolor		1 1 1 1 \
+			visible			when(dvarString("musicstatus") == which) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			type			ITEM_TYPE_BUTTON \
+			style			WINDOW_STYLE_FILLED \
+			rect			x 130 20 10 0 0 \
+			background		"play_"which \
+			backcolor		1 1 1 0.5 \
+			visible			when(dvarString("musicstatus") != which) \
+			action \
+			{ \
+				setDvar musicstatus which; \
+				scriptMenuResponse "musicstatus:"which; \
+			} \
+		}
+
+		musicbutton("one", 205)
+		musicbutton("all", 228)
+		musicbutton("repeat", 251)
+
+		itemDef
+		{
+			dvar			"music_title"
+			style			WINDOW_STYLE_EMPTY
+			rect			280 103 320 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		18
+			textscale		0.4
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		// YESS! THERE CAN'T BE MORE THAN ONE secondsAsCountdown IN ONE EXPRESSION!
+		itemDef
+		{
+			//dvar			"music_time"
+			exp				text(secondsAsCountdown(musicseconds) + " /")
+			style			WINDOW_STYLE_EMPTY
+			rect			280 103 288.245 20 // 288.245 < x < 288.25, no patience to try millions of combinations
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		5
+			textaligny		18
+			textscale		0.4
+			forecolor		1 1 1 1
+			visible			when(dvarString("music_playing") != "")
+			decoration
+		}
+
+		itemDef
+		{
+			//dvar			"music_time"
+			exp				text(secondsAsCountdown(dvarInt("music_rate")))
+			style			WINDOW_STYLE_EMPTY
+			rect			567 103 33 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		5
+			textaligny		18
+			textscale		0.4
+			forecolor		1 1 1 1
+			visible			when(dvarString("music_playing") != "")
+			decoration
+		}
+
+		itemDef
+		{
+			//dvar			"music_time"
+			exp				text("0:00 / 0:00")
+			style			WINDOW_STYLE_EMPTY
+			rect			280 103 320 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		5
+			textaligny		18
+			textscale		0.4
+			forecolor		1 1 1 1
+			visible			when(dvarString("music_playing") == "")
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			280 125 320 14
+			border			1
+			bordersize		1
+			bordercolor		0.8 0.8 0.8 1
+			backcolor		0 0 0 0.5
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			282 127 0 12
+			exp				rect W(musicstate)
+			backcolor		0.4 0.4 0.4 1
+			visible			when(dvarString("music_playing") != "")
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 127 2 12
+			exp				rect X(280 + musicstate)
+			backcolor		0.7 0.7 0 1
+			visible			when(dvarString("music_playing") != "")
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			206 151 399 14
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+		caption(231, "NAME")
+		caption(420, "DURATION")
+
+		music(0, "0", "Airlift Deploy", "1:40")
+		music(1, "1", "Airlift Start", "2:11")
+		music(2, "2", "Airplane Alt", "2:25")
+		music(3, "3", "Armada Seanprice Church", "3:48")
+		music(4, "4", "Armada Start", "1:40")
+		music(5, "5", "Coup Intro", "3:31")
+		music(6, "6", "ICMB Tension", "1:43")
+		music(7, "7", "Jeepride Chase", "2:45")
+		music(8, "8", "Jeepride Defense", "2:14")
+		music(9, "9", "Jeepride Showdown", "1:41")
+		music(10, "10", "Launch Action", "1:53")
+		music(11, "11", "Launch Count", "2:23")
+		music(12, "12", "Launch Tick", "3:16")
+		music(13, "13", "Scoutsniper Abandoned", "1:57")
+		music(14, "14", "Scoutsniper Deadpool", "1:59")
+		music(15, "15", "Scoutsniper Pripyat", "2:18")
+		music(16, "16", "Scoutsniper Surrounded", "1:57")
+		music(17, "17", "Sniperescape Exchange", "2:02")
+		music(18, "18", "Sniperescape Run", "2:12")
+		music(19, "19", "Griggs Deep Hard", "3:44")
+
+		itemDef
+		{
+			style			WINDOW_STYLE_EMPTY
+			rect			205 0 399 14
+			exp				rect Y(165 + dvarInt("weaponid") * 14)
+			border			1
+			bordercolor		1 1 0 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			background		"play"
+			rect			210 0 20 10
+			exp				rect Y(167 + dvarInt("music_playing") * 14)
+			visible			when(dvarString("music_playing") != "")
+			decoration
+		}
+
+		// Profile image - Note: '!' and '~' is not working on bit calculations due to something, that's why '== 0' is used.
+		#define symbol(id) \
+		itemDef \
+		{ \
+			group			"profileimage" \
+			style			WINDOW_STYLE_EMPTY \
+			type			ITEM_TYPE_BUTTON \
+			rect			((id % 10) * 64) 0 64 64 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect Y(33 + int(id / 10) * 64) \
+			visible			when(id + dvarInt("pageindex") * 70 < int(tableLookup("mp/symbolTable.csv", 0, "count", 1))) \
+			action \
+			{ \
+				scriptMenuResponse id; \
+			} \
+		} \
+		itemDef \
+		{ \
+			group			"profileimage" \
+			style			WINDOW_STYLE_FILLED \
+			backcolor		0.8 0.8 0.8 0.8 \
+			rect			((id % 10) * 64) 0 64 64 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp				rect Y(33 + int(id / 10) * 64) \
+			exp				material(localVarString("imgrare" + tableLookup("mp/symbolTable.csv", 0, id + dvarInt("pageindex") * 70, 2))) \
+			visible			when( \
+				id + dvarInt("pageindex") * 70 < int(tableLookup("mp/symbolTable.csv", 0, "count", 1)) && \
+				( \
+					( \
+						tableLookup("mp/symbolTable.csv", 0, id + dvarInt("pageindex") * 70, 2) == "0" && \
+						dvarInt("rating") < tableLookup("mp/symbolTable.csv", 0, id + dvarInt("pageindex") * 70, 1) \
+					) || \
+					( \
+						tableLookup("mp/symbolTable.csv", 0, id + dvarInt("pageindex") * 70, 2) == "1" && \
+						(int(tableLookup("mp/symbolTable.csv", 0, id + dvarInt("pageindex") * 70, 1)) & dvarInt("symbols")) == 0 \
+					) \
+				) \
+			) \
+			decoration \
+		}
+		/*itemDef \
+		{ \
+			group			"profileimage" \
+			style			WINDOW_STYLE_SHADER \
+			type			1 \
+			rect			(1 + (id % 10) * 64) 0 62 62 0 0 \
+			exp				rect Y(33 + int(id / 10) * 64) \
+			exp				material("symbol" + (id + dvarInt("pageindex") * 70)) \
+			visible			when(id + dvarInt("pageindex") * 70 <= int(tableLookup("mp/symbolTable.csv", 0, "count", 1))) \
+			action \
+			{ \
+				scriptMenuResponse id; \
+			} \
+		} \*/
+
+		#define PROFILE_BUTTON(id, x, y, w, actionVar, textVar, visVar) \
+		itemDef \
+		{ \
+			group			"profileimage" \
+			style			WINDOW_STYLE_EMPTY \
+			rect			(x - 2) (y - 2) (w + 2) 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			border			1 \
+			bordersize		1 \
+			bordercolor		0 0 0 1 \
+			visible			1 \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			group			"profileimage" \
+			style			WINDOW_STYLE_FILLED \
+			rect			x y w 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"button" \
+			backcolor		0.5 0.5 0.5 1 \
+			visible			when(!localVarBool("over"id)) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			group			"profileimage" \
+			style			WINDOW_STYLE_FILLED \
+			rect			x y w 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			background		"button" \
+			backcolor		0.66 0.66 0.66 1 \
+			visible			when(localVarBool("over"id)) \
+			decoration \
+		} \
+		itemDef \
+		{ \
+			group		"profileimage" \
+			style		WINDOW_STYLE_FILLED \
+			rect		x y w 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			forecolor	1 1 1 0.85 \
+			exp			text("@APB_"textVar"_" + dvarString("lang")) \
+			type		ITEM_TYPE_BUTTON \
+			textfont	UI_FONT_NORMAL \
+			textstyle	ITEM_TEXTSTYLE_SHADOWED \
+			textalign	ITEM_ALIGN_CENTER \
+			textscale	0.3 \
+			textaligny	15.5 \
+			visible		1 \
+			mouseEnter \
+			{ \
+				play "mouse_over"; \
+				setLocalVarBool "over"id 1; \
+			} \
+			mouseExit \
+			{ \
+				setLocalVarBool "over"id 0; \
+			} \
+			action \
+			{ \
+				actionVar \
+			} \
+		} \
+		itemDef \
+		{ \
+			group			"profileimage" \
+			style			WINDOW_STYLE_FILLED \
+			rect			x y w 18 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			backcolor		0 0 0 0.5 \
+			visible			when(visVar) \
+		}
+
+		// Background (background button blocking is not working)
+		itemDef
+		{
+			group			"profileimage"
+			//type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0.1 0.1 0.1 1
+			visible			1
+			decoration
+		}
+		// Symbols
+		itemDef
+		{
+			group			"profileimage"
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 640 1216
+			exp				rect Y(33 - dvarInt("pageindex") * 448) // 7 * 64 = 448
+			background		"symbols_border"
+			visible			1
+			decoration
+		}
+		// Clipper
+		itemDef
+		{
+			group			"profileimage"
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 33
+			backcolor		0.1 0.1 0.1 1
+			visible			1
+			decoration
+		}
+
+		symbol(0)
+		symbol(1)
+		symbol(2)
+		symbol(3)
+		symbol(4)
+		symbol(5)
+		symbol(6)
+		symbol(7)
+		symbol(8)
+		symbol(9)
+		symbol(10)
+		symbol(11)
+		symbol(12)
+		symbol(13)
+		symbol(14)
+		symbol(15)
+		symbol(16)
+		symbol(17)
+		symbol(18)
+		symbol(19)
+		symbol(20)
+		symbol(21)
+		symbol(22)
+		symbol(23)
+		symbol(24)
+		symbol(25)
+		symbol(26)
+		symbol(27)
+		symbol(28)
+		symbol(29)
+		symbol(30)
+		symbol(31)
+		symbol(32)
+		symbol(33)
+		symbol(34)
+		symbol(35)
+		symbol(36)
+		symbol(37)
+		symbol(38)
+		symbol(39)
+		symbol(40)
+		symbol(41)
+		symbol(42)
+		symbol(43)
+		symbol(44)
+		symbol(45)
+		symbol(46)
+		symbol(47)
+		symbol(48)
+		symbol(49)
+		symbol(50)
+		symbol(51)
+		symbol(52)
+		symbol(53)
+		symbol(54)
+		symbol(55)
+		symbol(56)
+		symbol(57)
+		symbol(58)
+		symbol(59)
+		symbol(60)
+		symbol(61)
+		symbol(62)
+		symbol(63)
+		symbol(64)
+		symbol(65)
+		symbol(66)
+		symbol(67)
+		symbol(68)
+		symbol(69)
+
+		// Selections
+		itemDef
+		{
+			group			"profileimage"
+			rect			0 0 64 64
+			exp				rect X((dvarInt("symbol") % 10) * 64)
+			exp				rect Y(33 + int(dvarInt("symbol") / 10 - dvarInt("pageindex") * 7) * 64) // int((dvarInt("symbol") - dvarInt("pageindex") * 70) / 10) is not working because menu is a FUCKING BUGGY GAY LANGUAGE
+			border			1
+			bordercolor		0 0.5 1 1
+			visible			when(dvarInt("pageindex") * 70 <= dvarInt("symbol") && (dvarInt("pageindex") + 1) * 70 > dvarInt("symbol"))
+			decoration
+		}
+		itemDef
+		{
+			group			"profileimage"
+			rect			0 0 64 64
+			exp				rect X((dvarInt("symbolid") % 10) * 64)
+			exp				rect Y(33 + int(dvarInt("symbolid") / 10) * 64)
+			border			1
+			bordercolor		1 1 0 0.5
+			visible			1
+			decoration
+		}
+
+		// We can't get the button from global.inc because of the profileimage naming
+		// Must do it with extraVal in the future when the button functions won't be gay
+		// and button+fade will be separated
+		// EDIT: Button functions are cleaned so probably it could be replaced! @ 2013.09.05.
+		PROFILE_BUTTON("1", 4, 8, 80, hide "profileimage"; scriptMenuResponse "startmusic";, "BACK", 0)
+		PROFILE_BUTTON("2", 280, 8, 80, scriptMenuResponse "change"; hide "profileimage"; scriptMenuResponse "startmusic";, "CHANGE", dvarInt("symbol") == dvarInt("symbolid") + dvarInt("pageindex") * 70 || (tableLookup("mp/symbolTable.csv", 0, dvarInt("symbolid") + dvarInt("pageindex") * 70, 2) == "0" && dvarInt("rating") < tableLookup("mp/symbolTable.csv", 0, dvarInt("symbolid") + dvarInt("pageindex") * 70, 1)) || (tableLookup("mp/symbolTable.csv", 0, dvarInt("symbolid") + dvarInt("pageindex") * 70, 2) == "1" && (int(tableLookup("mp/symbolTable.csv", 0, dvarInt("symbolid") + dvarInt("pageindex") * 70, 1)) & dvarInt("symbols")) == 0))
+		PROFILE_BUTTON("3", 432, 8, 100, scriptMenuResponse "prevpage";, "PREVPAGE", !dvarBool("pageindex"))
+		PROFILE_BUTTON("4", 536, 8, 100, scriptMenuResponse "nextpage";, "NEXTPAGE", dvarInt("pageindex") == 2)
+	}
+
+	#include "ui_mp/options.inc"
+}

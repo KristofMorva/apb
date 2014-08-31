@@ -1,0 +1,276 @@
+#include "ui/menudef.h"
+
+{
+	menuDef
+	{
+		name			pc_join_unranked
+		fullscreen		0
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		COLOR_FOCUSED
+		onOpen
+		{
+			uiScript UpdateFilter;
+		}
+		onEsc
+		{
+			uiScript closeJoin;
+			close self;
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0.1 0.1 0.1 0.75
+			visible			1
+			decoration
+		}
+
+		#define OPTIONS_HEADING_JOIN_COLOR	0.9 0.9 0.95 0.175
+
+		#define 	TAB_NAME_Y			68
+
+		#define		TAB_BG_COLOR		OPTIONS_HEADING_JOIN_COLOR
+		#define		TAB_BORDER_COLOR	0.1 0.1 0.12 0.5
+
+		#define		CUSTOM_BUTTON_TEXT_SIZE	0.33
+
+		#undef CHOICE_HORIZONTAL_ALIGN 
+		#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER 
+
+		#undef CHOICE_VERTICAL_ALIGN
+		#define CHOICE_VERTICAL_ALIGN VERTICAL_ALIGN_TOP
+
+		itemDef
+		{
+			name refreshdate
+			ownerdraw UI_SERVERREFRESHDATE
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont	UI_FONT_NORMAL
+			textscale 0.25
+			rect 8 8 265 18
+			textalign ITEM_ALIGN_LEFT
+			textalignx 0
+			textaligny 16
+			forecolor 1 1 1 1
+			visible 1
+			decoration
+		}
+
+		#define WIDTH_SERVER		520
+		#define WIDTH_PLAYER		50
+		#define WIDTH_PING			40
+
+		#define TAB_HEIGHT			16
+		#define TAB_LABEL_OFFSET	\
+			textalignx 4			\
+			textaligny (TAB_HEIGHT-2)
+
+		#define TABLE_X				4
+		#define TABLE_Y				32
+
+		#define SERVER_X			(TABLE_X)
+		#define PLAYER_X			(SERVER_X+WIDTH_SERVER+2) 	
+		#define PING_X				(PLAYER_X+WIDTH_PLAYER+2) 	
+
+		#define TABLE_HEIGHT		412
+		#define TABLE_WIDTH			(PING_X+WIDTH_PING+22)
+
+		// table bg color
+		itemDef
+		{
+			name window
+			group grpSystembutton
+			rect TABLE_X TABLE_Y (TABLE_WIDTH - 8) TABLE_HEIGHT
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0.85
+			visible 1
+			decoration
+		}
+
+		#define ORIGIN_SERVER 	   	SERVER_X	TABLE_Y
+		#define ORIGIN_PLAYER 	   	PLAYER_X	TABLE_Y
+		#define ORIGIN_PING 	   	PING_X		TABLE_Y
+
+		#define RECT_SERVER			ORIGIN_SERVER 		WIDTH_SERVER 		TABLE_HEIGHT
+		#define RECT_PLAYER			ORIGIN_PLAYER 		WIDTH_PLAYER 		TABLE_HEIGHT
+		#define RECT_PING			ORIGIN_PING 		WIDTH_PING 			TABLE_HEIGHT
+
+		//	SERVER LIST COLUMN OUTLINES	=====================================================================
+		#define PREPROC_COLUMN_BOX( pname, prect ) PREPROC_COLUMN_BOX_RAW( pname, prect, 0 0 0 0 )
+		#define PREPROC_COLUMN_BOX_RAW( pname, prect, pcolor )\
+		itemDef	{\
+			name pname\
+			group grpColumn\
+			rect prect 0 0 \
+			origin -2 -2 \
+			style WINDOW_STYLE_FILLED\
+			border 1\
+			backcolor pcolor\
+			bordercolor TAB_BORDER_COLOR\
+			visible 1	decoration\
+		}
+
+		PREPROC_COLUMN_BOX( serverColumn,  	ORIGIN_SERVER 		(WIDTH_SERVER+2) 		TABLE_HEIGHT)
+		PREPROC_COLUMN_BOX( playerColumn,  	ORIGIN_PLAYER 		(WIDTH_PLAYER+2) 		TABLE_HEIGHT)
+		PREPROC_COLUMN_BOX_RAW( pingColumn, ORIGIN_PING 		(WIDTH_PING+2)			TABLE_HEIGHT, 0 0 0.4 .15)
+
+		// SERVER LIST TEXT ===========================================================
+		itemDef
+		{
+			name 			serverlist
+			rect 			TABLE_X TABLE_Y (TABLE_WIDTH-8) (TABLE_HEIGHT-17)
+			origin			0 16
+			type 			ITEM_TYPE_LISTBOX
+			style 			WINDOW_STYLE_FILLED
+			elementwidth 	120
+			elementheight 	16
+			textfont		UI_FONT_NORMAL
+			textalign 		1
+			textaligny 		0
+			textscale 		0.25
+			elementtype 	LISTBOX_TEXT
+			feeder 			FEEDER_SERVERS
+			forecolor 		1 1 1 1
+			backcolor 		0 0 0 0
+			outlinecolor 	OPTIONS_HEADING_JOIN_COLOR
+			visible 		1
+			//		numcols	xpos			xwidth			textlen
+			columns 11		0				0				0
+							0				0				0
+							SERVER_X		WIDTH_SERVER	22
+							0				0				0
+							PLAYER_X		WIDTH_PLAYER	10
+							0				0				0
+							0				0				0
+							0				0				0
+							0				0				0
+							0				0				0
+							PING_X			WIDTH_PING		20
+			doubleClick 	{ uiScript JoinServer }
+			execkeyint 		13	{ uiScript JoinServer }
+		}
+
+		#undef	TABLE_HEIGHT
+		#define TABLE_HEIGHT TAB_HEIGHT
+
+		// SERVER ================================================================
+		itemDef
+		{
+			name server
+			group grpTabs
+			text "@MENU_SERVER NAME"
+			TAB_LABEL_OFFSET
+			type ITEM_TYPE_BUTTON
+			textscale 0.25
+			textfont	UI_FONT_NORMAL
+			style WINDOW_STYLE_FILLED
+			rect RECT_SERVER
+			textalign ITEM_ALIGN_LEFT
+			forecolor 1 1 1 1
+			backcolor OPTIONS_HEADING_JOIN_COLOR
+			visible 1
+			action
+			{
+				play "mouse_click" ;
+				uiScript ServerSort 2 ;
+				setitemcolor grpTabs backcolor TAB_BG_COLOR ;
+				setitemcolor server backcolor .1 .2 .37 1 ;
+				setitemcolor grpColumn backcolor 0 0 0 0 ;
+				setitemcolor serverColumn backcolor 0 0 0.4 .15
+			}
+			mouseEnter { show message_sort ; setitemcolor serverColumn bordercolor 1 1 1 1 ; play "mouse_over" }
+			mouseExit { hide message_sort ; setitemcolor serverColumn bordercolor TAB_BORDER_COLOR }
+		}
+
+		// PLAYERS ===============================================================
+		itemDef
+		{
+			name Players
+			group grpTabs
+			text "@MENU_NUMPLAYERS"
+			TAB_LABEL_OFFSET
+			type ITEM_TYPE_BUTTON
+			textscale 0.25
+			style WINDOW_STYLE_FILLED
+			textfont	UI_FONT_NORMAL
+			rect RECT_PLAYER
+			textalign ITEM_ALIGN_LEFT
+			forecolor 1 1 1 1
+			backcolor OPTIONS_HEADING_JOIN_COLOR
+			visible 1
+			action
+			{
+				play "mouse_click" ;
+				uiScript ServerSort 4 ;
+				setitemcolor grpTabs backcolor TAB_BG_COLOR ;
+				setitemcolor Players backcolor .1 .2 .37 1 ;
+				setitemcolor grpColumn backcolor 0 0 0 0 ;
+				setitemcolor playerColumn backcolor 0 0 .4 .15
+			}
+			mouseEnter { show message_sort ; setitemcolor playerColumn bordercolor 1 1 1 1 ; play "mouse_over"}
+			mouseExit { hide message_sort ; setitemcolor playerColumn bordercolor TAB_BORDER_COLOR }
+		}
+
+		// PING ==================================================================
+		itemDef
+		{
+			name Ping
+			group grpTabs
+			text "@MENU_PING"
+			TAB_LABEL_OFFSET
+			type ITEM_TYPE_BUTTON
+			textscale 0.25
+			textfont	UI_FONT_NORMAL
+			style WINDOW_STYLE_FILLED
+			rect RECT_PING
+			textalign ITEM_ALIGN_LEFT
+			backcolor .1 .2 .37 1 // Start highlighted
+			forecolor 1 1 1 1
+			visible 1
+			action
+			{
+				play "mouse_click" ;
+				uiScript ServerSort 10 ;
+				setitemcolor grpTabs backcolor TAB_BG_COLOR ;
+				setitemcolor Ping backcolor .1 .2 .37 1 ;
+				setitemcolor grpColumn backcolor 0 0 0 0 ;
+				setitemcolor pingColumn backcolor 0 0 .4 .15
+			}
+			mouseEnter { show message_sort ; setitemcolor pingColumn bordercolor 1 1 1 1 ; play "mouse_over"}
+			mouseExit { hide message_sort ; setitemcolor pingColumn bordercolor TAB_BORDER_COLOR }
+		}
+
+		#undef TABLE_HEIGHT
+		#define TABLE_HEIGHT	360
+
+		// 	BUTTONS	===============================================================
+		#define BUTTON(textArg, nameArg, xArg, actionArg) \
+		itemDef { \
+			name nameArg \
+			exp	text(textArg) \
+			type ITEM_TYPE_BUTTON \
+			textfont	UI_FONT_NORMAL \
+			textscale TEXTSIZE_SMALL \
+			style WINDOW_STYLE_FILLED \
+			border 1 \
+			bordercolor .1 .1 .1 .25 \
+			rect xArg -30 125 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM \
+			textalign ITEM_ALIGN_CENTER \
+			textalignx 0 \
+			textaligny 18 \
+			backcolor 0 0 0.05 0.9 \
+			forecolor 0.9 0.9 0.92 0.75 \
+			visible 1 \
+			action { play "mouse_click"; actionArg } \
+			mouseEnter { show "message_"nameArg; setitemcolor nameArg backcolor .1 .2 .37 1; play "mouse_over"} \
+			mouseExit { hide "message_"nameArg; setitemcolor nameArg backcolor 0 0 0.05 0.9 } \
+		}
+
+		BUTTON("@MENU_BACK", "back", -280, close self)
+		BUTTON("@MENU_REFRESH_LIST", "refreshSource", -130, uiScript RefreshServers)
+		BUTTON("@MENU_QUICK_REFRESH", "refreshFilter", 20, uiScript RefreshFilter)
+		BUTTON("@MENU_JOIN_SERVER", "accept", 170, uiScript JoinServer)
+	}
+}

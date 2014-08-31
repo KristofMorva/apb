@@ -1,0 +1,423 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+{
+	menuDef
+	{
+		name			"login"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		soundloop		"Theme"
+		onOpen			{ scriptMenuRespondOnDvarIntValue ui_stat_intro 3 "intro"; hide reg; exec "setfromdvar cmd showname" }
+		onESC			{ }
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 640 480
+			background		"killbg"
+			visible			1
+			decoration
+		}
+
+		// Splash
+		/*itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 96 0 0
+			exp				rect X(20 + ((milliseconds() / 50) % 192) / 2)
+			exp				rect W(24 + (milliseconds() / 50) % 192)
+			exp				rect H(24 + (milliseconds() / 50) % 192)
+			background		"menu_splash"
+			visible			when((milliseconds() / 50) % 384 >= 192)
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 0 0
+			exp				rect X(116 - ((milliseconds() / 50) % 192))
+			exp				rect Y(96 + ((milliseconds() / 50) % 192))
+			exp				rect W(216 - ((milliseconds() / 50) % 192))
+			exp				rect H(216 - ((milliseconds() / 50) % 192))
+			background		"menu_splash"
+			visible			when((milliseconds() / 50) % 384 < 192)
+			decoration
+		}
+
+		// Star
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 24 64 64
+			exp				rect X(640 - ((milliseconds() / 50) % 704))
+			background		"menu_star"
+			visible			1
+			decoration
+		}*/
+
+		// Fade
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 640 480
+			background		"loginback"
+			visible			1
+			decoration
+		}
+
+		// Field
+		itemDef
+		{
+			exp				text("@APB_LOGIN_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			160 120 320 20
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		5
+			textaligny		18
+			textscale		0.35
+			forecolor		1 1 1 1
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			160 140 320 80
+			backcolor		0.2 0.2 0.2 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_EDITFIELD
+			exp				text(locString("@APB_PLAYERNAME_" + dvarString("lang")) + ": ")
+			dvar			cmd
+			rect			165 145 305 14
+			border			1
+			bordercolor		0.3 0.3 0.3 1
+			backcolor		0.1 0.1 0.1 1
+			textalignx		3
+			textaligny		12
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			style			WINDOW_STYLE_FILLED
+			visible			when(dvarString("showname") == "")
+			accept
+			{
+				setDvar fade 1;
+				scriptMenuResponse 1;
+				execNow "setfromdvar info cmd; setfromdvar info2 pass";
+			}
+		}
+		itemDef
+		{
+			exp				text(locString("@APB_PLAYERNAME_" + dvarString("lang")) + ": " + dvarString("showname"))
+			rect			165 145 305 14
+			border			1
+			bordercolor		0.3 0.3 0.3 1
+			backcolor		0.1 0.1 0.1 1
+			textalignx		3
+			textaligny		12
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		0.25
+			forecolor		0.8 0.8 0.8 0.8
+			style			WINDOW_STYLE_FILLED
+			visible			when(dvarString("showname") != "")
+			decoration
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_EDITFIELD
+			exp				text(locString("@APB_PASSWORD_" + dvarString("lang")) + ": ")
+			dvar			pass
+			rect			165 165 305 14
+			border			1
+			bordercolor		0.3 0.3 0.3 1
+			backcolor		0.1 0.1 0.1 1
+			textalignx		3
+			textaligny		12
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_DEFAULT
+			textscale		0.25
+			forecolor		0.9 0.9 0.9 1
+			style			WINDOW_STYLE_FILLED
+			visible			1
+			accept
+			{
+				setDvar fade 1;
+				scriptMenuResponse 1;
+				execNow "setfromdvar info cmd; setfromdvar info2 pass";
+			}
+		}
+		APBBUTTON_CMD(390, 190, 80, "LOGIN", setDvar fade 1; execNow "setfromdvar info cmd; setfromdvar info2 pass"; scriptMenuResponse 1;, "L")
+		APBBUTTON_CMD(300, 190, 80, "REGISTRATION", setDvar inv ""; show reg, "R")
+		APBBUTTON_CMD(170, 190, 80, "LEAVE", execNow "writeconfig apb_mod; quit", "Q")
+
+		// Pop-up
+		#define REGISTER \
+			setDvar fade 1; \
+			execNow "setfromdvar info cmd; setfromdvar info2 pass; setfromdvar info3 inv"; \
+			scriptMenuResponse "reg";
+
+		itemDef
+		{
+			group			reg
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0.4 0.4 0.4 0.5
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			group			reg
+			style			WINDOW_STYLE_FILLED
+			rect			220 90 200 245
+			backcolor		0.1 0.1 0.1 0.9
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			group			reg
+			style			WINDOW_STYLE_FILLED
+			rect			220 90 200 20
+			backcolor		0 0 0 0.75
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			group			reg
+			style			WINDOW_STYLE_FILLED
+			rect			340 90 80 20
+			background		"title_arrows"
+			backcolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			group			reg
+			exp				text("@APB_REGISTRATION_" + dvarString("lang"))
+			textfont		UI_FONT_NORMAL
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			220 90 200 20
+			textalign		ITEM_ALIGN_LEFT
+			textscale		0.4
+			textaligny		20
+			textalignx		5
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			group			reg
+			exp				text(locString("@APB_PLAYERNAME_" + dvarString("lang")) + ": ")
+			type			ITEM_TYPE_EDITFIELD
+			style			WINDOW_STYLE_FILLED
+			dvar			cmd
+			rect			222 113 194 18
+			textalignx		3
+			textaligny		13
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		0.25
+			border			1
+			bordercolor		0 0 0 1
+			forecolor		0.9 0.9 0.9 1
+			backcolor		0.3 0.3 0.3 0.75
+			visible			1
+			accept
+			{
+				REGISTER
+			}
+		}
+		itemDef
+		{
+			group			reg
+			exp				text(locString("@APB_PASSWORD_" + dvarString("lang")) + ": ")
+			type			ITEM_TYPE_EDITFIELD
+			style			WINDOW_STYLE_FILLED
+			dvar			pass
+			rect			222 133 194 18
+			textalignx		3
+			textaligny		13
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		0.25
+			border			1
+			bordercolor		0 0 0 1
+			forecolor		0.9 0.9 0.9 1
+			backcolor		0.3 0.3 0.3 0.75
+			visible			1
+			accept
+			{
+				REGISTER
+			}
+		}
+		itemDef
+		{
+			group			reg
+			exp				text("@APB_INVITER_DESC_" + dvarString("lang"))
+			textfont		UI_FONT_NORMAL
+			style			WINDOW_STYLE_EMPTY
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			220 160 190 50
+			textalign		ITEM_ALIGN_LEFT
+			textscale		0.25
+			textaligny		15
+			textalignx		5
+			forecolor		1 1 1 0.8
+			visible			1
+			autowrapped
+			decoration
+		}
+		itemDef
+		{
+			group			reg
+			exp				text(locString("@APB_INVITER_" + dvarString("lang")) + ": ")
+			type			ITEM_TYPE_EDITFIELD
+			style			WINDOW_STYLE_FILLED
+			dvar			inv
+			rect			222 283 194 18
+			textalignx		3
+			textaligny		13
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		0.25
+			border			1
+			bordercolor		0 0 0 1
+			forecolor		0.9 0.9 0.9 1
+			backcolor		0.3 0.3 0.3 0.75
+			visible			1
+			accept
+			{
+				REGISTER
+			}
+		}
+		APBBUTTON_EXT(330, 310, 80, "OK", REGISTER;, "0", group reg)
+		APBBUTTON_EXT(230, 310, 80, "CANCEL", hide reg;, "1", group reg)
+
+		// Loading screen
+		itemDef
+		{
+			exp				text(locString("@APB_PROCESSING_" + dvarString("lang")) + "...")
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_DEFAULT
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		210
+			textscale		0.4
+			forecolor		1 1 1 0.75
+			type			ITEM_TYPE_BUTTON
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0.1 0.1 0.1 0.85
+			visible			when(dvarBool("fade"))
+		}
+		itemDef
+		{
+			exp				text("@APB_PROCESSING" + int(milliseconds() / 100) % 4)
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_CONSOLE
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		235
+			textscale		0.4
+			forecolor		1 1 1 0.75
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 640 480
+			visible			when(dvarBool("fade"))
+			decoration
+		}
+
+		// Error
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0.4 0.4 0.4 0.5
+			visible			when(dvarString("error") != "")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			220 180 200 100
+			backcolor		0.1 0.1 0.1 0.9
+			visible			when(dvarString("error") != "")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			220 180 200 20
+			backcolor		0 0 0 0.75
+			visible			when(dvarString("error") != "")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			340 180 80 20
+			background		"title_arrows"
+			backcolor		1 1 1 1
+			visible			when(dvarString("error") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text("@APB_MESSAGE_" + dvarString("lang"))
+			textfont		UI_FONT_NORMAL
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			220 180 200 20
+			textalign		ITEM_ALIGN_LEFT
+			textscale		0.4
+			textaligny		20
+			textalignx		5
+			forecolor		1 1 1 1
+			visible			when(dvarString("error") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("error"))
+			textfont		UI_FONT_NORMAL
+			style			WINDOW_STYLE_EMPTY
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			220 200 190 50
+			textalign		ITEM_ALIGN_LEFT
+			textscale		0.25
+			textaligny		15
+			textalignx		5
+			forecolor		1 0 0 0.8
+			visible			when(dvarString("error") != "")
+			autowrapped
+			decoration
+		}
+		APBBUTTON_HIDDEN(290, 256, 60, "OK", setDvar error "", when(dvarString("error") != ""), "closeerror")
+	}
+}

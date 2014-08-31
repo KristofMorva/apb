@@ -1,0 +1,475 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+#define COL_CLAN 20
+#define COL_LEADER 100
+#define COL_TYPE 200
+#define COL_STATUS 300
+
+#define info(title, x) \
+itemDef \
+{ \
+	exp				text("@APB_"title"_" + dvarString("lang")) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	rect			20 37 398 14 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		x \
+	textaligny		12 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	visible			1 \
+	decoration \
+}
+
+#define clanInfo(id, var, cond, col) \
+itemDef \
+{ \
+	exp				text(var) \
+	style			WINDOW_STYLE_EMPTY \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	rect			19 (51 + id * 14) 398 14 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		col \
+	textaligny		14 \
+	textscale		0.25 \
+	forecolor		1 1 1 1 \
+	visible			when(cond) \
+	decoration \
+}
+
+#define clan(id) \
+itemDef \
+{ \
+	type		ITEM_TYPE_BUTTON \
+	style		WINDOW_STYLE_FILLED \
+	rect		20 (51 + id * 14) 398 14 0 0 \
+	backcolor	0.1 0.1 0.1 0.8 \
+	border		1 \
+	bordercolor	0 0 0 1 \
+	visible		when(dvarString("war" + id) != "") \
+	action \
+	{ \
+		play "mouse_click"; \
+		scriptMenuResponse id; \
+	} \
+} \
+clanInfo(id, dvarString("war" + id), dvarString("war" + id) != "", COL_CLAN) \
+clanInfo(id, dvarString("war" + id + "_leader"), dvarString("war" + id + "_leader") != "", COL_LEADER) \
+clanInfo(id, dvarString("war" + id + "_type"), dvarString("war" + id + "_type") != "", COL_TYPE) \
+clanInfo(id, "@APB_INMISSION_" + dvarString("war" + id + "_status") + "_" + dvarString("lang"), dvarString("war" + id + "_status") != "", COL_STATUS)
+
+#define lastTeam(id) \
+itemDef \
+{ \
+	exp				text(dvarString("stat_last_team" + id)) \
+	style			WINDOW_STYLE_EMPTY \
+	rect			294 (370 + id * 18) 162 18 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	textalign		ITEM_ALIGN_RIGHT \
+	textalignx		-3 \
+	textaligny		10 \
+	textscale		0.3 \
+	forecolor		0.9 0.9 0.9 1 \
+	visible			when(dvarInt("stat_last_type") > id) \
+	decoration \
+}
+
+#define lastEnemyTeam(id) \
+itemDef \
+{ \
+	exp				text(dvarString("stat_last_enemyteam" + id)) \
+	style			WINDOW_STYLE_EMPTY \
+	rect			456 (370 + id * 18) 162 18 0 0 \
+	textfont		UI_FONT_NORMAL \
+	textstyle		ITEM_TEXTSTYLE_SHADOWED \
+	textalign		ITEM_ALIGN_LEFT \
+	textalignx		3 \
+	textaligny		10 \
+	textscale		0.3 \
+	forecolor		0.9 0.9 0.9 1 \
+	visible			when(dvarInt("stat_last_type") > id) \
+	decoration \
+}
+
+#undef buttonAlign
+#define buttonAlign 0 0
+
+{
+	menuDef
+	{
+		name			"warzone"
+		rect			0 0 640 480
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		blurWorld		5
+		onOpen { scriptMenuResponse "setup" }
+		onESC { close self }
+		onClose { scriptMenuResponse "clear" }
+
+		// Background button blocker
+		itemDef
+		{
+			type		ITEM_TYPE_BUTTON
+			rect		0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			visible		1
+		}
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 35 600 425
+			backcolor		0.1 0.1 0.1 0.9
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			420 52 200 408
+			backcolor		0.1 0.1 0.1 0.75
+			visible			1
+			decoration
+		}
+
+		// Title
+		itemDef
+		{
+			exp				text("@APB_WARZONE_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			20 5 600 30
+			backcolor		0 0 0 0.9
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		32
+			textaligny		27
+			textscale		0.5
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			20 5 30 30
+			background		"social"
+			visible			1
+			decoration
+		}
+		closeButton(600, 5, 1, close self, ;)
+
+		// Columns
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 37 399 14
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		info("NAME", COL_CLAN)
+		info("LEADER", COL_LEADER)
+		info("TEAM", COL_TYPE)
+		info("STATUS", COL_STATUS)
+
+		// Error message
+		itemDef
+		{
+			exp			text(dvarString("error") + "!")
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWEDMORE
+			rect		20 61 400 12
+			textalign	ITEM_ALIGN_CENTER
+			textalignx	3
+			textaligny	12
+			textscale	0.3
+			forecolor	0.9 0.9 0.9 1
+			visible		when(dvarString("error") != "")
+			decoration
+		}
+
+		// Enemy clan groups
+		clan(0)
+		clan(1)
+		clan(2)
+		clan(3)
+		clan(4)
+		clan(5)
+		clan(6)
+		clan(7)
+		clan(8)
+		clan(9)
+		clan(10)
+		clan(11)
+		clan(12)
+		clan(13)
+		clan(14)
+		clan(15)
+
+		// Selection
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		20 0 398 14
+			exp			rect Y(52 + dvarInt("warid") * 14)
+			border		1
+			bordercolor	1 1 0 1
+			backcolor	1 1 0 0.1
+			visible		when(dvarString("warid") != "")
+			decoration
+		}
+
+		APBBUTTON(425, 40, 190, "CHALLENGE", scriptMenuResponse "challenge", when(dvarString("warid") == "" || dvarInt("war" + dvarString("warid") + "_status") == 1 || dvarInt("wartype") != dvarInt("war" + dvarString("warid") + "_type")), "challenge")
+		APBBUTTON_CMD(425, 65, 190, "REFRESH", scriptMenuResponse "setup", "refresh")
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			20 296 600 164
+			backcolor		0.05 0.05 0.05 0.9
+			visible			1
+			decoration
+		}
+
+		// Statistics
+		itemDef
+		{
+			exp				text("@APB_STATISTICS_" + dvarString("lang"))
+			style			WINDOW_STYLE_FILLED
+			rect			20 276 600 20
+			backcolor		0 0 0 1
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		4
+			textaligny		18
+			textscale		0.35
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		#define statRow(id, title, val) \
+		itemDef \
+		{ \
+			exp				text(locString("@APB_"title"_" + dvarString("lang")) + ": " + val) \
+			style			WINDOW_STYLE_EMPTY \
+			rect			20 (300 + id * 15) 200 15 0 0 \
+			textfont		UI_FONT_NORMAL \
+			textalign		ITEM_ALIGN_LEFT \
+			textalignx		5 \
+			textaligny		15 \
+			textscale		0.25 \
+			forecolor		0.9 0.9 0.9 1 \
+			visible			when(dvarString("stat_wars") != "") \
+			decoration \
+		}
+
+		statRow(0, "ALL", dvarString("stat_wars"))
+		statRow(1, "WON", dvarString("stat_won"))
+		statRow(2, "LOST", dvarString("stat_lost"))
+
+		// Ratio
+		/*itemDef
+		{
+			exp			text(int((dvarFloat("stat_won") / dvarFloat("stat_wars")) * 100) + "%")
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			rect		140 300 150 155
+			backcolor	0.15 0.15 0.15 1
+			border		1
+			bordercolor	0.2 0.2 0.2 1
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			textalign	ITEM_ALIGN_CENTER
+			textaligny	100
+			textscale	1
+			forecolor	0 1 0 1
+			visible		when(dvarString("stat_wars") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp			text(int((dvarFloat("stat_won") / dvarFloat("stat_wars")) * 100) + "%")
+			textfont	UI_FONT_NORMAL
+			rect		142 302 150 155
+			backcolor	0.15 0.15 0.15 1
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			textalign	ITEM_ALIGN_CENTER
+			textaligny	100
+			textscale	1
+			forecolor	1 0 0 1
+			exp			forecolor A(dvarFloat("stat_lost") / dvarFloat("stat_wars"))
+			visible		when(dvarString("stat_wars") != "")
+			decoration
+		}*/
+
+		// Last war
+		itemDef
+		{
+			exp				text("@APB_LAST_WAR_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			294 276 300 20
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		4
+			textaligny		18
+			textscale		0.35
+			forecolor		1 1 1 1
+			visible			when(dvarString("stat_wars") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp			text("@APB_NO_WARS_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		20 305 600 20
+			textalign	ITEM_ALIGN_CENTER
+			textaligny	12
+			textscale	0.3
+			forecolor	0.9 0.9 0.9 1
+			visible		when(dvarString("stat_wars") == "")
+			decoration
+		}
+
+		#define lastBack(id, col) \
+		itemDef \
+		{ \
+			exp				text(dvarString("stat_last_enemy")) \
+			style			WINDOW_STYLE_FILLED \
+			rect			294 296 324 162 0 0 \
+			textfont		UI_FONT_OBJECTIVE \
+			textstyle		ITEM_TEXTSTYLE_SHADOWED \
+			textalign		ITEM_ALIGN_CENTER \
+			textaligny		20 \
+			textscale		0.4 \
+			forecolor		0.9 0.9 0.9 1 \
+			background		"gradient_smooth" \
+			border			1 \
+			backcolor		col 1 \
+			bordercolor		0.15 0.15 0.15 1 \
+			visible			when(dvarString("stat_wars") != "" && dvarInt("stat_last_result") == id) \
+			decoration \
+		}
+
+		// Backgroud + enemy clan name
+		lastBack(0, 0.8 0 0)
+		lastBack(1, 0 0 0.8)
+		lastBack(2, 0 0.8 0)
+
+		itemDef
+		{
+			exp				text(dvarString("stat_last_time"))
+			style			WINDOW_STYLE_EMPTY
+			rect			294 318 324 10
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		10
+			textscale		0.2
+			forecolor		0.8 0.8 0.8 1
+			visible			when(dvarString("stat_wars") != "")
+			decoration
+		}
+		itemDef
+		{
+			exp				text(dvarString("stat_last_type") + "v" + dvarString("stat_last_type"))
+			style			WINDOW_STYLE_EMPTY
+			rect			294 328 324 10
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textalign		ITEM_ALIGN_CENTER
+			textaligny		10
+			textscale		0.2
+			forecolor		0.5 0.5 0.5 1
+			visible			when(dvarString("stat_wars") != "")
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			294 347 324 0.5
+			background		"line_horizontal"
+			forecolor		1 1 1 0.85
+			visible			when(dvarString("stat_wars") != "")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			294 348 324 12
+			background		"line_horizontal"
+			forecolor		0.5 0.5 0.5 0.8
+			visible			when(dvarString("stat_wars") != "")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			294 361 324 0.5
+			background		"line_horizontal"
+			forecolor		1 1 1 0.85
+			visible			when(dvarString("stat_wars") != "")
+			decoration
+		}
+
+		// Team
+		itemDef
+		{
+			exp				text("@APB_TEAM_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			294 350 162 18
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textalign		ITEM_ALIGN_RIGHT
+			textalignx		-3
+			textaligny		10
+			textscale		0.3
+			forecolor		1 1 1 1
+			visible			when(dvarString("stat_wars") != "")
+			decoration
+		}
+		lastTeam(0)
+		lastTeam(1)
+		lastTeam(2)
+		lastTeam(3)
+
+		// Opponent team
+		itemDef
+		{
+			exp				text("@APB_OPPONENT_" + dvarString("lang"))
+			style			WINDOW_STYLE_EMPTY
+			rect			456 350 162 18 0 0
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textalign		ITEM_ALIGN_LEFT
+			textalignx		3
+			textaligny		10
+			textscale		0.3
+			forecolor		1 1 1 1
+			visible			when(dvarString("stat_wars") != "")
+			decoration
+		}
+		lastEnemyTeam(0)
+		lastEnemyTeam(1)
+		lastEnemyTeam(2)
+		lastEnemyTeam(3)
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			455.5 340 1 115
+			background		"line_vertical"
+			forecolor		0.75 0.75 0.75 0.9
+			visible			when(dvarString("stat_wars") != "")
+			decoration
+		}
+	}
+}

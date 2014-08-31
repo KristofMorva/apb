@@ -1,0 +1,8 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+{
+	menuDef
+	{
+		APBPOPUP_INPUT("group", "INVITE", "@APB_INVITE_DESC_" + dvarString("lang"), "PLAYERNAME", "invite")
+	}
+}

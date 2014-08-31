@@ -1,0 +1,9 @@
+id,model,price,name
+hat1,helmet_sp_arab_regular_asad,1000,arab1
+hat2,helmet_sp_arab_regular_sadiq,1000,arab2
+hat3,helmet_classy,15000,classy
+hat4,helmet_cowboy,30000,cowboy
+hat5,helmet_glory,0,glory
+hatcount,5
+bpcount,0
+misccount,0

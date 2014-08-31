@@ -1,0 +1,284 @@
+#include "ui/menudef.h"
+
+#define role(index, title) \
+itemDef \
+{ \
+	style		WINDOW_STYLE_FILLED \
+	rect		50 (50 + 35 * index) 300 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	backcolor	0.8 0.8 0 1 \
+	visible		when(dvarString("progress") == "role" && dvarString("weaponid") == title) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp			text("@APB_ROLE_"title"_" + dvarString("lang")) \
+	type		ITEM_TYPE_BUTTON \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		50 (50 + 35 * index) 298 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textscale	0.4 \
+	textaligny	18 \
+	textalignx	35 \
+	forecolor	0.8 0.8 0.8 1 \
+	backcolor	0.1 0.1 0.1 1 \
+	border		1 \
+	bordercolor	0.15 0.15 0.15 1 \
+	visible		when(dvarString("progress") == "role") \
+	mouseEnter { play "mouse_over" } \
+	action \
+	{ \
+		play "mouse_click"; \
+		scriptMenuResponse title; \
+	} \
+} \
+itemDef \
+{ \
+	exp			text(dvarString("role_" + title + "_rank_display")) \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		50 (50 + 35 * index) 298 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textscale	0.2 \
+	textaligny	28 \
+	textalignx	37 \
+	forecolor	0.5 0.5 0.5 1 \
+	visible		when(dvarString("progress") == "role") \
+	decoration \
+} \
+itemDef \
+{ \
+	exp			text(dvarString("role_" + title)) \
+	textfont	UI_FONT_OBJECTIVE \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_NORMAL \
+	rect		50 (50 + 35 * index) 300 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_RIGHT \
+	textscale	0.4 \
+	textaligny	26 \
+	textalignx	-8 \
+	forecolor	1 1 1 1 \
+	visible		when(dvarString("progress") == "role") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			52 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp material	(tableLookup("mp/roleTable.csv", 0, index, 2)) \
+	visible			when(dvarString("progress") == "role" && dvarBool("role_" + title + "_rank")) \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			52 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"locked" \
+	visible			when(dvarString("progress") == "role" && !dvarBool("role_" + title + "_rank")) \
+	decoration \
+}
+
+#define achievement(index, title) \
+itemDef \
+{ \
+	style		WINDOW_STYLE_FILLED \
+	rect		50 (50 + 35 * index) 300 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	backcolor	0.8 0.8 0 1 \
+	visible		when(dvarString("progress") == "achievement" && dvarString("weaponid") == title) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp			text("@APB_ACHIEVEMENT_"title"_" + dvarString("lang")) \
+	type		ITEM_TYPE_BUTTON \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		50 (50 + 35 * index) 298 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textscale	0.4 \
+	textaligny	23 \
+	textalignx	35 \
+	forecolor	0.8 0.8 0.8 1 \
+	backcolor	0.1 0.1 0.1 1 \
+	border		1 \
+	bordercolor	0.15 0.15 0.15 1 \
+	visible		when(dvarString("progress") == "achievement") \
+	mouseEnter { play "mouse_over" } \
+	action \
+	{ \
+		play "mouse_click"; \
+		scriptMenuResponse title; \
+	} \
+} \
+itemDef \
+{ \
+	exp			text(dvarString("achievement_" + title + "_progress")) \
+	textfont	UI_FONT_OBJECTIVE \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_NORMAL \
+	rect		50 (50 + 35 * index) 300 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_RIGHT \
+	textscale	0.4 \
+	textaligny	26 \
+	textalignx	-8 \
+	forecolor	1 1 1 1 \
+	visible		when(dvarString("progress") == "achievement" && dvarString("achievement_" + title + "_progress") != "") \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			52 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	exp material	("achievement_"title) \
+	visible			when(dvarString("progress") == "achievement" && dvarBool("achievement_" + title)) \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			52 (52 + 35 * index) 28 28 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	background		"locked" \
+	visible			when(dvarString("progress") == "achievement" && !dvarBool("achievement_" + title)) \
+	decoration \
+}
+
+{
+	menuDef
+	{
+		name			"progress"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		1 1 1 1
+		blurWorld		4
+		style			WINDOW_STYLE_EMPTY
+		onESC { close self }
+		onClose	{ scriptMenuResponse "close" }
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0 0 0 0.8
+			visible			1
+			decoration
+		}
+
+		// List background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			45 45 310 425 0 0
+			backcolor		0.15 0.15 0.15 0.8
+			visible			1
+			decoration
+		}
+
+		#include "ui_mp/items.inc"
+
+		// Details
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			355 45 240 32 0 0
+			backcolor		0 0 0 1
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp			text("@APB_" + dvarString("progress") + "_" + dvarString("weaponid") + "_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			textalignx	5
+			textaligny	28
+			rect		390 45 1 32
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.5
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			355 47 32 32
+			exp material	(tableLookup("mp/roleTable.csv", 1, dvarString("weaponid"), 2))
+			visible			when(dvarString("progress") == "role")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			355 47 32 32
+			exp material	("achievement_" + dvarString("weaponid"))
+			visible			when(dvarString("progress") == "achievement")
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			355 80 240 390
+			backcolor		0.1 0.1 0.1 0.8
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp			text("@APB_DESCRIPTION_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		355 85 1 1
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.25
+			textaligny	12
+			textalignx	2
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			exp			text("@APB_" + dvarString("progress") + "_" + dvarString("weaponid") + "_DESC_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		355 100 240 1
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.25
+			textaligny	12
+			textalignx	2
+			forecolor	0.6 0.6 0.6 1
+			visible		1
+			autowrapped
+			decoration
+		}
+
+		role(0, "RIFLE")
+		role(1, "MACHINEGUN")
+		role(2, "PISTOL")
+		role(3, "SNIPER")
+		role(4, "MARKSMAN")
+		role(5, "SHOTGUN")
+		role(6, "ROCKET")
+		role(7, "GRENADE")
+		role(8, "NONLETHAL")
+
+		achievement(0, "hitman")
+		achievement(1, "medal")
+		achievement(2, "sprint")
+		achievement(3, "assist")
+		achievement(4, "veteran")
+		achievement(5, "health")
+		achievement(6, "prestige")
+		achievement(7, "backup")
+		achievement(8, "gold")
+		achievement(9, "groups")
+		achievement(10, "mission")
+		achievement(11, "items")
+	}
+}

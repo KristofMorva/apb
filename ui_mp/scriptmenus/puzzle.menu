@@ -1,0 +1,152 @@
+#include "ui/menudef.h"
+
+{
+	menuDef
+	{
+		name			puzzle
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		COLOR_FOCUSED
+		onClose			{ scriptMenuResponse "close" }
+
+		itemDef
+		{
+			style		WINDOW_STYLE_SHADER
+			rect		0 0 640 480
+			background	"puzzle"
+			visible		1
+			decoration
+		}
+
+		/*itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		120 80 400 320
+			backcolor	0.1 0.1 0.1 1
+			visible		1
+			decoration
+		}
+
+		// Cols
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		240 80 1 320
+			backcolor	0.2 0.2 0.2 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		320 80 1 320
+			backcolor	0.2 0.2 0.2 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		400 80 1 320
+			backcolor	0.2 0.2 0.2 1
+			visible		1
+			decoration
+		}
+
+		// Rows
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		120 200 400 1
+			backcolor	0.2 0.2 0.2 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		120 280 400 1
+			backcolor	0.2 0.2 0.2 1
+			visible		1
+			decoration
+		}*/
+
+		// 80 step = 1 second, 12 is 150 * 0.08, where 150 is 3 * 50 of three server frame time (0.15)
+		#define tvar(id, t) dvarInt("temp" + id + "_type"t)
+		#define t(id) ((milliseconds() - (dvarInt("time_start") + tvar(id, "5"))) * 0.08 + 12)
+
+		#define bit(id) \
+		itemDef \
+		{ \
+			style		WINDOW_STYLE_FILLED \
+			rect		0 0 8 8 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp			rect X(116 + tvar(id, "") + tvar(id, "3") * tvar(id, "4") * t(id)) \
+			exp			rect Y(76 + tvar(id, "2") + (1 - tvar(id, "3")) * tvar(id, "4") * t(id)) \
+			background	"choose" \
+			backcolor	0.5 0.5 1 1 \
+			visible		when(tvar(id, "4") != 0 && dvarString("temp_type") == "") \
+			decoration \
+		}
+
+		bit(0)
+		bit(1)
+		bit(2)
+		bit(3)
+		bit(4)
+		bit(5)
+		bit(6)
+		bit(7)
+		bit(8)
+		bit(9)
+		bit(10)
+		bit(11)
+
+		// Nodes ~	Meg ne próbálj zárójelet törölni, mert a CoD nem tud számolni!
+		//			És igen, hagyd ott az int()-et ahová amúgy kurvára nem kéne mert különben összebugol!
+		#define var(id) dvarInt("temp" + id)
+		#define node(id) \
+		itemDef \
+		{ \
+			style		WINDOW_STYLE_SHADER \
+			rect		0 0 32 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+			exp			rect X(((224 + int(var(id) / 3) * 80) * (1 - int(var(id) / 9))) + ((184 + (((var(id) - 9) % 4) * 80)) * int(var(id) / 9))) \
+			exp			rect Y(((144 + (var(id) % 3) * 80) * (1 - int(var(id) / 9))) + ((184 + int(int((var(id) - 9) / 4) * 80)) * int(var(id) / 9))) \
+			exp			material("conn" + dvarString("temp")) \
+			visible		when(var(id) >= 0) \
+			decoration \
+		}
+
+		node(0)
+		node(1)
+		node(2)
+		node(3)
+		node(4)
+		node(5)
+		node(6)
+		node(7)
+		node(8)
+
+		#undef var
+		#define var(id) dvarInt("temp_type")
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		0 0 32 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			exp			rect X(((224 + int(var(id) / 3) * 80) * (1 - int(var(id) / 9))) + ((184 + (((var(id) - 9) % 4) * 80)) * int(var(id) / 9)))
+			exp			rect Y(((144 + (var(id) % 3) * 80) * (1 - int(var(id) / 9))) + ((184 + int(int((var(id) - 9) / 4) * 80)) * int(var(id) / 9)))
+			exp			material("conn" + dvarString("temp"))
+			backcolor	1 0 0 1
+			visible		when(dvarString("temp_type") != "")
+			decoration
+		}
+
+		// Switch connectors
+		itemDef
+		{
+			type		ITEM_TYPE_BUTTON
+			style		WINDOW_STYLE_FILLED
+			rect		0 0 640 480
+			visible		1
+			action		{ scriptMenuResponse "turn" }
+		}
+	}
+}

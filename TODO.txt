@@ -1,0 +1,996 @@
+﻿BOTOK NEM TUDNAK LESPAWNOLNI!!!!!!!
+
+////////////////////////
+// APB MOD TO-DO LIST //
+// Begin: 2012.06.15. //
+////////////////////////
+
+[×] Trains can hit players
+[×] Improved admin panel
+[×] Improved premium codes
+[×] Respawn map is now dynamic
+[-] Script improvements and fixes
+
+iCore
+------
+Auto-login if changed server with sth current checksum
+Chattime setting?
+3D login background?
+Missions (ie covering tank)
+Buying/changing/deleting errors (modifier, etc)
+Security: Quitting menus -> self.weaponid = undefined;
+Password hashing (SHA256 in new 1.7 server)?
+Weapon & Player mods
+No sv_pure -> Music IWD? Maybe by sending fake info about it.
+Cycling (hitloc mod)?
+MySQL multi-master communication with Tungsten: http://scale-out-blog.blogspot.hu/2012/04/if-you-must-deploy-multi-master.html
+Tools
+Premium items (hats/weapons/mods)
+Big map (with vendors)
+Vendors on radar
+Login reward
+Extend "testreszabás" menu (maybe the extra shadow)
+Optimize ratings and roles needed for items
+Marketplace (trading)
+Admin commands
+Overbind buttons (like U, M, etc)
+More differences in factions (ie looting)
+Send attachment in messages
+
+R3B0RN
+-------
+Sapikat jó helyre tenni
+Hats/miscs/backpacks
+Train: Replace textures of the model, sounds
+Waterfront:	finish, portals, lightgrid, locations, errlog, fxs, lookout image
+Social:	caulking, errlog
+
+Wilson
+-------
+Playermodels
+Custom background images (1024x768)
+
+NEEDED
+-------
+Bold font
+Animations
+
+AGAINST LIMITS
+---------------
+More languages: Create stringtable and select from dat
+Remove: RewardReceivedCamo sound, NEWCAMO_TITLE_, NEWCAMO_DESC_, newcamo material+image
+Material, image, model: Delete all metro textures. Check for duplicated ones when they are listed after crash and ignore them with -mod.csv (if we don't want to overwrite the original one certainly), delete some from the map if possible, and check the mod for useless ones (for example replace "mvp" material ("found" mixMenu) with something else, and make dress prefab less detailed). Also backgrounds can be merged, and many map textures too, which are not repeating and not using normal/etc maps
+Localized string: MOD_MODNAME_DESC2_LANG into MOD_MODNAME_DESC1_LANG (with \n) + set level.s in dvars where possible
+Memory: Theme.mp3 + Seek
+Stringtable: Hardcode some of the current ones in script (which are not needed in menus)
+g_findConfigstringIndex(309):overflow: move deadfeed into hud.menu (then no transition)
+Bit based numbers (hats, symbols, etc): Define bit functions, which are also handling the signal (It makes 2n+1 combinations)
+
+SERVERFILE
+-----------
+- Crash callback
+- MySQL
+- Slide down from others' head
+- In-game voice
+- Prevent loading other FastFiles on the client (1.8)
+
+TRANSLATORS
+------------
+Polish: HeavyGunz™ Etheross (etheross)
+Turkish: crime time
+Croatian: jerkan
+German: LineX Viking + DafuxzR (08015)
+
+
+
+// SQL will be better than MasterServers due to packet losing
+
+/*// ---------------------------------- //
+// sv_main.c
+// ---------------------------------- //
+Function "SV_MasterHeartbeat" (Line 888):
+	// APB
+	int from;
+	int to;
+	if (svse.forced && svs.time >= svse.nextHeartbeatTime) {
+		// "master2" is the 1st element
+		from = svse.forced + 1;
+		to = from + 1;
+	}
+	else {
+		// Do it when not forced, or if we should update all of them anyways
+		from = 0;
+		to = MAX_MASTER_SERVERS;
+	}
+
+	svse.forced = 0;
+	svse.nextHeartbeatTime = svs.time + HEARTBEAT_MSEC;
+
+	// send to group masters
+	for (i = from; i < to; i++) // APB
+
+
+Function "SV_InitCallback" (Line 153):
+	svse.forced = 0; // APB
+
+// ---------------------------------- //
+// server.h
+// ---------------------------------- //
+Under "int		nextHeartbeatTime;" (Line 310):
+	int		forced;*/
+
+
+// ---------------------------------- //
+// scr_vm_main.h
+// ---------------------------------- //
+{"sql_init", GScr_SqlInit, 0},
+{"sql_run", GScr_SqlRun, 0},
+{"sql_reset", GScr_SqlReset, 0},
+{"sql_fetch", GScr_SqlFetch, 0},
+{"sql_query", GScr_SqlQuery, 0},
+{"sql_query_first", GScr_SqlQueryFirst, 0},
+{"sql_exec", GScr_SqlExec, 0},
+{"sql_escape", GScr_SqlEscape, 0},
+{"clearconfigstring", GScr_ClearConfigstring, 0},
+{"firstconfigstring", GScr_FirstConfigstring, 0},
+{"setconfigstring", GScr_SetConfigstring, 0},
+{"pow", GScr_Pow, 0},
+{"distance2dsquared", GScr_Distance2DSquared, 0},
+{"unixtostring", GScr_UnixToString, 0},
+{"stripcolors", GScr_StripColors, 0},
+{"validname", GScr_ValidName, 0},
+//{"initservers", GScr_InitServers, 0},
+//{"getservers", GScr_GetServers, 0},
+//{"heartbeat", GScr_HeartBeat, 0},
+
+// ---------------------------------- //
+// scr_vm_functions.c
+// ---------------------------------- //
+#include <math.h>
+#include <arpa/inet.h> 
+
+/*
+============
+Global variables and functions for the SQL system.
+============
+*/
+
+struct substr_s
+{
+	char* str;
+	struct substr_s* next;
+};
+
+typedef struct substr_s substr;
+
+struct result_s
+{
+	substr* data;
+	substr* current;
+};
+
+typedef struct result_s result;
+
+int UdpSocket;
+struct sockaddr_in UdpAddr;
+int UdpInitDone = 0;
+
+result* results[64];
+
+void free_substr(substr* pos)
+{
+	substr* current = pos;
+	substr* temp;
+	
+	while (current)
+	{
+		temp = current;
+		current = temp->next;
+		free(temp->str);
+		free(temp);
+	}
+}
+
+substr* split_c(char* str, char del, int* count)
+{
+	substr* temp;
+	substr* current;
+	substr* result = NULL;
+	
+	int pos = -1;
+	int len = strlen(str);
+	int i;
+
+	*count = 0;
+	
+	for (i = 0; i <= len; ++i)
+	{
+		if (i == len || str[i] == del)
+		{
+			int strLen = i - pos;
+			current = (substr*)malloc(sizeof(substr));
+			current->str = (char*)malloc(strLen);
+			memcpy(current->str, str + pos + 1, strLen - 1);
+			current->str[strLen - 1] = 0x0;
+			current->next = NULL;
+			if (result) temp->next = current;
+			else result = current;
+			temp = current;
+			pos = i;
+			++(*count);
+		}
+	}
+
+	return result;
+}
+
+substr* split(char* str, char del)
+{
+	int i;
+	return split_c(str, del, &i);
+}
+
+void sql_send(char leading)
+{
+	if (!UdpInitDone)
+	{
+		Scr_Error("SQL system is not yet initialized. Please use \"sql_init(<address>, <port>)\" to do so.\n");
+		return;
+	}
+	
+	socklen_t addrLen = sizeof(UdpAddr);
+	
+	char* str = Scr_GetString(0);
+	
+	char* buf = malloc(strlen(str) + 2);
+	buf[0] = leading;
+	memcpy(buf + 1, str, strlen(str) + 1);
+	if (sendto(UdpSocket, buf, strlen(buf), 0, (struct sockaddr*)&UdpAddr, addrLen) == -1)
+	{
+		Com_PrintError("Could not send UDP message: %s\n", buf);
+		Scr_AddBool(qfalse);
+		return;
+	}
+	Com_Printf("^5SQL message sent: ^7%s\n", buf);
+	free(buf);
+}
+
+substr* sql_receive()
+{
+	socklen_t addrLen = sizeof(UdpAddr);
+	
+	char RecvBuf[8192];
+	memset(RecvBuf, 0, 8192);
+	if (recvfrom(UdpSocket, RecvBuf, 8192, 0, (struct sockaddr*)&UdpAddr, &addrLen) == -1)
+	{
+		Com_PrintError("Could not receive packet\n");
+		return NULL;
+	}
+	
+	Com_Printf("^5SQL response received: ^7%s\n", RecvBuf);
+	
+	return strlen(RecvBuf + 1) ? split(RecvBuf + 1, 0x1E) : NULL;
+}
+
+/*
+============
+GScr_SqlInit
+
+Description: This function initializes the SQL system.
+Returns: True if the system has been successfully initialized, otherwise false.
+Usage: bool = sql_init(string <address>, int <port>)
+============
+*/
+
+void GScr_SqlInit()
+{
+	if (UdpInitDone)
+	{
+		Scr_Error("SQL system is already initialized.\n");
+		return;
+	}
+	
+	if (Scr_GetNumParam() != 2)
+	{
+		Scr_Error("Usage: sql_init(<address>, <port>)\n");
+		return;
+	}
+	
+	if ((UdpSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1) {
+		Com_PrintError("Could not create socket\n");
+		Scr_AddBool(qfalse);
+		return;
+	}
+	
+	bzero(&UdpAddr, sizeof(UdpAddr));
+	
+	UdpAddr.sin_family = AF_INET;
+	UdpAddr.sin_port = htons(Scr_GetInt(1));
+	
+	if (inet_aton(Scr_GetString(0), &UdpAddr.sin_addr) == 0)
+	{
+		Scr_Error("Invalid address\n");
+		return;
+	}
+	
+	Com_Printf("^5SQL system initialized\n");
+	UdpInitDone = 1;
+	Scr_AddBool(qtrue);
+}
+
+/*
+============
+GScr_SqlRun
+
+Description: This function checks, in the UDP message system is already running.
+Usage: bool = sql_run()
+============
+*/
+
+void GScr_SqlRun()
+{
+	if (Scr_GetNumParam())
+	{
+		Scr_Error("Usage: sql_run()\n");
+		return;
+	}
+
+	Scr_AddBool(UdpInitDone);
+}
+
+/*
+============
+GScr_SqlReset
+
+Description: This function resets the UDP message system.
+Usage: void = sql_reset()
+============
+*/
+
+void GScr_SqlReset()
+{
+	if (Scr_GetNumParam())
+	{
+		Scr_Error("Usage: udp_reset()\n");
+		return;
+	}
+	
+	if (!UdpInitDone)
+	{
+		Scr_Error("UDP system is not yet initialized.\n");
+		return;
+	}
+	
+	Com_Printf("^5UDP system reset\n");
+	close(UdpSocket);
+	UdpInitDone = 0;
+}
+
+/*
+============
+GScr_SqlFetch
+
+Description: This function fetches the next record from an SQL query.
+Returns: The record as an array of strings.
+Usage: array = sql_fetch(int <id>)
+============
+*/
+
+void GScr_SqlFetch()
+{	
+	if (Scr_GetNumParam() != 1)
+	{
+		Scr_Error("Usage: sql_fetch(<id>)\n");
+		return;
+	}
+	
+	int id = Scr_GetInt(0);
+	result* res = results[id];
+
+	// Two return Separated by iCore
+	// No idea how should be handled properly!
+	if (!res)
+		return;
+
+	if (!res->data)
+	{
+		free(res);
+		results[id] = NULL;
+		return;
+	}
+
+	if (res->current)
+	{
+		substr* record = split(res->current->str, 0x1F);
+		substr* temp_record = record;
+		
+		Scr_MakeArray();
+		
+		while (temp_record)
+		{
+			Scr_AddString(temp_record->str);
+			Scr_AddArray();
+			temp_record = temp_record->next;
+		}
+		
+		free_substr(record);
+		res->current = res->current->next;
+	}
+	
+	if (!res->current)
+	{
+		free_substr(res->data);
+		free(res);
+		results[id] = NULL;
+	}
+}
+
+/*
+============
+GScr_SqlQuery
+
+Description: This function sends an SQL query and waits for the response.
+Returns: True if the query has been executed succesfully, false if an error has occured.
+Usage: bool = sql_query(string <message>)
+============
+*/
+
+void GScr_SqlQuery()
+{	
+	if (Scr_GetNumParam() != 1)
+	{
+		Scr_Error("Usage: sql_query(<message>)\n");
+		return;
+	}
+	
+	int i;
+	for (i = 0; i < 64; i++)
+	{
+		if (!results[i])
+		{
+			results[i] = (result*)malloc(sizeof(result));
+			break;
+		}
+	}
+	
+	if (i == 64)
+	{
+		Scr_Error("SQL query overflow (64)\n");
+		return;
+	}
+	
+	sql_send(0x11);
+	results[i]->data = sql_receive();
+	results[i]->current = results[i]->data;
+	Scr_AddInt(i);
+}
+
+/*
+============
+GScr_SqlQueryFirst
+
+Description: This function sends an SQL query and waits for the response.
+Returns: The first column of the first record.
+Usage: string = sql_query_first(string <message>)
+============
+*/
+
+void GScr_SqlQueryFirst()
+{
+	if (Scr_GetNumParam() != 1)
+	{
+		Scr_Error("Usage: sql_query_first(<message>)\n");
+		return;
+	}
+	
+	sql_send(0x11);
+	substr* str = sql_receive();
+	if (str)
+	{
+		Scr_AddString(str->str);
+		free(str);
+	}
+}
+
+/*
+============
+GScr_SqlExec
+
+Description: This function sends an SQL command.
+Returns: True if the query has been executed succesfully, false if an error has occured.
+Usage: bool = sql_exec(string <message>)
+============
+*/
+
+void GScr_SqlExec()
+{
+	if (Scr_GetNumParam() != 1)
+	{
+		Scr_Error("Usage: sql_exec(<message>)\n");
+		return;
+	}
+	
+	sql_send(0x12);
+	Scr_AddBool(qtrue);
+}
+
+/*
+============
+GScr_SqlEscape
+
+Description: Escapes the apostrophes in the given string.
+Returns: The resulting string.
+Usage: string = sql_escape(string <message>)
+============
+*/
+
+void GScr_SqlEscape()
+{
+	if (Scr_GetNumParam() != 1)
+	{
+		Scr_Error("Usage: sql_escape(<message>)\n");
+		return;
+	}
+	
+	char* str = Scr_GetString(0);
+
+	int count;
+	int offset = 0;
+
+	substr* pieces = split_c(str, '\'', &count);
+
+	char* new_str = (char*)malloc(strlen(str) + count + 1);
+	
+	substr* current = pieces;
+	while (current)
+	{
+		int len = strlen(current->str);
+
+		memcpy(new_str + offset, current->str, len);
+		offset += len;
+
+		current = current->next;
+
+		if (current)
+		{
+			new_str[offset] = new_str[offset + 1] = '\'';
+			offset += 2;
+		}
+	}
+
+	new_str[offset] = 0x0;
+
+	Scr_AddString(new_str);
+}
+
+/*
+============
+GScr_ClearConfigstring
+
+It removes the given sound configstring
+============
+*/
+
+void GScr_ClearConfigstring() {
+    if(Scr_GetNumParam() != 1) {
+        Scr_Error("Usage: ClearConfigstring(<string>)");
+    }
+    char* name = Scr_GetString(0);
+
+    char s[MAX_STRING_CHARS];
+    int i;
+
+	for (i = 1343; i < 1599; i++) {
+		SV_GetConfigstring(i, s, sizeof(s));
+		if ( !s[0] ) {
+			return;
+		}
+		if ( !strcmp( s, name ) ) {
+			break;
+		}
+	}
+	SV_SetConfigstring(i, "");
+}
+
+/*
+============
+GScr_FirstConfigstring
+
+Returns the first available sound configstring
+============
+*/
+
+void GScr_FirstConfigstring() {
+	char s[MAX_STRING_CHARS];
+	int i;
+	
+	for (i = 1343; i < 1599; i++) {
+		SV_GetConfigstring(i, s, sizeof(s));
+		if ( !s[0] ) {
+			break;
+		}
+	}
+	
+	Scr_AddInt(i);
+}
+
+/*
+============
+GScr_SetConfigstring
+
+Sets the given sound configstring
+============
+*/
+
+void GScr_SetConfigstring() {
+    if(Scr_GetNumParam() != 2) {
+        Scr_Error("Usage: SetConfigstring(<int>, <string>)");
+    }
+    int id = Scr_GetInt(0);
+    char* value = Scr_GetString(1);
+
+	SV_SetConfigstring(id, value);
+}
+
+/*
+============
+GScr_Pow
+
+Description: Get the nth power of a number.
+Returns: The nth power of the given number, where the number is the first, and the "n" is the second parameter.
+Usage: float pow(float <base>, float <exp>)
+============
+*/
+
+void GScr_Pow() {
+    if (Scr_GetNumParam() != 2)
+    {
+        Scr_Error("Usage: pow(<float>, <float>)\n");
+        return;
+    }
+	
+    Scr_AddFloat(powf(Scr_GetFloat(0), Scr_GetFloat(1)));
+}
+
+/*
+============
+GScr_Distance2DSquared
+
+Description: Calculate the squared distance between two points.
+Returns: The squared distance between (x, y) and (x2, y2).
+Usage: float distance(float <x>, float <y>, float <x2>, float <y2>)
+============
+*/
+
+void GScr_Distance2DSquared()
+{
+    if (Scr_GetNumParam() != 4)
+    {
+        Scr_Error("Usage: distance2DSquared(<float>, <float>, <float>, <float>)\n");
+        return;
+    }
+
+	Scr_AddFloat(powf(Scr_GetFloat(0) - Scr_GetFloat(2), 2) + powf(Scr_GetFloat(1) - Scr_GetFloat(3), 2));
+}
+
+/*
+============
+GScr_UnixToString
+
+Converts a UNIX time to string in "Date Time" format (instead of "Time Date").
+Usage: string = TimeToString(int <realtime>, int <formattype>)
+============
+Format types time:
+0    none
+1    HH:MM 12 hours
+2    HH.MM 12 hours
+3    HH:MM 24 hours
+4    HH.MM 24 hours
+5    HH:MM:SS 12 hours
+6    HH.MM.SS 12 hours
+7    HH:MM:SS 24 hours
+8    HH.MM.SS 24 hours
+
+Format types date:
+0    none
+1    DD.MM.YY
+2    DD.MM.YYYY
+3    MM.DD.YY
+4    MM.DD.YYYY
+5    MM/DD/YY
+6    MM/DD/YYYY
+7    DD.MM
+8    MM/DD
+*/
+
+void GScr_UnixToString() {
+    char timestring[40];
+    struct tm *time_s;
+    int remaining;
+    char* datestring;
+    int datetype;
+    int timetype;
+    int len = 0;
+
+    if(Scr_GetNumParam() != 3){
+        Scr_Error("Usage: TimeToString(<realtime>, <timeformattype>, <dateformattype>)\n");
+    }
+    time_t time = Scr_GetInt(0) + 1325376000;
+    datetype = Scr_GetInt(2);
+    timetype = Scr_GetInt(1);
+
+    time_s = gmtime( &time );
+
+    switch(datetype)
+    {
+    case 1:
+        Com_sprintf(timestring, sizeof(timestring), "%02i.%02i.%i", time_s->tm_mday, time_s->tm_mon + 1, time_s->tm_year % 100);
+    break;
+    case 2:
+        Com_sprintf(timestring, sizeof(timestring), "%02i.%02i.%i", time_s->tm_mday, time_s->tm_mon + 1, time_s->tm_year + 1900);
+    break;
+    case 3:
+        Com_sprintf(timestring, sizeof(timestring), "%02i.%02i.%i", time_s->tm_mon + 1, time_s->tm_mday,  time_s->tm_year % 100);
+    break;
+    case 4:
+        Com_sprintf(timestring, sizeof(timestring), "%02i.%02i.%i", time_s->tm_mon + 1, time_s->tm_mday, time_s->tm_year + 1900);
+    break;
+    case 5:
+        Com_sprintf(timestring, sizeof(timestring), "%02i/%02i/%i", time_s->tm_mon + 1, time_s->tm_mday,  time_s->tm_year % 100);
+    break;
+    case 6:
+        Com_sprintf(timestring, sizeof(timestring), "%02i/%02i/%i", time_s->tm_mon + 1, time_s->tm_mday, time_s->tm_year + 1900);
+    break;
+    case 7:
+        Com_sprintf(timestring, sizeof(timestring), "%02i.%02i", time_s->tm_mday, time_s->tm_mon + 1);
+    break;
+    case 8:
+        Com_sprintf(timestring, sizeof(timestring), "%02i/%02i", time_s->tm_mon + 1, time_s->tm_mday);
+    break;
+    case 9:
+        Com_sprintf(timestring, sizeof(timestring), "%i.%02i.%02i", time_s->tm_year % 100, time_s->tm_mon + 1, time_s->tm_mday);
+    break;
+    case 10:
+        Com_sprintf(timestring, sizeof(timestring), "%i.%02i.%02i", time_s->tm_year + 1900, time_s->tm_mon + 1, time_s->tm_mday);
+    break;
+    case 11:
+        Com_sprintf(timestring, sizeof(timestring), "%i-%02i-%02i", time_s->tm_year + 1900, time_s->tm_mon + 1, time_s->tm_mday);
+    break;
+    default:
+        goto skipspacer;
+    }
+
+    len = strlen(timestring);
+
+    timestring[len] = ' ';
+    len++;
+    timestring[len] = 0;
+
+
+    skipspacer:
+   
+    remaining = sizeof(timestring) - len;
+    datestring = &timestring[len];
+
+    switch(timetype)
+    {
+    case 1:
+        Com_sprintf(datestring, remaining, "%i:%02i", time_s->tm_hour % 12, time_s->tm_min);
+    break;
+    case 2:
+        Com_sprintf(datestring, remaining, "%i.%02i", time_s->tm_hour % 12, time_s->tm_min);
+    break;
+    case 3:
+        Com_sprintf(datestring, remaining, "%02i:%02i", time_s->tm_hour, time_s->tm_min);
+    break;
+    case 4:
+        Com_sprintf(datestring, remaining, "%02i.%02i", time_s->tm_hour, time_s->tm_min);
+    break;
+    case 5:
+        Com_sprintf(datestring, remaining, "%i:%02i:%02i", time_s->tm_hour % 12, time_s->tm_min, time_s->tm_sec);
+    break;
+    case 6:
+        Com_sprintf(datestring, remaining, "%i.%02i.%02i", time_s->tm_hour % 12, time_s->tm_min, time_s->tm_sec);
+    break;
+    case 7:
+        Com_sprintf(datestring, remaining, "%02i:%02i:%02i", time_s->tm_hour, time_s->tm_min, time_s->tm_sec);
+    break;
+    case 8:
+        Com_sprintf(datestring, remaining, "%02i.%02i.%02i", time_s->tm_hour, time_s->tm_min, time_s->tm_sec);
+    break;
+    }
+
+    Scr_AddString(timestring);
+}
+
+
+/*
+============
+GScr_StripColors
+
+Directly cleans the given string from all colorscodes.
+Usage: void = StripColors(string <string>);
+============
+*/
+
+void GScr_StripColors() {
+
+    char buffer[2048];
+
+    if (Scr_GetNumParam() != 1) {
+        Scr_Error("Usage: StrColorStrip(<string>)\n");
+    }
+
+    char* string = Scr_GetString(0);
+
+    int i;
+
+    Q_strncpyz(buffer, string, sizeof(buffer));
+
+    for (i = 1; buffer[i]; i++) {
+        if (buffer[i - 1] == '^' && buffer[i] >= '0' && buffer[i] <= '9') {
+            buffer[i] = '^';
+        }
+    }
+    Scr_AddString(buffer);
+}
+
+/*
+============
+GScr_InitServers
+
+Queries APB servers.
+Usage: InitServers(<string>, <integer>);
+============
+*/
+
+/*int ServerSocket;
+struct sockaddr_in ServerAddr;
+int ServerInitDone = 0;
+
+void GScr_InitServers()
+{
+	if (ServerInitDone)
+	{
+		Scr_Error("Server-query system is already initialized.\n");
+		return;
+	}
+	
+	if (Scr_GetNumParam() != 2)
+	{
+		Scr_Error("Usage: initServers(<address>, <port>)\n");
+		return;
+	}
+	
+	if ((ServerSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1) {
+		Com_PrintError("Could not create socket\n");
+		Scr_AddBool(qfalse);
+		return;
+	}
+	
+	bzero(&ServerAddr, sizeof(ServerAddr));
+	
+	ServerAddr.sin_family = AF_INET;
+	ServerAddr.sin_port = htons(Scr_GetInt(1));
+	
+	if (inet_aton(Scr_GetString(0), &ServerAddr.sin_addr) == 0)
+	{
+		Scr_Error("Invalid address\n");
+		return;
+	}
+	
+	Com_Printf("^5Server-query system initialized\n");
+	ServerInitDone = 1;
+	Scr_AddBool(qtrue);
+}*/
+
+/*
+============
+GScr_GetServers
+
+Queries APB servers.
+Usage: array = GetServers();
+============
+*/
+
+/*void GScr_GetServers()
+{
+	if (!ServerInitDone)
+	{
+		Scr_Error("Server-query system is not yet initialized. Please use \"initServers(<address>, <port>)\" to do so.\n");
+		return;
+	}
+	
+    if (Scr_GetNumParam() != 0)
+    {
+        Scr_Error("Usage: GetServers()\n");
+    }
+
+	socklen_t addrLen = sizeof(ServerAddr);
+
+	if (sendto(ServerSocket, "report apb", 11, 0, (struct sockaddr*)&ServerAddr, addrLen) == -1)
+	{
+		Com_PrintError("Could not send UDP message: report apb\n");
+		return;
+	}
+	Com_Printf("^5Server-query sent: ^7report apb\n");
+
+	char RecvBuf[8192];
+	memset(RecvBuf, 0, 8192);
+
+	if (recvfrom(ServerSocket, RecvBuf, 8192, 0, (struct sockaddr*)&ServerAddr, &addrLen) == -1)
+	{
+		Com_PrintError("Could not get UDP message: \n");
+		return;
+	}
+
+	int count = atoi(RecvBuf);
+	Scr_MakeArray();
+
+	int i;
+	for (i = 0; i < count; ++i)
+	{
+		if (recvfrom(ServerSocket, RecvBuf, 8192, 0, (struct sockaddr*)&ServerAddr, &addrLen) == -1)
+		{
+			Com_PrintError("Could not get UDP message: \n");
+			Scr_AddBool(qfalse);
+			return;
+		}
+		Com_Printf("^5Server received: %s\n", RecvBuf);
+		Scr_AddString(RecvBuf);
+		Scr_AddArray();
+	}
+}*/
+
+/*
+============
+GScr_HeartBeat
+
+Forces HeartBeat to master servers
+Usage: HeartBeat(<int>, <string>);
+============
+*/
+
+/*void GScr_HeartBeat()
+{
+    if (Scr_GetNumParam() != 2)
+    {
+        Scr_Error("Usage: HeartBeat(<master ID>, <message>)\n");
+    }
+
+	svse.forced = Scr_GetInt(0);
+	SV_MasterHeartbeat(Scr_GetString(1));
+}*/
+
+
+/*
+============
+GScr_ValidName
+
+Checks if the string is a valid playername (a-zA-Z0-9)
+============
+*/
+
+void GScr_ValidName() {
+    if (Scr_GetNumParam() != 1 && Scr_GetNumParam() != 2) {
+        Scr_Error("Usage: ValidName(<string>, [<bool>])");
+    }
+    char* s = Scr_GetString(0);
+    qboolean l;
+    if (Scr_GetNumParam() == 2)
+    	l = !Scr_GetString(1); // GetBool
+    else
+    	l = qtrue;
+
+	int c = strlen(s);
+	int i;
+	for (i = 0; i < c; ++i)
+	{
+		if ((s[i] < 'a' || s[i] > 'z') && (s[i] < '0' || s[i] > '9') && (s[i] < 'A' || s[i] > 'Z') && (l || s[i] != ' '))
+		{
+			Scr_AddBool(qfalse);
+			return;
+		}
+	}
+	Scr_AddBool(qtrue);
+}

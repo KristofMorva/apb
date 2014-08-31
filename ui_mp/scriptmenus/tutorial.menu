@@ -1,0 +1,296 @@
+#include "ui/menudef.h"
+#include "ui_mp/global.inc"
+
+{
+	menuDef
+	{
+		name			"tutorial"
+		style			WINDOW_STYLE_EMPTY
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		1 1 1 1
+		blurWorld		4
+		onOpen
+		{
+			// Threat
+			setLocalVarInt circ4x 0;
+			setLocalVarInt circ4y 0;
+			setLocalVarInt circ4w 60;
+			setLocalVarInt circ4h 50;
+
+			// Rank
+			setLocalVarInt circ5x 50;
+			setLocalVarInt circ5y 0;
+			setLocalVarInt circ5w 100;
+			setLocalVarInt circ5h 35;
+
+			// Mission
+			setLocalVarInt circ6x 360;
+			setLocalVarInt circ6y 0;
+			setLocalVarInt circ6w 200;
+			setLocalVarInt circ6h 80;
+
+			// Player list
+			setLocalVarInt circ7x 0;
+			setLocalVarInt circ7y 30;
+			setLocalVarInt circ7w 150;
+			setLocalVarInt circ7h 50;
+		}
+		onESC { }
+
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		0 0 640 480
+			backcolor	0.4 0.4 0.4 0.5
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			style		WINDOW_STYLE_SHADER
+			rect		0 0 0 0
+			exp			rect X(localVarInt("circ" + dvarString("tutid") + "x"))
+			exp			rect Y(localVarInt("circ" + dvarString("tutid") + "y"))
+			exp			rect W(localVarInt("circ" + dvarString("tutid") + "w"))
+			exp			rect H(localVarInt("circ" + dvarString("tutid") + "h"))
+			background	"mark"
+			visible		when((dvarInt("tutid") >= 4 && dvarInt("tutid") <= 7))
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			120 140 400 200
+			backcolor		0.1 0.1 0.1 0.75
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		120 140 400 20
+			backcolor	0 0 0 0.75
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			440 140 80 20
+			background		"title_arrows"
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			exp			text("@APB_TUTORIAL_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		120 140 400 20
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.4
+			textaligny	20
+			textalignx	5
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			exp			text("@APB_TUTORIAL" + dvarString("tutid") + "_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		120 160 390 150
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.25
+			textaligny	15
+			textalignx	5
+			forecolor	1 1 1 0.8
+			visible		1
+			autowrapped
+			decoration
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			305 280 32 32
+			background		"pin_inv"
+			visible			when(dvarInt("tutid") == 9)
+			decoration
+		}
+
+		APBBUTTON_HIDDEN(125, 317, 100, "CANCEL", close self, when(!dvarBool("tutid")), "0")
+		APBBUTTON_HIDDEN(415, 317, 100, "JOIN", scriptMenuResponse "gotut", when(!dvarBool("tutid")), "1")
+
+		APBBUTTON_HIDDEN(125, 317, 100, "GO_LIVE", open servers, when(dvarBool("tutid")), "2")
+		APBBUTTON_HIDDEN(415, 317, 100, "NEXTPAGE", scriptMenuResponse "next", when(dvarBool("tutid")), "3")
+	}
+}
+
+/*
+// Tutorials must be broken into blocks with 4 rows because of 256 character text length limit - EDIT: No.
+#define line(id, lineid) \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			195 (126 + 68 * (lineid - 1)) 244 254 0 0 \
+	forecolor		1 1 1 1 \
+	exp				text("@APB_TUT"id + "_" + lineid + "_" + dvarString("lang")) \
+	textfont		UI_FONT_NORMAL \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textscale		0.25 \
+	textalignx		4 \
+	textaligny		35 \
+	visible			when(dvarString("tutid") == id) \
+	autowrapped \
+	decoration \
+}
+*/
+
+/*#define tut(id, act, ok) \
+itemDef \
+{ \
+	style		WINDOW_STYLE_FILLED \
+	rect		320 359 121 16 0 0 \
+	forecolor	1 1 1 0.85 \
+	exp			text("@APB_"ok"_" + dvarString("lang")) \
+	type		ITEM_TYPE_BUTTON \
+	textfont	UI_FONT_NORMAL \
+	textstyle	ITEM_TEXTSTYLE_NORMAL \
+	textalign	ITEM_ALIGN_RIGHT \
+	textscale	0.35 \
+	textaligny	16 \
+	visible		when(dvarString("tutid") == id) \
+	action \
+	{ \
+		act \
+	} \
+	mouseEnter \
+	{ \
+		play "mouse_over"; \
+	} \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_EMPTY \
+	rect			195 126 244 254 0 0 \
+	forecolor		1 1 1 1 \
+	exp				text("@APB_TUT"id"_" + dvarString("lang")) \
+	textfont		UI_FONT_DEFAULT \
+	textstyle		ITEM_TEXTSTYLE_NORMAL \
+	textalign		ITEM_ALIGN_LEFT \
+	textscale		0.25 \
+	textalignx		4 \
+	textaligny		35 \
+	visible			when(dvarString("tutid") == id) \
+	autowrapped \
+	decoration \
+}
+//line(id, 1) \
+//line(id, 2) \
+//line(id, 3)
+
+{
+	menuDef
+	{
+		name			"tutorial"
+		rect			0 0 640 480 0 0
+		focuscolor		1 0.8 0 1
+		blurWorld		1
+		style			WINDOW_STYLE_EMPTY
+		onESC			{ close self }
+		onClose			{ setDvar tutid 1 }
+
+		// Block menus behind it
+		itemDef
+		{
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			visible			1
+		}
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			195 123 250 254 0 0
+			background		"tutbg"
+			//backcolor		0.1 0.1 0.2 0.8
+			border			1
+			bordercolor		0.4 0.4 0.4 0.8
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			197 125 248 20 0 0
+			forecolor		1 1 1 1
+			exp				text("@APB_TUTORIAL_" + dvarString("lang"))
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		0.4
+			textalignx		4
+			textaligny		20
+			backcolor		0 0 0 0.5
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			197 125 248 20 0 0
+			forecolor		1 1 1 1
+			exp				text(dvarString("tutid") + "/9")
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textalign		ITEM_ALIGN_RIGHT
+			textscale		0.4
+			textalignx		-4
+			textaligny		20
+			visible			when(dvarBool("tutid") && dvarInt("tutid") != 9)
+			decoration
+		}
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			197 357 248 20 0 0
+			backcolor		0 0 0 0.5
+			visible			1
+			decoration
+		}
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		199 359 121 16 0 0
+			forecolor	1 1 1 0.85
+			exp			text("@APB_CLOSE_" + dvarString("lang"))
+			type		ITEM_TYPE_BUTTON
+			textfont	UI_FONT_NORMAL
+			textstyle	ITEM_TEXTSTYLE_NORMAL
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.35
+			textaligny	16
+			visible		when(dvarInt("tutid") != 9)
+			action
+			{
+				close self;
+			}
+		}
+
+		tut("0", setDvar tutid 1, "STARTTUT")
+		tut("1", setDvar tutid 2, "NEXTPAGE")
+		tut("2", setDvar tutid 3, "NEXTPAGE")
+		tut("3", setDvar tutid 4, "NEXTPAGE")
+		tut("4", setDvar tutid 5, "NEXTPAGE")
+		tut("5", setDvar tutid 6, "NEXTPAGE")
+		tut("6", setDvar tutid 7, "NEXTPAGE")
+		tut("7", setDvar tutid 8, "NEXTPAGE")
+		tut("8", setDvar tutid 9, "NEXTPAGE")
+		tut("9", close self, "ENDTUT")
+	}
+}*/

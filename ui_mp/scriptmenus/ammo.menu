@@ -1,0 +1,290 @@
+#include "ui/menudef.h"
+
+// stat(tableLookUp("mp/playerTable.csv", 1, "AMMO_"weaponid, 0)) + "/" + tableLookUp("mp/ammoTable.csv", 0, weaponid, 1)
+#define ammoType(index, weaponid, box) \
+itemDef \
+{ \
+	style		WINDOW_STYLE_FILLED \
+	rect		50 (50 + 35 * index) 300 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	backcolor	0.8 0.8 0 1 \
+	visible		when(dvarString("weaponid") == weaponid) \
+	decoration \
+} \
+itemDef \
+{ \
+	exp			text("@APB_AMMO_"weaponid"_" + dvarString("lang")) \
+	type		ITEM_TYPE_BUTTON \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		50 (50 + 35 * index) 298 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textscale	0.4 \
+	textaligny	18 \
+	textalignx	40 \
+	forecolor	0.8 0.8 0.8 1 \
+	backcolor	0.1 0.1 0.1 1 \
+	border		1 \
+	bordercolor	0.15 0.15 0.15 1 \
+	visible		1 \
+	mouseEnter { play "mouse_over" } \
+	action \
+	{ \
+		play "mouse_click"; \
+		setDvar boxcount 1; \
+		scriptMenuResponse weaponid; \
+	} \
+} \
+itemDef \
+{ \
+	exp			text(dvarString("ammo_"weaponid) + "/" + tableLookUp("mp/ammoTable.csv", 0, weaponid, 1)) \
+	textfont	UI_FONT_NORMAL \
+	style		WINDOW_STYLE_FILLED \
+	textstyle	ITEM_TEXTSTYLE_SHADOWED \
+	rect		60 (50 + 35 * index) 298 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	textalign	ITEM_ALIGN_LEFT \
+	textscale	0.2 \
+	textaligny	28 \
+	textalignx	32 \
+	forecolor	0.5 0.5 0.5 1 \
+	visible		1 \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_SHADER \
+	rect			55 (50 + 35 * index) 32 32 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \ \
+	exp material	("ammo_"weaponid) \
+	visible			1 \
+	decoration \
+} \
+itemDef \
+{ \
+	style			WINDOW_STYLE_FILLED \
+	rect			51 (51 + 35 * index) 298 30 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	backcolor		0 0 0 0.5 \
+	visible			when(dvarString("notthisweapon")) \
+	decoration \
+} \
+itemDef \
+{ \
+	type			ITEM_TYPE_SLIDER \
+	dvarfloat		boxcount 1 1 box \
+	rect			420 160 170 20 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN \
+	style			WINDOW_STYLE_FILLED \
+	forecolor		1 1 1 1 \
+	visible			when(dvarString("weaponid") == weaponid) \
+	onFocus \
+	{ \
+		play "mouse_over"; \
+	} \
+	action \
+	{ \
+		play "mouse_click"; \
+	} \
+}
+
+{
+	menuDef
+	{
+		name			"ammo"
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		1 1 1 1
+		blurWorld		4
+		style			WINDOW_STYLE_EMPTY
+		onOpen
+		{
+			setDvar boxcount 1;
+			scriptMenuResponse "rifle";
+		}
+
+		// Background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			0 0 640 480
+			backcolor		0 0 0 0.25
+			visible			1
+			decoration
+		}
+
+		// List background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			45 45 310 425 0 0
+			backcolor		0.15 0.15 0.15 0.8
+			visible			1
+			decoration
+		}
+
+		// Detail background
+		itemDef
+		{
+			style			WINDOW_STYLE_FILLED
+			rect			355 45 240 425 0 0
+			backcolor		0.1 0.1 0.1 0.8
+			visible			1
+			decoration
+		}
+
+		#include "ui_mp/items.inc"
+
+		// Weapon name
+		itemDef
+		{
+			exp			text("@APB_AMMO_" + dvarString("weaponid") + "_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			textalignx	5
+			textaligny	25
+			rect		355 50 290 20
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.5
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		360 100 230 50
+			backcolor	0.2 0.2 0.2 1
+			border		1
+			bordercolor	0.35 0.35 0.35 1
+			visible		1
+			decoration
+		}
+
+		// One pack
+		itemDef
+		{
+			exp			text("@APB_ONE_PACK_" + dvarString("lang"))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		360 100 230 20
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.35
+			textalignx	4
+			textaligny	19
+			forecolor	1 0.8 0.4 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			exp			text(locString("@APB_AMMO_X_" + dvarString("lang"), int(tableLookUp("mp/ammoTable.csv", 0, dvarString("weaponid"), 2))))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		360 115 230 20
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.25
+			textalignx	4
+			textaligny	18
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			exp			text(locString("@APB_PRICE_X_" + dvarString("lang"), int(tableLookUp("mp/ammoTable.csv", 0, dvarString("weaponid"), 3))))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		360 130 230 20
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.25
+			textalignx	4
+			textaligny	18
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		// Current buying
+		itemDef
+		{
+			exp			text(locString("@APB_PACK_X_" + dvarString("lang"), dvarInt("boxcount")))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		360 160 50 20
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.25
+			textalignx	5
+			textaligny	15
+			forecolor	1 1 1 1
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			style		WINDOW_STYLE_FILLED
+			rect		360 185 230 1
+			backcolor	0.4 0.4 0.4 0.75
+			visible		1
+			decoration
+		}
+
+		itemDef
+		{
+			exp			text(locString("@APB_AMMO_X_" + dvarString("lang"), dvarInt("boxcount") * tableLookUp("mp/ammoTable.csv", 0, dvarString("weaponid"), 2)))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		360 190 230 18
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.3
+			textalignx	5
+			textaligny	15
+			forecolor	1 1 1 1
+			backcolor	0.15 0.15 0.15 0.8
+			border		1
+			bordercolor	0.4 0.4 0.4 0.8
+			visible		1
+			decoration
+		}
+		itemDef
+		{
+			exp			text(locString("@APB_PRICE_X_" + dvarString("lang"), dvarInt("boxcount") * tableLookUp("mp/ammoTable.csv", 0, dvarString("weaponid"), 3)))
+			textfont	UI_FONT_NORMAL
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect		360 210 230 18
+			textalign	ITEM_ALIGN_LEFT
+			textscale	0.3
+			textalignx	5
+			textaligny	15
+			forecolor	1 1 1 1
+			backcolor	0.15 0.15 0.15 0.8
+			border		1
+			bordercolor	0.4 0.4 0.4 0.8
+			visible		1
+			decoration
+		}
+
+		// Purchase button
+		APBBUTTON(415, 245, 120, "BUY", exec "setfromdvar info boxcount"; scriptMenuResponse "buy";, when(dvarInt("money") < tableLookUp("mp/weaponTable.csv", 0, dvarString("weaponid"), 11) || dvarInt("rating") < tableLookUp("mp/weaponTable.csv", 0, dvarString("weaponid"), 12)), "0")
+
+		// Resupply button
+		APBBUTTON_CMD(415, 270, 120, "RESUPPLY", scriptMenuResponse "resupply"; close self;, "1")
+
+		// Boxcount have to be hardcoded
+		ammoType(0, "rifle", 60)
+		ammoType(1, "machinegun", 100)
+		ammoType(2, "pistol", 100)
+		ammoType(3, "desert", 100)
+		ammoType(4, "shotgun", 102)
+		ammoType(5, "sniper", 100)
+		ammoType(6, "rocket", 100)
+		ammoType(7, "frag", 20)
+		ammoType(8, "flash", 20)
+		ammoType(9, "concussion", 20)
+		ammoType(10, "nonlethal", 20)
+	}
+}
