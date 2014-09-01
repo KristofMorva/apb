@@ -2,4 +2,4 @@
 
 source apb.sh
 
-startServer "social" "SOCIAL-1"
+startServer "social" "SOCIAL-1" "social"
