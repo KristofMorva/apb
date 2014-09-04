@@ -1452,7 +1452,7 @@ autoRestart()
 	FS_FClose(f);
 }*/
 
-Callback_PlayerSay(msg)
+Callback_PlayerSay( msg, saytype )
 {
 	if (!isDefined(self.showname))
 		return;

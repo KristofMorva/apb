@@ -114,6 +114,7 @@ SetDefaultCallbacks()
 	level.callbackPlayerDisconnect = maps\mp\gametypes\apb::Callback_PlayerDisconnect;
 	level.callbackPlayerDamage = maps\mp\gametypes\apb::Callback_PlayerDamage;
 	level.callbackPlayerKilled = maps\mp\gametypes\apb::Callback_PlayerKilled;
+	level.callbackPlayerSay = maps\mp\gametypes\apb::Callback_PlayerSay; //dioda: new server file chat callback
 }
 
 /*================
@@ -145,7 +146,15 @@ callbackVoid()
 Called when a player sends a chat message
 self is the player, who sent it
 ================*/
+/*
 CodeCallback_PlayerSayAll(msg)
 {
 	self [[level.callbackPlayerSay]](msg);
+}
+*/
+
+//dioda: new server file chat callback
+CodeCallback_PlayerSay( msg, saytype )
+{
+	self [[level.callbackPlayerSay]]( msg, saytype );
 }
