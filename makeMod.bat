@@ -9,6 +9,7 @@ xcopy ui ..\..\raw\ui /SY
 xcopy mp ..\..\raw\mp /SY
 xcopy maps ..\..\raw\maps /SY
 xcopy english ..\..\raw\english /SY
+xcopy materials ..\..\raw\materials /SY
 xcopy soundaliases ..\..\raw\soundaliases /SY
 xcopy shock ..\..\raw\shock /SY
 xcopy weapons ..\..\raw\weapons /SY

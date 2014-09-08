@@ -1436,6 +1436,7 @@ autoRestart()
 		if (!level.players.size)
 		{
 			//sql_reset();
+			iPrintLn("^3[DEBUG 1439] Auto Restart");
 			map_restart(false);
 		}
 	}
@@ -1456,6 +1457,9 @@ Callback_PlayerSay( msg, saytype )
 {
 	if (!isDefined(self.showname))
 		return;
+
+	iPrintLn("^3[DEBUG 1460] Accessing key 'admin' of");
+	print_r(getArrayKeys(self.info));
 
 	if (!(ADMIN_COLOR & self.info["admin"]))
 		msg = stripColors(msg);
@@ -6527,7 +6531,7 @@ newMission(allies, axis, isWar)
 // It can't be in joinMission, because it is used in createPlayerInfo()
 setClanStat()
 {
-	c = sql_fetch(sql_query("SELECT '^' || color || clan, c.rank, m.rank FROM members m JOIN clans c USING (clan) WHERE name = '" + self.showname + "'"));
+	c = sql_fetch(sql_query("SELECT '^' || color || clan, c.rank, m.rank FROM members m JOIN clans c USING (clan) WHERE name = '" + self.showname + "'")); // MySQL: CONCAT()
 	if (isDefined(c))
 	{
 		self.stat["clan"] = c[0];
@@ -8301,16 +8305,21 @@ abandonTeam(id)
 	lastTeam = level.teams.size - 1;
 	foreach (p as level.allActivePlayers; 0; +level.allActiveCount)
 	{
-		if (!isDefined(p.leaving) && isDefined(p.missionTeam))
+		if (!isDefined(p.leaving))
 		{
-			if (p.missionTeam == id)
-				p.missionTeam = undefined;
-			else if (p.missionTeam == lastTeam)
-				p.missionTeam = id;
-			else if (p.enemyTeam == id)
-				p.enemyTeam = undefined;
-			else if (p.enemyTeam == lastTeam)
-				p.enemyTeam = id;
+			if (isDefined(p.missionTeam)) {
+				if (p.missionTeam == id)
+					p.missionTeam = undefined;
+				else if (p.missionTeam == lastTeam)
+					p.missionTeam = id;
+			}
+			else if (isDefined(p.enemyTeam))
+			{
+				if (p.enemyTeam == id)
+					p.enemyTeam = undefined;
+				else if (p.enemyTeam == lastTeam)
+					p.enemyTeam = id;
+			}
 		}
 	}
 	size = level.missions.size;
@@ -8496,6 +8505,9 @@ flash(point)
 	&icon = self.objIcons[point.id];
 
 	//point = undefined; // Clear var
+
+	iPrintLn("^3[DEBUG 8505] Trying to access key ^5" + point.id + " ^3of ");
+	print_r(getArrayKeys(self.objIcons));
 
 	icon fadeOverTime(0.75);
 	icon.alpha = 0.15;
@@ -11176,6 +11188,8 @@ drop()
 	m = level.missions[id];
 	self endon("disconnect");
 	level endon("endmission" + id);
+
+	
 
 	point = m.points[self.team];
 	point thread startSingleFlashing();

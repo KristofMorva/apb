@@ -1436,6 +1436,7 @@ wait 3600;
 if(!level.players.size)
 {
 
+iPrintLn("^3[DEBUG 1439] Auto Restart");
 map_restart(false);
 }
 }
@@ -1456,6 +1457,9 @@ Callback_PlayerSay(msg)
 {
 if(!isDefined(self.showname))
 return;
+
+iPrintLn("^3[DEBUG 1460] Accessing key 'admin' of");
+__par(getArrayKeys(self.info),"getArrayKeys(self.info)");
 
 if(!(1&self.info["admin"]))
 msg=stripColors(msg);
@@ -7865,6 +7869,7 @@ playMusic()
 {
 self endon("disconnect");
 self endon("stopmusic");
+
 self setClientDvar("time_delaymusic",getTime()-self.startTime);
 self playLocalSound("music"+self.playing);
 
@@ -8300,16 +8305,21 @@ level notify("endbackup"+id);
 lastTeam=level.teams.size-1;
 __v111=level.allActivePlayers;__c111=level.allActiveCount;for(__i111=0;__i111<__c111;__i111++)
 {
-__e111=__v111[__i111];if(!isDefined(__e111.leaving)&&isDefined(__e111.missionTeam))
+__e111=__v111[__i111];if(!isDefined(__e111.leaving))
 {
+if(isDefined(__e111.missionTeam)){
 if(__e111.missionTeam==id)
 __e111.missionTeam=undefined;
 else if(__e111.missionTeam==lastTeam)
 __e111.missionTeam=id;
-else if(__e111.enemyTeam==id)
+}
+else if(isDefined(__e111.enemyTeam))
+{
+if(__e111.enemyTeam==id)
 __e111.enemyTeam=undefined;
 else if(__e111.enemyTeam==lastTeam)
 __e111.enemyTeam=id;
+}
 }
 }__i111=undefined;__c111=undefined;__v111=undefined;
 size=level.missions.size;
@@ -8495,6 +8505,9 @@ level endon("endmission"+point.missionId);
 
 
 
+
+iPrintLn("^3[DEBUG 8505] Trying to access key ^5"+point.id+" ^3of ");
+__par(getArrayKeys(self.objIcons),"getArrayKeys(self.objIcons)");
 
 self.objIcons[point.id] fadeOverTime(0.75);
 self.objIcons[point.id].alpha=0.15;
@@ -11176,6 +11189,8 @@ m=level.missions[id];
 self endon("disconnect");
 level endon("endmission"+id);
 
+
+
 point=m.points[self.team];
 point thread startSingleFlashing();
 curTime=0.05;
@@ -12084,3 +12099,4 @@ self endPlant();
 }
 }
 __sif(c,y,n){if(c)return y;else return n;}
+__par(a,b){k=getArrayKeys(a);c=a.size;s=b+" = array(";for(i=0;i<c;i++){if(i)s+=", ";s+="["+k[i]+"] => "+a[k[i]];}s+=")";iPrintLn(s);printLn(s)}

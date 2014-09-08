@@ -125,10 +125,6 @@ self waittill("menuresponse",menu,response);
 if(response=="back"){
 self closeMenus();
 }
-else if (response == "c")
-{
-	self setPlayerAngles((self.angles[0], self.angles[1], 0));
-}
 else if(response=="intro")
 {
 
