@@ -1,0 +1,33 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"bounceFraction" ".7"
+"sunDiffuseColor" ".65 .6 .5"
+"contrastGain" ".15"
+"ambient" "0.1"
+"_color" ".65 .6 .5"
+"diffuseFraction" ".15"
+"sunLight" "1.40476"
+"sunColor" ".797619 .559524 .328869 1"
+"sunDirection" "-155.357 139.286 0"
+"classname" "worldspawn"
+// brush 0
+{
+ ( -46 -18 0 ) ( 48 -18 0 ) ( 48 18 0 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -46 -8 63 ) ( 47 -8 63 ) ( 47 -17 6 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 47 -16 68 ) ( 47 16 68 ) ( 47 16 0 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 48 8 64 ) ( -46 8 64 ) ( -46 18 0 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -46 16 68 ) ( -46 -16 68 ) ( -46 -16 0 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 46.5 17 10 ) ( 46.5 17 -3 ) ( 78.5 17 10 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 46.5 -17 -1 ) ( 46.5 -17 9 ) ( 78.5 -17 9 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 47 -8 63 ) ( -46 -8 63 ) ( -46 8 63 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 1
+{
+"origin" "0.0 0.0 0.0"
+"model" "com_barrier_tall1"
+"classname" "misc_model"
+}

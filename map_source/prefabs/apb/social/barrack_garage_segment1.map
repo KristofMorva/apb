@@ -1,0 +1,17 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"classname" "worldspawn"
+// brush 0
+{
+  contents detail;
+ ( 64 -2 4 ) ( 64 6 4 ) ( -64 6 4 ) icbm_doortrack -3.9999914 -192 -3.9999871 -96 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -96 6 460 ) ( -96 -2 460 ) ( -96 -2 12 ) icbm_doortrack -4 48 0 44 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -32 0 460 ) ( 96 0 460 ) ( 96 0 12 ) icbm_rollupdoor 192 -192 480 -180 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 -2 460 ) ( 96 6 460 ) ( 96 6 12 ) icbm_doortrack -4 48 0 44 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 32 4 460 ) ( -96 4 460 ) ( -96 4 12 ) icbm_rollupdoor 192 -192 480 -180 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 -14 52 ) ( 96 10 52 ) ( 128 10 52 ) icbm_doortrack -3.9999914 -192 -3.9999871 -96 90 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}

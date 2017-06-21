@@ -1,0 +1,12 @@
+#pragma once
+
+#include <sstream>
+#include <vector>
+
+namespace SKCommon
+{
+	bool strContains(std::string&, char);
+	template<class T> bool contains(std::vector<T>&, T&);
+	void splitStr(std::string&, std::vector<std::string>&, char);
+	bool startsWith(std::string&, std::string&);
+}

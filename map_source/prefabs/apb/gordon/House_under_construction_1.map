@@ -1,0 +1,4629 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"classname" "worldspawn"
+// brush 0
+{
+  contents detail;
+ ( 128 0 0 ) ( 120 0 0 ) ( 120 -8 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 -8 224 ) ( 120 0 224 ) ( 128 0 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -40 224 ) ( 128 -40 32 ) ( 120 -48 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -40 32 ) ( 128 -40 224 ) ( 128 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 8 32 ) ( 128 8 224 ) ( 120 0 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 0 192 ) ( 120 -8 192 ) ( 120 -8 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 1
+{
+  contents detail;
+ ( 264 0 0 ) ( 256 0 0 ) ( 256 -48 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 -48 224 ) ( 256 0 224 ) ( 264 0 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 -40 0 ) ( 256 -40 192 ) ( 264 -48 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 -48 192 ) ( 264 0 192 ) ( 264 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 8 224 ) ( 256 8 32 ) ( 264 0 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 -40 224 ) ( 256 -40 32 ) ( 256 8 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 2
+{
+  contents detail;
+ ( 8 256 0 ) ( 0 256 0 ) ( 0 248 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 248 224 ) ( 0 256 224 ) ( 8 256 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 192 ) ( 8 8 0 ) ( 0 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 248 192 ) ( 8 248 0 ) ( 8 8 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 384 0 ) ( 0 384 192 ) ( -8 392 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 256 192 ) ( 0 248 192 ) ( 0 248 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 3
+{
+  contents detail;
+ ( 256 8 104 ) ( 128 8 104 ) ( 128 -40 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -40 112 ) ( 128 8 112 ) ( 256 8 112 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -40 112 ) ( 256 -40 112 ) ( 256 -40 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 -40 112 ) ( 256 8 112 ) ( 256 8 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 8 112 ) ( 128 8 112 ) ( 128 8 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 8 112 ) ( 128 -40 112 ) ( 128 -40 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 4
+{
+  contents detail;
+ ( 8 8 0 ) ( 0 8 0 ) ( 0 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 0 224 ) ( 0 8 224 ) ( 8 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 0 192 ) ( 120 0 0 ) ( 0 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 0 32 ) ( 120 0 224 ) ( 128 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 224 ) ( 8 8 32 ) ( 128 8 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 0 36 ) ( 96 8 36 ) ( 96 8 68 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 5
+{
+  contents detail;
+ ( 8 8 0 ) ( 0 8 0 ) ( 0 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 0 224 ) ( 0 8 224 ) ( 8 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 0 192 ) ( 120 0 0 ) ( 0 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 224 ) ( 8 8 32 ) ( 128 8 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 0 ) ( 8 8 192 ) ( 0 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 32 8 224 ) ( 32 0 224 ) ( 32 8 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 6
+{
+  contents detail;
+ ( 8 8 0 ) ( 0 8 0 ) ( 0 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 0 192 ) ( 120 0 0 ) ( 0 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 224 ) ( 8 8 32 ) ( 128 8 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 8 36 ) ( 96 0 36 ) ( 96 8 68 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 32 0 224 ) ( 32 8 224 ) ( 32 8 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 8 32 ) ( 86 8 32 ) ( 96 40 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 7
+{
+  contents detail;
+ ( 128 -40 0 ) ( 120 -40 0 ) ( 120 -48 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 -48 224 ) ( 120 -40 224 ) ( 128 -40 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 -48 192 ) ( 128 -48 192 ) ( 128 -48 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -40 224 ) ( 128 -40 32 ) ( 256 -40 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -40 32 ) ( 128 -40 224 ) ( 120 -48 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 160 -40 96 ) ( 160 -48 96 ) ( 160 -48 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 8
+{
+  contents detail;
+ ( 128 -40 0 ) ( 120 -40 0 ) ( 120 -48 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 -48 224 ) ( 120 -40 224 ) ( 128 -40 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 -48 192 ) ( 128 -48 192 ) ( 128 -48 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 -40 192 ) ( 256 -40 0 ) ( 264 -48 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -40 224 ) ( 128 -40 32 ) ( 256 -40 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 224 -48 96 ) ( 224 -40 96 ) ( 224 -48 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 9
+{
+  contents detail;
+ ( 272 8 0 ) ( 256 8 0 ) ( 256 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 0 0 ) ( 264 0 192 ) ( 328 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 32 ) ( 440 8 224 ) ( 256 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 0 112 ) ( 320 8 112 ) ( 320 8 144 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 384 8 224 ) ( 384 0 224 ) ( 384 8 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 384 8 32 ) ( 320 8 32 ) ( 320 40 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 10
+{
+  contents detail;
+ ( 120 -48 192 ) ( 128 -48 192 ) ( 128 -48 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -40 224 ) ( 128 -40 32 ) ( 256 -40 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 160 -48 96 ) ( 160 -40 96 ) ( 160 -48 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 224 -40 96 ) ( 224 -48 96 ) ( 224 -48 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 160 -40 96 ) ( 224 -40 96 ) ( 160 -8 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 224 -40 142 ) ( 160 -40 142 ) ( 160 -8 142 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 11
+{
+  contents detail;
+ ( 120 0 192 ) ( 120 0 0 ) ( 0 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 224 ) ( 8 8 32 ) ( 128 8 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 8 36 ) ( 96 0 36 ) ( 96 8 68 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 32 0 224 ) ( 32 8 224 ) ( 32 8 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 32 8 96 ) ( 64 8 96 ) ( 32 40 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 8 142 ) ( 32 8 142 ) ( 32 40 142 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 12
+{
+  contents detail;
+ ( 264 0 0 ) ( 264 0 192 ) ( 328 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 32 ) ( 440 8 224 ) ( 256 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 0 112 ) ( 320 8 112 ) ( 320 8 144 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 384 8 224 ) ( 384 0 224 ) ( 384 8 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 8 96 ) ( 342 8 96 ) ( 320 40 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 384 8 142 ) ( 320 8 142 ) ( 320 40 142 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 13
+{
+  contents detail;
+ ( 256 8 -8 ) ( 128 8 -8 ) ( 128 -40 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -40 0 ) ( 128 8 0 ) ( 256 8 0 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 -48 0 ) ( 256 -48 0 ) ( 256 -48 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 -40 0 ) ( 264 8 0 ) ( 264 8 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 0 0 ) ( 128 0 0 ) ( 128 0 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 8 0 ) ( 120 -40 0 ) ( 120 -40 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 14
+{
+  contents detail;
+ ( 16 16 -8 ) ( 8 16 -8 ) ( 8 8 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 0 ) ( 8 16 0 ) ( 16 16 0 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 0 0 ) ( 16 0 0 ) ( 16 0 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 24 8 ) ( 448 32 8 ) ( 448 32 0 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 384 0 ) ( -8 384 0 ) ( -8 384 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 16 0 ) ( 0 8 0 ) ( 0 8 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 15
+{
+  contents detail;
+ ( 532 320 -8 ) ( 448 320 -8 ) ( 448 224 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 224 0 ) ( 448 320 0 ) ( 532 320 0 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 24 0 ) ( 532 24 0 ) ( 532 24 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 704 216 0 ) ( 704 312 0 ) ( 704 312 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 532 320 0 ) ( 448 320 0 ) ( 448 320 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 320 0 ) ( 448 224 0 ) ( 448 224 -8 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 16
+{
+  contents detail;
+ ( 16 16 104 ) ( 8 16 104 ) ( 8 8 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 112 ) ( 8 16 112 ) ( 16 16 112 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 112 ) ( 16 8 112 ) ( 16 8 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 376 112 ) ( -8 376 112 ) ( -8 376 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 16 112 ) ( 8 8 112 ) ( 8 8 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 152 220 72 ) ( 152 76 72 ) ( 152 220 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 17
+{
+  contents detail;
+ ( 16 16 104 ) ( 8 16 104 ) ( 8 8 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 112 ) ( 8 16 112 ) ( 16 16 112 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 112 ) ( 16 8 112 ) ( 16 8 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 152 76 72 ) ( 152 220 72 ) ( 152 220 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 217 112 ) ( 320 73 112 ) ( 320 73 144 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 152 72 112 ) ( 232 72 112 ) ( 152 72 144 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 18
+{
+  contents detail;
+ ( 16 16 104 ) ( 8 16 104 ) ( 8 8 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 8 112 ) ( 8 16 112 ) ( 16 16 112 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 376 112 ) ( -8 376 112 ) ( -8 376 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 152 76 72 ) ( 152 220 72 ) ( 152 220 104 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 221 112 ) ( 320 77 112 ) ( 320 77 144 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 232 232 112 ) ( 152 232 112 ) ( 152 232 144 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 19
+{
+  contents detail;
+ ( 288 16 0 ) ( 280 16 0 ) ( 280 8 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 280 8 104 ) ( 280 16 104 ) ( 288 16 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 280 8 96 ) ( 288 8 96 ) ( 288 8 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 56 104 ) ( 320 56 0 ) ( 288 8 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 56 104 ) ( 312 56 0 ) ( 320 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 56 0 ) ( 312 56 104 ) ( 280 8 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 20
+{
+  contents detail;
+ ( 448 384 0 ) ( 432 384 0 ) ( 432 376 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 432 376 224 ) ( 432 384 224 ) ( 448 384 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 376 0 ) ( 440 376 192 ) ( 448 384 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 416 376 224 ) ( 416 384 224 ) ( 416 384 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 21
+{
+  contents detail;
+ ( 448 384 0 ) ( 432 384 0 ) ( 432 376 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 352 376 96 ) ( 352 384 96 ) ( 352 384 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 416 384 224 ) ( 416 376 224 ) ( 416 384 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 416 384 32 ) ( 352 384 32 ) ( 352 416 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 22
+{
+  contents detail;
+ ( 448 384 0 ) ( 432 384 0 ) ( 432 376 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 432 376 224 ) ( 432 384 224 ) ( 448 384 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 376 192 ) ( 8 376 0 ) ( 0 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 384 96 ) ( 96 376 96 ) ( 96 376 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 23
+{
+  contents detail;
+ ( 448 384 0 ) ( 432 384 0 ) ( 432 376 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 376 96 ) ( 96 384 96 ) ( 96 376 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 160 384 224 ) ( 160 376 224 ) ( 160 376 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 112 384 32 ) ( 96 384 32 ) ( 96 416 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 24
+{
+  contents detail;
+ ( 320 248 0 ) ( 312 248 0 ) ( 312 240 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 240 104 ) ( 312 248 104 ) ( 320 248 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 104 ) ( 320 248 104 ) ( 320 248 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 328 376 104 ) ( 320 376 104 ) ( 320 376 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 248 104 ) ( 312 240 104 ) ( 312 240 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 352 96 ) ( 312 352 96 ) ( 312 352 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 25
+{
+  contents detail;
+ ( 320 248 0 ) ( 312 248 0 ) ( 312 240 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 240 104 ) ( 312 248 104 ) ( 320 248 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 240 104 ) ( 320 240 104 ) ( 320 240 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 104 ) ( 320 248 104 ) ( 320 248 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 248 104 ) ( 312 240 104 ) ( 312 240 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 288 96 ) ( 320 288 96 ) ( 312 288 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 26
+{
+  contents detail;
+ ( 312 240 104 ) ( 312 248 104 ) ( 320 248 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 104 ) ( 320 248 104 ) ( 320 248 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 248 104 ) ( 312 240 104 ) ( 312 240 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 288 96 ) ( 312 288 96 ) ( 312 288 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 352 96 ) ( 320 352 96 ) ( 312 352 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 376 96 ) ( 320 376 96 ) ( 312 408 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 27
+{
+  contents detail;
+ ( 320 64 0 ) ( 312 64 0 ) ( 312 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 56 104 ) ( 312 64 104 ) ( 320 64 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 104 ) ( 320 240 0 ) ( 320 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 0 ) ( 320 240 104 ) ( 312 232 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 64 104 ) ( 312 56 104 ) ( 312 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 192 104 ) ( 312 192 104 ) ( 312 192 136 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 28
+{
+  contents detail;
+ ( 320 64 0 ) ( 312 64 0 ) ( 312 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 56 104 ) ( 312 64 104 ) ( 320 64 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 56 104 ) ( 320 56 104 ) ( 320 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 104 ) ( 320 240 0 ) ( 320 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 64 104 ) ( 312 56 104 ) ( 312 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 128 104 ) ( 320 128 104 ) ( 312 128 136 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 29
+{
+  contents detail;
+ ( 312 56 104 ) ( 312 64 104 ) ( 320 64 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 104 ) ( 320 240 0 ) ( 320 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 64 104 ) ( 312 56 104 ) ( 312 56 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 192 104 ) ( 320 192 104 ) ( 312 192 136 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 128 104 ) ( 312 128 104 ) ( 312 128 136 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 192 96 ) ( 320 192 96 ) ( 312 224 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 30
+{
+  contents detail;
+ ( 320 240 0 ) ( 296 240 0 ) ( 296 232 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 296 232 104 ) ( 296 240 104 ) ( 320 240 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 232 104 ) ( 312 232 0 ) ( 112 232 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 232 0 ) ( 312 232 104 ) ( 320 240 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 104 ) ( 296 240 104 ) ( 296 240 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 232 104 ) ( 128 240 104 ) ( 128 240 136 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 31
+{
+  contents detail;
+ ( 320 240 0 ) ( 296 240 0 ) ( 296 232 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 296 232 104 ) ( 296 240 104 ) ( 320 240 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 232 104 ) ( 312 232 0 ) ( 112 232 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 104 ) ( 296 240 104 ) ( 296 240 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 224 104 ) ( 8 216 104 ) ( 8 216 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 240 104 ) ( 64 232 104 ) ( 64 240 136 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 32
+{
+  contents detail;
+ ( 296 232 104 ) ( 296 240 104 ) ( 320 240 104 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312 232 104 ) ( 312 232 0 ) ( 112 232 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 240 104 ) ( 296 240 104 ) ( 296 240 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 232 104 ) ( 64 240 104 ) ( 64 240 136 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 240 104 ) ( 128 232 104 ) ( 128 240 136 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 240 96 ) ( 128 240 96 ) ( 64 272 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 33
+{
+  contents detail;
+ ( 448 384 0 ) ( 432 384 0 ) ( 432 376 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 432 376 224 ) ( 432 384 224 ) ( 448 384 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 160 376 224 ) ( 160 384 224 ) ( 160 376 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 384 96 ) ( 192 376 96 ) ( 192 376 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 34
+{
+  contents detail;
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 352 376 96 ) ( 352 384 96 ) ( 352 384 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 416 384 224 ) ( 416 376 224 ) ( 416 384 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 352 384 96 ) ( 416 384 96 ) ( 352 416 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 416 384 142 ) ( 352 384 142 ) ( 352 416 142 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 35
+{
+  contents detail;
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 376 96 ) ( 96 384 96 ) ( 96 376 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 160 384 224 ) ( 160 376 224 ) ( 160 376 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 384 96 ) ( 160 384 96 ) ( 96 416 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 120 384 142 ) ( 96 384 142 ) ( 96 416 142 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 36
+{
+  contents detail;
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 376 96 ) ( 192 384 96 ) ( 192 376 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 384 96 ) ( 256 376 96 ) ( 256 376 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 240 384 96 ) ( 256 384 96 ) ( 256 416 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 236 386 142 ) ( 192 386 142 ) ( 192 418 142 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 37
+{
+  contents detail;
+ ( 448 384 0 ) ( 432 384 0 ) ( 432 376 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 432 376 224 ) ( 432 384 224 ) ( 448 384 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 352 384 96 ) ( 352 376 96 ) ( 352 384 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 316 376 148 ) ( 316 384 148 ) ( 316 376 180 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 38
+{
+  contents detail;
+ ( 448 384 0 ) ( 432 384 0 ) ( 432 376 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 432 376 224 ) ( 432 384 224 ) ( 448 384 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 376 0 ) ( 8 376 192 ) ( 440 376 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 384 192 ) ( 432 384 192 ) ( 432 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 376 96 ) ( 256 384 96 ) ( 256 376 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 316 384 148 ) ( 316 376 148 ) ( 316 376 180 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 39
+{
+  contents detail;
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 288 96 ) ( 448 288 96 ) ( 440 288 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 224 96 ) ( 440 224 96 ) ( 440 224 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 288 96 ) ( 448 288 96 ) ( 440 320 96 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 22 108 ) ( 440 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 40
+{
+  contents detail;
+ ( 440 0 224 ) ( 440 16 224 ) ( 448 16 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 288 96 ) ( 448 288 96 ) ( 440 288 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 224 96 ) ( 440 224 96 ) ( 440 224 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 22 108 ) ( 448 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 41
+{
+  contents detail;
+ ( 440 0 224 ) ( 440 16 224 ) ( 448 16 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 376 192 ) ( 440 376 0 ) ( 448 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 288 96 ) ( 440 288 96 ) ( 440 288 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 22 108 ) ( 448 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 42
+{
+  contents detail;
+ ( 448 16 0 ) ( 440 16 0 ) ( 440 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 376 192 ) ( 440 376 0 ) ( 448 384 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 22 108 ) ( 440 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 318 0 ) ( 448 318 12 ) ( 480 318 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 43
+{
+  contents detail;
+ ( 448 16 0 ) ( 440 16 0 ) ( 440 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 288 96 ) ( 440 288 96 ) ( 440 288 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 22 108 ) ( 440 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 318 12 ) ( 448 318 0 ) ( 480 318 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 44
+{
+  contents detail;
+ ( 448 16 0 ) ( 440 16 0 ) ( 440 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 224 96 ) ( 448 224 96 ) ( 440 224 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 22 108 ) ( 440 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 28 108 ) ( 440 28 108 ) ( 448 28 140 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 45
+{
+  contents detail;
+ ( 448 16 0 ) ( 440 16 0 ) ( 440 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 0 ) ( 440 8 192 ) ( 448 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 22 108 ) ( 440 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 28 108 ) ( 448 28 108 ) ( 448 28 140 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 46
+{
+  contents detail;
+ ( 256 0 224 ) ( 256 8 224 ) ( 272 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 0 0 ) ( 264 0 192 ) ( 328 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 32 ) ( 440 8 224 ) ( 256 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 0 224 ) ( 264 0 32 ) ( 256 8 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 8 112 ) ( 320 0 112 ) ( 320 8 144 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 0 108 ) ( 284 0 108 ) ( 256 32 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 47
+{
+  contents detail;
+ ( 440 0 224 ) ( 440 16 224 ) ( 448 16 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 0 ) ( 440 8 192 ) ( 448 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 22 108 ) ( 448 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 128 256 ) ( 448 128 256 ) ( 440 128 288 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 48
+{
+  contents detail;
+ ( 440 0 224 ) ( 440 16 224 ) ( 448 16 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 224 96 ) ( 448 224 96 ) ( 440 224 128 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 22 108 ) ( 448 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 192 224 ) ( 440 192 224 ) ( 440 192 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 49
+{
+  contents detail;
+ ( 440 0 224 ) ( 440 16 224 ) ( 448 16 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 128 256 ) ( 440 128 256 ) ( 440 128 288 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 192 224 ) ( 448 192 224 ) ( 440 192 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 224 152 ) ( 448 224 152 ) ( 440 256 152 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 50
+{
+  contents nonColliding;
+ ( 448 0 192 ) ( 448 16 192 ) ( 448 16 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 248 0 ) ( 440 248 192 ) ( 440 8 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 22 108 ) ( 448 22 108 ) ( 448 54 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 128 256 ) ( 440 128 256 ) ( 440 128 288 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 192 224 ) ( 448 192 224 ) ( 440 192 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 224 152 ) ( 440 224 152 ) ( 440 256 152 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 51
+{
+  contents detail;
+ ( 272 8 0 ) ( 256 8 0 ) ( 256 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 0 0 ) ( 264 0 192 ) ( 328 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 32 ) ( 440 8 224 ) ( 256 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 0 224 ) ( 264 0 32 ) ( 256 8 32 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 284 0 108 ) ( 256 0 108 ) ( 256 32 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 284 8 108 ) ( 284 0 108 ) ( 284 8 140 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 52
+{
+  contents detail;
+ ( 272 8 0 ) ( 256 8 0 ) ( 256 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 0 0 ) ( 264 0 192 ) ( 328 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 32 ) ( 440 8 224 ) ( 256 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 320 8 112 ) ( 320 0 112 ) ( 320 8 144 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 284 0 108 ) ( 256 0 108 ) ( 256 32 108 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 284 0 108 ) ( 284 8 108 ) ( 284 8 140 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 53
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v 522 441.5 -8 t 0 -0 1 1
+	v 522 441.5 64 t 0 -576 1 21
+	v 522 441.5 136 t 0 -1152 1 21
+   )
+   (
+	v 522 440 -8 t 12 -0 3 1
+	v 522 440 64 t 12 -576 3 21
+	v 522 440 136 t 12 -1152 3 21
+   )
+   (
+	v 523.5 440 -8 t 24 -0 5 1
+	v 523.5 440 64 t 24 -576 5 21
+	v 523.5 440 136 t 24 -1152 5 21
+   )
+   (
+	v 525 440 -8 t 36 -0 7 1
+	v 525 440 64 t 36 -576 7 21
+	v 525 440 136 t 36 -1152 7 21
+   )
+   (
+	v 525 441.5 -8 t 48 -0 9 1
+	v 525 441.5 64 t 48 -576 9 21
+	v 525 441.5 136 t 48 -1152 9 21
+   )
+   (
+	v 525 443 -8 t 60 -0 11 1
+	v 525 443 64 t 60 -576 11 21
+	v 525 443 136 t 60 -1152 11 21
+   )
+   (
+	v 523.5 443 -8 t 72 -0 13 1
+	v 523.5 443 64 t 72 -576 13 21
+	v 523.5 443 136 t 72 -1152 13 21
+   )
+   (
+	v 522 443 -8 t 84 -0 15 1
+	v 522 443 64 t 84 -576 15 21
+	v 522 443 136 t 84 -1152 15 21
+   )
+   (
+	v 522 441.5 -8 t 96 -0 17 1
+	v 522 441.5 64 t 96 -576 17 21
+	v 522 441.5 136 t 96 -1152 17 21
+   )
+  }
+ }
+// brush 54
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v 522 416.5 -8 t 0 -0 1 1
+	v 522 416.5 64 t 0 -576 1 21
+	v 522 416.5 136 t 0 -1152 1 21
+   )
+   (
+	v 522 415 -8 t 12 -0 3 1
+	v 522 415 64 t 12 -576 3 21
+	v 522 415 136 t 12 -1152 3 21
+   )
+   (
+	v 523.5 415 -8 t 24 -0 5 1
+	v 523.5 415 64 t 24 -576 5 21
+	v 523.5 415 136 t 24 -1152 5 21
+   )
+   (
+	v 525 415 -8 t 36 -0 7 1
+	v 525 415 64 t 36 -576 7 21
+	v 525 415 136 t 36 -1152 7 21
+   )
+   (
+	v 525 416.5 -8 t 48 -0 9 1
+	v 525 416.5 64 t 48 -576 9 21
+	v 525 416.5 136 t 48 -1152 9 21
+   )
+   (
+	v 525 418 -8 t 60 -0 11 1
+	v 525 418 64 t 60 -576 11 21
+	v 525 418 136 t 60 -1152 11 21
+   )
+   (
+	v 523.5 418 -8 t 72 -0 13 1
+	v 523.5 418 64 t 72 -576 13 21
+	v 523.5 418 136 t 72 -1152 13 21
+   )
+   (
+	v 522 418 -8 t 84 -0 15 1
+	v 522 418 64 t 84 -576 15 21
+	v 522 418 136 t 84 -1152 15 21
+   )
+   (
+	v 522 416.5 -8 t 96 -0 17 1
+	v 522 416.5 64 t 96 -576 17 21
+	v 522 416.5 136 t 96 -1152 17 21
+   )
+  }
+ }
+// brush 55
+{
+  contents detail;
+ ( 524 441 4 ) ( 523 441 4 ) ( 523 440 4 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 440 6 ) ( 522 441 6 ) ( 523 441 6 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 136 ) ( 523 416 136 ) ( 523 416 -8 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524.5 440 136 ) ( 524.5 441 136 ) ( 524.5 441 -8 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524 441 136 ) ( 523 441 136 ) ( 523 441 -8 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522.5 441 136 ) ( 522.5 440 136 ) ( 522.5 440 -8 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 56
+{
+  contents detail;
+ ( 524 441 20 ) ( 523 441 20 ) ( 523 440 20 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 440 22 ) ( 522 441 22 ) ( 523 441 22 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 152 ) ( 523 416 152 ) ( 523 416 8 ) me_metal_grey_02 128 128 0 -16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524.5 440 152 ) ( 524.5 441 152 ) ( 524.5 441 8 ) me_metal_grey_02 128 128 0 -16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524 441 152 ) ( 523 441 152 ) ( 523 441 8 ) me_metal_grey_02 128 128 0 -16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522.5 441 152 ) ( 522.5 440 152 ) ( 522.5 440 8 ) me_metal_grey_02 128 128 0 -16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 57
+{
+  contents detail;
+ ( 524 441 52 ) ( 523 441 52 ) ( 523 440 52 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 440 54 ) ( 522 441 54 ) ( 523 441 54 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 184 ) ( 523 416 184 ) ( 523 416 40 ) me_metal_grey_02 128 128 0 -48 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524.5 440 184 ) ( 524.5 441 184 ) ( 524.5 441 40 ) me_metal_grey_02 128 128 0 -48 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524 441 184 ) ( 523 441 184 ) ( 523 441 40 ) me_metal_grey_02 128 128 0 -48 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522.5 441 184 ) ( 522.5 440 184 ) ( 522.5 440 40 ) me_metal_grey_02 128 128 0 -48 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 58
+{
+  contents detail;
+ ( 524 441 36 ) ( 523 441 36 ) ( 523 440 36 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 440 38 ) ( 522 441 38 ) ( 523 441 38 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 168 ) ( 523 416 168 ) ( 523 416 24 ) me_metal_grey_02 128 128 0 -32 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524.5 440 168 ) ( 524.5 441 168 ) ( 524.5 441 24 ) me_metal_grey_02 128 128 0 -32 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524 441 168 ) ( 523 441 168 ) ( 523 441 24 ) me_metal_grey_02 128 128 0 -32 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522.5 441 168 ) ( 522.5 440 168 ) ( 522.5 440 24 ) me_metal_grey_02 128 128 0 -32 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 59
+{
+  contents detail;
+ ( 524 441 84 ) ( 523 441 84 ) ( 523 440 84 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 440 86 ) ( 522 441 86 ) ( 523 441 86 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 216 ) ( 523 416 216 ) ( 523 416 72 ) me_metal_grey_02 128 128 0 -80 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524.5 440 216 ) ( 524.5 441 216 ) ( 524.5 441 72 ) me_metal_grey_02 128 128 0 -80 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524 441 216 ) ( 523 441 216 ) ( 523 441 72 ) me_metal_grey_02 128 128 0 -80 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522.5 441 216 ) ( 522.5 440 216 ) ( 522.5 440 72 ) me_metal_grey_02 128 128 0 -80 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 60
+{
+  contents detail;
+ ( 524 441 68 ) ( 523 441 68 ) ( 523 440 68 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 440 70 ) ( 522 441 70 ) ( 523 441 70 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 200 ) ( 523 416 200 ) ( 523 416 56 ) me_metal_grey_02 128 128 0 -64 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524.5 440 200 ) ( 524.5 441 200 ) ( 524.5 441 56 ) me_metal_grey_02 128 128 0 -64 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524 441 200 ) ( 523 441 200 ) ( 523 441 56 ) me_metal_grey_02 128 128 0 -64 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522.5 441 200 ) ( 522.5 440 200 ) ( 522.5 440 56 ) me_metal_grey_02 128 128 0 -64 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 61
+{
+  contents detail;
+ ( 524 441 116 ) ( 523 441 116 ) ( 523 440 116 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 440 118 ) ( 522 441 118 ) ( 523 441 118 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 248 ) ( 523 416 248 ) ( 523 416 104 ) me_metal_grey_02 128 128 0 -112 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524.5 440 248 ) ( 524.5 441 248 ) ( 524.5 441 104 ) me_metal_grey_02 128 128 0 -112 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524 441 248 ) ( 523 441 248 ) ( 523 441 104 ) me_metal_grey_02 128 128 0 -112 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522.5 441 248 ) ( 522.5 440 248 ) ( 522.5 440 104 ) me_metal_grey_02 128 128 0 -112 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 62
+{
+  contents detail;
+ ( 524 441 100 ) ( 523 441 100 ) ( 523 440 100 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 440 102 ) ( 522 441 102 ) ( 523 441 102 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 232 ) ( 523 416 232 ) ( 523 416 88 ) me_metal_grey_02 128 128 0 -96 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524.5 440 232 ) ( 524.5 441 232 ) ( 524.5 441 88 ) me_metal_grey_02 128 128 0 -96 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524 441 232 ) ( 523 441 232 ) ( 523 441 88 ) me_metal_grey_02 128 128 0 -96 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522.5 441 232 ) ( 522.5 440 232 ) ( 522.5 440 88 ) me_metal_grey_02 128 128 0 -96 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 63
+{
+  contents detail;
+ ( 524 441 132 ) ( 523 441 132 ) ( 523 440 132 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 440 134 ) ( 522 441 134 ) ( 523 441 134 ) me_metal_grey_02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 264 ) ( 523 416 264 ) ( 523 416 120 ) me_metal_grey_02 128 128 0 -128 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524.5 440 264 ) ( 524.5 441 264 ) ( 524.5 441 120 ) me_metal_grey_02 128 128 0 -128 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 524 441 264 ) ( 523 441 264 ) ( 523 441 120 ) me_metal_grey_02 128 128 0 -128 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522.5 441 264 ) ( 522.5 440 264 ) ( 522.5 440 120 ) me_metal_grey_02 128 128 0 -128 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 64
+{
+  contents detail;
+ ( 528 442 -8 ) ( 522 442 -8 ) ( 522 438 -8 ) ladder 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 438 140 ) ( 522 442 140 ) ( 528 442 140 ) ladder 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 416 136 ) ( 528 416 136 ) ( 528 416 -8 ) ladder 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 528 438 136 ) ( 528 442 136 ) ( 528 442 -8 ) ladder 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 528 442 136 ) ( 522 442 136 ) ( 522 442 -8 ) ladder 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 522 442 136 ) ( 522 438 136 ) ( 522 438 -8 ) ladder 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 65
+{
+  contents detail;
+ ( -60 208 136 ) ( -60 202 136 ) ( -56 202 136 ) ladder 64 64 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 198 244 ) ( -60 198 244 ) ( -60 204 244 ) ladder 64 64 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -35 202 280 ) ( -35 208 280 ) ( -35 208 136 ) ladder 64 64 -320 -144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 207 280 ) ( -60 207 280 ) ( -60 207 136 ) ladder 64 -64 -382 144 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -60 208 280 ) ( -60 202 280 ) ( -60 202 136 ) ladder 64 64 -320 -144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -60 202 280 ) ( -56 202 280 ) ( -56 202 136 ) ladder 64 -64 -382 144 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 66
+{
+  contents detail;
+ ( -59 204 228 ) ( -59 203 228 ) ( -58 203 228 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 202 230 ) ( -59 202 230 ) ( -59 203 230 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 202 360 ) ( -37 203 360 ) ( -37 203 216 ) me_metal_grey_02 128 128 -320 -224 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 204.5 360 ) ( -59 204.5 360 ) ( -59 204.5 216 ) me_metal_grey_02 128 -128 -382 224 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 204 360 ) ( -59 203 360 ) ( -59 203 216 ) me_metal_grey_02 128 128 -320 -224 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 202.5 360 ) ( -58 202.5 360 ) ( -58 202.5 216 ) me_metal_grey_02 128 -128 -382 224 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 67
+{
+  contents detail;
+ ( -59 204 212 ) ( -59 203 212 ) ( -58 203 212 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 202 214 ) ( -59 202 214 ) ( -59 203 214 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 202 344 ) ( -37 203 344 ) ( -37 203 200 ) me_metal_grey_02 128 128 -320 -208 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 204.5 344 ) ( -59 204.5 344 ) ( -59 204.5 200 ) me_metal_grey_02 128 -128 -382 208 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 204 344 ) ( -59 203 344 ) ( -59 203 200 ) me_metal_grey_02 128 128 -320 -208 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 202.5 344 ) ( -58 202.5 344 ) ( -58 202.5 200 ) me_metal_grey_02 128 -128 -382 208 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 68
+{
+  contents detail;
+ ( -59 204 196 ) ( -59 203 196 ) ( -58 203 196 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 202 198 ) ( -59 202 198 ) ( -59 203 198 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 202 328 ) ( -37 203 328 ) ( -37 203 184 ) me_metal_grey_02 128 128 -320 -192 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 204.5 328 ) ( -59 204.5 328 ) ( -59 204.5 184 ) me_metal_grey_02 128 -128 -382 192 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 204 328 ) ( -59 203 328 ) ( -59 203 184 ) me_metal_grey_02 128 128 -320 -192 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 202.5 328 ) ( -58 202.5 328 ) ( -58 202.5 184 ) me_metal_grey_02 128 -128 -382 192 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 69
+{
+  contents detail;
+ ( -59 204 180 ) ( -59 203 180 ) ( -58 203 180 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 202 182 ) ( -59 202 182 ) ( -59 203 182 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 202 312 ) ( -37 203 312 ) ( -37 203 168 ) me_metal_grey_02 128 128 -320 -176 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 204.5 312 ) ( -59 204.5 312 ) ( -59 204.5 168 ) me_metal_grey_02 128 -128 -382 176 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 204 312 ) ( -59 203 312 ) ( -59 203 168 ) me_metal_grey_02 128 128 -320 -176 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 202.5 312 ) ( -58 202.5 312 ) ( -58 202.5 168 ) me_metal_grey_02 128 -128 -382 176 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 70
+{
+  contents detail;
+ ( -59 204 164 ) ( -59 203 164 ) ( -58 203 164 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 202 166 ) ( -59 202 166 ) ( -59 203 166 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 202 296 ) ( -37 203 296 ) ( -37 203 152 ) me_metal_grey_02 128 128 -320 -160 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 204.5 296 ) ( -59 204.5 296 ) ( -59 204.5 152 ) me_metal_grey_02 128 -128 -382 160 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 204 296 ) ( -59 203 296 ) ( -59 203 152 ) me_metal_grey_02 128 128 -320 -160 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 202.5 296 ) ( -58 202.5 296 ) ( -58 202.5 152 ) me_metal_grey_02 128 -128 -382 160 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 71
+{
+  contents detail;
+ ( -59 204 148 ) ( -59 203 148 ) ( -58 203 148 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 202 150 ) ( -59 202 150 ) ( -59 203 150 ) me_metal_grey_02 128 128 -320 382 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 202 280 ) ( -37 203 280 ) ( -37 203 136 ) me_metal_grey_02 128 128 -320 -144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -58 204.5 280 ) ( -59 204.5 280 ) ( -59 204.5 136 ) me_metal_grey_02 128 -128 -382 144 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 204 280 ) ( -59 203 280 ) ( -59 203 136 ) me_metal_grey_02 128 128 -320 -144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -59 202.5 280 ) ( -58 202.5 280 ) ( -58 202.5 136 ) me_metal_grey_02 128 -128 -382 144 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 72
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v -59.5 202 136 t 0 -0 1 1
+	v -59.5 202 188 t 0 -576 1 21
+	v -59.5 202 240 t 0 -1152 1 21
+   )
+   (
+	v -58 202 136 t 12 -0 3 1
+	v -58 202 188 t 12 -576 3 21
+	v -58 202 240 t 12 -1152 3 21
+   )
+   (
+	v -58 203.5 136 t 24 -0 5 1
+	v -58 203.5 188 t 24 -576 5 21
+	v -58 203.5 240 t 24 -1152 5 21
+   )
+   (
+	v -58 205 136 t 36 -0 7 1
+	v -58 205 188 t 36 -576 7 21
+	v -58 205 240 t 36 -1152 7 21
+   )
+   (
+	v -59.5 205 136 t 48 -0 9 1
+	v -59.5 205 188 t 48 -576 9 21
+	v -59.5 205 240 t 48 -1152 9 21
+   )
+   (
+	v -61 205 136 t 60 -0 11 1
+	v -61 205 188 t 60 -576 11 21
+	v -61 205 240 t 60 -1152 11 21
+   )
+   (
+	v -61 203.5 136 t 72 -0 13 1
+	v -61 203.5 188 t 72 -576 13 21
+	v -61 203.5 240 t 72 -1152 13 21
+   )
+   (
+	v -61 202 136 t 84 -0 15 1
+	v -61 202 188 t 84 -576 15 21
+	v -61 202 240 t 84 -1152 15 21
+   )
+   (
+	v -59.5 202 136 t 96 -0 17 1
+	v -59.5 202 188 t 96 -576 17 21
+	v -59.5 202 240 t 96 -1152 17 21
+   )
+  }
+ }
+// brush 73
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v -36.5 202 136 t 0 -0 1 1
+	v -36.5 202 188 t 0 -576 1 21
+	v -36.5 202 240 t 0 -1152 1 21
+   )
+   (
+	v -35 202 136 t 12 -0 3 1
+	v -35 202 188 t 12 -576 3 21
+	v -35 202 240 t 12 -1152 3 21
+   )
+   (
+	v -35 203.5 136 t 24 -0 5 1
+	v -35 203.5 188 t 24 -576 5 21
+	v -35 203.5 240 t 24 -1152 5 21
+   )
+   (
+	v -35 205 136 t 36 -0 7 1
+	v -35 205 188 t 36 -576 7 21
+	v -35 205 240 t 36 -1152 7 21
+   )
+   (
+	v -36.5 205 136 t 48 -0 9 1
+	v -36.5 205 188 t 48 -576 9 21
+	v -36.5 205 240 t 48 -1152 9 21
+   )
+   (
+	v -38 205 136 t 60 -0 11 1
+	v -38 205 188 t 60 -576 11 21
+	v -38 205 240 t 60 -1152 11 21
+   )
+   (
+	v -38 203.5 136 t 72 -0 13 1
+	v -38 203.5 188 t 72 -576 13 21
+	v -38 203.5 240 t 72 -1152 13 21
+   )
+   (
+	v -38 202 136 t 84 -0 15 1
+	v -38 202 188 t 84 -576 15 21
+	v -38 202 240 t 84 -1152 15 21
+   )
+   (
+	v -36.5 202 136 t 96 -0 17 1
+	v -36.5 202 188 t 96 -576 17 21
+	v -36.5 202 240 t 96 -1152 17 21
+   )
+  }
+ }
+// brush 74
+{
+  contents detail;
+ ( -35 92 240 ) ( -35 98 240 ) ( -39 98 240 ) ladder 64 64 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -39 103 337 ) ( -35 103 337 ) ( -35 97 337 ) ladder 64 64 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -61 98 384 ) ( -61 92 384 ) ( -61 92 240 ) ladder 64 -64 -620 248 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -39 92 384 ) ( -35 92 384 ) ( -35 92 240 ) ladder 64 64 -477 -248 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -35 92 384 ) ( -35 98 384 ) ( -35 98 240 ) ladder 64 -64 -620 248 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -35 98 384 ) ( -39 98 384 ) ( -39 98 240 ) ladder 64 64 -477 -248 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 75
+{
+  contents detail;
+ ( -36 96 316 ) ( -36 97 316 ) ( -37 97 316 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 98 318 ) ( -36 98 318 ) ( -36 97 318 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -61 98 448 ) ( -61 97 448 ) ( -61 97 304 ) me_metal_grey_02 128 -128 -620 312 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 95.5 448 ) ( -36 95.5 448 ) ( -36 95.5 304 ) me_metal_grey_02 128 128 -477 -312 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 96 448 ) ( -36 97 448 ) ( -36 97 304 ) me_metal_grey_02 128 -128 -620 312 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 97.5 448 ) ( -37 97.5 448 ) ( -37 97.5 304 ) me_metal_grey_02 128 128 -477 -312 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 76
+{
+  contents detail;
+ ( -36 96 300 ) ( -36 97 300 ) ( -37 97 300 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 98 302 ) ( -36 98 302 ) ( -36 97 302 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -61 98 432 ) ( -61 97 432 ) ( -61 97 288 ) me_metal_grey_02 128 -128 -620 296 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 95.5 432 ) ( -36 95.5 432 ) ( -36 95.5 288 ) me_metal_grey_02 128 128 -477 -296 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 96 432 ) ( -36 97 432 ) ( -36 97 288 ) me_metal_grey_02 128 -128 -620 296 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 97.5 432 ) ( -37 97.5 432 ) ( -37 97.5 288 ) me_metal_grey_02 128 128 -477 -296 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 77
+{
+  contents detail;
+ ( -36 96 284 ) ( -36 97 284 ) ( -37 97 284 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 98 286 ) ( -36 98 286 ) ( -36 97 286 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -61 98 416 ) ( -61 97 416 ) ( -61 97 272 ) me_metal_grey_02 128 -128 -620 280 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 95.5 416 ) ( -36 95.5 416 ) ( -36 95.5 272 ) me_metal_grey_02 128 128 -477 -280 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 96 416 ) ( -36 97 416 ) ( -36 97 272 ) me_metal_grey_02 128 -128 -620 280 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 97.5 416 ) ( -37 97.5 416 ) ( -37 97.5 272 ) me_metal_grey_02 128 128 -477 -280 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 78
+{
+  contents detail;
+ ( -36 96 268 ) ( -36 97 268 ) ( -37 97 268 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 98 270 ) ( -36 98 270 ) ( -36 97 270 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -61 98 400 ) ( -61 97 400 ) ( -61 97 256 ) me_metal_grey_02 128 -128 -620 264 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 95.5 400 ) ( -36 95.5 400 ) ( -36 95.5 256 ) me_metal_grey_02 128 128 -477 -264 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 96 400 ) ( -36 97 400 ) ( -36 97 256 ) me_metal_grey_02 128 -128 -620 264 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 97.5 400 ) ( -37 97.5 400 ) ( -37 97.5 256 ) me_metal_grey_02 128 128 -477 -264 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 79
+{
+  contents detail;
+ ( -36 96 252 ) ( -36 97 252 ) ( -37 97 252 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 98 254 ) ( -36 98 254 ) ( -36 97 254 ) me_metal_grey_02 128 128 -620 477 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -61 98 384 ) ( -61 97 384 ) ( -61 97 240 ) me_metal_grey_02 128 -128 -620 248 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -37 95.5 384 ) ( -36 95.5 384 ) ( -36 95.5 240 ) me_metal_grey_02 128 128 -477 -248 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 96 384 ) ( -36 97 384 ) ( -36 97 240 ) me_metal_grey_02 128 -128 -620 248 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -36 97.5 384 ) ( -37 97.5 384 ) ( -37 97.5 240 ) me_metal_grey_02 128 128 -477 -248 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 80
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v -35.5 98 240 t 0 -0 1 1
+	v -35.5 98 287 t 0 -576 1 15
+	v -35.5 98 334 t 0 -1152 1 15
+   )
+   (
+	v -37 98 240 t 12 -0 3 1
+	v -37 98 287 t 12 -576 3 15
+	v -37 98 334 t 12 -1152 3 15
+   )
+   (
+	v -37 96.5 240 t 24 -0 5 1
+	v -37 96.5 287 t 24 -576 5 15
+	v -37 96.5 334 t 24 -1152 5 15
+   )
+   (
+	v -37 95 240 t 36 -0 7 1
+	v -37 95 287 t 36 -576 7 15
+	v -37 95 334 t 36 -1152 7 15
+   )
+   (
+	v -35.5 95 240 t 48 -0 9 1
+	v -35.5 95 287 t 48 -576 9 15
+	v -35.5 95 334 t 48 -1152 9 15
+   )
+   (
+	v -34 95 240 t 60 -0 11 1
+	v -34 95 287 t 60 -576 11 15
+	v -34 95 334 t 60 -1152 11 15
+   )
+   (
+	v -34 96.5 240 t 72 -0 13 1
+	v -34 96.5 287 t 72 -576 13 15
+	v -34 96.5 334 t 72 -1152 13 15
+   )
+   (
+	v -34 98 240 t 84 -0 15 1
+	v -34 98 287 t 84 -576 15 15
+	v -34 98 334 t 84 -1152 15 15
+   )
+   (
+	v -35.5 98 240 t 96 -0 17 1
+	v -35.5 98 287 t 96 -576 17 15
+	v -35.5 98 334 t 96 -1152 17 15
+   )
+  }
+ }
+// brush 81
+{
+  contents detail;
+ ( 186 233.5 121 ) ( 186 234.5 120.5 ) ( 185 234.5 120.5 ) me_metal_grey_02 125.14258 128 -745.7901 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 236 122.5 ) ( 186 236 122.5 ) ( 186 235 122.5 ) me_metal_grey_02 125.1582 128 -746.27374 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 263 249.5 ) ( 161 262 250 ) ( 161 232 109 ) me_metal_grey_02 128.01363 -128 -727.00427 163.21217 167.89934 2.7608243e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 260.5 250 ) ( 186 260.5 250 ) ( 186 230.5 109.5 ) me_metal_grey_02 128 125.15709 -255 -117.13594 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 261 250 ) ( 186 262 250 ) ( 186 232 109 ) me_metal_grey_02 127.97951 -128 -726.8573 163.16876 167.89832 -0.00012091075 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 262.5 249.5 ) ( 185 262.5 249.5 ) ( 185 232.5 109 ) me_metal_grey_02 128 125.15709 -255 -116.71723 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 82
+{
+  contents detail;
+ ( 186 230 105.5 ) ( 186 231 105 ) ( 185 231 105 ) me_metal_grey_02 125.1543 128 -742.48431 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 232.5 107 ) ( 186 232.5 107 ) ( 186 231.5 107 ) me_metal_grey_02 125.15235 128 -742.89581 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 260 234 ) ( 161 259 234 ) ( 161 228.5 93.5 ) me_metal_grey_02 128.01245 -128 -727 147.21588 167.90091 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 257.5 234.5 ) ( 186 257.5 234.5 ) ( 186 227 93.5 ) me_metal_grey_02 128 125.15706 -255 -101.49033 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 258 234.5 ) ( 186 259 234 ) ( 186 228.5 93.5 ) me_metal_grey_02 127.99268 -128 -726.91772 147.1875 167.89995 -0.00010613794 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 259.5 234 ) ( 185 259.5 234 ) ( 185 229 93 ) me_metal_grey_02 128 125.15707 -255 -101.07269 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 83
+{
+  contents detail;
+ ( 186 227 89.5 ) ( 186 228 89.5 ) ( 185 228 89.5 ) me_metal_grey_02 125.16991 128 -739.19263 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 229 91 ) ( 186 229 91 ) ( 186 228 91.5 ) me_metal_grey_02 125.16991 128 -739.6106 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 256.5 218.5 ) ( 161 255.5 218.5 ) ( 161 225 77.5 ) me_metal_grey_02 128.004 -128 -726.95129 131.19009 167.89999 -4.7073543e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 254 219 ) ( 186 254 219 ) ( 186 224 78 ) me_metal_grey_02 128 125.15706 -255 -85.846611 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 254.5 218.5 ) ( 186 255.5 218.5 ) ( 186 225 77.5 ) me_metal_grey_02 127.99718 -128 -726.9339 131.23431 167.89929 0.0001345869 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 256 218.5 ) ( 185 256 218.5 ) ( 185 225.5 77.5 ) me_metal_grey_02 128 125.15707 -255 -85.427902 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 84
+{
+  contents detail;
+ ( 186 223.5 74 ) ( 186 224.5 74 ) ( 185 224.5 74 ) me_metal_grey_02 125.16016 128 -735.79932 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 226 75.5 ) ( 186 226 75.5 ) ( 186 225 76 ) me_metal_grey_02 125.14844 128 -736.1698 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 253 202.5 ) ( 161 252 203 ) ( 161 222 62 ) me_metal_grey_02 128.00783 -128 -726.97772 115.20239 167.90208 -6.7707791e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 250.5 203 ) ( 186 250.5 203 ) ( 186 220.5 62.5 ) me_metal_grey_02 128 125.15707 -255 -70.202438 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 251 203 ) ( 186 252 203 ) ( 186 222 62 ) me_metal_grey_02 127.99171 -128 -726.92358 115.18329 167.90059 -8.596632e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 252.5 203 ) ( 185 252.5 203 ) ( 185 222.5 62 ) me_metal_grey_02 128 125.15707 -255 -69.783981 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 85
+{
+  contents detail;
+ ( 186 220 58.5 ) ( 186 221 58 ) ( 185 221 58 ) me_metal_grey_02 125.14648 128 -732.38922 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 222.5 60 ) ( 186 222.5 60 ) ( 186 221.5 60 ) me_metal_grey_02 125.14258 128 -732.79236 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 249.5 187 ) ( 161 248.5 187 ) ( 161 218.5 46.5 ) me_metal_grey_02 128.01648 -128 -727.01727 99.185173 167.90062 -9.60584e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 247.5 187.5 ) ( 186 247.5 187.5 ) ( 186 217 46.5 ) me_metal_grey_02 128 125.15704 -255 -54.558071 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 247.5 187.5 ) ( 186 248.5 187 ) ( 186 218.5 46.5 ) me_metal_grey_02 127.98796 -128 -726.8952 99.215324 167.90083 5.6442506e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 249 187 ) ( 185 249 187 ) ( 185 219 46.5 ) me_metal_grey_02 128 125.15709 -255 -54.137814 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 86
+{
+  contents detail;
+ ( 186 216.5 42.5 ) ( 186 217.5 42.5 ) ( 185 217.5 42.5 ) me_metal_grey_02 125.1543 128 -729.06714 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 219 44.5 ) ( 186 219 44.5 ) ( 186 218 44.5 ) me_metal_grey_02 125.14648 128 -729.45319 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 246.5 171.5 ) ( 161 245.5 171.5 ) ( 161 215 31 ) me_metal_grey_02 127.99042 -128 -726.9032 83.232895 167.89922 8.9451336e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 244 172 ) ( 186 244 172 ) ( 186 213.5 31 ) me_metal_grey_02 128 125.1571 -255 -38.913692 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 244.5 172 ) ( 186 245.5 171.5 ) ( 186 215 31 ) me_metal_grey_02 128.00127 -128 -726.94257 83.170021 167.89975 -0.00014699953 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 246 171.5 ) ( 185 246 171.5 ) ( 185 215.5 30.5 ) me_metal_grey_02 128 125.15709 -255 -38.493805 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 87
+{
+  contents detail;
+ ( 186 213.5 27 ) ( 186 214.5 27 ) ( 185 214.5 27 ) me_metal_grey_02 125.1582 128 -725.72961 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 215.5 28.5 ) ( 186 215.5 28.5 ) ( 186 215 29 ) me_metal_grey_02 125.1543 128 -726.13116 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 243 155.5 ) ( 161 242 156 ) ( 161 212 15 ) me_metal_grey_02 127.99458 -128 -726.92218 67.176552 167.90013 -0.0001096405 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 240.5 156 ) ( 186 240.5 156 ) ( 186 210.5 15.5 ) me_metal_grey_02 128 125.15709 -255 -23.269503 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 241 156 ) ( 186 242 156 ) ( 186 212 15 ) me_metal_grey_02 127.97917 -128 -726.86798 67.21579 167.89935 3.628866e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 242.5 156 ) ( 185 242.5 156 ) ( 185 212.5 15 ) me_metal_grey_02 128 125.15712 -255 -22.850496 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 88
+{
+  contents detail;
+ ( 186 210 11.5 ) ( 186 211 11 ) ( 185 211 11 ) me_metal_grey_02 125.1543 128 -722.35858 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 212.5 13 ) ( 186 212.5 13 ) ( 186 211.5 13 ) me_metal_grey_02 125.14063 128 -722.7218 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 239.5 140 ) ( 161 238.5 140.5 ) ( 161 208.5 -0.5 ) me_metal_grey_02 128 -128 -726.95544 51.190044 167.90132 -7.0193564e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 237 140.5 ) ( 186 237 140.5 ) ( 186 207 0 ) me_metal_grey_02 128 125.15707 -255 -7.625 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 237.5 140.5 ) ( 186 238.5 140.5 ) ( 186 208.5 -0.5 ) me_metal_grey_02 127.99309 -128 -726.92719 51.232922 167.89882 0.00014189047 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 239 140 ) ( 185 239 140 ) ( 185 209 -0.5 ) me_metal_grey_02 128 125.1571 -255 -7.2040558 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 89
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v 161.5 209.44768 -0.7222476 t 0 -0 1 1
+	v 161.5 224.54187 69.677567 t 0 -576 1 19
+	v 161.5 239.636 140.07739 t 0 -1152 1 19
+   )
+   (
+	v 160 209.44768 -0.7222476 t 12 -0 3 1
+	v 160 224.54187 69.677567 t 12 -576 3 19
+	v 160 239.636 140.07739 t 12 -1152 3 19
+   )
+   (
+	v 160 207.98093 -0.40779734 t 24 -0 5 1
+	v 160 223.07516 69.99205 t 24 -576 5 19
+	v 160 238.16936 140.39185 t 24 -1152 5 19
+   )
+   (
+	v 160 206.51427 -0.093278408 t 36 -0 7 1
+	v 160 221.60849 70.306503 t 36 -576 7 19
+	v 160 236.70264 140.70627 t 36 -1152 7 19
+   )
+   (
+	v 161.5 206.51427 -0.093278408 t 48 -0 9 1
+	v 161.5 221.60849 70.306503 t 48 -576 9 19
+	v 161.5 236.70264 140.70627 t 48 -1152 9 19
+   )
+   (
+	v 163 206.51427 -0.093278408 t 60 -0 11 1
+	v 163 221.60849 70.306503 t 60 -576 11 19
+	v 163 236.70264 140.70627 t 60 -1152 11 19
+   )
+   (
+	v 163 207.98093 -0.40779734 t 72 -0 13 1
+	v 163 223.07516 69.99205 t 72 -576 13 19
+	v 163 238.16936 140.39185 t 72 -1152 13 19
+   )
+   (
+	v 163 209.44768 -0.7222476 t 84 -0 15 1
+	v 163 224.54187 69.677567 t 84 -576 15 19
+	v 163 239.636 140.07739 t 84 -1152 15 19
+   )
+   (
+	v 161.5 209.44768 -0.7222476 t 96 -0 17 1
+	v 161.5 224.54187 69.677567 t 96 -576 17 19
+	v 161.5 239.636 140.07739 t 96 -1152 17 19
+   )
+  }
+ }
+// brush 90
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v 186.5 209.44768 -0.7222476 t 0 -0 1 1
+	v 186.5 224.54187 69.677567 t 0 -576 1 19
+	v 186.5 239.636 140.07739 t 0 -1152 1 19
+   )
+   (
+	v 185 209.44768 -0.7222476 t 12 -0 3 1
+	v 185 224.54187 69.677567 t 12 -576 3 19
+	v 185 239.636 140.07739 t 12 -1152 3 19
+   )
+   (
+	v 185 207.98093 -0.40779734 t 24 -0 5 1
+	v 185 223.07516 69.99205 t 24 -576 5 19
+	v 185 238.16936 140.39185 t 24 -1152 5 19
+   )
+   (
+	v 185 206.51427 -0.093278408 t 36 -0 7 1
+	v 185 221.60849 70.306503 t 36 -576 7 19
+	v 185 236.70264 140.70627 t 36 -1152 7 19
+   )
+   (
+	v 186.5 206.51427 -0.093278408 t 48 -0 9 1
+	v 186.5 221.60849 70.306503 t 48 -576 9 19
+	v 186.5 236.70264 140.70627 t 48 -1152 9 19
+   )
+   (
+	v 188 206.51427 -0.093278408 t 60 -0 11 1
+	v 188 221.60849 70.306503 t 60 -576 11 19
+	v 188 236.70264 140.70627 t 60 -1152 11 19
+   )
+   (
+	v 188 207.98093 -0.40779734 t 72 -0 13 1
+	v 188 223.07516 69.99205 t 72 -576 13 19
+	v 188 238.16936 140.39185 t 72 -1152 13 19
+   )
+   (
+	v 188 209.44768 -0.7222476 t 84 -0 15 1
+	v 188 224.54187 69.677567 t 84 -576 15 19
+	v 188 239.636 140.07739 t 84 -1152 15 19
+   )
+   (
+	v 186.5 209.44768 -0.7222476 t 96 -0 17 1
+	v 186.5 224.54187 69.677567 t 96 -576 17 19
+	v 186.5 239.636 140.07739 t 96 -1152 17 19
+   )
+  }
+ }
+// brush 91
+{
+  contents detail;
+ ( 186 237 136.5 ) ( 186 238 136.5 ) ( 185 238 136.5 ) me_metal_grey_02 125.1582 128 -749.20673 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 239 138 ) ( 186 239 138 ) ( 186 238 138.5 ) me_metal_grey_02 125.15039 128 -749.5954 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 266.5 265 ) ( 161 265.5 265.5 ) ( 161 235.5 124.5 ) me_metal_grey_02 127.98354 -128 -726.87366 179.22476 167.9014 8.9576984e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 185 264 266 ) ( 186 264 266 ) ( 186 234 125 ) me_metal_grey_02 128 125.1571 -255 -132.78024 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 264.5 265.5 ) ( 186 265.5 265.5 ) ( 186 235.5 124.5 ) me_metal_grey_02 128.02692 -128 -727.04578 179.18381 167.8987 -7.2049632e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 186 266 265.5 ) ( 185 266 265.5 ) ( 185 236 124.5 ) me_metal_grey_02 128 125.15715 -255 -132.36241 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 92
+{
+  contents detail;
+ ( 187 203.5 0.5 ) ( 187 209.5 -0.5 ) ( 183 209.5 -0.5 ) ladder 62.582272 64 -719.8894 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 183 240.5 144 ) ( 187 240.5 144 ) ( 187 234.5 145 ) ladder 62.581455 64 -750.9093 255 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 161 239.5 140 ) ( 161 234 141.5 ) ( 161 203.5 0.5 ) ladder 64 -64 -726.9527 51.190079 167.89999 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 183 234 141.5 ) ( 187 234 141.5 ) ( 187 203.5 0.5 ) ladder 64 62.580696 -255 -8.3582392 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 187 234 141.5 ) ( 187 239.5 140 ) ( 187 209.5 -0.5 ) ladder 64 -64 -726.95703 51.193813 167.89999 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 187 239.5 140 ) ( 183 239.5 140 ) ( 183 209.5 -0.5 ) ladder 64 62.580669 -255 -7.1016431 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 93
+{
+  contents detail;
+ ( 319 192 95 ) ( 313 192 95 ) ( 313 189 95 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 313 189 96 ) ( 313 192 96 ) ( 319 192 96 ) icbm_tunnelwall 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 314 128 96 ) ( 320 128 96 ) ( 320 128 88 ) icbm_tunnelwall 128 128 0 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 319 189 96 ) ( 319 192 96 ) ( 319 192 88 ) icbm_tunnelwall 128 128 0 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 319 192 96 ) ( 313 192 96 ) ( 313 192 88 ) icbm_tunnelwall 128 128 0 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 313 192 96 ) ( 313 189 96 ) ( 313 189 88 ) icbm_tunnelwall 128 128 0 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 94
+{
+  contents detail;
+ ( 319 352 95 ) ( 313 352 95 ) ( 313 349 95 ) icbm_tunnelwall 128 128 0 -160 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 313 349 96 ) ( 313 352 96 ) ( 319 352 96 ) icbm_tunnelwall 128 128 0 -160 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 314 288 96 ) ( 320 288 96 ) ( 320 288 88 ) icbm_tunnelwall 128 128 0 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 319 349 96 ) ( 319 352 96 ) ( 319 352 88 ) icbm_tunnelwall 128 128 160 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 319 352 96 ) ( 313 352 96 ) ( 313 352 88 ) icbm_tunnelwall 128 128 0 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 313 352 96 ) ( 313 349 96 ) ( 313 349 88 ) icbm_tunnelwall 128 128 160 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 95
+{
+  contents detail;
+ ( 447 288 95 ) ( 441 288 95 ) ( 441 285 95 ) icbm_tunnelwall 128 128 128 -96 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 441 285 96 ) ( 441 288 96 ) ( 447 288 96 ) icbm_tunnelwall 128 128 128 -96 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 442 224 96 ) ( 448 224 96 ) ( 448 224 88 ) icbm_tunnelwall 128 128 128 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 447 285 96 ) ( 447 288 96 ) ( 447 288 88 ) icbm_tunnelwall 128 128 96 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 447 288 96 ) ( 441 288 96 ) ( 441 288 88 ) icbm_tunnelwall 128 128 128 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 441 288 96 ) ( 441 285 96 ) ( 441 285 88 ) icbm_tunnelwall 128 128 96 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 96
+{
+  contents detail;
+ ( 416 377 95 ) ( 416 383 95 ) ( 413 383 95 ) icbm_tunnelwall 128 128 -696 -224 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 413 383 96 ) ( 416 383 96 ) ( 416 377 96 ) icbm_tunnelwall 128 128 -696 -224 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 352 382 96 ) ( 352 376 96 ) ( 352 376 88 ) icbm_tunnelwall 128 -128 -696 -16 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 413 377 96 ) ( 416 377 96 ) ( 416 377 88 ) icbm_tunnelwall 128 128 224 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 416 377 96 ) ( 416 383 96 ) ( 416 383 88 ) icbm_tunnelwall 128 -128 -696 -16 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 416 383 96 ) ( 413 383 96 ) ( 413 383 88 ) icbm_tunnelwall 128 128 224 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 97
+{
+  contents detail;
+ ( 256 377 95 ) ( 256 383 95 ) ( 253 383 95 ) icbm_tunnelwall 128 128 -696 -64 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 253 383 96 ) ( 256 383 96 ) ( 256 377 96 ) icbm_tunnelwall 128 128 -696 -64 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 382 96 ) ( 192 376 96 ) ( 192 376 88 ) icbm_tunnelwall 128 -128 -696 -16 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 253 377 96 ) ( 256 377 96 ) ( 256 377 88 ) icbm_tunnelwall 128 128 64 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 377 96 ) ( 256 383 96 ) ( 256 383 88 ) icbm_tunnelwall 128 -128 -696 -16 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 256 383 96 ) ( 253 383 96 ) ( 253 383 88 ) icbm_tunnelwall 128 128 64 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 98
+{
+  contents detail;
+ ( 160 377 95 ) ( 160 383 95 ) ( 157 383 95 ) icbm_tunnelwall 128 128 -696 32 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 157 383 96 ) ( 160 383 96 ) ( 160 377 96 ) icbm_tunnelwall 128 128 -696 32 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 382 96 ) ( 96 376 96 ) ( 96 376 88 ) icbm_tunnelwall 128 -128 -696 -16 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 157 377 96 ) ( 160 377 96 ) ( 160 377 88 ) icbm_tunnelwall 128 128 -32 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 160 377 96 ) ( 160 383 96 ) ( 160 383 88 ) icbm_tunnelwall 128 -128 -696 -16 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 160 383 96 ) ( 157 383 96 ) ( 157 383 88 ) icbm_tunnelwall 128 128 -32 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 99
+{
+  contents detail;
+ ( 128 233 95 ) ( 128 239 95 ) ( 125 239 95 ) icbm_tunnelwall 128 128 -552 64 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 125 239 96 ) ( 128 239 96 ) ( 128 233 96 ) icbm_tunnelwall 128 128 -552 64 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 238 96 ) ( 64 232 96 ) ( 64 232 88 ) icbm_tunnelwall 128 -128 -552 -16 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 125 233 96 ) ( 128 233 96 ) ( 128 233 88 ) icbm_tunnelwall 128 128 -64 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 233 96 ) ( 128 239 96 ) ( 128 239 88 ) icbm_tunnelwall 128 -128 -552 -16 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 128 239 96 ) ( 125 239 96 ) ( 125 239 88 ) icbm_tunnelwall 128 128 -64 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 100
+{
+  contents detail;
+ ( 96 1 95 ) ( 96 7 95 ) ( 93 7 95 ) icbm_tunnelwall 128 128 -320 96 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 93 7 96 ) ( 96 7 96 ) ( 96 1 96 ) icbm_tunnelwall 128 128 -320 96 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 32 6 96 ) ( 32 0 96 ) ( 32 0 88 ) icbm_tunnelwall 128 -128 -320 -16 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 93 1 96 ) ( 96 1 96 ) ( 96 1 88 ) icbm_tunnelwall 128 128 -96 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 1 96 ) ( 96 7 96 ) ( 96 7 88 ) icbm_tunnelwall 128 -128 -320 -16 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 7 96 ) ( 93 7 96 ) ( 93 7 88 ) icbm_tunnelwall 128 128 -96 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 101
+{
+  contents detail;
+ ( 224 -47 95 ) ( 224 -41 95 ) ( 221 -41 95 ) icbm_tunnelwall 128 128 -272 -32 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 221 -41 96 ) ( 224 -41 96 ) ( 224 -47 96 ) icbm_tunnelwall 128 128 -272 -32 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 160 -42 96 ) ( 160 -48 96 ) ( 160 -48 88 ) icbm_tunnelwall 128 -128 -272 -16 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 221 -47 96 ) ( 224 -47 96 ) ( 224 -47 88 ) icbm_tunnelwall 128 128 32 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 224 -47 96 ) ( 224 -41 96 ) ( 224 -41 88 ) icbm_tunnelwall 128 -128 -272 -16 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 224 -41 96 ) ( 221 -41 96 ) ( 221 -41 88 ) icbm_tunnelwall 128 128 32 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 102
+{
+  contents detail;
+ ( 272 8 0 ) ( 256 8 0 ) ( 256 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 0 0 ) ( 264 0 192 ) ( 328 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 192 ) ( 440 8 0 ) ( 448 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 32 ) ( 440 8 224 ) ( 256 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 384 0 224 ) ( 384 8 224 ) ( 384 8 256 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 424 8 192 ) ( 412 8 192 ) ( 424 40 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 103
+{
+  contents detail;
+ ( 256 0 224 ) ( 256 8 224 ) ( 272 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 264 0 0 ) ( 264 0 192 ) ( 328 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 192 ) ( 440 8 0 ) ( 448 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 32 ) ( 440 8 224 ) ( 256 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 384 -41 208 ) ( 404 -41 208 ) ( 384 -9 208 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 432 8 224 ) ( 432 8 208 ) ( 432 40 208 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 104
+{
+  contents detail;
+ ( 264 0 0 ) ( 264 0 192 ) ( 328 0 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 192 ) ( 440 8 0 ) ( 448 0 0 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 440 8 32 ) ( 440 8 224 ) ( 256 8 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 404 -41 208 ) ( 384 -41 208 ) ( 384 -9 208 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 412 8 192 ) ( 424 8 192 ) ( 424 40 192 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 412 8 208 ) ( 412 8 192 ) ( 412 40 192 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 105
+{
+  contents detail;
+ ( 8 384 224 ) ( 0 384 224 ) ( 0 0 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 0 360 ) ( 8 384 360 ) ( 8 384 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 384 360 ) ( 0 0 360 ) ( 0 0 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 0 224 ) ( 8 192 416 ) ( 40 0 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 192 416 ) ( 8 384 224 ) ( 40 384 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 156 364 ) ( 448 164 364 ) ( 480 156 364 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 106
+{
+  contents detail;
+ ( 8 0 360 ) ( 8 384 360 ) ( 8 384 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 384 360 ) ( 0 0 360 ) ( 0 0 224 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 156 380 ) ( 448 180 380 ) ( 480 156 380 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 448 164 364 ) ( 448 156 364 ) ( 480 156 364 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 172 364 ) ( 8 172 380 ) ( 40 172 380 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 8 208 380 ) ( 8 208 364 ) ( 40 208 380 ) ch_stonewall_04 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 107
+{
+  contents detail;
+ ( 432 -72 -8 ) ( 432 -66 -8 ) ( 428 -66 -8 ) ladder 64 64 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 428 -66 140 ) ( 432 -66 140 ) ( 432 -72 140 ) ladder 64 64 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 136 ) ( 406 -72 136 ) ( 406 -72 -8 ) ladder 64 -64 -456 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 428 -72 136 ) ( 432 -72 136 ) ( 432 -72 -8 ) ladder 64 64 -10 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 432 -72 136 ) ( 432 -66 136 ) ( 432 -66 -8 ) ladder 64 -64 -456 0 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 432 -66 136 ) ( 428 -66 136 ) ( 428 -66 -8 ) ladder 64 64 -10 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 108
+{
+  contents detail;
+ ( 431 -68 116 ) ( 431 -67 116 ) ( 430 -67 116 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -66 118 ) ( 431 -66 118 ) ( 431 -67 118 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 248 ) ( 406 -67 248 ) ( 406 -67 104 ) me_metal_grey_02 128 -128 -456 112 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -68.5 248 ) ( 431 -68.5 248 ) ( 431 -68.5 104 ) me_metal_grey_02 128 128 -10 -112 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -68 248 ) ( 431 -67 248 ) ( 431 -67 104 ) me_metal_grey_02 128 -128 -456 112 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -66.5 248 ) ( 430 -66.5 248 ) ( 430 -66.5 104 ) me_metal_grey_02 128 128 -10 -112 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 109
+{
+  contents detail;
+ ( 431 -68 100 ) ( 431 -67 100 ) ( 430 -67 100 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -66 102 ) ( 431 -66 102 ) ( 431 -67 102 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 232 ) ( 406 -67 232 ) ( 406 -67 88 ) me_metal_grey_02 128 -128 -456 96 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -68.5 232 ) ( 431 -68.5 232 ) ( 431 -68.5 88 ) me_metal_grey_02 128 128 -10 -96 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -68 232 ) ( 431 -67 232 ) ( 431 -67 88 ) me_metal_grey_02 128 -128 -456 96 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -66.5 232 ) ( 430 -66.5 232 ) ( 430 -66.5 88 ) me_metal_grey_02 128 128 -10 -96 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 110
+{
+  contents detail;
+ ( 431 -68 84 ) ( 431 -67 84 ) ( 430 -67 84 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -66 86 ) ( 431 -66 86 ) ( 431 -67 86 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 216 ) ( 406 -67 216 ) ( 406 -67 72 ) me_metal_grey_02 128 -128 -456 80 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -68.5 216 ) ( 431 -68.5 216 ) ( 431 -68.5 72 ) me_metal_grey_02 128 128 -10 -80 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -68 216 ) ( 431 -67 216 ) ( 431 -67 72 ) me_metal_grey_02 128 -128 -456 80 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -66.5 216 ) ( 430 -66.5 216 ) ( 430 -66.5 72 ) me_metal_grey_02 128 128 -10 -80 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 111
+{
+  contents detail;
+ ( 431 -68 68 ) ( 431 -67 68 ) ( 430 -67 68 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -66 70 ) ( 431 -66 70 ) ( 431 -67 70 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 200 ) ( 406 -67 200 ) ( 406 -67 56 ) me_metal_grey_02 128 -128 -456 64 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -68.5 200 ) ( 431 -68.5 200 ) ( 431 -68.5 56 ) me_metal_grey_02 128 128 -10 -64 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -68 200 ) ( 431 -67 200 ) ( 431 -67 56 ) me_metal_grey_02 128 -128 -456 64 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -66.5 200 ) ( 430 -66.5 200 ) ( 430 -66.5 56 ) me_metal_grey_02 128 128 -10 -64 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 112
+{
+  contents detail;
+ ( 431 -68 52 ) ( 431 -67 52 ) ( 430 -67 52 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -66 54 ) ( 431 -66 54 ) ( 431 -67 54 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 184 ) ( 406 -67 184 ) ( 406 -67 40 ) me_metal_grey_02 128 -128 -456 48 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -68.5 184 ) ( 431 -68.5 184 ) ( 431 -68.5 40 ) me_metal_grey_02 128 128 -10 -48 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -68 184 ) ( 431 -67 184 ) ( 431 -67 40 ) me_metal_grey_02 128 -128 -456 48 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -66.5 184 ) ( 430 -66.5 184 ) ( 430 -66.5 40 ) me_metal_grey_02 128 128 -10 -48 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 113
+{
+  contents detail;
+ ( 431 -68 36 ) ( 431 -67 36 ) ( 430 -67 36 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -66 38 ) ( 431 -66 38 ) ( 431 -67 38 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 168 ) ( 406 -67 168 ) ( 406 -67 24 ) me_metal_grey_02 128 -128 -456 32 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -68.5 168 ) ( 431 -68.5 168 ) ( 431 -68.5 24 ) me_metal_grey_02 128 128 -10 -32 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -68 168 ) ( 431 -67 168 ) ( 431 -67 24 ) me_metal_grey_02 128 -128 -456 32 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -66.5 168 ) ( 430 -66.5 168 ) ( 430 -66.5 24 ) me_metal_grey_02 128 128 -10 -32 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 114
+{
+  contents detail;
+ ( 431 -68 20 ) ( 431 -67 20 ) ( 430 -67 20 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -66 22 ) ( 431 -66 22 ) ( 431 -67 22 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 152 ) ( 406 -67 152 ) ( 406 -67 8 ) me_metal_grey_02 128 -128 -456 16 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -68.5 152 ) ( 431 -68.5 152 ) ( 431 -68.5 8 ) me_metal_grey_02 128 128 -10 -16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -68 152 ) ( 431 -67 152 ) ( 431 -67 8 ) me_metal_grey_02 128 -128 -456 16 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -66.5 152 ) ( 430 -66.5 152 ) ( 430 -66.5 8 ) me_metal_grey_02 128 128 -10 -16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 115
+{
+  contents detail;
+ ( 431 -68 4 ) ( 431 -67 4 ) ( 430 -67 4 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -66 6 ) ( 431 -66 6 ) ( 431 -67 6 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 136 ) ( 406 -67 136 ) ( 406 -67 -8 ) me_metal_grey_02 128 -128 -456 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -68.5 136 ) ( 431 -68.5 136 ) ( 431 -68.5 -8 ) me_metal_grey_02 128 128 -10 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -68 136 ) ( 431 -67 136 ) ( 431 -67 -8 ) me_metal_grey_02 128 -128 -456 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -66.5 136 ) ( 430 -66.5 136 ) ( 430 -66.5 -8 ) me_metal_grey_02 128 128 -10 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 116
+{
+  contents detail;
+ ( 431 -68 132 ) ( 431 -67 132 ) ( 430 -67 132 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -66 134 ) ( 431 -66 134 ) ( 431 -67 134 ) me_metal_grey_02 128 128 -456 10 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 406 -66 264 ) ( 406 -67 264 ) ( 406 -67 120 ) me_metal_grey_02 128 -128 -456 128 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 430 -68.5 264 ) ( 431 -68.5 264 ) ( 431 -68.5 120 ) me_metal_grey_02 128 128 -10 -128 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -68 264 ) ( 431 -67 264 ) ( 431 -67 120 ) me_metal_grey_02 128 -128 -456 128 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 431 -66.5 264 ) ( 430 -66.5 264 ) ( 430 -66.5 120 ) me_metal_grey_02 128 128 -10 -128 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 117
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v 431.5 -66 -8 t 0 -0 1 1
+	v 431.5 -66 64 t 0 -576 1 21
+	v 431.5 -66 136 t 0 -1152 1 21
+   )
+   (
+	v 430 -66 -8 t 12 -0 3 1
+	v 430 -66 64 t 12 -576 3 21
+	v 430 -66 136 t 12 -1152 3 21
+   )
+   (
+	v 430 -67.5 -8 t 24 -0 5 1
+	v 430 -67.5 64 t 24 -576 5 21
+	v 430 -67.5 136 t 24 -1152 5 21
+   )
+   (
+	v 430 -69 -8 t 36 -0 7 1
+	v 430 -69 64 t 36 -576 7 21
+	v 430 -69 136 t 36 -1152 7 21
+   )
+   (
+	v 431.5 -69 -8 t 48 -0 9 1
+	v 431.5 -69 64 t 48 -576 9 21
+	v 431.5 -69 136 t 48 -1152 9 21
+   )
+   (
+	v 433 -69 -8 t 60 -0 11 1
+	v 433 -69 64 t 60 -576 11 21
+	v 433 -69 136 t 60 -1152 11 21
+   )
+   (
+	v 433 -67.5 -8 t 72 -0 13 1
+	v 433 -67.5 64 t 72 -576 13 21
+	v 433 -67.5 136 t 72 -1152 13 21
+   )
+   (
+	v 433 -66 -8 t 84 -0 15 1
+	v 433 -66 64 t 84 -576 15 21
+	v 433 -66 136 t 84 -1152 15 21
+   )
+   (
+	v 431.5 -66 -8 t 96 -0 17 1
+	v 431.5 -66 64 t 96 -576 17 21
+	v 431.5 -66 136 t 96 -1152 17 21
+   )
+  }
+ }
+// brush 118
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v 406.5 -66 -8 t 0 -0 1 1
+	v 406.5 -66 64 t 0 -576 1 21
+	v 406.5 -66 136 t 0 -1152 1 21
+   )
+   (
+	v 405 -66 -8 t 12 -0 3 1
+	v 405 -66 64 t 12 -576 3 21
+	v 405 -66 136 t 12 -1152 3 21
+   )
+   (
+	v 405 -67.5 -8 t 24 -0 5 1
+	v 405 -67.5 64 t 24 -576 5 21
+	v 405 -67.5 136 t 24 -1152 5 21
+   )
+   (
+	v 405 -69 -8 t 36 -0 7 1
+	v 405 -69 64 t 36 -576 7 21
+	v 405 -69 136 t 36 -1152 7 21
+   )
+   (
+	v 406.5 -69 -8 t 48 -0 9 1
+	v 406.5 -69 64 t 48 -576 9 21
+	v 406.5 -69 136 t 48 -1152 9 21
+   )
+   (
+	v 408 -69 -8 t 60 -0 11 1
+	v 408 -69 64 t 60 -576 11 21
+	v 408 -69 136 t 60 -1152 11 21
+   )
+   (
+	v 408 -67.5 -8 t 72 -0 13 1
+	v 408 -67.5 64 t 72 -576 13 21
+	v 408 -67.5 136 t 72 -1152 13 21
+   )
+   (
+	v 408 -66 -8 t 84 -0 15 1
+	v 408 -66 64 t 84 -576 15 21
+	v 408 -66 136 t 84 -1152 15 21
+   )
+   (
+	v 406.5 -66 -8 t 96 -0 17 1
+	v 406.5 -66 64 t 96 -576 17 21
+	v 406.5 -66 136 t 96 -1152 17 21
+   )
+  }
+ }
+// brush 119
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v 344.55231 19.5 -0.72224426 t 0 -0 1 1
+	v 329.45813 19.5 69.677567 t 0 -576 1 19
+	v 314.36401 19.5 140.07739 t 0 -1152 1 19
+   )
+   (
+	v 344.55231 18 -0.72224426 t 12 -0 3 1
+	v 329.45813 18 69.677567 t 12 -576 3 19
+	v 314.36401 18 140.07739 t 12 -1152 3 19
+   )
+   (
+	v 346.01907 18 -0.40779877 t 24 -0 5 1
+	v 330.92484 18 69.99205 t 24 -576 5 19
+	v 315.83063 18 140.39185 t 24 -1152 5 19
+   )
+   (
+	v 347.48572 18 -0.093276978 t 36 -0 7 1
+	v 332.39151 18 70.306503 t 36 -576 7 19
+	v 317.29736 18 140.70627 t 36 -1152 7 19
+   )
+   (
+	v 347.48572 19.5 -0.093276978 t 48 -0 9 1
+	v 332.39151 19.5 70.306503 t 48 -576 9 19
+	v 317.29736 19.5 140.70627 t 48 -1152 9 19
+   )
+   (
+	v 347.48572 21 -0.093276978 t 60 -0 11 1
+	v 332.39151 21 70.306503 t 60 -576 11 19
+	v 317.29736 21 140.70627 t 60 -1152 11 19
+   )
+   (
+	v 346.01907 21 -0.40779877 t 72 -0 13 1
+	v 330.92484 21 69.99205 t 72 -576 13 19
+	v 315.83063 21 140.39185 t 72 -1152 13 19
+   )
+   (
+	v 344.55231 21 -0.72224426 t 84 -0 15 1
+	v 329.45813 21 69.677567 t 84 -576 15 19
+	v 314.36401 21 140.07739 t 84 -1152 15 19
+   )
+   (
+	v 344.55231 19.5 -0.72224426 t 96 -0 17 1
+	v 329.45813 19.5 69.677567 t 96 -576 17 19
+	v 314.36401 19.5 140.07739 t 96 -1152 17 19
+   )
+  }
+ }
+// brush 120
+{
+  contents detail;
+ ( 317 44 136.5 ) ( 316 44 136.5 ) ( 316 43 136.5 ) me_metal_grey_02 125.15827 128 -195.20703 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 315 43 138 ) ( 315 44 138 ) ( 316 44 138.5 ) me_metal_grey_02 125.1508 128 -195.59706 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 287.5 19 265 ) ( 288.5 19 265.5 ) ( 318.5 19 124.5 ) me_metal_grey_02 127.97611 128 -185.13925 -63.107742 12.09874 8.8832006e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 290 43 266 ) ( 290 44 266 ) ( 320 44 125 ) me_metal_grey_02 128 125.15709 -397 -132.78024 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 289.5 44 265.5 ) ( 288.5 44 265.5 ) ( 318.5 44 124.5 ) me_metal_grey_02 128.02937 128 -185.37331 -63.048668 12.100392 -8.7902838e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 288 44 265.5 ) ( 288 43 265.5 ) ( 318 43 124.5 ) me_metal_grey_02 128 125.15715 -397 -132.36241 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 121
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v 344.55231 44.5 -0.72224426 t 0 -0 1 1
+	v 329.45813 44.5 69.677567 t 0 -576 1 19
+	v 314.36401 44.5 140.07739 t 0 -1152 1 19
+   )
+   (
+	v 344.55231 43 -0.72224426 t 12 -0 3 1
+	v 329.45813 43 69.677567 t 12 -576 3 19
+	v 314.36401 43 140.07739 t 12 -1152 3 19
+   )
+   (
+	v 346.01907 43 -0.40779877 t 24 -0 5 1
+	v 330.92484 43 69.99205 t 24 -576 5 19
+	v 315.83063 43 140.39185 t 24 -1152 5 19
+   )
+   (
+	v 347.48572 43 -0.093276978 t 36 -0 7 1
+	v 332.39151 43 70.306503 t 36 -576 7 19
+	v 317.29736 43 140.70627 t 36 -1152 7 19
+   )
+   (
+	v 347.48572 44.5 -0.093276978 t 48 -0 9 1
+	v 332.39151 44.5 70.306503 t 48 -576 9 19
+	v 317.29736 44.5 140.70627 t 48 -1152 9 19
+   )
+   (
+	v 347.48572 46 -0.093276978 t 60 -0 11 1
+	v 332.39151 46 70.306503 t 60 -576 11 19
+	v 317.29736 46 140.70627 t 60 -1152 11 19
+   )
+   (
+	v 346.01907 46 -0.40779877 t 72 -0 13 1
+	v 330.92484 46 69.99205 t 72 -576 13 19
+	v 315.83063 46 140.39185 t 72 -1152 13 19
+   )
+   (
+	v 344.55231 46 -0.72224426 t 84 -0 15 1
+	v 329.45813 46 69.677567 t 84 -576 15 19
+	v 314.36401 46 140.07739 t 84 -1152 15 19
+   )
+   (
+	v 344.55231 44.5 -0.72224426 t 96 -0 17 1
+	v 329.45813 44.5 69.677567 t 96 -576 17 19
+	v 314.36401 44.5 140.07739 t 96 -1152 17 19
+   )
+  }
+ }
+// brush 122
+{
+  contents detail;
+ ( 320.5 44 121 ) ( 319.5 44 120.5 ) ( 319.5 43 120.5 ) me_metal_grey_02 125.14333 128 -191.79317 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 318 43 122.5 ) ( 318 44 122.5 ) ( 319 44 122.5 ) me_metal_grey_02 125.15827 128 -192.27405 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 291 19 249.5 ) ( 292 19 250 ) ( 322 19 109 ) me_metal_grey_02 128.00813 128 -185.28822 -47.069324 12.10197 4.9545903e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 293.5 43 250 ) ( 293.5 44 250 ) ( 323.5 44 109.5 ) me_metal_grey_02 128 125.1571 -397 -117.13594 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 293 44 250 ) ( 292 44 250 ) ( 322 44 109 ) me_metal_grey_02 127.97986 128 -185.18518 -47.020351 12.10218 -0.00011368279 lightmap_gray 16384 16384 0 0 0 0
+ ( 291.5 44 249.5 ) ( 291.5 43 249.5 ) ( 321.5 43 109 ) me_metal_grey_02 128 125.15709 -397 -116.71722 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 123
+{
+  contents detail;
+ ( 324 44 105.5 ) ( 323 44 105 ) ( 323 43 105 ) me_metal_grey_02 125.1508 128 -188.47002 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 321.5 43 107 ) ( 321.5 44 107 ) ( 322.5 44 107 ) me_metal_grey_02 125.15827 128 -188.92003 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 294 19 234 ) ( 295 19 234 ) ( 325.5 19 93.5 ) me_metal_grey_02 128.01645 128 -185.3226 -31.088411 12.10039 2.323131e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 296.5 43 234.5 ) ( 296.5 44 234.5 ) ( 327 44 93.5 ) me_metal_grey_02 128 125.15706 -397 -101.49033 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 296 44 234.5 ) ( 295 44 234 ) ( 325.5 44 93.5 ) me_metal_grey_02 127.99792 128 -185.26077 -31.06492 12.09874 -0.00013500811 lightmap_gray 16384 16384 0 0 0 0
+ ( 294.5 44 234 ) ( 294.5 43 234 ) ( 325 43 93 ) me_metal_grey_02 128 125.15706 -397 -101.07268 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 124
+{
+  contents detail;
+ ( 327 44 89.5 ) ( 326 44 89.5 ) ( 326 43 89.5 ) me_metal_grey_02 125.17321 128 -185.20604 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 325 43 91 ) ( 325 44 91 ) ( 326 44 91.5 ) me_metal_grey_02 125.17321 128 -185.625 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 297.5 19 218.5 ) ( 298.5 19 218.5 ) ( 329 19 77.5 ) me_metal_grey_02 128.01472 128 -185.30865 -15.059244 12.10039 -3.9478335e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 300 43 219 ) ( 300 44 219 ) ( 330 44 78 ) me_metal_grey_02 128 125.15706 -397 -85.846611 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 299.5 44 218.5 ) ( 298.5 44 218.5 ) ( 329 44 77.5 ) me_metal_grey_02 128.00337 128 -185.25314 -15.100904 12.10039 0.00012918685 lightmap_gray 16384 16384 0 0 0 0
+ ( 298 44 218.5 ) ( 298 43 218.5 ) ( 328.5 43 77.5 ) me_metal_grey_02 128 125.15706 -397 -85.427902 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 125
+{
+  contents detail;
+ ( 330.5 44 74 ) ( 329.5 44 74 ) ( 329.5 43 74 ) me_metal_grey_02 125.15827 128 -181.7916 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 328 43 75.5 ) ( 328 44 75.5 ) ( 329 44 76 ) me_metal_grey_02 125.14333 128 -182.14894 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 301 19 202.5 ) ( 302 19 203 ) ( 332 19 62 ) me_metal_grey_02 128.00989 128 -185.29935 0.91220093 12.098741 -5.9758542e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 303.5 43 203 ) ( 303.5 44 203 ) ( 333.5 44 62.5 ) me_metal_grey_02 128 125.15706 -397 -70.202431 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 303 44 203 ) ( 302 44 203 ) ( 332 44 62 ) me_metal_grey_02 127.99779 128 -185.26619 0.93602926 12.098602 -0.00010519291 lightmap_gray 16384 16384 0 0 0 0
+ ( 301.5 44 203 ) ( 301.5 43 203 ) ( 331.5 43 62 ) me_metal_grey_02 128 125.15704 -397 -69.783974 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 126
+{
+  contents detail;
+ ( 337.5 44 42.5 ) ( 336.5 44 42.5 ) ( 336.5 43 42.5 ) me_metal_grey_02 125.15827 128 -175.08344 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 335 43 44.5 ) ( 335 44 44.5 ) ( 336 44 44.5 ) me_metal_grey_02 125.14333 128 -175.44038 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 307.5 19 171.5 ) ( 308.5 19 171.5 ) ( 339 19 31 ) me_metal_grey_02 128.00211 128 -185.25 32.900734 12.10039 8.32203e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 310 43 172 ) ( 310 44 172 ) ( 340.5 44 31 ) me_metal_grey_02 128 125.15709 -397 -38.913689 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 309.5 44 172 ) ( 308.5 44 171.5 ) ( 339 44 31 ) me_metal_grey_02 128.01384 128 -185.32262 32.963493 12.100353 -0.00015152182 lightmap_gray 16384 16384 0 0 0 0
+ ( 308 44 171.5 ) ( 308 43 171.5 ) ( 338.5 43 30.5 ) me_metal_grey_02 128 125.15707 -397 -38.493805 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 127
+{
+  contents detail;
+ ( 334 44 58.5 ) ( 333 44 58 ) ( 333 43 58 ) me_metal_grey_02 125.1508 128 -178.40688 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 331.5 43 60 ) ( 331.5 44 60 ) ( 332.5 44 60 ) me_metal_grey_02 125.14333 128 -178.7955 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 304.5 19 187 ) ( 305.5 19 187 ) ( 335.5 19 46.5 ) me_metal_grey_02 128.01347 128 -185.32201 16.934046 12.098603 -0.00011626838 lightmap_gray 16384 16384 0 0 0 0
+ ( 306.5 43 187.5 ) ( 306.5 44 187.5 ) ( 337 44 46.5 ) me_metal_grey_02 128 125.15704 -397 -54.558071 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 306.5 44 187.5 ) ( 305.5 44 187 ) ( 335.5 44 46.5 ) me_metal_grey_02 127.9921 128 -185.21272 16.923615 12.10197 9.8095654e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 305 44 187 ) ( 305 43 187 ) ( 335 43 46.5 ) me_metal_grey_02 128 125.1571 -397 -54.13781 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 128
+{
+  contents detail;
+ ( 340.5 44 27 ) ( 339.5 44 27 ) ( 339.5 43 27 ) me_metal_grey_02 125.15827 128 -171.72983 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 338.5 43 28.5 ) ( 338.5 44 28.5 ) ( 339 44 29 ) me_metal_grey_02 125.15827 128 -172.14743 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 311 19 155.5 ) ( 312 19 156 ) ( 342 19 15 ) me_metal_grey_02 127.99788 128 -185.25694 48.954651 12.100355 -0.00010509669 lightmap_gray 16384 16384 0 0 0 0
+ ( 313.5 43 156 ) ( 313.5 44 156 ) ( 343.5 44 15.5 ) me_metal_grey_02 128 125.15709 -397 -23.269503 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 313 44 156 ) ( 312 44 156 ) ( 342 44 15 ) me_metal_grey_02 127.9847 128 -185.1958 48.917587 12.10039 3.1165335e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 311.5 44 156 ) ( 311.5 43 156 ) ( 341.5 43 15 ) me_metal_grey_02 128 125.15712 -397 -22.850496 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 129
+{
+  contents detail;
+ ( 344 44 11.5 ) ( 343 44 11 ) ( 343 43 11 ) me_metal_grey_02 125.1508 128 -168.34433 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 341.5 43 13 ) ( 341.5 44 13 ) ( 342.5 44 13 ) me_metal_grey_02 125.1284 128 -168.67184 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 314.5 19 140 ) ( 315.5 19 140.5 ) ( 345.5 19 -0.5 ) me_metal_grey_02 128.01044 128 -185.31232 64.926811 12.098739 -7.671045e-005 lightmap_gray 16384 16384 0 0 0 0
+ ( 317 43 140.5 ) ( 317 44 140.5 ) ( 347 44 0 ) me_metal_grey_02 128 125.15706 -397 -7.625 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 316.5 44 140.5 ) ( 315.5 44 140.5 ) ( 345.5 44 -0.5 ) me_metal_grey_02 128.00327 128 -185.26292 64.903229 12.10039 0.00012579202 lightmap_gray 16384 16384 0 0 0 0
+ ( 315 44 140 ) ( 315 43 140 ) ( 345 43 -0.5 ) me_metal_grey_02 128 125.15707 -397 -7.2040544 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 130
+{
+  contents detail;
+ ( 349.5 45 0.5 ) ( 343.5 45 -0.5 ) ( 343.5 41 -0.5 ) ladder 62.581623 64 -166.88411 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 312.5 41 144 ) ( 312.5 45 144 ) ( 318.5 45 145 ) ladder 62.581005 64 -197.90561 397 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 313.5 19 140 ) ( 319 19 141.5 ) ( 349.5 19 0.5 ) ladder 64 64 -186.24014 64.720589 12.100022 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 319 41 141.5 ) ( 319 45 141.5 ) ( 349.5 45 0.5 ) ladder 64 62.580719 -397 -8.358242 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 319 45 141.5 ) ( 313.5 45 140 ) ( 343.5 45 -0.5 ) ladder 64 64 -186.23326 64.725235 12.100003 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 313.5 45 140 ) ( 313.5 41 140 ) ( 343.5 41 -0.5 ) ladder 64 62.580669 -397 -7.1016431 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 1
+{
+"origin" "116.0 -4.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 2
+{
+"origin" "116.0 -48.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 3
+{
+"origin" "115.0 -120.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 4
+{
+"origin" "-72.0 -24.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 5
+{
+"origin" "-72.0 -44.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 6
+{
+"origin" "63.0 -74.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 7
+{
+"origin" "75.0 -94.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 8
+{
+"origin" "66.0 -48.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 9
+{
+"origin" "65.0 -120.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 10
+{
+"origin" "112.0 -64.0 131.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 11
+{
+"origin" "112.0 -124.0 131.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 12
+{
+"origin" "115.0 -117.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 13
+{
+"origin" "63.0 -114.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 14
+{
+"origin" "2.0 -4.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 15
+{
+"origin" "68.0 -120.0 129.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 16
+{
+"origin" "70.0 -65.0 131.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 17
+{
+"origin" "70.0 -125.0 131.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 18
+{
+"angles" "0 270 0"
+"origin" "-24.0 188.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 19
+{
+"angles" "0 270 0"
+"origin" "-44.0 188.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 20
+{
+"angles" "0 270 0"
+"origin" "-64.0 188.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 21
+{
+"origin" "2.0 -48.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 22
+{
+"origin" "-70.0 -4.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 23
+{
+"origin" "-70.0 -48.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 24
+{
+"origin" "6.0 -65.0 131.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 25
+{
+"origin" "5.0 -48.0 129.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 26
+{
+"angles" "0 270 0"
+"origin" "-24.0 384.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 27
+{
+"angles" "0 270 0"
+"origin" "-44.0 384.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 28
+{
+"angles" "0 270 0"
+"origin" "-64.0 384.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 29
+{
+"angles" "0 180 0"
+"origin" "128.0 408.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 30
+{
+"angles" "0 180 0"
+"origin" "128.0 428.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 31
+{
+"angles" "0 180 0"
+"origin" "128.0 448.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 32
+{
+"angles" "0 180 0"
+"origin" "324.0 408.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 33
+{
+"angles" "0 180 0"
+"origin" "324.0 428.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 34
+{
+"angles" "0 180 0"
+"origin" "324.0 448.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 35
+{
+"angles" "0 180 0"
+"origin" "520.0 408.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 36
+{
+"angles" "0 180 0"
+"origin" "520.0 428.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 37
+{
+"angles" "0 180 0"
+"origin" "520.0 448.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 38
+{
+"angles" "0 90 0"
+"origin" "472.0 192.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 39
+{
+"angles" "0 90 0"
+"origin" "492.0 192.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 40
+{
+"angles" "0 90 0"
+"origin" "512.0 192.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 41
+{
+"angles" "0 90 0"
+"origin" "472.0 -4.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 42
+{
+"angles" "0 90 0"
+"origin" "492.0 -4.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 43
+{
+"angles" "0 90 0"
+"origin" "512.0 -4.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 44
+{
+"angles" "0 2.50448e-006 0"
+"origin" "331.0 -25.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 45
+{
+"angles" "0 2.50448e-006 0"
+"origin" "331.0 -45.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 46
+{
+"angles" "0 2.50448e-006 0"
+"origin" "331.0 -65.0 134.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 47
+{
+"origin" "271.0 -4.0 134.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_short_plank.map"
+"classname" "misc_prefab"
+}
+// entity 48
+{
+"origin" "291.0 -6.0 134.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_short_plank.map"
+"classname" "misc_prefab"
+}
+// entity 49
+{
+"origin" "311.0 -6.0 134.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_short_plank.map"
+"classname" "misc_prefab"
+}
+// entity 50
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 2.50448e-006 0"
+"origin" "268.0 -114.0 129.0"
+}
+// entity 51
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"angles" "270 180 -5.00896e-006"
+"origin" "268.0 -115.0 131.0"
+}
+// entity 52
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "268.0 -114.0 -8.0"
+}
+// entity 53
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "266.0 -48.0 -8.0"
+}
+// entity 54
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "266.0 -4.0 -8.0"
+}
+// entity 55
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 90 0"
+"origin" "245.0 -118.0 129.0"
+}
+// entity 56
+{
+"angles" "0 180 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "245.0 -115.0 -8.0"
+}
+// entity 57
+{
+"origin" "246.0 -118.0 131.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 58
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 90 0"
+"origin" "245.0 -55.0 129.0"
+}
+// entity 59
+{
+"angles" "0 180 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "245.0 -52.0 -8.0"
+}
+// entity 60
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 2.50448e-006 0"
+"origin" "330.0 -114.0 129.0"
+}
+// entity 61
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "330.0 -114.0 -8.0"
+}
+// entity 62
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"angles" "270 180 -5.00896e-006"
+"origin" "268.0 -5.0 131.0"
+}
+// entity 63
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 2.50448e-006 0"
+"origin" "330.0 -4.0 129.0"
+}
+// entity 64
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "330.0 -4.0 -8.0"
+}
+// entity 65
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "334.0 -66.0 129.0"
+}
+// entity 66
+{
+"angles" "0 270 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "334.0 -66.0 -8.0"
+}
+// entity 67
+{
+"origin" "330.0 -69.0 131.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 68
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "390.0 -4.0 -8.0"
+}
+// entity 69
+{
+"angles" "0 270 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "390.0 -66.0 -8.0"
+}
+// entity 70
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "450.0 -4.0 -8.0"
+}
+// entity 71
+{
+"angles" "0 270 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "450.0 -66.0 -8.0"
+}
+// entity 72
+{
+"angles" "0 270 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "514.0 -66.0 -8.0"
+}
+// entity 73
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "450.0 62.0 -8.0"
+}
+// entity 74
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "450.0 126.0 -8.0"
+}
+// entity 75
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "450.0 190.0 -8.0"
+}
+// entity 76
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "450.0 318.0 -8.0"
+}
+// entity 77
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "450.0 386.0 -8.0"
+}
+// entity 78
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "518.0 386.0 -8.0"
+}
+// entity 79
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "450.0 450.0 -8.0"
+}
+// entity 80
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "518.0 450.0 -8.0"
+}
+// entity 81
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "382.0 386.0 -8.0"
+}
+// entity 82
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "382.0 450.0 -8.0"
+}
+// entity 83
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "318.0 386.0 -8.0"
+}
+// entity 84
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "318.0 450.0 -8.0"
+}
+// entity 85
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "256.0 386.0 -8.0"
+}
+// entity 86
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "256.0 450.0 -8.0"
+}
+// entity 87
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "188.0 386.0 -8.0"
+}
+// entity 88
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "188.0 450.0 -8.0"
+}
+// entity 89
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "122.0 386.0 -8.0"
+}
+// entity 90
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "122.0 450.0 -8.0"
+}
+// entity 91
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "62.0 386.0 -8.0"
+}
+// entity 92
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "62.0 450.0 -8.0"
+}
+// entity 93
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-4.0 380.0 -8.0"
+}
+// entity 94
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-4.0 450.0 -8.0"
+}
+// entity 95
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-68.0 380.0 -8.0"
+}
+// entity 96
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-64.0 450.0 -8.0"
+}
+// entity 97
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-4.0 318.0 -8.0"
+}
+// entity 98
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-68.0 318.0 -8.0"
+}
+// entity 99
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-4.0 254.0 -8.0"
+}
+// entity 100
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-68.0 254.0 -8.0"
+}
+// entity 101
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-4.0 194.0 -8.0"
+}
+// entity 102
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-68.0 194.0 -8.0"
+}
+// entity 103
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-4.0 184.0 -8.0"
+}
+// entity 104
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-68.0 184.0 -8.0"
+}
+// entity 105
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-4.0 126.0 -8.0"
+}
+// entity 106
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-68.0 126.0 -8.0"
+}
+// entity 107
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-4.0 62.0 -8.0"
+}
+// entity 108
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-68.0 62.0 -8.0"
+}
+// entity 109
+{
+"origin" "-68.0 61.0 131.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 110
+{
+"origin" "-68.0 62.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 111
+{
+"origin" "-4.0 62.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 112
+{
+"origin" "-68.0 125.0 131.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 113
+{
+"origin" "-68.0 126.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 114
+{
+"origin" "-4.0 126.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 115
+{
+"origin" "-68.0 183.0 131.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 116
+{
+"origin" "-68.0 184.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 117
+{
+"origin" "-4.0 184.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 118
+{
+"origin" "-1.0 198.0 131.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 119
+{
+"origin" "-1.0 197.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 120
+{
+"origin" "-65.0 197.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 121
+{
+"origin" "-1.0 258.0 131.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 122
+{
+"origin" "-1.0 257.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 123
+{
+"origin" "-65.0 257.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 124
+{
+"origin" "-1.0 322.0 131.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 125
+{
+"origin" "-1.0 321.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 126
+{
+"origin" "-65.0 321.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 127
+{
+"origin" "-68.0 379.0 131.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 128
+{
+"origin" "-68.0 380.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 129
+{
+"origin" "-4.0 380.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 130
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-64.0 386.0 -8.0"
+}
+// entity 131
+{
+"origin" "61.0 453.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 132
+{
+"origin" "62.0 453.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 133
+{
+"origin" "62.0 389.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 134
+{
+"origin" "-5.0 453.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 135
+{
+"origin" "-4.0 453.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 136
+{
+"origin" "-4.0 389.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 137
+{
+"origin" "-60.0 386.0 131.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 138
+{
+"origin" "-61.0 386.0 129.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 139
+{
+"origin" "-61.0 450.0 129.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 140
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "-4.0 386.0 -8.0"
+}
+// entity 141
+{
+"origin" "121.0 453.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 142
+{
+"origin" "122.0 453.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 143
+{
+"origin" "122.0 389.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 144
+{
+"origin" "187.0 453.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 145
+{
+"origin" "188.0 453.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 146
+{
+"origin" "188.0 389.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 147
+{
+"origin" "255.0 453.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 148
+{
+"origin" "256.0 453.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 149
+{
+"origin" "256.0 389.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 150
+{
+"origin" "317.0 453.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 151
+{
+"origin" "318.0 453.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 152
+{
+"origin" "318.0 389.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 153
+{
+"origin" "381.0 453.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 154
+{
+"origin" "382.0 453.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 155
+{
+"origin" "382.0 389.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 156
+{
+"origin" "449.0 453.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 157
+{
+"origin" "450.0 453.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 158
+{
+"origin" "450.0 389.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 159
+{
+"origin" "517.0 453.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 160
+{
+"origin" "518.0 453.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 161
+{
+"origin" "518.0 389.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 162
+{
+"origin" "517.0 321.0 131.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 163
+{
+"origin" "517.0 320.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 164
+{
+"origin" "453.0 320.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 165
+{
+"origin" "514.0 317.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 166
+{
+"origin" "514.0 189.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 167
+{
+"origin" "514.0 125.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 168
+{
+"origin" "514.0 61.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 169
+{
+"origin" "514.0 -5.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 170
+{
+"origin" "517.0 193.0 131.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 171
+{
+"origin" "517.0 192.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 172
+{
+"origin" "453.0 192.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 173
+{
+"origin" "450.0 188.0 131.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 174
+{
+"origin" "450.0 189.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 175
+{
+"origin" "514.0 189.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 176
+{
+"origin" "450.0 125.0 131.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 177
+{
+"origin" "450.0 126.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 178
+{
+"origin" "514.0 126.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 179
+{
+"origin" "450.0 60.0 131.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 180
+{
+"origin" "450.0 61.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 181
+{
+"origin" "514.0 61.0 129.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 182
+{
+"origin" "517.0 0.0 131.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 183
+{
+"origin" "517.0 -1.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 184
+{
+"origin" "453.0 -1.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 185
+{
+"origin" "513.0 -2.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 186
+{
+"origin" "514.0 -2.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 187
+{
+"origin" "514.0 -66.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 188
+{
+"origin" "449.0 -2.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 189
+{
+"origin" "450.0 -2.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 190
+{
+"origin" "450.0 -66.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 191
+{
+"origin" "389.0 -2.0 131.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 192
+{
+"origin" "390.0 -2.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 193
+{
+"origin" "390.0 -66.0 129.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 194
+{
+"angles" "0 270 0"
+"origin" "-24.0 188.0 238.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 195
+{
+"angles" "0 270 0"
+"origin" "-44.0 188.0 238.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 196
+{
+"angles" "0 270 0"
+"origin" "-64.0 188.0 238.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 197
+{
+"origin" "-68.0 61.0 235.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 198
+{
+"origin" "-68.0 62.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 199
+{
+"origin" "-4.0 62.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 200
+{
+"origin" "-68.0 125.0 235.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 201
+{
+"origin" "-68.0 126.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 202
+{
+"origin" "-4.0 126.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 203
+{
+"origin" "-68.0 183.0 235.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 204
+{
+"origin" "-68.0 184.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 205
+{
+"origin" "-4.0 184.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 206
+{
+"origin" "-3.0 0.0 131.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 207
+{
+"origin" "-3.0 -1.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 208
+{
+"origin" "-67.0 -1.0 129.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 209
+{
+"origin" "-6.0 -4.0 -8.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+}
+// entity 210
+{
+"origin" "-3.0 0.0 235.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 211
+{
+"origin" "-3.0 -1.0 233.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 212
+{
+"origin" "-67.0 -1.0 233.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 213
+{
+"angles" "0 270 0"
+"origin" "-24.0 384.0 238.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 214
+{
+"angles" "0 270 0"
+"origin" "-44.0 450.0 238.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 215
+{
+"angles" "0 270 0"
+"origin" "-64.0 450.0 238.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 216
+{
+"origin" "-1.0 198.0 235.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 217
+{
+"origin" "-1.0 197.0 233.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 218
+{
+"origin" "-65.0 197.0 233.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 219
+{
+"origin" "-1.0 258.0 235.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 220
+{
+"origin" "-1.0 257.0 233.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 221
+{
+"origin" "-65.0 257.0 233.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 222
+{
+"origin" "-1.0 322.0 235.0"
+"angles" "270 2.50448e-006 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 223
+{
+"origin" "-1.0 321.0 233.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 224
+{
+"origin" "-65.0 321.0 233.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 225
+{
+"origin" "-68.0 379.0 235.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 226
+{
+"origin" "-68.0 380.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 227
+{
+"origin" "-4.0 380.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 228
+{
+"origin" "-68.0 449.0 235.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 229
+{
+"origin" "-64.0 450.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 230
+{
+"origin" "-4.0 450.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 231
+{
+"angles" "270 0 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "212.0 454.0 148.0"
+}
+// entity 232
+{
+"origin" "-61.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 233
+{
+"angles" "270 0 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "212.0 454.0 192.0"
+}
+// entity 234
+{
+"origin" "-61.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 235
+{
+"origin" "-1.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 236
+{
+"origin" "-1.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 237
+{
+"origin" "65.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 238
+{
+"origin" "65.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 239
+{
+"origin" "125.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 240
+{
+"origin" "125.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 241
+{
+"origin" "191.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 242
+{
+"origin" "191.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 243
+{
+"origin" "259.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 244
+{
+"origin" "259.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 245
+{
+"angles" "270 0 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "534.0 454.0 148.0"
+}
+// entity 246
+{
+"angles" "270 0 0"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "534.0 454.0 192.0"
+}
+// entity 247
+{
+"origin" "321.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 248
+{
+"origin" "321.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 249
+{
+"origin" "385.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 250
+{
+"origin" "385.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 251
+{
+"origin" "453.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 252
+{
+"origin" "453.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 253
+{
+"origin" "521.0 453.0 146.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 254
+{
+"origin" "521.0 453.0 190.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 255
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "520.0 454.0 152.0"
+"angles" "360 180 90"
+}
+// entity 256
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "324.0 454.0 152.0"
+"angles" "360 180 90"
+}
+// entity 257
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "128.0 454.0 152.0"
+"angles" "360 180 90"
+}
+// entity 258
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "520.0 454.0 172.0"
+"angles" "360 180 90"
+}
+// entity 259
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "324.0 454.0 172.0"
+"angles" "360 180 90"
+}
+// entity 260
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "128.0 454.0 172.0"
+"angles" "360 180 90"
+}
+// entity 261
+{
+"angles" "270 270 -6.83245e-007"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "518.0 -89.0 153.0"
+}
+// entity 262
+{
+"angles" "270 270 -6.83245e-007"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "518.0 -89.0 197.0"
+}
+// entity 263
+{
+"origin" "517.0 -69.0 151.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 264
+{
+"origin" "517.0 -69.0 195.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 265
+{
+"origin" "517.0 -5.0 151.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 266
+{
+"origin" "517.0 -5.0 195.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 267
+{
+"origin" "517.0 61.0 151.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 268
+{
+"origin" "517.0 61.0 195.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 269
+{
+"origin" "517.0 125.0 151.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 270
+{
+"origin" "517.0 125.0 195.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 271
+{
+"origin" "517.0 189.0 151.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 272
+{
+"origin" "517.0 189.0 195.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 273
+{
+"origin" "517.0 317.0 151.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 274
+{
+"origin" "517.0 317.0 195.0"
+"angles" "0 90 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 275
+{
+"angles" "270 270 -6.83245e-007"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "518.0 66.0 153.0"
+}
+// entity 276
+{
+"angles" "270 270 -6.83245e-007"
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"origin" "518.0 66.0 197.0"
+}
+// entity 277
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "520.0 -4.0 158.0"
+"angles" "1.00179e-005 90 90"
+}
+// entity 278
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "520.0 192.0 158.0"
+"angles" "1.00179e-005 90 90"
+}
+// entity 279
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "520.0 -4.0 178.0"
+"angles" "1.00179e-005 90 90"
+}
+// entity 280
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "520.0 192.0 178.0"
+"angles" "1.00179e-005 90 90"
+}
+// entity 281
+{
+"origin" "-1.0 187.0 312.0"
+"angles" "6.83245e-007 180 -4.01138e-012"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 282
+{
+"origin" "-1.0 197.0 312.0"
+"angles" "6.83245e-007 180 -4.01138e-012"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 283
+{
+"origin" "-1.0 257.0 312.0"
+"angles" "6.83245e-007 180 -4.01138e-012"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 284
+{
+"origin" "-1.0 129.0 312.0"
+"angles" "6.83245e-007 180 -4.01138e-012"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 285
+{
+"origin" "-65.0 187.0 312.0"
+"angles" "6.83245e-007 180 -4.01138e-012"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 286
+{
+"origin" "-65.0 197.0 312.0"
+"angles" "6.83245e-007 180 -4.01138e-012"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 287
+{
+"origin" "-65.0 257.0 312.0"
+"angles" "6.83245e-007 180 -4.01138e-012"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 288
+{
+"origin" "-65.0 129.0 312.0"
+"angles" "6.83245e-007 180 -4.01138e-012"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 289
+{
+"origin" "-68.0 184.0 325.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 290
+{
+"origin" "-4.0 184.0 325.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 291
+{
+"origin" "-68.0 126.0 325.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 292
+{
+"origin" "-4.0 126.0 325.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 293
+{
+"origin" "-1.0 197.0 325.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 294
+{
+"origin" "-65.0 197.0 325.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 295
+{
+"origin" "-1.0 257.0 325.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 296
+{
+"origin" "-65.0 257.0 325.0"
+"angles" "0 180 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 297
+{
+"origin" "-68.0 125.0 327.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 298
+{
+"origin" "-67.0 183.0 327.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 299
+{
+"origin" "-66.0 201.0 327.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 300
+{
+"origin" "-66.0 261.0 327.0"
+"angles" "270 180 -5.00896e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 301
+{
+"angles" "0 270 0"
+"origin" "-24.0 290.0 330.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 302
+{
+"angles" "0 270 0"
+"origin" "-44.0 290.0 330.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 303
+{
+"angles" "0 270 0"
+"origin" "-64.0 290.0 330.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 304
+{
+"origin" "-61.0 202.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 305
+{
+"origin" "-38.0 202.0 233.0"
+"angles" "0 2.50448e-006 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 306
+{
+"origin" "522.0 443.0 128.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 307
+{
+"origin" "522.0 418.0 128.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 308
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v -60.5 98 334 t -968 -1568 -3.78125 -6.125
+	v -59 98 334 t -944 -1568 -3.6875 -6.125
+	v -59 96.5 334 t -944 -1544 -3.6875 -6.03125
+   )
+   (
+	v -62 98 334 t -992 -1568 -3.875 -6.125
+	v -60.5 96.5 334 t -968 -1544 -3.78125 -6.03125
+	v -59 95 334 t -944 -1520 -3.6875 -5.9375
+   )
+   (
+	v -62 96.5 334 t -992 -1544 -3.875 -6.03125
+	v -62 95 334 t -992 -1520 -3.875 -5.9375
+	v -60.5 95 334 t -968 -1520 -3.78125 -5.9375
+   )
+  }
+ }
+// brush 1
+ {
+  curve
+  {
+  contents detail;
+   me_metal_grey_02
+   lightmap_gray
+   9 3 16 1
+   (
+	v -60.5 98 240 t 0 -0 1 1
+	v -60.5 98 287 t 0 -576 1 15
+	v -60.5 98 334 t 0 -1152 1 15
+   )
+   (
+	v -62 98 240 t 12 -0 3 1
+	v -62 98 287 t 12 -576 3 15
+	v -62 98 334 t 12 -1152 3 15
+   )
+   (
+	v -62 96.5 240 t 24 -0 5 1
+	v -62 96.5 287 t 24 -576 5 15
+	v -62 96.5 334 t 24 -1152 5 15
+   )
+   (
+	v -62 95 240 t 36 -0 7 1
+	v -62 95 287 t 36 -576 7 15
+	v -62 95 334 t 36 -1152 7 15
+   )
+   (
+	v -60.5 95 240 t 48 -0 9 1
+	v -60.5 95 287 t 48 -576 9 15
+	v -60.5 95 334 t 48 -1152 9 15
+   )
+   (
+	v -59 95 240 t 60 -0 11 1
+	v -59 95 287 t 60 -576 11 15
+	v -59 95 334 t 60 -1152 11 15
+   )
+   (
+	v -59 96.5 240 t 72 -0 13 1
+	v -59 96.5 287 t 72 -576 13 15
+	v -59 96.5 334 t 72 -1152 13 15
+   )
+   (
+	v -59 98 240 t 84 -0 15 1
+	v -59 98 287 t 84 -576 15 15
+	v -59 98 334 t 84 -1152 15 15
+   )
+   (
+	v -60.5 98 240 t 96 -0 17 1
+	v -60.5 98 287 t 96 -576 17 15
+	v -60.5 98 334 t 96 -1152 17 15
+   )
+  }
+ }
+}
+// entity 309
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v -35.5 98 334 t -968 -1568 -3.78125 -6.125
+	v -34 98 334 t -944 -1568 -3.6875 -6.125
+	v -34 96.5 334 t -944 -1544 -3.6875 -6.03125
+   )
+   (
+	v -37 98 334 t -992 -1568 -3.875 -6.125
+	v -35.5 96.5 334 t -968 -1544 -3.78125 -6.03125
+	v -34 95 334 t -944 -1520 -3.6875 -5.9375
+   )
+   (
+	v -37 96.5 334 t -992 -1544 -3.875 -6.03125
+	v -37 95 334 t -992 -1520 -3.875 -5.9375
+	v -35.5 95 334 t -968 -1520 -3.78125 -5.9375
+   )
+  }
+ }
+}
+// entity 310
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v -59.5 205 240 t -968 -1568 -3.78125 -6.125
+	v -58 205 240 t -944 -1568 -3.6875 -6.125
+	v -58 203.5 240 t -944 -1544 -3.6875 -6.03125
+   )
+   (
+	v -61 205 240 t -992 -1568 -3.875 -6.125
+	v -59.5 203.5 240 t -968 -1544 -3.78125 -6.03125
+	v -58 202 240 t -944 -1520 -3.6875 -5.9375
+   )
+   (
+	v -61 203.5 240 t -992 -1544 -3.875 -6.03125
+	v -61 202 240 t -992 -1520 -3.875 -5.9375
+	v -59.5 202 240 t -968 -1520 -3.78125 -5.9375
+   )
+  }
+ }
+}
+// entity 311
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v -36.5 205 240 t -968 -1568 -3.78125 -6.125
+	v -35 205 240 t -944 -1568 -3.6875 -6.125
+	v -35 203.5 240 t -944 -1544 -3.6875 -6.03125
+   )
+   (
+	v -38 205 240 t -992 -1568 -3.875 -6.125
+	v -36.5 203.5 240 t -968 -1544 -3.78125 -6.03125
+	v -35 202 240 t -944 -1520 -3.6875 -5.9375
+   )
+   (
+	v -38 203.5 240 t -992 -1544 -3.875 -6.03125
+	v -38 202 240 t -992 -1520 -3.875 -5.9375
+	v -36.5 202 240 t -968 -1520 -3.78125 -5.9375
+   )
+  }
+ }
+}
+// entity 312
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v 525 441.5 136 t -968 -1568 33.25 -27.71875
+	v 525 440 136 t -944 -1568 33.25 -27.625
+	v 523.5 440 136 t -944 -1544 33.15625 -27.625
+   )
+   (
+	v 525 443 136 t -992 -1568 33.25 -27.8125
+	v 523.5 441.5 136 t -968 -1544 33.15625 -27.71875
+	v 522 440 136 t -944 -1520 33.0625 -27.625
+   )
+   (
+	v 523.5 443 136 t -992 -1544 33.15625 -27.8125
+	v 522 443 136 t -992 -1520 33.0625 -27.8125
+	v 522 441.5 136 t -968 -1520 33.0625 -27.71875
+   )
+  }
+ }
+}
+// entity 313
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v 525 416.5 136 t -968 -1568 33.25 -26.15625
+	v 525 415 136 t -944 -1568 33.25 -26.0625
+	v 523.5 415 136 t -944 -1544 33.15625 -26.0625
+   )
+   (
+	v 525 418 136 t -992 -1568 33.25 -26.25
+	v 523.5 416.5 136 t -968 -1544 33.15625 -26.15625
+	v 522 415 136 t -944 -1520 33.0625 -26.0625
+   )
+   (
+	v 523.5 418 136 t -992 -1544 33.15625 -26.25
+	v 522 418 136 t -992 -1520 33.0625 -26.25
+	v 522 416.5 136 t -968 -1520 33.0625 -26.15625
+   )
+  }
+ }
+}
+// entity 314
+{
+"origin" "-70.0 59.0 156.0"
+"angles" "360 270 90"
+"model" "prefabs/my_prefabs/misc/scaffolding_short_plank.map"
+"classname" "misc_prefab"
+}
+// entity 315
+{
+"origin" "-70.0 41.0 176.0"
+"angles" "360 270 90"
+"model" "prefabs/my_prefabs/misc/scaffolding_short_plank.map"
+"classname" "misc_prefab"
+}
+// entity 316
+{
+"origin" "-70.0 -1.0 150.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 317
+{
+"origin" "-70.0 -1.0 194.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 318
+{
+"origin" "-70.0 -45.0 150.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 319
+{
+"origin" "-70.0 -45.0 194.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 320
+{
+"origin" "-72.0 99.0 373.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_medium.map"
+"classname" "misc_prefab"
+}
+// entity 321
+{
+"origin" "-72.0 99.0 330.0"
+"angles" "270 270 -6.83245e-007"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_medium.map"
+"classname" "misc_prefab"
+}
+// entity 322
+{
+"origin" "-71.0 10.0 196.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 323
+{
+"origin" "-71.0 10.0 152.0"
+"angles" "270 90 -2.50448e-006"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"classname" "misc_prefab"
+}
+// entity 324
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "-68.0 279.0 334.0"
+"angles" "1.00179e-005 270 90"
+}
+// entity 325
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"origin" "-68.0 279.0 354.0"
+"angles" "1.00179e-005 270 90"
+}
+// entity 326
+{
+"origin" "-68.0 129.0 371.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 327
+{
+"origin" "-68.0 187.0 371.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 328
+{
+"origin" "-68.0 197.0 371.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 329
+{
+"origin" "-68.0 257.0 371.0"
+"angles" "0 270 0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"classname" "misc_prefab"
+}
+// entity 330
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v 186.5 236.70264 140.70627 t -968 -1568 11.40625 -15.231415
+	v 185 236.70264 140.70627 t -944 -1568 11.3125 -15.231415
+	v 185 238.16936 140.39185 t -944 -1544 11.3125 -15.323085
+   )
+   (
+	v 188 236.70264 140.70627 t -992 -1568 11.5 -15.231415
+	v 186.5 238.16936 140.39185 t -968 -1544 11.40625 -15.323085
+	v 185 239.636 140.07739 t -944 -1520 11.3125 -15.41475
+   )
+   (
+	v 188 238.16936 140.39185 t -992 -1544 11.5 -15.323085
+	v 188 239.636 140.07739 t -992 -1520 11.5 -15.41475
+	v 186.5 239.636 140.07739 t -968 -1520 11.40625 -15.41475
+   )
+  }
+ }
+}
+// entity 331
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v 161.5 236.70264 140.70627 t -968 -1568 9.84375 -15.231415
+	v 160 236.70264 140.70627 t -944 -1568 9.75 -15.231415
+	v 160 238.16936 140.39185 t -944 -1544 9.75 -15.323085
+   )
+   (
+	v 163 236.70264 140.70627 t -992 -1568 9.9375 -15.231415
+	v 161.5 238.16936 140.39185 t -968 -1544 9.84375 -15.323085
+	v 160 239.636 140.07739 t -944 -1520 9.75 -15.41475
+   )
+   (
+	v 163 238.16936 140.39185 t -992 -1544 9.9375 -15.323085
+	v 163 239.636 140.07739 t -992 -1520 9.9375 -15.41475
+	v 161.5 239.636 140.07739 t -968 -1520 9.84375 -15.41475
+   )
+  }
+ }
+}
+// entity 332
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v 431.5 -69 136 t -968 -1568 26.84375 5.5625
+	v 430 -69 136 t -944 -1568 26.75 5.5625
+	v 430 -67.5 136 t -944 -1544 26.75 5.46875
+   )
+   (
+	v 433 -69 136 t -992 -1568 26.9375 5.5625
+	v 431.5 -67.5 136 t -968 -1544 26.84375 5.46875
+	v 430 -66 136 t -944 -1520 26.75 5.375
+   )
+   (
+	v 433 -67.5 136 t -992 -1544 26.9375 5.46875
+	v 433 -66 136 t -992 -1520 26.9375 5.375
+	v 431.5 -66 136 t -968 -1520 26.84375 5.375
+   )
+  }
+ }
+}
+// entity 333
+{
+"type" "patchCapped"
+"classname" "func_group"
+// brush 0
+ {
+  curve
+  {
+  contents detail;
+   icbm_tunnelwall
+   lightmap_gray
+   3 3 16 8
+   (
+	v 406.5 -69 136 t -968 -1568 25.28125 5.5625
+	v 405 -69 136 t -944 -1568 25.1875 5.5625
+	v 405 -67.5 136 t -944 -1544 25.1875 5.46875
+   )
+   (
+	v 408 -69 136 t -992 -1568 25.375 5.5625
+	v 406.5 -67.5 136 t -968 -1544 25.28125 5.46875
+	v 405 -66 136 t -944 -1520 25.1875 5.375
+   )
+   (
+	v 408 -67.5 136 t -992 -1544 25.375 5.46875
+	v 408 -66 136 t -992 -1520 25.375 5.375
+	v 406.5 -66 136 t -968 -1520 25.28125 5.375
+   )
+  }
+ }
+}
+// entity 334
+{
+"origin" "-69.0 470.0 152.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+"angles" "270 90 -2.50448e-006"
+}
+// entity 335
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 187.0 150.0"
+}
+// entity 336
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 197.0 150.0"
+}
+// entity 337
+{
+"origin" "-69.0 470.0 196.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+"angles" "270 90 -2.50448e-006"
+}
+// entity 338
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 197.0 194.0"
+}
+// entity 339
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 187.0 194.0"
+}
+// entity 340
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 129.0 194.0"
+}
+// entity 341
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 129.0 150.0"
+}
+// entity 342
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 65.0 150.0"
+}
+// entity 343
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"angles" "270 90 -2.50448e-006"
+"origin" "-69.0 128.0 152.0"
+}
+// entity 344
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 65.0 194.0"
+}
+// entity 345
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"angles" "270 90 -2.50448e-006"
+"origin" "-69.0 128.0 196.0"
+}
+// entity 346
+{
+"angles" "1.00179e-005 270 90"
+"origin" "-70.0 235.0 176.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 347
+{
+"angles" "1.00179e-005 270 90"
+"origin" "-69.0 253.0 156.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 348
+{
+"angles" "1.00179e-005 270 90"
+"origin" "-69.0 448.0 156.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 349
+{
+"angles" "1.00179e-005 270 90"
+"origin" "-69.0 448.0 176.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 350
+{
+"origin" "-69.0 470.0 248.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+"angles" "270 90 -2.50448e-006"
+}
+// entity 351
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 187.0 246.0"
+}
+// entity 352
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 197.0 246.0"
+}
+// entity 353
+{
+"origin" "-69.0 470.0 292.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_long.map"
+"classname" "misc_prefab"
+"angles" "270 90 -2.50448e-006"
+}
+// entity 354
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 197.0 290.0"
+}
+// entity 355
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 187.0 290.0"
+}
+// entity 356
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 129.0 290.0"
+}
+// entity 357
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 129.0 246.0"
+}
+// entity 358
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 65.0 246.0"
+}
+// entity 359
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"angles" "270 90 -2.50448e-006"
+"origin" "-69.0 128.0 248.0"
+}
+// entity 360
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 65.0 290.0"
+}
+// entity 361
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_short.map"
+"angles" "270 90 -2.50448e-006"
+"origin" "-69.0 128.0 292.0"
+}
+// entity 362
+{
+"angles" "1.00179e-005 270 90"
+"origin" "-69.0 253.0 272.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 363
+{
+"angles" "1.00179e-005 270 90"
+"origin" "-69.0 253.0 252.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 364
+{
+"angles" "1.00179e-005 270 90"
+"origin" "-69.0 448.0 252.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 365
+{
+"angles" "1.00179e-005 270 90"
+"origin" "-69.0 470.0 272.0"
+"model" "prefabs/my_prefabs/misc/scaffolding_plank.map"
+"classname" "misc_prefab"
+}
+// entity 366
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 257.0 246.0"
+}
+// entity 367
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 257.0 290.0"
+}
+// entity 368
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 321.0 246.0"
+}
+// entity 369
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 321.0 290.0"
+}
+// entity 370
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 383.0 246.0"
+}
+// entity 371
+{
+"classname" "misc_prefab"
+"model" "prefabs/my_prefabs/misc/scaffolding_tube_connector.map"
+"angles" "0 270 0"
+"origin" "-68.0 383.0 290.0"
+}

@@ -1,0 +1,10 @@
+#pragma once
+
+#include <sstream>
+#include <vector>
+
+namespace SKCommon
+{
+	void splitStr(std::string*, std::vector<std::string>&, const char);
+	bool startsWith(std::string*, std::string);
+}

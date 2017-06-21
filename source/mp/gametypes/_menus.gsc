@@ -546,7 +546,7 @@ onMenuResponse()
 								//if (FS_TestFile(file))
 								//{
 									//g = FS_FOpen(file, "read");
-									x = sql_query("SELECT sender, subject, body, attachment, date, read FROM msg WHERE name = '" + name + "'");
+									x = sql_query("SELECT sender, subject, body, attachment, date, isread FROM msg WHERE name = '" + name + "'");
 									for (i = 0; true; i++)
 									{
 										//source = FS_ReadLine(g);
@@ -1535,7 +1535,7 @@ onMenuResponse()
 						"weaponid", "-1"
 					);
 
-					x = sql_query("SELECT sender, subject, body, attachment, date, read FROM msg WHERE name = '" + self.showname + "'");
+					x = sql_query("SELECT sender, subject, body, attachment, date, isread FROM msg WHERE name = '" + self.showname + "'");
 					for (i = 0; true; i++)
 					{
 						s = sql_fetch(x);
@@ -1773,7 +1773,7 @@ onMenuResponse()
 								self setClientDvar("message" + index + "_read", 1);
 								self.newmails--;
 								self setClientDvar("newmails", self.newmails);
-								sql_exec("UPDATE msg SET read = 1 WHERE name = '" + self.showname + "' AND msgid = " + id);
+								sql_exec("UPDATE msg SET isread = 1 WHERE name = '" + self.showname + "' AND msgid = " + id);
 								//self saveMails();
 							}
 						}
@@ -6111,7 +6111,7 @@ refreshPlayerList()
 			else if (e.team == "allies")
 				self setClientDvar("temp" + i, "^2" + e.showname); // Enforcer
 			else
-				self setClientDvar("temp" + i, "^7" + e.name); // Not logged it
+				self setClientDvar("temp" + i, "^7" + e.name); // Not logged in
 		}
 		else
 			self setClientDvar("temp" + i, "^8" + e.name); // Connecting

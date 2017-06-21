@@ -1,0 +1,17 @@
+#include "SKCommon.h"
+
+void SKCommon::splitStr(std::string* raw, std::vector<std::string>& vec, const char delimiter)
+{
+	std::stringstream ss(*raw);
+	std::string item;
+	vec.clear();
+	while (std::getline(ss, item, delimiter))
+	{
+		vec.push_back(item);
+	}
+}
+
+bool SKCommon::startsWith(std::string* str, std::string start)
+{
+	return (*str).substr(0, (start).length()) == start;
+}

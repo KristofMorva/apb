@@ -277,25 +277,192 @@ sql_init("192.168.1.96",7425);
 
 
 
-sql_exec("CREATE TABLE IF NOT EXISTS players (name varchar(15) PRIMARY KEY NOT NULL, pass varchar(15) NOT NULL, dress int(2) NOT NULL DEFAULT 1, faction int(1) NOT NULL DEFAULT 1, money int(10) NOT NULL DEFAULT 500, symbol int(3) NOT NULL DEFAULT 0, achievements int(5) NOT NULL DEFAULT 0, premiumtime int(6) NOT NULL DEFAULT 0, role_rifle int(6) NOT NULL DEFAULT 0, role_machinegun int(6) NOT NULL DEFAULT 0, role_pistol int(6) NOT NULL DEFAULT 0, role_sniper int(6) NOT NULL DEFAULT 0, role_marksman int(6) NOT NULL DEFAULT 0, role_shotgun int(6) NOT NULL DEFAULT 0, role_rocket int(6) NOT NULL DEFAULT 0, role_grenade int(6) NOT NULL DEFAULT 0, role_nonlethal int(6) NOT NULL DEFAULT 0, mod_green int(2) NOT NULL DEFAULT 0, mod_red int(2) NOT NULL DEFAULT 0, mod_blue int(2) NOT NULL DEFAULT 0, prime int(3) NOT NULL DEFAULT "+level.defaultWeapon["primary"]+", secondary int(3) NOT NULL DEFAULT "+level.defaultWeapon["secondary"]+", offhand int(3) NOT NULL DEFAULT "+level.defaultWeapon["offhand"]+", mis_win int(4) NOT NULL DEFAULT 0, mis_lose int(4) NOT NULL DEFAULT 0, mis_tied int(4) NOT NULL DEFAULT 0, allrun int(9) NOT NULL DEFAULT 0, assists int(6) NOT NULL DEFAULT 0, kills int(6) NOT NULL DEFAULT 0, arrests int(6) NOT NULL DEFAULT 0, stuns int(6) NOT NULL DEFAULT 0, medals int(6) NOT NULL DEFAULT 0, regenhealth int(7) NOT NULL DEFAULT 0, backupcalled int(4) NOT NULL DEFAULT 0, startedgroups int(4) NOT NULL DEFAULT 0, delivereditems int(4) NOT NULL DEFAULT 0, missiontime int(7) NOT NULL DEFAULT 0, prestigetime int(6) NOT NULL DEFAULT 0, standing int(7) NOT NULL DEFAULT 0, lang int(2) NOT NULL DEFAULT 0, ammo_rifle int(5) NOT NULL DEFAULT "+level.defaultAmmo["rifle"]+", ammo_machinegun int(5) NOT NULL DEFAULT 0, ammo_pistol int(5) NOT NULL DEFAULT "+level.defaultAmmo["pistol"]+", ammo_desert int(5) NOT NULL DEFAULT 0, ammo_shotgun int(5) NOT NULL DEFAULT 0, ammo_sniper int(5) NOT NULL DEFAULT 0, ammo_rocket int(5) NOT NULL DEFAULT 0, ammo_frag int(5) NOT NULL DEFAULT "+level.defaultAmmo["frag"]+", ammo_flash int(5) NOT NULL DEFAULT 0, ammo_concussion int(5) NOT NULL DEFAULT 0, ammo_nonlethal int(5) NOT NULL DEFAULT 0, rep int(6) NOT NULL DEFAULT 0, reptime int(10) NOT NULL DEFAULT 0, gmt int(2) NOT NULL DEFAULT '1', format int(2) NOT NULL DEFAULT '3', date int(2) NOT NULL DEFAULT '10', theme int(1) NOT NULL DEFAULT 0, inv varchar(15) NOT NULL DEFAULT '', admin int(10) NOT NULL DEFAULT 0, hats int(10) NOT NULL DEFAULT 0, packs int(10) NOT NULL DEFAULT 0, misc int(10) NOT NULL DEFAULT 0, curhat int(2) NOT NULL DEFAULT 0, curpack int(2) NOT NULL DEFAULT 0, curmisc int(10) NOT NULL DEFAULT 0, status varchar(16) NOT NULL DEFAULT 'Offline', timestamp int(10) NOT NULL DEFAULT NULL, level1 int(10) NOT NULL DEFAULT 0, level2 int(10) NOT NULL DEFAULT 0, maxweapons int(3) NOT NULL DEFAULT 14, maxinv int(3) NOT NULL DEFAULT 14, maxmods int(3) NOT NULL DEFAULT 14, symbols int(10) NOT NULL DEFAULT 0)");
 
-sql_exec("CREATE TABLE IF NOT EXISTS weapons (weaponid INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(15) NOT NULL, weapon int(3), time int(6) NOT NULL DEFAULT 0, mods int(10) DEFAULT 0, camo int(1) NOT NULL DEFAULT 0, FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
-sql_exec("CREATE TABLE IF NOT EXISTS mods (modid INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(15) NOT NULL, perk int(3), FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
-sql_exec("CREATE TABLE IF NOT EXISTS themes (name varchar(15) NOT NULL, theme varchar(1024) NOT NULL, themeid int(1) NOT NULL DEFAULT 0, FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
-sql_exec("CREATE INDEX IF NOT EXISTS themeid_ ON themes (themeid ASC)");
-sql_exec("CREATE TABLE IF NOT EXISTS msg (name varchar(15) NOT NULL, sender varchar(15) NOT NULL, subject varchar(32) NOT NULL DEFAULT '', body varchar(960) NOT NULL DEFAULT '', attachment varchar(16) NOT NULL DEFAULT '0', date int(10) NOT NULL DEFAULT 0, read int(1) NOT NULL DEFAULT 0, msgid int(3) NOT NULL DEFAULT 0, FOREIGN KEY(name, sender) REFERENCES players(name, name) ON UPDATE CASCADE)");
-sql_exec("CREATE INDEX IF NOT EXISTS msgid_ ON msg (msgid DESC)");
-sql_exec("CREATE TABLE IF NOT EXISTS friends (name varchar(15) NOT NULL, friend varchar(15) NOT NULL, friendid int(3) NOT NULL DEFAULT 0, FOREIGN KEY(name, friend) REFERENCES players(name, name) ON UPDATE CASCADE)");
-sql_exec("CREATE INDEX IF NOT EXISTS friendid_ ON friends (friendid ASC)");
-sql_exec("CREATE TABLE IF NOT EXISTS premium (name varchar(15) DEFAULT NULL, code varchar(16) NOT NULL, item varchar(2) NOT NULL, value int(7) NOT NULL, FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
-sql_exec("CREATE TABLE IF NOT EXISTS clans (clan varchar(15) PRIMARY KEY NOT NULL, cash int(10) NOT NULL DEFAULT 0, color int(1) NOT NULL DEFAULT 8, rank int(2) NOT NULL DEFAULT 1)");
-sql_exec("CREATE TABLE IF NOT EXISTS members (name varchar(15) NOT NULL, clan varchar(15) NOT NULL, rank int(1) NOT NULL DEFAULT 0, FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE, FOREIGN KEY(clan) REFERENCES clans(clan) ON UPDATE CASCADE)");
-sql_exec("CREATE TABLE IF NOT EXISTS wars (winner varchar(15) NOT NULL, loser varchar(15) NOT NULL, type int(1) NOT NULL DEFAULT 4, winner0 varchar(15) NOT NULL, winner1 varchar(15) NOT NULL, winner2 varchar(15), winner3 varchar(15), loser0 varchar(15) NOT NULL, loser1 varchar(15) NOT NULL, loser2 varchar(15), loser3 varchar(15), time int(10) NOT NULL, tied int(1) NOT NULL DEFAULT 0, FOREIGN KEY(winner0, winner1, winner2, winner3, loser0, loser1, loser2, loser3) REFERENCES players(name, name, name, name, name, name, name, name) ON UPDATE CASCADE)");
-sql_exec("CREATE INDEX IF NOT EXISTS time_ ON wars (time DESC)");
-sql_exec("CREATE TABLE IF NOT EXISTS bugs (bugid INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(15) NOT NULL, subject varchar(32) NOT NULL, msg varchar(960) NOT NULL, status int(1) NOT NULL DEFAULT 1, time int(10) NOT NULL, FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
-sql_exec("CREATE TABLE IF NOT EXISTS don (donid INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(15) NOT NULL, cash int(10) NOT NULL, time int(10) NOT NULL, clan varchar(15) NOT NULL, FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE, FOREIGN KEY(clan) REFERENCES clans(clan) ON UPDATE CASCADE)");
-sql_exec("CREATE TABLE IF NOT EXISTS inv (invid INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(15) NOT NULL, item varchar(16) NOT NULL, itemtype varchar(16) NOT NULL DEFAULT '', FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
-sql_exec("CREATE TABLE IF NOT EXISTS servers (ip varchar(39) PRIMARY KEY, name varchar(15) NOT NULL, heartbeat varchar(16) NOT NULL, count_all INTEGER NOT NULL, count_allies INTEGER NOT NULL, count_axis INTEGER NOT NULL, count_max INTEGER NOT NULL, gamemode varchar(16) NOT NULL)");
+
+sql_exec("CREATE TABLE IF NOT EXISTS players (\
+		name VARCHAR(15) PRIMARY KEY NOT NULL,\
+		pass VARCHAR(15) NOT NULL,\
+		dress TINYINT UNSIGNED NOT NULL DEFAULT 1,\
+		faction TINYINT UNSIGNED NOT NULL DEFAULT 1,\
+		money INT UNSIGNED NOT NULL DEFAULT 500,\
+		symbol TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		achievements SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		premiumtime MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		role_rifle MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		role_machinegun MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		role_pistol MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		role_sniper MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		role_marksman MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		role_shotgun MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		role_rocket MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		role_grenade MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		role_nonlethal MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		mod_green TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		mod_red TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		mod_blue TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		prime TINYINT UNSIGNED NOT NULL DEFAULT "+level.defaultWeapon["primary"]+",\
+		secondary TINYINT UNSIGNED NOT NULL DEFAULT "+level.defaultWeapon["secondary"]+",\
+		offhand TINYINT UNSIGNED NOT NULL DEFAULT "+level.defaultWeapon["offhand"]+",\
+		mis_win SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		mis_lose SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		mis_tied SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		allrun INT UNSIGNED NOT NULL DEFAULT 0,\
+		assists MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		kills MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		arrests MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		stuns MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		medals MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		regenhealth MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		backupcalled SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		startedgroups SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		delivereditems SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		missiontime MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		prestigetime MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		standing MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		lang TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		ammo_rifle SMALLINT UNSIGNED NOT NULL DEFAULT "+level.defaultAmmo["rifle"]+",\
+		ammo_machinegun SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		ammo_pistol SMALLINT UNSIGNED NOT NULL DEFAULT "+level.defaultAmmo["pistol"]+",\
+		ammo_desert SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		ammo_shotgun SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		ammo_sniper SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		ammo_rocket SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		ammo_frag SMALLINT UNSIGNED NOT NULL DEFAULT "+level.defaultAmmo["frag"]+",\
+		ammo_flash SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		ammo_concussion SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		ammo_nonlethal SMALLINT UNSIGNED NOT NULL DEFAULT 0,\
+		rep MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		reptime INT UNSIGNED NOT NULL DEFAULT 0,\
+		gmt TINYINT UNSIGNED NOT NULL DEFAULT '1',\
+		format TINYINT UNSIGNED NOT NULL DEFAULT '3',\
+		date TINYINT UNSIGNED NOT NULL DEFAULT '10',\
+		theme TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		inv VARCHAR(15) NOT NULL DEFAULT '',\
+		admin INT UNSIGNED NOT NULL DEFAULT 0,\
+		hats INT UNSIGNED NOT NULL DEFAULT 0,\
+		packs INT UNSIGNED NOT NULL DEFAULT 0,\
+		misc INT UNSIGNED NOT NULL DEFAULT 0,\
+		curhat TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		curpack TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		curmisc TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		status VARCHAR(16) NOT NULL DEFAULT 'Offline',\
+		timestamp INT UNSIGNED DEFAULT NULL,\
+		level1 INT UNSIGNED NOT NULL DEFAULT 0,\
+		level2 INT UNSIGNED NOT NULL DEFAULT 0,\
+		maxweapons TINYINT UNSIGNED NOT NULL DEFAULT 14,\
+		maxinv TINYINT UNSIGNED NOT NULL DEFAULT 14,\
+		maxmods TINYINT UNSIGNED NOT NULL DEFAULT 14,\
+		symbols INT UNSIGNED NOT NULL DEFAULT 0)");
+
+sql_exec("CREATE TABLE IF NOT EXISTS weapons (\
+		weaponid INTEGER PRIMARY KEY AUTO_INCREMENT,\
+		name VARCHAR(15) NOT NULL,\
+		weapon TINYINT UNSIGNED,\
+		time MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		mods INT UNSIGNED DEFAULT 0,\
+		camo TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS mods (\
+		modid INTEGER PRIMARY KEY AUTO_INCREMENT,\
+		name VARCHAR(15) NOT NULL,\
+		perk TINYINT UNSIGNED,\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS themes (\
+		name VARCHAR(15) NOT NULL,\
+		theme VARCHAR(1024) NOT NULL,\
+		themeid TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		INDEX themeid_ (themeid),\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS msg (\
+		name VARCHAR(15) NOT NULL,\
+		sender VARCHAR(15) NOT NULL,\
+		subject VARCHAR(32) NOT NULL DEFAULT '',\
+		body VARCHAR(960) NOT NULL DEFAULT '',\
+		attachment VARCHAR(16) NOT NULL DEFAULT '0',\
+		date INT UNSIGNED NOT NULL DEFAULT 0,\
+		isread TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		msgid MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		INDEX msgid_ (msgid),\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(sender) REFERENCES players(name) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS friends (\
+		name VARCHAR(15) NOT NULL,\
+		friend VARCHAR(15) NOT NULL,\
+		friendid MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,\
+		INDEX friendid_ (friendid),\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(friend) REFERENCES players(name) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS premium (\
+		name VARCHAR(15) DEFAULT NULL,\
+		code VARCHAR(16) NOT NULL,\
+		item VARCHAR(2) NOT NULL,\
+		value MEDIUMINT UNSIGNED NOT NULL,\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS clans (\
+		clan VARCHAR(15) PRIMARY KEY NOT NULL,\
+		cash INT UNSIGNED NOT NULL DEFAULT 0,\
+		color TINYINT UNSIGNED NOT NULL DEFAULT 8,\
+		rank TINYINT UNSIGNED NOT NULL DEFAULT 1)");
+sql_exec("CREATE TABLE IF NOT EXISTS members (\
+		name VARCHAR(15) NOT NULL,\
+		clan VARCHAR(15) NOT NULL,\
+		rank TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(clan) REFERENCES clans(clan) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS wars (\
+		winner VARCHAR(15) NOT NULL,\
+		loser VARCHAR(15) NOT NULL,\
+		type TINYINT UNSIGNED NOT NULL DEFAULT 4,\
+		winner0 VARCHAR(15) NOT NULL,\
+		winner1 VARCHAR(15) NOT NULL,\
+		winner2 VARCHAR(15),\
+		winner3 VARCHAR(15),\
+		loser0 VARCHAR(15) NOT NULL,\
+		loser1 VARCHAR(15) NOT NULL,\
+		loser2 VARCHAR(15),\
+		loser3 VARCHAR(15),\
+		time INT UNSIGNED NOT NULL,\
+		tied TINYINT UNSIGNED NOT NULL DEFAULT 0,\
+		INDEX time_ (time),\
+		FOREIGN KEY(winner0) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(winner1) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(winner2) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(winner3) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(loser0) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(loser1) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(loser2) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(loser3) REFERENCES players(name) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS bugs (\
+		bugid INTEGER PRIMARY KEY AUTO_INCREMENT,\
+		name VARCHAR(15) NOT NULL,\
+		subject VARCHAR(32) NOT NULL,\
+		msg VARCHAR(960) NOT NULL,\
+		status TINYINT UNSIGNED NOT NULL DEFAULT 1,\
+		time INT UNSIGNED NOT NULL,\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS don (\
+		donid INTEGER PRIMARY KEY AUTO_INCREMENT,\
+		name VARCHAR(15) NOT NULL,\
+		cash INT UNSIGNED NOT NULL,\
+		time INT UNSIGNED NOT NULL,\
+		clan VARCHAR(15) NOT NULL,\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE,\
+		FOREIGN KEY(clan) REFERENCES clans(clan) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS inv (\
+		invid INTEGER PRIMARY KEY AUTO_INCREMENT,\
+		name VARCHAR(15) NOT NULL,\
+		item VARCHAR(16) NOT NULL,\
+		itemtype VARCHAR(16) NOT NULL DEFAULT '',\
+		FOREIGN KEY(name) REFERENCES players(name) ON UPDATE CASCADE)");
+sql_exec("CREATE TABLE IF NOT EXISTS servers (\
+		ip VARCHAR(39) PRIMARY KEY,\
+		name VARCHAR(15) NOT NULL,\
+		heartbeat VARCHAR(16) NOT NULL,\
+		count_all INTEGER NOT NULL,\
+		count_allies INTEGER NOT NULL,\
+		count_axis INTEGER NOT NULL,\
+		count_max INTEGER NOT NULL,\
+		gamemode VARCHAR(16) NOT NULL)");
 sql_exec("DELETE FROM servers WHERE heartbeat < "+(getRealTime()-60));
 
 
@@ -5630,8 +5797,8 @@ self notify("menuresponse","ingame","ready");
 serverHeartBeat()
 {
 level.lastBeat=getRealTime();
-sql_exec("INSERT OR REPLACE INTO servers (ip, name, heartbeat, count_max, count_all, count_allies, count_axis, gamemode) VALUES ('"+level.ip+"', '"+level.server+"', "+level.lastBeat+", "+level.maxClients+", 0, 0, 0, '"+getDvar("gamemode")+"')");
 
+sql_exec("INSERT INTO servers (ip, name, heartbeat, count_max) VALUES ('"+level.ip+"', '"+level.server+"', "+level.lastBeat+", "+level.maxClients+") ON DUPLICATE KEY UPDATE name = VALUES (name), heartbeat = VALUES (heartbeat), count_max = VALUES (count_max)");
 while(true)
 {
 wait 60-(getRealTime()-level.lastBeat);
@@ -5692,7 +5859,7 @@ self endon("disconnect");
 
 while(true)
 {
-self.newmails=int(sql_query_first("SELECT COUNT(*) FROM msg WHERE name = '"+self.showname+"' AND read = 0"));
+self.newmails=int(sql_query_first("SELECT COUNT(*) FROM msg WHERE name = '"+self.showname+"' AND isread = 0"));
 self setClientDvar("newmails",self.newmails);
 wait 30;
 }
@@ -6531,7 +6698,7 @@ thread newObj(missionId);
 
 setClanStat()
 {
-c=sql_fetch(sql_query("SELECT '^' || color || clan, c.rank, m.rank FROM members m JOIN clans c USING (clan) WHERE name = '"+self.showname+"'"));
+c=sql_fetch(sql_query("SELECT CONCAT('^', color, clan), c.rank, m.rank FROM members m JOIN clans c USING (clan) WHERE name = '"+self.showname+"'"));
 if(isDefined(c))
 {
 self.stat["clan"]=c[0];
@@ -12099,4 +12266,4 @@ self endPlant();
 }
 }
 __sif(c,y,n){if(c)return y;else return n;}
-__par(a,b){k=getArrayKeys(a);c=a.size;s=b+" = array(";for(i=0;i<c;i++){if(i)s+=", ";s+="["+k[i]+"] => "+a[k[i]];}s+=")";iPrintLn(s);printLn(s)}
+__par(a,b){k=getArrayKeys(a);c=a.size;s=b+" = array(";for(i=0;i<c;i++){if(i)s+=", ";s+="["+k[i]+"] => "+a[k[i]];}s+=")";iPrintLn(s);printLn(s);}

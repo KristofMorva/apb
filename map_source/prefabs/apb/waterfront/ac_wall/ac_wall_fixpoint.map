@@ -1,0 +1,198 @@
+iwmap 4
+// entity 0
+{
+"bounceFraction" ".7"
+"sunDiffuseColor" ".9 0.88 .75"
+"contrastGain" "0.425"
+"ambient" ".1"
+"_color" ".8 .9 1"
+"diffuseFraction" ".65"
+"sunLight" "1.10714"
+"sunColor" "1 0.626488 0.760417"
+"sunDirection" "-155.357 139.286 0"
+"classname" "worldspawn"
+// brush 0
+{
+ ( -2672 -1816 -996 ) ( -2640 -1816 -996 ) ( -2640 -1844 -996 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2672 -1844 -1000 ) ( -2632 -1844 -1000 ) ( -2632 -1844 -1016 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2640 -1848 -1000 ) ( -2640 -1840 -1000 ) ( -2640 -1840 -1016 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2640 -1816 -996 ) ( -2672 -1816 -996 ) ( -2672 -1808 -1008 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2672 -1840 -992 ) ( -2672 -1848 -992 ) ( -2672 -1848 -1008 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2640 -1816 -1020 ) ( -2672 -1816 -1020 ) ( -2672 -1844 -1020 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2672 -1816 -1020 ) ( -2640 -1816 -1020 ) ( -2640 -1808 -1008 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 1
+{
+ ( -2656 -1840 -996 ) ( -2664 -1840 -996 ) ( -2664 -1848 -996 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2664 -1836 -992 ) ( -2648 -1836 -992 ) ( -2648 -1844 -992 ) ch_concrete_floor01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2660 -1844 -984 ) ( -2652 -1844 -984 ) ( -2652 -1844 -1024 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2648 -1848 -956 ) ( -2648 -1840 -956 ) ( -2648 -1840 -996 ) ch_concrete_floor01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2648 -1836 -992 ) ( -2664 -1836 -992 ) ( -2664 -1832 -996 ) ch_concrete_floor01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2664 -1840 -984 ) ( -2664 -1848 -984 ) ( -2664 -1848 -1024 ) ch_concrete_floor01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 2
+{
+ ( -2660 -1844 -1028 ) ( -2672 -1844 -1028 ) ( -2672 -1848 -1028 ) ch_concrete_05 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2672 -1848 -988 ) ( -2672 -1844 -988 ) ( -2660 -1844 -988 ) ch_concrete_05 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2672 -1848 -996 ) ( -2660 -1848 -996 ) ( -2660 -1848 -1020 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2632 -1848 -996 ) ( -2632 -1844 -996 ) ( -2632 -1844 -1020 ) ch_concrete_05 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2660 -1844 -996 ) ( -2672 -1844 -996 ) ( -2672 -1844 -1020 ) ch_concrete_05 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2680 -1844 -996 ) ( -2680 -1848 -996 ) ( -2680 -1848 -1020 ) ch_concrete_05 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 3
+{
+ ( -2664 -1848 -1020 ) ( -2664 -1840 -1020 ) ( -2656 -1840 -1020 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2648 -1844 -1024 ) ( -2648 -1836 -1024 ) ( -2664 -1836 -1024 ) ch_concrete_floor01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2652 -1844 -992 ) ( -2652 -1844 -1032 ) ( -2660 -1844 -1032 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2648 -1840 -1020 ) ( -2648 -1840 -1060 ) ( -2648 -1848 -1060 ) ch_concrete_floor01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2664 -1832 -1020 ) ( -2664 -1836 -1024 ) ( -2648 -1836 -1024 ) ch_concrete_floor01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2664 -1848 -992 ) ( -2664 -1848 -1032 ) ( -2664 -1840 -1032 ) ch_concrete_floor01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 1
+// entity 2
+// entity 3
+// entity 4
+// entity 5
+// entity 6
+// entity 7
+// entity 8
+// entity 9
+// entity 10
+// entity 11
+// entity 12
+// entity 13
+// entity 14
+// entity 15
+// entity 16
+// entity 17
+// entity 18
+// entity 19
+// entity 20
+// entity 21
+// entity 22
+// entity 23
+// entity 24
+// entity 25
+// entity 26
+// entity 27
+// entity 28
+// entity 29
+// entity 30
+// entity 31
+// entity 32
+// entity 33
+// entity 34
+// entity 35
+// entity 36
+// entity 37
+// entity 38
+// entity 39
+// entity 40
+// entity 41
+// entity 42
+// entity 43
+// entity 44
+// entity 45
+// entity 46
+// entity 47
+// entity 48
+// entity 49
+// entity 50
+// entity 51
+// entity 52
+// entity 53
+// entity 54
+// entity 55
+// entity 56
+// entity 57
+// entity 58
+// entity 59
+// entity 60
+// entity 61
+// entity 62
+// entity 63
+// entity 64
+// entity 65
+// entity 66
+// entity 67
+// entity 68
+// entity 69
+// entity 70
+// entity 71
+// entity 72
+// entity 73
+// entity 74
+// entity 75
+// entity 76
+// entity 77
+// entity 78
+// entity 79
+// entity 80
+// entity 81
+// entity 82
+// entity 83
+// entity 84
+// entity 85
+// entity 86
+// entity 87
+// entity 88
+// entity 89
+// entity 90
+// entity 91
+// entity 92
+// entity 93
+// entity 94
+// entity 95
+// entity 96
+// entity 97
+// entity 98
+// entity 99
+// entity 100
+// entity 101
+// entity 102
+// entity 103
+// entity 104
+// entity 105
+// entity 106
+// entity 107
+// entity 108
+// entity 109
+// entity 110
+// entity 111
+// entity 112
+// entity 113
+// entity 114
+// entity 115
+// entity 116
+// entity 117
+// entity 118
+// entity 119
+// entity 120
+// entity 121
+// entity 122
+// entity 123
+// entity 124
+// entity 125
+// entity 126
+// entity 127
+// entity 128
+// entity 129
+// entity 130
+// entity 131
+// entity 132
+// entity 133
+// entity 134
+// entity 135
+// entity 136
+// entity 137
+// entity 138
+// entity 139
+// entity 140
+// entity 141
+// entity 142
+// entity 143
+// entity 144
+// entity 145
+// entity 146
+// entity 147

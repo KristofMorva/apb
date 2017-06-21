@@ -1,0 +1,114 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"classname" "worldspawn"
+// brush 0
+{
+ ( 368 -200 -8 ) ( 368 232 -8 ) ( -104 232 -8 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 104 232 -8 ) ( 104 -200 -8 ) ( 96 -192 0 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -96 232 -8 ) ( 360 232 -8 ) ( 360 224 0 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -104 -192 -8 ) ( -104 232 -8 ) ( -96 224 0 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 360 -200 -8 ) ( -104 -200 -8 ) ( -96 -192 0 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -224 -32 0 ) ( -224 248 0 ) ( 104 -32 0 ) com_black 1 1 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 1
+{
+ ( 752 -192 0 ) ( 288 -192 0 ) ( 288 -200 -8 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -360 -192 120 ) ( 104 -192 120 ) ( 104 -200 128 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 -192 120 ) ( 96 -192 0 ) ( 104 -200 -8 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -96 -192 0 ) ( -96 -192 120 ) ( -104 -200 128 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -200 -200 160 ) ( 128 -200 160 ) ( 128 -200 144 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -88 -192 120 ) ( -88 -192 0 ) ( 360 -192 0 ) com_black 1 1 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 2
+{
+ ( 288 224 0 ) ( 744 224 0 ) ( 752 232 -8 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 224 120 ) ( -360 224 120 ) ( -368 232 128 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 224 -8 ) ( 96 224 128 ) ( 104 232 128 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -104 232 128 ) ( -104 232 -8 ) ( 368 232 -8 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -104 232 -8 ) ( -104 232 128 ) ( -96 224 128 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 224 0 ) ( -360 224 0 ) ( -360 224 120 ) com_black 1 1 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 3
+{
+ ( 96 224 0 ) ( 96 -192 0 ) ( 104 -200 -8 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 -192 120 ) ( 96 224 120 ) ( 104 232 128 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 104 232 128 ) ( 104 232 -8 ) ( 104 -200 -8 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 104 232 -8 ) ( 104 232 128 ) ( 96 224 128 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 -192 0 ) ( 96 224 0 ) ( 96 224 120 ) com_black 1 1 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 104 -200 128 ) ( 104 -200 -8 ) ( 96 -192 -8 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 4
+{
+ ( -232 264 120 ) ( -232 -200 120 ) ( 104 -200 120 ) com_black 1 1 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -368 232 128 ) ( 104 232 128 ) ( 104 -200 128 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 104 -192 128 ) ( 104 224 128 ) ( 96 224 120 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 104 232 128 ) ( -368 232 128 ) ( -360 224 120 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -104 224 128 ) ( -104 -200 128 ) ( -96 -192 120 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -360 -200 128 ) ( 104 -200 128 ) ( 96 -192 120 ) clip_nosight_for_bridge_on_jeepride_fire_clip 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 5
+{
+  contents detail;
+ ( -232 248 0 ) ( -232 -216 0 ) ( 104 -216 0 ) lightgrid_volume 64 64 1144 -40 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 104 -216 120 ) ( -232 -216 120 ) ( -232 248 120 ) lightgrid_volume 64 64 1144 -40 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 -208 56 ) ( 96 256 56 ) ( 96 256 48 ) lightgrid_volume 64 64 1144 -8 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 224 136 ) ( -240 224 136 ) ( -240 224 128 ) lightgrid_volume 64 -64 40 8 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -96 168 136 ) ( -96 -296 136 ) ( -96 -296 128 ) lightgrid_volume 64 64 1144 -8 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -344 -192 136 ) ( -8 -192 136 ) ( -8 -192 128 ) lightgrid_volume 64 -64 40 8 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 6
+{
+ ( -96 -200 0 ) ( -96 232 0 ) ( -104 232 -8 ) caulk 64 64 1144 224 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -96 232 120 ) ( -96 -200 120 ) ( -104 -200 128 ) caulk 64 64 1144 224 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -96 224 0 ) ( -96 224 120 ) ( -104 232 128 ) caulk 64 -64 -88 8 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -104 248 160 ) ( -104 -32 160 ) ( -104 -32 144 ) caulk 64 64 1144 -8 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -96 -192 120 ) ( -96 -192 0 ) ( -104 -200 -8 ) caulk 64 -64 -88 8 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -96 -192 0 ) ( -96 -192 120 ) ( -96 224 120 ) com_black 1 1 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 1
+{
+"targetname" "arsenal"
+"classname" "trigger_use_touch"
+// brush 0
+{
+  contents detail;
+ ( -232 248 0 ) ( -232 -216 0 ) ( 104 -216 0 ) trigger 64 64 -128 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 104 -216 120 ) ( -232 -216 120 ) ( -232 248 120 ) trigger 64 64 -128 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 -208 56 ) ( 96 256 56 ) ( 96 256 48 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 96 224 136 ) ( -240 224 136 ) ( -240 224 128 ) trigger 64 64 -128 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -96 160 136 ) ( -96 -304 136 ) ( -96 -304 128 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -344 -192 136 ) ( -8 -192 136 ) ( -8 -192 128 ) trigger 64 64 -128 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 2
+{
+"angles" "0 180 0"
+"classname" "script_origin"
+"targetname" "depot"
+"origin" "-4.0 8.0 0.0"
+}
+// entity 3
+{
+"angles" "0 90 0"
+"classname" "script_origin"
+"targetname" "arsenal_weap"
+"origin" "-56.0 16.0 60.0"
+}
+// entity 4
+{
+"classname" "light"
+"intensity" "1"
+"_color" "1 1 1"
+"radius" "1000"
+"def" "light_point_linear"
+"origin" "-32.0 8.0 60.0"
+}
+// entity 5
+{
+"origin" "0.0 0.0 56.0"
+"classname" "reflection_probe"
+}

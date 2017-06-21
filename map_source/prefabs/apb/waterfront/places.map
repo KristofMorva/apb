@@ -1,0 +1,110 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"targetname" "billboard_turn"
+"diffuseFraction" ".65"
+"sunDiffuseColor" "1 1 .8"
+"sunLight" "1.4"
+"sunColor" "1 1 1 .35"
+"sunDirection" "-88 25.11 0"
+"classname" "worldspawn"
+}
+// entity 1
+{
+"script_noteworthy" "Out in nowhere"
+"script_place" "Out in nowhere"
+"targetname" "place"
+"classname" "trigger_multiple"
+// brush 0
+{
+ ( 432 4056 0 ) ( -1040 4056 0 ) ( -1040 1312 0 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -1064 1312 512 ) ( -1064 4056 512 ) ( 408 4056 512 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2520 8 216 ) ( -1048 8 216 ) ( -1048 8 128 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 480 1304 216 ) ( 480 4048 216 ) ( 480 4048 128 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 424 3840 280 ) ( -1048 3840 280 ) ( -1048 3840 192 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -1088 2824 216 ) ( -1088 80 216 ) ( -1088 80 128 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 2
+{
+"script_noteworthy" "Take a trip on my train"
+"script_place" "Take a trip on my train"
+"targetname" "place"
+"classname" "trigger_multiple"
+// brush 0
+{
+ ( -2336 2792 0 ) ( -3808 2792 0 ) ( -3808 48 0 ) trigger 64 64 -2768 1264 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3832 48 512 ) ( -3832 2792 512 ) ( -2360 2792 512 ) trigger 64 64 -2768 1264 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5080 624 216 ) ( -3608 624 216 ) ( -3608 624 128 ) trigger 64 64 -2768 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -1088 48 216 ) ( -1088 2792 216 ) ( -1088 2792 128 ) trigger 64 64 -1264 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2344 2496 280 ) ( -3816 2496 280 ) ( -3816 2496 192 ) trigger 64 64 -2768 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3776 1560 216 ) ( -3776 -1184 216 ) ( -3776 -1184 128 ) trigger 64 64 -1264 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 3
+{
+"script_noteworthy" "The long road"
+"spawnflags" "0"
+"script_place" "The long road"
+"targetname" "place"
+"classname" "trigger_multiple"
+// brush 0
+{
+ ( -2336 3416 0 ) ( -3808 3416 0 ) ( -3808 672 0 ) trigger 64 64 -2768 640 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3832 672 512 ) ( -3832 3416 512 ) ( -2360 3416 512 ) trigger 64 64 -2768 640 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -4824 2560 216 ) ( -3352 2560 216 ) ( -3352 2560 128 ) trigger 64 64 -2768 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -1152 672 216 ) ( -1152 3416 216 ) ( -1152 3416 128 ) trigger 64 64 -640 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2344 3200 280 ) ( -3816 3200 280 ) ( -3816 3200 192 ) trigger 64 64 -2768 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -11776 2440 216 ) ( -11776 -304 216 ) ( -11776 -304 128 ) trigger 64 64 -640 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 4
+{
+"script_noteworthy" "Swimmin' time!"
+"script_place" "Swimmin' time!"
+"targetname" "place"
+"classname" "trigger_multiple"
+// brush 0
+{
+ ( -1440 4448 -472 ) ( -2912 4448 -472 ) ( -2912 1704 -472 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -2936 1720 -152 ) ( -2936 4464 -152 ) ( -1464 4464 -152 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3912 400 -256 ) ( -2440 400 -256 ) ( -2440 400 -344 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -9584 2152 -256 ) ( -9584 4896 -256 ) ( -9584 4896 -344 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -1448 4232 -192 ) ( -2920 4232 -192 ) ( -2920 4232 -280 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -10880 3472 -256 ) ( -10880 728 -256 ) ( -10880 728 -344 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 5
+{
+"script_noteworthy" "The way to meet your jewish friends"
+"targetname" "place"
+"script_place" "The way to meet your jewish friends"
+"classname" "trigger_multiple"
+// brush 0
+{
+ ( -14448 2056 32 ) ( -14712 2056 32 ) ( -14712 1808 32 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -14720 1808 512 ) ( -14720 2056 512 ) ( -14456 2056 512 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -14688 1848 1024 ) ( -14424 1848 1024 ) ( -14424 1848 40 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3856 1448 512 ) ( -3856 1696 512 ) ( -3856 1696 -472 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -14456 2056 512 ) ( -14720 2056 512 ) ( -14720 2056 -472 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -14720 2056 512 ) ( -14720 1808 512 ) ( -14720 1808 -472 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 6
+{
+"script_noteworthy" "The space between"
+"targetname" "place"
+"script_place" "The space between"
+"classname" "trigger_multiple"
+// brush 0
+{
+ ( -14448 2360 32 ) ( -14712 2360 32 ) ( -14712 2112 32 ) trigger 64 64 0 -304 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -14720 2112 512 ) ( -14720 2360 512 ) ( -14456 2360 512 ) trigger 64 64 0 -304 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -14688 2152 1024 ) ( -14424 2152 1024 ) ( -14424 2152 40 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3856 1752 512 ) ( -3856 2000 512 ) ( -3856 2000 -472 ) trigger 64 64 304 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -14432 2496 512 ) ( -14696 2496 512 ) ( -14696 2496 -472 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -14720 2360 512 ) ( -14720 2112 512 ) ( -14720 2112 -472 ) trigger 64 64 304 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}

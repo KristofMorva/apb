@@ -1,4 +1,4 @@
-﻿BOTOK NEM TUDNAK LESPAWNOLNI!!!!!!!
+﻿BOTS CANNOT SPAWN!!!!!!!!! FIX THAT!!!
 
 ////////////////////////
 // APB MOD TO-DO LIST //
@@ -13,6 +13,7 @@
 
 iCore
 ------
+Ugly solutions in code in many places...
 Auto-login if changed server with sth current checksum
 Chattime setting?
 3D login background?
@@ -29,7 +30,7 @@ Premium items (hats/weapons/mods)
 Big map (with vendors)
 Vendors on radar
 Login reward
-Extend "testreszabás" menu (maybe the extra shadow)
+Extend "customization" menu (maybe the extra shadow)
 Optimize ratings and roles needed for items
 Marketplace (trading)
 Admin commands
@@ -39,7 +40,7 @@ Send attachment in messages
 
 R3B0RN
 -------
-Sapikat jó helyre tenni
+Put hat models relative to their origins, where they should be to fit the players' heads
 Hats/miscs/backpacks
 Train: Replace textures of the model, sounds
 Waterfront:	finish, portals, lightgrid, locations, errlog, fxs, lookout image
@@ -59,7 +60,7 @@ AGAINST LIMITS
 ---------------
 More languages: Create stringtable and select from dat
 Remove: RewardReceivedCamo sound, NEWCAMO_TITLE_, NEWCAMO_DESC_, newcamo material+image
-Material, image, model: Delete all metro textures. Check for duplicated ones when they are listed after crash and ignore them with -mod.csv (if we don't want to overwrite the original one certainly), delete some from the map if possible, and check the mod for useless ones (for example replace "mvp" material ("found" mixMenu) with something else, and make dress prefab less detailed). Also backgrounds can be merged, and many map textures too, which are not repeating and not using normal/etc maps
+Material, image, model: Models in weapon anim1_mp can be placed in ignore list! Delete all metro textures. Check for duplicated ones when they are listed after crash and ignore them with -mod.csv (if we don't want to overwrite the original one certainly), delete some from the map if possible, and check the mod for useless ones (for example replace "mvp" material ("found" mixMenu) with something else, and make dress prefab less detailed). Also backgrounds can be merged, and many map textures too, which are not repeating and not using normal/etc maps
 Localized string: MOD_MODNAME_DESC2_LANG into MOD_MODNAME_DESC1_LANG (with \n) + set level.s in dvars where possible
 Memory: Theme.mp3 + Seek
 Stringtable: Hardcode some of the current ones in script (which are not needed in menus)

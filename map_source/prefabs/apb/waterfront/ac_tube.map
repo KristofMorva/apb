@@ -1,0 +1,42 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"bounceFraction" ".7"
+"sunDiffuseColor" ".9 0.88 .75"
+"contrastGain" "0.425"
+"ambient" ".1"
+"_color" ".8 .9 1"
+"diffuseFraction" ".65"
+"sunLight" "1.10714"
+"sunColor" "1 0.626488 0.760417"
+"sunDirection" "-155.357 139.286 0"
+"classname" "worldspawn"
+// brush 0
+{
+  contents detail;
+ ( -3952 32 -1720 ) ( -3984 32 -1720 ) ( -3984 0 -1720 ) caulk 64 64 -8 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3984 -2 -1698 ) ( -3984 30 -1698 ) ( -3952 30 -1698 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3976 -136 -1600 ) ( -3944 -136 -1600 ) ( -3944 -136 -1720 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3952 0 -1600 ) ( -3952 32 -1600 ) ( -3952 32 -1720 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3952 8 -1600 ) ( -3984 8 -1600 ) ( -3984 8 -1720 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3984 32 -1600 ) ( -3984 0 -1600 ) ( -3984 0 -1720 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 1
+{
+  contents detail;
+ ( -3552 32 -1720 ) ( -3584 32 -1720 ) ( -3584 0 -1720 ) caulk 64 64 392 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3584 -2 -1698 ) ( -3584 30 -1698 ) ( -3552 30 -1698 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3576 -136 -1600 ) ( -3544 -136 -1600 ) ( -3544 -136 -1720 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3552 0 -1600 ) ( -3552 32 -1600 ) ( -3552 32 -1720 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3552 8 -1600 ) ( -3584 8 -1600 ) ( -3584 8 -1720 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -3584 32 -1600 ) ( -3584 0 -1600 ) ( -3584 0 -1720 ) ch_concretewall02 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 1
+{
+"origin" "0.0 0.0 0.0"
+"model" "prefabs/apb/waterfront/ac_tube_b.map"
+"classname" "misc_prefab"
+}

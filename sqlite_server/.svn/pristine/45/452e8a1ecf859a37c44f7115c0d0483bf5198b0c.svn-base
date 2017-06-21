@@ -1,0 +1,26 @@
+#include "SKCommon.h"
+
+template<class T> bool contains(std::vector<T>& v, T o)
+{
+	return std::find(v.begin(), v.end(), o) != v.end();
+}
+
+bool strContains(std::string& str, char c)
+{
+	return str.find(c) != std::string::npos;
+}
+
+void splitStr(std::string& str, std::vector<std::string>& res, char del)
+{
+	std::stringstream ss(*str);
+	std::string item;
+	while (std::getline(ss, item, del))
+	{
+		res.push_back(item);
+	}
+}
+
+bool startsWith(std::string& str, std::string& start)
+{
+	return (*str).substr(0, (start).length()) == start;
+}

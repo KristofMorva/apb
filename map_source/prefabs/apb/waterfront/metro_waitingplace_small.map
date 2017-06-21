@@ -1,0 +1,224 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"targetname" "billboard_turn"
+"diffuseFraction" ".65"
+"sunDiffuseColor" "1 1 .8"
+"sunLight" "1.4"
+"sunColor" "1 1 1 .35"
+"sunDirection" "-88 25.11 0"
+"classname" "worldspawn"
+// brush 0
+{
+ ( -6080 2368 72 ) ( -6120 2368 72 ) ( -6120 2272 72 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6120 2272 112 ) ( -6120 2368 112 ) ( -6080 2368 112 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6520 2184 112 ) ( -6520 2184 72 ) ( -6528 2176 72 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6520 2360 80 ) ( -6520 2360 120 ) ( -6528 2368 120 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6528 2376 120 ) ( -6528 2280 120 ) ( -6528 2280 8 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6520 2184 72 ) ( -6520 2184 112 ) ( -6520 2360 112 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 1
+{
+ ( -6400 2272 96 ) ( -6416 2272 96 ) ( -6416 2264 96 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6416 2264 328 ) ( -6416 2272 328 ) ( -6400 2272 328 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6412 2264 328 ) ( -6396 2264 328 ) ( -6396 2264 96 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6396 2264 328 ) ( -6396 2272 328 ) ( -6396 2272 96 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6404 2276 328 ) ( -6420 2276 328 ) ( -6420 2276 96 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6412 2272 328 ) ( -6412 2264 328 ) ( -6412 2264 96 ) clip_nosight 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 2
+ {
+  mesh
+  {
+   me_ground_drygrass
+   lightmap_gray
+   3 3 16 8
+   (
+	v -6520 2184 108 t 0 -0 -407.5 -136.5
+	v -6520 2272 108 t 0 -704 -407.5 -142
+	v -6520 2360 108 t 0 -1408 -407.5 -147.5
+   )
+   (
+	v -6412 2184 102 t 865.33234 -0 -394 -136.5
+	v -6412 2272 100 t 865.33234 -704 -394 -142
+	v -6412 2360 104 t 865.33234 -1408 -394 -147.5
+   )
+   (
+	v -6304 2184 106 t 1729.9248 -0 -380.5 -136.5
+	v -6304 2272 100 t 1729.9248 -704 -380.5 -142
+	v -6304 2360 100 t 1729.9248 -1408 -380.5 -147.5
+   )
+  }
+ }
+// brush 3
+{
+ ( -6296 2368 72 ) ( -6336 2368 72 ) ( -6336 2272 72 ) caulk 64 64 -216 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6336 2272 112 ) ( -6336 2368 112 ) ( -6296 2368 112 ) me_concrete_groovy 128 128 -216 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6304 2184 72 ) ( -6304 2184 112 ) ( -6296 2176 112 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6296 2272 184 ) ( -6296 2368 184 ) ( -6296 2368 72 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6304 2360 112 ) ( -6304 2360 72 ) ( -6296 2368 72 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6304 2184 112 ) ( -6304 2184 72 ) ( -6304 2360 72 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 4
+{
+ ( -6080 2368 72 ) ( -6120 2368 72 ) ( -6120 2272 72 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6120 2272 112 ) ( -6120 2368 112 ) ( -6080 2368 112 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6112 2176 120 ) ( -6072 2176 120 ) ( -6072 2176 8 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6304 2184 112 ) ( -6304 2184 72 ) ( -6296 2176 72 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6520 2184 72 ) ( -6520 2184 112 ) ( -6528 2176 112 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6736 2184 120 ) ( -6736 2184 80 ) ( -6304 2184 80 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 5
+{
+ ( -6528 2368 72 ) ( -6528 2360 72 ) ( -6488 2360 72 ) nodraw_decal 64 64 8448 -4160 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6488 2360 112 ) ( -6528 2360 112 ) ( -6528 2368 112 ) nodraw_decal 64 64 8448 -4160 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6296 2360 112 ) ( -6296 2368 112 ) ( -6296 2368 72 ) nodraw_decal 64 64 8448 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6488 2368 112 ) ( -6528 2368 112 ) ( -6528 2368 72 ) me_decal_adobe_bottom_01 256 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6528 2368 112 ) ( -6528 2360 112 ) ( -6528 2360 72 ) nodraw_decal 64 64 8448 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6744 2360 112 ) ( -6704 2360 112 ) ( -6704 2360 72 ) nodraw_decal 64 -64 4160 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 6
+{
+ ( -6080 2368 72 ) ( -6120 2368 72 ) ( -6120 2272 72 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6120 2272 112 ) ( -6120 2368 112 ) ( -6080 2368 112 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6304 2360 72 ) ( -6304 2360 112 ) ( -6296 2368 112 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6080 2368 120 ) ( -6120 2368 120 ) ( -6120 2368 8 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6520 2360 120 ) ( -6520 2360 80 ) ( -6528 2368 80 ) caulk 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6736 2360 80 ) ( -6736 2360 120 ) ( -6304 2360 120 ) me_concrete_groovy 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 7
+{
+ ( -6296 2368 72 ) ( -6304 2368 72 ) ( -6304 2328 72 ) nodraw_decal 64 64 -216 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6304 2328 112 ) ( -6304 2368 112 ) ( -6296 2368 112 ) nodraw_decal 64 64 -216 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6296 2176 112 ) ( -6288 2176 112 ) ( -6288 2176 72 ) nodraw_decal 64 64 -216 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6296 2328 112 ) ( -6296 2368 112 ) ( -6296 2368 72 ) me_decal_adobe_bottom_01 256 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6296 2368 112 ) ( -6304 2368 112 ) ( -6304 2368 72 ) nodraw_decal 64 64 -216 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6304 2368 112 ) ( -6304 2328 112 ) ( -6304 2328 72 ) nodraw_decal 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 8
+{
+ ( -6080 2176 72 ) ( -6080 2184 72 ) ( -6120 2184 72 ) nodraw_decal 64 64 3904 8448 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6120 2184 112 ) ( -6080 2184 112 ) ( -6080 2176 112 ) nodraw_decal 64 64 3904 8448 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6528 2184 112 ) ( -6528 2176 112 ) ( -6528 2176 72 ) nodraw_decal 64 -64 3904 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6120 2176 112 ) ( -6080 2176 112 ) ( -6080 2176 72 ) me_decal_adobe_bottom_01 256 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6296 2176 112 ) ( -6296 2184 112 ) ( -6296 2184 72 ) nodraw_decal 64 -64 3904 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6296 2184 112 ) ( -6336 2184 112 ) ( -6336 2184 72 ) nodraw_decal 64 64 -8448 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 9
+{
+ ( -6528 2176 72 ) ( -6520 2176 72 ) ( -6520 2216 72 ) nodraw_decal 64 64 12608 4544 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6520 2216 112 ) ( -6520 2176 112 ) ( -6528 2176 112 ) nodraw_decal 64 64 12608 4544 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6528 2368 112 ) ( -6536 2368 112 ) ( -6536 2368 72 ) nodraw_decal 64 -64 12608 0 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6528 2216 112 ) ( -6528 2176 112 ) ( -6528 2176 72 ) me_decal_adobe_bottom_01 256 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6528 2176 112 ) ( -6520 2176 112 ) ( -6520 2176 72 ) nodraw_decal 64 -64 12608 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -6520 2176 112 ) ( -6520 2216 112 ) ( -6520 2216 72 ) nodraw_decal 64 -64 -4544 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 1
+{
+"modelscale" "0.5"
+"classname" "misc_model"
+"model" "foliage_red_pine_med"
+"origin" "-6404.8 2271.9 108.0"
+"angles" "0 75 0"
+}
+// entity 2
+{
+"angles" "0 220 0"
+"origin" "-6385.9 2311.0 100.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 3
+{
+"angles" "0 279 0"
+"origin" "-6352.4 2286.8 100.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 4
+{
+"angles" "0 204 0"
+"origin" "-6392.9 2301.0 100.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 5
+{
+"angles" "0 7.99999 0"
+"origin" "-6457.5 2293.5 100.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 6
+{
+"angles" "0 151 0"
+"origin" "-6371.5 2249.1 98.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 7
+{
+"angles" "0 46 0"
+"origin" "-6363.1 2275.6 98.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 8
+{
+"angles" "0 115 0"
+"origin" "-6395.6 2265.4 100.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 9
+{
+"angles" "0 174 0"
+"origin" "-6427.7 2239.4 100.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 10
+{
+"angles" "0 99 0"
+"origin" "-6403.4 2274.8 100.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 11
+{
+"angles" "0 46 0"
+"origin" "-6459.1 2267.6 98.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 12
+{
+"angles" "0 151 0"
+"origin" "-6475.5 2233.1 98.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 13
+{
+"angles" "0 106 0"
+"origin" "-6476.0 2316.7 98.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 14
+{
+"origin" "-6412.2 2160.0 72.0"
+"angles" "0 270 0"
+"model" "prefabs/misc_models/com_metalbench.map"
+"classname" "misc_prefab"
+}
+// entity 15
+{
+"origin" "-6411.8 2384.0 72.0"
+"angles" "0 90 0"
+"model" "prefabs/misc_models/com_metalbench.map"
+"classname" "misc_prefab"
+}

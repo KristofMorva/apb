@@ -1,0 +1,38 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"targetname" "billboard_turn"
+"diffuseFraction" ".65"
+"sunDiffuseColor" "1 1 .8"
+"sunLight" "1.4"
+"sunColor" "1 1 1 .35"
+"sunDirection" "-88 25.11 0"
+"classname" "worldspawn"
+// brush 0
+{
+ ( 65 0 -33 ) ( 64 0 -33 ) ( 64 -2 -33 ) ch_trim_stainlessteel_1 128 128 3576 2416 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 -2 33 ) ( 64 0 33 ) ( 65 0 33 ) ch_trim_stainlessteel_1 128 128 3576 2416 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 -2 32 ) ( 65 -2 32 ) ( 65 -2 -32 ) ch_trim_stainlessteel_1 128 128 3576 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 65 -2 31 ) ( 65 0 31 ) ( 65 0 -33 ) ch_trim_stainlessteel_1 128 128 -2416 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 65 0 31 ) ( 64 0 31 ) ( 64 0 -33 ) caulk 64 64 3576 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 0 32 ) ( 64 -2 32 ) ( 64 -2 -32 ) ch_trim_stainlessteel_1 128 128 -2416 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 1
+{
+ ( 64 0 32 ) ( -64 0 32 ) ( -64 -3 32 ) ch_trim_stainlessteel_1 128 128 3576 2416 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 -3 33 ) ( -64 0 33 ) ( 64 0 33 ) ch_trim_stainlessteel_1 128 128 3576 2416 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 -2 33 ) ( 64 -2 33 ) ( 64 -2 32 ) ch_trim_stainlessteel_1 128 128 3576 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 -3 33 ) ( 64 0 33 ) ( 64 0 32 ) caulk 64 64 -2416 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 0 33 ) ( -64 0 33 ) ( -64 0 32 ) caulk 64 64 3576 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 0 33 ) ( -64 -3 33 ) ( -64 -3 32 ) caulk 64 64 -2416 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 2
+{
+ ( -64 0 -33 ) ( -65 0 -33 ) ( -65 -2 -33 ) ch_trim_stainlessteel_1 128 128 3576 2416 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -65 -2 33 ) ( -65 0 33 ) ( -64 0 33 ) ch_trim_stainlessteel_1 128 128 3576 2416 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -65 -2 33 ) ( -64 -2 33 ) ( -64 -2 -33 ) ch_trim_stainlessteel_1 128 128 3576 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 -2 33 ) ( -64 0 33 ) ( -64 0 -33 ) ch_trim_stainlessteel_1 128 128 -2416 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 0 33 ) ( -65 0 33 ) ( -65 0 -33 ) caulk 64 64 3576 144 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -65 0 33 ) ( -65 -2 33 ) ( -65 -2 -33 ) ch_trim_

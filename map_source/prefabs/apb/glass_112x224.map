@@ -1,0 +1,62 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"bounceFraction" ".7"
+"sunDiffuseColor" ".9 0.88 .75"
+"contrastGain" "0.425"
+"ambient" ".1"
+"_color" ".8 .9 1"
+"diffuseFraction" ".65"
+"sunLight" "1.10714"
+"sunColor" "1 0.626488 0.760417"
+"sunDirection" "-155.357 139.286 0"
+"classname" "worldspawn"
+}
+// entity 1
+{
+"script_angles" "90 0 0"
+"script_fxid" "112_128"
+"target" "auto5"
+"targetname" "glass"
+"classname" "script_brushmodel"
+// brush 0
+{
+ ( -5831 1102 352 ) ( -5833 1102 352 ) ( -5833 1096 352 ) nodraw_glass 64 64 0 -384 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5833 1104 480 ) ( -5833 1110 480 ) ( -5831 1110 480 ) nodraw_glass 64 64 0 -384 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5833 1096 576 ) ( -5831 1096 576 ) ( -5831 1096 352 ) nodraw_glass 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5831 1096 576 ) ( -5831 1102 576 ) ( -5831 1102 352 ) me_glassdirt 112.00142 -224 -312.0062 -96 -180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5831 1208 576 ) ( -5833 1208 576 ) ( -5833 1208 352 ) nodraw_glass 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5833 1118 576 ) ( -5833 1112 576 ) ( -5833 1112 352 ) me_glassdirt 112.00142 -224 -311.98761 -96 -180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 2
+{
+"targetname" "auto5"
+"classname" "trigger_multiple"
+// brush 0
+{
+ ( -5834 1110 352 ) ( -5836 1110 352 ) ( -5836 1104 352 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5836 1112 480 ) ( -5836 1118 480 ) ( -5834 1118 480 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5836 1136 576 ) ( -5834 1136 576 ) ( -5834 1136 352 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5812 1104 576 ) ( -5812 1110 576 ) ( -5812 1110 352 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5834 1168 576 ) ( -5836 1168 576 ) ( -5836 1168 352 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5852 1126 576 ) ( -5852 1120 576 ) ( -5852 1120 352 ) trigger 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 3
+{
+"targetname" "auto5"
+"classname" "script_brushmodel"
+// brush 0
+{
+  contents weaponClip;
+ ( -5831 1102 352 ) ( -5833 1102 352 ) ( -5833 1096 352 ) nodraw_glass 64 64 64 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5833 1104 480 ) ( -5833 1110 480 ) ( -5831 1110 480 ) nodraw_glass 64 64 64 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5833 1096 576 ) ( -5831 1096 576 ) ( -5831 1096 352 ) nodraw_glass 64 64 64 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5831 1096 576 ) ( -5831 1102 576 ) ( -5831 1102 352 ) com_glass_shattered_outside 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5831 1208 576 ) ( -5833 1208 576 ) ( -5833 1208 352 ) nodraw_glass 64 64 64 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -5833 1118 576 ) ( -5833 1112 576 ) ( -5833 1112 352 ) com_glass_shattered_inside 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}

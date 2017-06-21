@@ -1535,7 +1535,7 @@ self setClientDvars(
 "weaponid","-1"
 );
 
-x=sql_query("SELECT sender, subject, body, attachment, date, read FROM msg WHERE name = '"+self.showname+"'");
+x=sql_query("SELECT sender, subject, body, attachment, date, isread FROM msg WHERE name = '"+self.showname+"'");
 for(i=0;true;i++)
 {
 s=sql_fetch(x);
@@ -1773,7 +1773,7 @@ self.messages[id]["read"]=1;
 self setClientDvar("message"+index+"_read",1);
 self.newmails--;
 self setClientDvar("newmails",self.newmails);
-sql_exec("UPDATE msg SET read = 1 WHERE name = '"+self.showname+"' AND msgid = "+id);
+sql_exec("UPDATE msg SET isread = 1 WHERE name = '"+self.showname+"' AND msgid = "+id);
 
 }
 }

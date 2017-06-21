@@ -1,0 +1,30 @@
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sstream>
+#include <string>
+#include <map>
+#include <vector>
+
+#include "SKUDP.h"
+
+#define BUFLEN 8096
+
+struct table
+{
+	std::vector<std::string> columns;
+	std::vector< std::vector<std::string> > rows;
+};
+
+SKUDP::SOCKET apb;
+int apb_port;
+std::map<std::string, table> tables;
+
+int main(int, char*[]);
+void received(SKUDP::SOCKET&, char*, sockaddr_in&, void*);
+void filterCols(table&, std::string&, std::vector<bool>&);
+void filterWhere(table&, std::string&, std::vector< std::vector<int> >&);
+bool getWhere(std::string&, std::vector<std::string>&, char);
+void sendPacket(sockaddr_in&, const char*);
+void errorLog(char*);

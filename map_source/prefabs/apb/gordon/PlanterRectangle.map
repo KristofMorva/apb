@@ -1,0 +1,109 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"ambient" ".10"
+"suncolor" "0.84 0.81 0.58"
+"sundiffusecolor" ".9 .92 1"
+"sundirection" "-40 225 0"
+"sunlight" "1"
+"_color" "0.90 0.90 1"
+"diffusefraction" "0.25"
+"classname" "worldspawn"
+// brush 0
+{
+ ( -56 100 0 ) ( -64 100 0 ) ( -64 92 0 ) caulk 64 64 -512 1180 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 92 32 ) ( -64 100 32 ) ( -56 100 32 ) caulk 64 64 -512 1180 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 -20 24 ) ( -56 -20 0 ) ( -64 -28 0 ) caulk 64 64 -1180 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 28 32 ) ( -56 28 0 ) ( -56 -20 0 ) ch_brick_wall_06 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 28 0 ) ( -56 28 32 ) ( -64 36 32 ) caulk 64 64 -688 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 92 0 ) ( -64 92 32 ) ( -64 -28 32 ) ch_brick_wall_06 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 1
+{
+ ( -56 100 32 ) ( -64 100 32 ) ( -64 92 32 ) icbm_tunnelwall 128 128 -512 1180 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 92 36 ) ( -64 100 36 ) ( -56 100 36 ) icbm_tunnelwall 128 128 -512 1180 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 -20 32 ) ( -56 -20 8 ) ( -64 -28 8 ) icbm_tunnelwall 128 128 -1180 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 28 36 ) ( -56 28 32 ) ( -56 -20 32 ) icbm_tunnelwall 128 128 -1180 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 28 32 ) ( -56 28 36 ) ( -68 40 36 ) icbm_tunnelwall 128 128 -688 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -68 92 32 ) ( -68 92 36 ) ( -68 -32 36 ) icbm_tunnelwall 128 128 -1180 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 2
+{
+ ( -64 -20 0 ) ( -64 -28 0 ) ( -56 -28 0 ) caulk 64 64 -476 1216 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 -28 32 ) ( -64 -28 32 ) ( -64 -20 32 ) caulk 64 64 -476 1216 90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 -20 24 ) ( 56 -20 0 ) ( 64 -28 0 ) caulk 64 64 -1180 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 -20 0 ) ( 56 -20 24 ) ( -56 -20 24 ) ch_brick_wall_06 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 -20 0 ) ( -56 -20 24 ) ( -64 -28 24 ) caulk 64 -64 -1252 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 -28 8 ) ( -56 -28 8 ) ( -56 -28 0 ) ch_brick_wall_06 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 3
+{
+ ( -64 -20 32 ) ( -64 -28 32 ) ( -56 -28 32 ) icbm_tunnelwall 128 128 -512 1252 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 -28 36 ) ( -64 -28 36 ) ( -64 -20 36 ) icbm_tunnelwall 128 128 -512 1252 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 -20 56 ) ( 56 -20 32 ) ( 64 -28 32 ) icbm_tunnelwall 128 -128 -1252 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 -20 32 ) ( 56 -20 56 ) ( -56 -20 56 ) icbm_tunnelwall 128 -128 -512 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 -20 8 ) ( -56 -20 32 ) ( -64 -28 32 ) icbm_tunnelwall 128 -128 -1252 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -64 -32 40 ) ( -56 -32 40 ) ( -56 -32 32 ) icbm_tunnelwall 128 -128 -512 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 4
+{
+ ( 56 -28 0 ) ( 64 -28 0 ) ( 64 -20 0 ) caulk 64 64 -512 1252 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 -20 32 ) ( 64 -28 32 ) ( 56 -28 32 ) caulk 64 64 -512 1252 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 28 32 ) ( 56 28 0 ) ( 64 36 0 ) caulk 64 -64 -1744 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 28 0 ) ( 56 28 32 ) ( 56 -20 32 ) ch_brick_wall_06 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 -20 0 ) ( 56 -20 24 ) ( 64 -28 24 ) caulk 64 -64 -1252 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 40 32 ) ( 64 40 0 ) ( 64 -80 0 ) ch_brick_wall_06 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 5
+{
+ ( 56 -28 32 ) ( 64 -28 32 ) ( 64 -20 32 ) icbm_tunnelwall 128 128 -512 1252 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 -20 36 ) ( 64 -28 36 ) ( 56 -28 36 ) icbm_tunnelwall 128 128 -512 1252 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 28 36 ) ( 56 28 32 ) ( 68 40 32 ) icbm_tunnelwall 128 -128 -1744 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 28 32 ) ( 56 28 36 ) ( 56 -20 36 ) icbm_tunnelwall 128 -128 -1252 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 -20 32 ) ( 56 -20 56 ) ( 64 -28 56 ) icbm_tunnelwall 128 -128 -1252 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 68 92 36 ) ( 68 92 32 ) ( 68 -32 32 ) icbm_tunnelwall 128 -128 -1252 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 6
+{
+ ( 52 92 20 ) ( -60 92 20 ) ( -60 -20 20 ) caulk 64 64 -512 1180 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 -20 24 ) ( -56 92 24 ) ( 56 92 24 ) ch_ground_dirt03 128 128 -512 1180 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 -20 32 ) ( 56 -20 32 ) ( 56 -20 0 ) caulk 64 64 -512 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 -20 32 ) ( 56 92 32 ) ( 56 92 0 ) caulk 64 64 -1180 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 60 28 32 ) ( -52 28 32 ) ( -52 28 0 ) caulk 64 64 -512 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 92 32 ) ( -56 -20 32 ) ( -56 -20 0 ) caulk 64 64 -1180 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 7
+{
+ ( 64 28 32 ) ( 64 36 32 ) ( 56 36 32 ) icbm_tunnelwall 128 128 -512 1244 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 36 36 ) ( 64 36 36 ) ( 64 28 36 ) icbm_tunnelwall 128 128 -512 1244 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 28 56 ) ( -56 28 32 ) ( -64 36 32 ) icbm_tunnelwall 128 128 -1244 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 28 32 ) ( -56 28 56 ) ( 56 28 56 ) icbm_tunnelwall 128 128 -512 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 28 8 ) ( 56 28 32 ) ( 64 36 32 ) icbm_tunnelwall 128 128 -1244 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 40 40 ) ( 56 40 40 ) ( 56 40 32 ) icbm_tunnelwall 128 128 -512 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 8
+{
+ ( 64 28 0 ) ( 64 36 0 ) ( 56 36 0 ) caulk 64 64 -484 1216 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 36 32 ) ( 64 36 32 ) ( 64 28 32 ) caulk 64 64 -484 1216 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 28 24 ) ( -56 28 0 ) ( -64 36 0 ) caulk 64 -64 -1188 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -56 28 0 ) ( -56 28 24 ) ( 56 28 24 ) ch_brick_wall_06 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 56 28 0 ) ( 56 28 24 ) ( 64 36 24 ) caulk 64 64 -1244 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 64 36 8 ) ( 56 36 8 ) ( 56 36 0 ) ch_brick_wall_06 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 1
+{
+"classname" "misc_model"
+"model" "foliage_grass_flowerplants_squareclump"
+"origin" "-24.0 4.0 24.0"
+"angles" "0 270 0"
+}
+// entity 2
+{
+"classname" "misc_model"
+"model" "foliage_grass_flowerplants_squareclump"
+"origin" "24.9 3.5 24.0"
+"angles" "0 190 0"
+}

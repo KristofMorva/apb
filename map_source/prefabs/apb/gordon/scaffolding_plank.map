@@ -1,0 +1,77 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"classname" "worldspawn"
+// brush 0
+{
+  contents detail;
+ ( 40 16 0 ) ( 4 16 0 ) ( 4 0 0 ) me_two_x_four 128 32 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -4 0 2 ) ( -4 16 2 ) ( 32 16 2 ) me_two_x_four 128 32 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 0 40 ) ( 36 0 40 ) ( 36 0 -28 ) me_two_x_four 128 32 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 -8 40 ) ( 192 8 40 ) ( 192 8 -28 ) me_two_x_four 128 32 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 36 18 40 ) ( 0 18 40 ) ( 0 18 -28 ) me_two_x_four 128 32 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 16 40 ) ( 0 0 40 ) ( 0 0 -28 ) me_two_x_four 128 32 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 1
+{
+  contents detail;
+ ( 192 0 0.5 ) ( 0 0 0.5 ) ( 0 -0.5 0.5 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 -0.5 1.5 ) ( 0 0 1.5 ) ( 192 0 1.5 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -0.5 -0.5 0 ) ( -0.5 -0.5 2 ) ( 2.5 -0.5 2 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 2.5 0 2 ) ( 2.5 0.5 2 ) ( 2.5 0.5 0 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 0 2 ) ( 0 0 2 ) ( 0 0 0 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -0.5 -0.5 2 ) ( -0.5 -0.5 0 ) ( 0 0 0 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 2
+{
+  contents detail;
+ ( 0 1 0.5 ) ( -0.5 1 0.5 ) ( -0.5 -0.5 0.5 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -0.5 -0.5 1.5 ) ( -0.5 1 1.5 ) ( 0 1 1.5 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 0 2 ) ( 0 0 0 ) ( -0.5 -0.5 0 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 0 0 ) ( 0 0 2 ) ( 0 5 2 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -0.5 18.5 2 ) ( -0.5 18.5 0 ) ( 0 18 0 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -0.5 18.5 0 ) ( -0.5 18.5 2 ) ( -0.5 -0.5 2 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 3
+{
+  contents detail;
+ ( 0.5 18.5 0.5 ) ( -0.5 18.5 0.5 ) ( -0.5 18 0.5 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -0.5 18 1.5 ) ( -0.5 18.5 1.5 ) ( 0.5 18.5 1.5 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 18 0 ) ( 0 18 2 ) ( 2.5 18 2 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 2.5 18 2 ) ( 2.5 18.5 2 ) ( 2.5 18.5 0 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0.5 18.5 2 ) ( -0.5 18.5 2 ) ( -0.5 18.5 0 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 18 2 ) ( 0 18 0 ) ( -0.5 18.5 0 ) ch_metal_rusty_01 128 128 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 4
+{
+  contents detail;
+ ( 0 18 0.5 ) ( 192 18 0.5 ) ( 192 18.5 0.5 ) ch_metal_rusty_01 128 128 -192 18 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 18.5 1.5 ) ( 192 18 1.5 ) ( 0 18 1.5 ) ch_metal_rusty_01 128 128 -192 18 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192.5 18.5 0 ) ( 192.5 18.5 2 ) ( 189.5 18.5 2 ) ch_metal_rusty_01 128 -128 -192 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 189.5 18 2 ) ( 189.5 17.5 2 ) ( 189.5 17.5 0 ) ch_metal_rusty_01 128 -128 -18 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 0 18 2 ) ( 192 18 2 ) ( 192 18 0 ) ch_metal_rusty_01 128 -128 -192 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192.5 18.5 2 ) ( 192.5 18.5 0 ) ( 192 18 0 ) ch_metal_rusty_01 128 -128 -18 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 5
+{
+  contents detail;
+ ( 192 17 0.5 ) ( 192.5 17 0.5 ) ( 192.5 18.5 0.5 ) ch_metal_rusty_01 128 128 -192 18 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192.5 18.5 1.5 ) ( 192.5 17 1.5 ) ( 192 17 1.5 ) ch_metal_rusty_01 128 128 -192 18 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 18 2 ) ( 192 18 0 ) ( 192.5 18.5 0 ) ch_metal_rusty_01 128 -128 -18 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 18 0 ) ( 192 18 2 ) ( 192 13 2 ) ch_metal_rusty_01 128 -128 -18 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192.5 -0.5 2 ) ( 192.5 -0.5 0 ) ( 192 0 0 ) ch_metal_rusty_01 128 -128 -18 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192.5 -0.5 0 ) ( 192.5 -0.5 2 ) ( 192.5 18.5 2 ) ch_metal_rusty_01 128 -128 -18 0 -180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 6
+{
+  contents detail;
+ ( 191.5 -0.5 0.5 ) ( 192.5 -0.5 0.5 ) ( 192.5 0 0.5 ) ch_metal_rusty_01 128 128 -192 18 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192.5 0 1.5 ) ( 192.5 -0.5 1.5 ) ( 191.5 -0.5 1.5 ) ch_metal_rusty_01 128 128 -192 18 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 0 0 ) ( 192 0 2 ) ( 189.5 0 2 ) ch_metal_rusty_01 128 -128 -192 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 189.5 0 2 ) ( 189.5 -0.5 2 ) ( 189.5 -0.5 0 ) ch_metal_rusty_01 128 -128 -18 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 191.5 -0.5 2 ) ( 192.5 -0.5 2 ) ( 192.5 -0.5 0 ) ch_metal_rusty_01 128 -128 -192 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 192 0 2 ) ( 192 0 0 ) ( 192.5 -0.5 0 ) ch_metal_rusty_01 128 -128 -18 0 180 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}

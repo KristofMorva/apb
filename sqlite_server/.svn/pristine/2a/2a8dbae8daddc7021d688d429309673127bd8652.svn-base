@@ -1,0 +1,250 @@
+#include "Main.h"
+#include "SKCommon.h"
+
+int main(int argc, char* argv[])
+{
+	int apb_port;
+	if (argc == 1) apb_port = 7425;
+	else if (argc == 2)
+	{
+		int port = atoi(argv[1]);
+		if (port > 1000 && port <= 65535) apb_port = port;
+		else
+		{
+			std::cout << argv[1] << " is not a valid port." << std::endl;
+			std::cout << "Press ENTER to quit." << std::endl;
+			std::cin.get();
+			return 0;
+		}
+	}
+	else
+	{
+		std::cout << "Invalid number of arguments." << std::endl;
+		std::cout << "Usage: APBServer [port]" << std::endl;
+		std::cout << "Press ENTER to quit." << std::endl;
+		std::cin.get();
+		return 0;
+	}
+
+	std::string line;
+	std::ifstream file("apb.dat");
+
+	std::cout << "[INFO] Reading tables..." << std::endl;
+
+	if (!file)
+	{
+		errorLog("File not found: apb.dat");
+		return 1;
+	}
+
+	while(getline(file, line))
+	{
+		table t;
+		
+		std::vector<std::string> data;
+		SKCommon::splitStr(&line, data, 0x2);
+		
+		SKCommon::splitStr(&data[0], t.columns, 0x1F);
+		
+		std::vector<std::string> rows;
+		SKCommon::splitStr(&data[1], rows, 0x1E);
+
+		for (unsigned int i = 0; i < rows.size(); ++i)
+		{
+			std::vector<std::string> row;
+			SKCommon::splitStr(&rows[i], row, 0x1F);
+			t.rows.push_back(row);
+		}
+
+		tables["players"] = t;
+	}
+
+	file.close();
+
+	SKUDP::init();
+
+	if ((apb = SKUDP::setup(apb_port)) == BADSOCKET)
+	{
+		errorLog("Setup() failed for apb");
+		return 1;
+	}
+
+	std::cout << "[INFO] APB running on port " << apb_port << std::endl;
+
+	SKUDP::receive(apb, BUFLEN, received, NULL);
+
+	return 0;
+}
+
+/*bool checkCond(std::string& s, char op, std::map<std::string, std::string>& row)
+{
+	std::vector<std::string> part;
+	splitStr(&s, part, op);
+	if (op == '<')
+		return std::stoi(row[part[0]]) < std::stoi(part[1]);
+	else if (op == '>')
+		return std::stoi(row[part[0]]) > std::stoi(part[1]);
+	else if (op == '!')
+		return row[part[0]] != part[1];
+	else
+		return row[part[0]] == part[1];
+}*/
+
+/*bool checkWhere(int index, std::vector<std::string>& part)
+{
+	bool cond = true;
+	for (int i = 0; i < part.size() && cond; i++)
+	{
+		if (contains(part[i], '='))
+		{
+			cond = checkCond(part[i], '=', tables[table][index]);
+		}
+		else if (contains(part[i], '!'))
+		{
+			cond = checkCond(part[i], '!', tables[table][index]);
+		}
+		else if (contains(part[i], '<'))
+		{
+			cond = checkCond(part[i], '<', tables[table][index]);
+		}
+		else if (contains(part[i], '>'))
+		{
+			cond = checkCond(part[i], '>', tables[table][index]);
+		}
+		else
+		{
+			cond = part[i] != "0";
+		}
+	}
+	return cond;
+}*/
+
+void received(SKUDP::SOCKET& socket, char* RecvBuf, sockaddr_in& SenderAddr, void* state)
+{
+	std::string packet(RecvBuf + 1);
+	std::cout << "[RECEIVED] " << packet << std::endl;
+
+	std::vector<std::string> query;
+	SKCommon::splitStr(packet, query, ' ');
+	
+	if (RecvBuf[0] == 0x0)
+	{
+		if (query[0] == "INSERT")
+		{
+			// INSERT
+		}
+		else if (query[0] == "UPDATE")
+		{
+			// UPDATE
+		}
+		else if (query[0] == "DELETE")
+		{
+			// DELETE
+		}
+	}
+	else
+	{
+		std::vector< std::vector<std::string> > data;
+		
+		if (query[0] == "SELECT")
+		{
+			if (!tables.count(query[2]))
+			{
+				errorLog("Invalid table name: " + query[2]);
+			}
+			else if (query[1] == "EXISTS")
+			{
+				// EXISTS
+			}
+			else
+			{
+				std::vector< std::vector<int> > res;
+				filter(tables[query[2]], query[1], res);
+			}
+		}
+		
+		int len = data.size();
+		std::string response;
+		response += 0x11;
+		
+		for (int i = 0; i < len; ++i)
+		{
+			if (i) response += 0x1E;
+			for (int j = 0; j < data.size(); ++j)
+			{
+				if (j) response += 0x1F;
+				response += data[i][j];
+			}
+		}
+		
+		sendPacket(&SenderAddr, response.c_str());
+	}
+}
+
+void filter(table& t, std::string& cols_str, std::string& where_str, std::vector< std::vector<std::string> >& result)
+{
+	std::vector<bool> cols;
+	if (cols[0] == "*")
+	{
+		for (int i = 0; i < t.columns.size(); ++i) cols.push_back(true);
+	}
+	else
+	{
+		std::vector<std::string> col_v;
+		splitStr(cols, col_v, ',');
+		for (int i = 0; i < t.columns.size(); ++i)
+		{
+			cols.push_back(contains<std::string>(col_v, t.columns[i]));
+		}
+	}
+	
+	std::vector<std::string> where;
+	SKCommon::splitStr(where, where, ',');
+	for (int i = 0; i < t.rows.size(); ++i)
+	{
+		std::vector<std::string> row;
+		for (int j = 0; j < t.rows[i].size(); ++j)
+		{
+			if (cols[j])
+			{
+				std::vector<std::string> parts;
+				if (
+					(getWhere(where, parts, '<') && std::stoi(parts[0]) < std::stoi(parts[1])) ||
+					(getWhere(where, parts, '>') && std::stoi(parts[0]) > std::stoi(parts[1])) ||
+					(getWhere(where, parts, '!') && parts[0] != parts[1]) ||
+					(getWhere(where, parts, '=') && parts[0] == parts[1])
+				)
+				{
+					row.push_back(t.rows[i][j]);
+				}
+			}
+		}
+		result.push_back(row);
+	}
+}
+
+bool getWhere(std::string& where, std::vector<std::string>& parts, char op)
+{
+	parts.clear();
+	if (SKCommon::strContains(where, op))
+	{
+		SKCommon::splitStr(where, parts, op);
+		return true;
+	}
+	return false;
+}
+
+void sendPacket(sockaddr_in& recvAddr, const char* buf)
+{
+	if (!SKUDP::send(apb, &recvAddr, buf))
+	{
+		errorLog("SendPacket() failed");
+		return;
+	}
+	std::cout << "[SENT] " << buf << std::endl;
+}
+
+void errorLog(char* err)
+{
+	std::cout << "[ERROR] " << err << std::endl;
+}

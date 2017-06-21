@@ -1,0 +1,1093 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"diffuseFraction" ".65"
+"sunDiffuseColor" "1 1 .8"
+"sunLight" "1.4"
+"sunColor" "1 1 1 .35"
+"sunDirection" "-88 25.11 0"
+"classname" "worldspawn"
+// brush 0
+ {
+  mesh
+  {
+   ch_dec_leaves
+   lightmap_gray
+   9 9 0 8
+   (
+	v -896 640 4 t -7168 -5120 -56 -40
+	v -896 800 4 t -7168 -6400 -56 -50
+	v -896 960 4 c 255 255 255 68 t -7168 -7680 -56 -60
+	v -896 1120 4 c 255 255 255 52 t -7168 -8960 -56 -70
+	v -896 1280 4 c 255 255 255 67 t -7168 -10240 -56 -80
+	v -896 1440 4 c 255 255 255 164 t -7168 -11520 -56 -90
+	v -896 1600 4 c 255 255 255 68 t -7168 -12800 -56 -100
+	v -896 1760 4 c 255 255 255 215 t -7168 -14080 -56 -110
+	v -896 1920 4 c 255 255 255 254 t -7168 -15360 -56 -120
+   )
+   (
+	v -816 640 4 c 255 255 255 250 t -6528 -5120 -51 -40
+	v -816 800 20 c 255 255 255 16 t -6528 -6400 -51 -50
+	v -816 960 20 c 255 255 255 3 t -6528 -7680 -51 -60
+	v -816 1120 4 c 255 255 255 138 t -6528 -8960 -51 -70
+	v -816 1280 4 c 255 255 255 18 t -6528 -10240 -51 -80
+	v -816 1440 4 c 255 255 255 14 t -6528 -11520 -51 -90
+	v -816 1600 20 c 255 255 255 8 t -6528 -12800 -51 -100
+	v -816 1760 -20 c 255 255 255 120 t -6528 -14080 -51 -110
+	v -816 1920 4 c 255 255 255 70 t -6528 -15360 -51 -120
+   )
+   (
+	v -736 640 4 c 255 255 255 248 t -5888 -5120 -46 -40
+	v -736 800 36 c 255 255 255 31 t -5888 -6400 -46 -50
+	v -736 960 20 c 255 255 255 104 t -5888 -7680 -46 -60
+	v -736 1120 4 c 255 255 255 156 t -5888 -8960 -46 -70
+	v -736 1280 4 c 255 255 255 51 t -5888 -10240 -46 -80
+	v -736 1440 -20 c 255 255 255 69 t -5888 -11520 -46 -90
+	v -736 1600 4 c 255 255 255 115 t -5888 -12800 -46 -100
+	v -736 1760 -20 c 255 255 255 117 t -5888 -14080 -46 -110
+	v -736 1920 4 c 255 255 255 14 t -5888 -15360 -46 -120
+   )
+   (
+	v -656 640 4 c 255 255 255 61 t -5248 -5120 -41 -40
+	v -656 800 20 c 255 255 255 21 t -5248 -6400 -41 -50
+	v -656 960 4 c 255 255 255 38 t -5248 -7680 -41 -60
+	v -656 1128 12 c 255 255 255 2 t -5248 -9024 -41 -70.5
+	v -656 1280 4 c 255 255 255 215 t -5248 -10240 -41 -80
+	v -656 1440 -12 c 255 255 255 9 t -5248 -11520 -41 -90
+	v -656 1600 4 c 255 255 255 147 t -5248 -12800 -41 -100
+	v -656 1760 -20 c 255 255 255 253 t -5248 -14080 -41 -110
+	v -656 1920 4 c 255 255 255 50 t -5248 -15360 -41 -120
+   )
+   (
+	v -576 640 4 c 255 255 255 236 t -4608 -5120 -36 -40
+	v -576 800 20 c 255 255 255 43 t -4608 -6400 -36 -50
+	v -576 960 4 c 255 255 255 122 t -4608 -7680 -36 -60
+	v -576 1128 28 c 255 255 255 58 t -4608 -9024 -36 -70.5
+	v -576 1280 4 c 255 255 255 170 t -4608 -10240 -36 -80
+	v -576 1440 -12 c 255 255 255 74 t -4608 -11520 -36 -90
+	v -576 1600 -20 c 255 255 255 78 t -4608 -12800 -36 -100
+	v -576 1760 4 c 255 255 255 92 t -4608 -14080 -36 -110
+	v -576 1920 4 c 255 255 255 249 t -4608 -15360 -36 -120
+   )
+   (
+	v -496 640 4 t -3968 -5120 -31 -40
+	v -496 800 4 c 255 255 255 112 t -3968 -6400 -31 -50
+	v -496 960 20 c 255 255 255 65 t -3968 -7680 -31 -60
+	v -496 1128 28 c 255 255 255 137 t -3968 -9024 -31 -70.5
+	v -496 1280 12 c 255 255 255 114 t -3968 -10240 -31 -80
+	v -496 1440 4 c 255 255 255 52 t -3968 -11520 -31 -90
+	v -496 1600 -4 c 255 255 255 141 t -3968 -12800 -31 -100
+	v -496 1760 -4 c 255 255 255 87 t -3968 -14080 -31 -110
+	v -496 1920 4 c 255 255 255 185 t -3968 -15360 -31 -120
+   )
+   (
+	v -416 640 4 c 255 255 255 17 t -3328 -5120 -26 -40
+	v -416 800 4 c 255 255 255 191 t -3328 -6400 -26 -50
+	v -416 960 20 c 255 255 255 207 t -3328 -7680 -26 -60
+	v -416 1120 20 c 255 255 255 78 t -3328 -8960 -26 -70
+	v -416 1280 12 c 255 255 255 70 t -3328 -10240 -26 -80
+	v -416 1440 4 c 255 255 255 21 t -3328 -11520 -26 -90
+	v -416 1600 -4 c 255 255 255 80 t -3328 -12800 -26 -100
+	v -416 1760 -4 c 255 255 255 58 t -3328 -14080 -26 -110
+	v -416 1920 4 c 255 255 255 220 t -3328 -15360 -26 -120
+   )
+   (
+	v -336 640 4 c 255 255 255 5 t -2688 -5120 -21 -40
+	v -336 800 4 t -2688 -6400 -21 -50
+	v -336 960 4 t -2688 -7680 -21 -60
+	v -336 1120 4 c 255 255 255 42 t -2688 -8960 -21 -70
+	v -336 1280 4 c 255 255 255 153 t -2688 -10240 -21 -80
+	v -336 1440 4 c 255 255 255 4 t -2688 -11520 -21 -90
+	v -336 1600 4 c 255 255 255 95 t -2688 -12800 -21 -100
+	v -336 1760 4 c 255 255 255 241 t -2688 -14080 -21 -110
+	v -336 1920 4 t -2688 -15360 -21 -120
+   )
+   (
+	v -256 640 4 c 255 255 255 2 t -2048 -5120 -16 -40
+	v -256 800 4 c 255 255 255 2 t -2048 -6400 -16 -50
+	v -256 960 4 c 255 255 255 2 t -2048 -7680 -16 -60
+	v -256 1120 4 c 255 255 255 16 t -2048 -8960 -16 -70
+	v -256 1280 4 c 255 255 255 10 t -2048 -10240 -16 -80
+	v -256 1440 4 c 255 255 255 2 t -2048 -11520 -16 -90
+	v -256 1600 4 c 255 255 255 2 t -2048 -12800 -16 -100
+	v -256 1760 4 c 255 255 255 2 t -2048 -14080 -16 -110
+	v -256 1920 4 c 255 255 255 8 t -2048 -15360 -16 -120
+   )
+  }
+ }
+// brush 1
+ {
+  mesh
+  {
+   me_ground_drygrass
+   lightmap_gray
+   9 9 0 8
+   (
+	v -896 640 4 t -7168 -5120 -56 -40
+	v -896 800 4 t -7168 -6400 -56 -50
+	v -896 960 4 t -7168 -7680 -56 -60
+	v -896 1120 4 t -7168 -8960 -56 -70
+	v -896 1280 4 t -7168 -10240 -56 -80
+	v -896 1440 4 t -7168 -11520 -56 -90
+	v -896 1600 4 t -7168 -12800 -56 -100
+	v -896 1760 4 t -7168 -14080 -56 -110
+	v -896 1920 4 t -7168 -15360 -56 -120
+   )
+   (
+	v -816 640 4 t -6528 -5120 -51 -40
+	v -816 800 20 t -6528 -6400 -51 -50
+	v -816 960 20 t -6528 -7680 -51 -60
+	v -816 1120 4 t -6528 -8960 -51 -70
+	v -816 1280 4 t -6528 -10240 -51 -80
+	v -816 1440 4 t -6528 -11520 -51 -90
+	v -816 1600 20 t -6528 -12800 -51 -100
+	v -816 1760 -20 t -6528 -14080 -51 -110
+	v -816 1920 4 t -6528 -15360 -51 -120
+   )
+   (
+	v -736 640 4 t -5888 -5120 -46 -40
+	v -736 800 36 t -5888 -6400 -46 -50
+	v -736 960 20 t -5888 -7680 -46 -60
+	v -736 1120 4 t -5888 -8960 -46 -70
+	v -736 1280 4 t -5888 -10240 -46 -80
+	v -736 1440 -20 t -5888 -11520 -46 -90
+	v -736 1600 4 t -5888 -12800 -46 -100
+	v -736 1760 -20 t -5888 -14080 -46 -110
+	v -736 1920 4 t -5888 -15360 -46 -120
+   )
+   (
+	v -656 640 4 t -5248 -5120 -41 -40
+	v -656 800 20 t -5248 -6400 -41 -50
+	v -656 960 4 t -5248 -7680 -41 -60
+	v -656 1128 12 t -5248 -9024 -41 -70.5
+	v -656 1280 4 t -5248 -10240 -41 -80
+	v -656 1440 -12 t -5248 -11520 -41 -90
+	v -656 1600 4 t -5248 -12800 -41 -100
+	v -656 1760 -20 t -5248 -14080 -41 -110
+	v -656 1920 4 t -5248 -15360 -41 -120
+   )
+   (
+	v -576 640 4 t -4608 -5120 -36 -40
+	v -576 800 20 t -4608 -6400 -36 -50
+	v -576 960 4 t -4608 -7680 -36 -60
+	v -576 1128 28 t -4608 -9024 -36 -70.5
+	v -576 1280 4 t -4608 -10240 -36 -80
+	v -576 1440 -12 t -4608 -11520 -36 -90
+	v -576 1600 -20 t -4608 -12800 -36 -100
+	v -576 1760 4 t -4608 -14080 -36 -110
+	v -576 1920 4 t -4608 -15360 -36 -120
+   )
+   (
+	v -496 640 4 t -3968 -5120 -31 -40
+	v -496 800 4 t -3968 -6400 -31 -50
+	v -496 960 20 t -3968 -7680 -31 -60
+	v -496 1128 28 t -3968 -9024 -31 -70.5
+	v -496 1280 12 t -3968 -10240 -31 -80
+	v -496 1440 4 t -3968 -11520 -31 -90
+	v -496 1600 -4 t -3968 -12800 -31 -100
+	v -496 1760 -4 t -3968 -14080 -31 -110
+	v -496 1920 4 t -3968 -15360 -31 -120
+   )
+   (
+	v -416 640 4 t -3328 -5120 -26 -40
+	v -416 800 4 t -3328 -6400 -26 -50
+	v -416 960 20 t -3328 -7680 -26 -60
+	v -416 1120 20 t -3328 -8960 -26 -70
+	v -416 1280 12 t -3328 -10240 -26 -80
+	v -416 1440 4 t -3328 -11520 -26 -90
+	v -416 1600 -4 t -3328 -12800 -26 -100
+	v -416 1760 -4 t -3328 -14080 -26 -110
+	v -416 1920 4 t -3328 -15360 -26 -120
+   )
+   (
+	v -336 640 4 t -2688 -5120 -21 -40
+	v -336 800 4 t -2688 -6400 -21 -50
+	v -336 960 4 t -2688 -7680 -21 -60
+	v -336 1120 4 t -2688 -8960 -21 -70
+	v -336 1280 4 t -2688 -10240 -21 -80
+	v -336 1440 4 t -2688 -11520 -21 -90
+	v -336 1600 4 t -2688 -12800 -21 -100
+	v -336 1760 4 t -2688 -14080 -21 -110
+	v -336 1920 4 t -2688 -15360 -21 -120
+   )
+   (
+	v -256 640 4 t -2048 -5120 -16 -40
+	v -256 800 4 t -2048 -6400 -16 -50
+	v -256 960 4 t -2048 -7680 -16 -60
+	v -256 1120 4 t -2048 -8960 -16 -70
+	v -256 1280 4 t -2048 -10240 -16 -80
+	v -256 1440 4 t -2048 -11520 -16 -90
+	v -256 1600 4 t -2048 -12800 -16 -100
+	v -256 1760 4 t -2048 -14080 -16 -110
+	v -256 1920 4 t -2048 -15360 -16 -120
+   )
+  }
+ }
+// brush 2
+ {
+  curve
+  {
+   me_ground_drygrass
+   lightmap_gray
+   3 3 0 8
+   (
+	v -256 640 4 t -2048 -5120 -16 -40
+	v -256 960 4 t -2048 -7680 -16 -60
+	v -256 1280 4 t -2048 -10240 -16 -80
+   )
+   (
+	v -160 640 4 t -1280 -5120 -10 -40
+	v -160 960 4 t -1280 -7680 -10 -60
+	v -160 1280 4 t -1280 -10240 -10 -80
+   )
+   (
+	v -64 640 4 t -512 -5120 -4 -40
+	v -64 960 4 t -512 -7680 -4 -60
+	v -64 1280 4 t -512 -10240 -4 -80
+   )
+  }
+ }
+// brush 3
+ {
+  curve
+  {
+   me_ground_drygrass
+   lightmap_gray
+   3 3 0 8
+   (
+	v -256 1280 4 t -2048 -10240 -16 -80
+	v -256 1600 4 t -2048 -12800 -16 -100
+	v -256 1920 4 t -2048 -15360 -16 -120
+   )
+   (
+	v -208 1280 4 t -1664 -10240 -13 -80
+	v -208 1600 4 t -1664 -12800 -13 -100
+	v -208 1920 4 t -1664 -15360 -13 -120
+   )
+   (
+	v -160 1280 4 t -1280 -10240 -10 -80
+	v -160 1600 4 t -1280 -12800 -10 -100
+	v -160 1920 4 t -1280 -15360 -10 -120
+   )
+  }
+ }
+}
+// entity 1
+{
+"origin" "-304.0 1856.0 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 2
+{
+"angles" "0 315 0"
+"origin" "-287.7 1792.7 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 3
+{
+"angles" "0 285 0"
+"origin" "-324.5 1818.2 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 4
+{
+"angles" "0 240 0"
+"origin" "-381.4 1786.0 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 5
+{
+"angles" "0 344 0"
+"origin" "-288.4 1838.3 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 6
+{
+"angles" "0 299 0"
+"origin" "-290.1 1772.9 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 7
+{
+"angles" "0 269 0"
+"origin" "-318.5 1807.6 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 8
+{
+"angles" "0 224 0"
+"origin" "-382.1 1792.3 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 9
+{
+"angles" "0 193 0"
+"origin" "-398.5 1660.2 -8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 10
+{
+"angles" "0 148 0"
+"origin" "-428.7 1718.2 -8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 11
+{
+"angles" "0 118 0"
+"origin" "-387.1 1701.7 -8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 12
+{
+"angles" "0 73 0"
+"origin" "-338.9 1745.9 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 13
+{
+"angles" "0 73 0"
+"origin" "-602.7 1748.3 -16.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 14
+{
+"angles" "0 28 0"
+"origin" "-537.3 1745.5 -8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 15
+{
+"angles" "0 358 0"
+"origin" "-572.4 1717.7 -8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 16
+{
+"angles" "0 195 0"
+"origin" "-251.3 1473.1 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 17
+{
+"angles" "0 150 0"
+"origin" "-283.5 1530.0 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 18
+{
+"angles" "0 120 0"
+"origin" "-241.3 1514.9 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 19
+{
+"angles" "0 179 0"
+"origin" "-271.0 1486.2 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 20
+{
+"angles" "0 134 0"
+"origin" "-286.3 1549.8 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 21
+{
+"angles" "0 104 0"
+"origin" "-249.9 1523.6 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 22
+{
+"angles" "0 268 0"
+"origin" "-246.1 1588.5 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 23
+{
+"angles" "0 150 0"
+"origin" "-373.0 1534.8 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 24
+{
+"angles" "0 105 0"
+"origin" "-355.5 1597.8 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 25
+{
+"angles" "0 75 0"
+"origin" "-336.3 1557.3 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 26
+{
+"angles" "0 134 0"
+"origin" "-377.6 1558.0 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 27
+{
+"angles" "0 89 0"
+"origin" "-343.5 1613.8 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 28
+{
+"angles" "0 59 0"
+"origin" "-336.3 1569.5 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 29
+{
+"angles" "0 223 0"
+"origin" "-287.7 1612.7 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 30
+{
+"angles" "0 240 0"
+"origin" "-357.3 1471.0 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 31
+{
+"angles" "0 195 0"
+"origin" "-420.3 1488.5 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 32
+{
+"angles" "0 165 0"
+"origin" "-379.8 1507.7 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 33
+{
+"angles" "0 224 0"
+"origin" "-380.5 1466.4 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 34
+{
+"angles" "0 179 0"
+"origin" "-436.3 1500.5 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 35
+{
+"angles" "0 149 0"
+"origin" "-392.0 1507.7 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 36
+{
+"angles" "0 313 0"
+"origin" "-435.2 1556.3 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 37
+{
+"angles" "0 135 0"
+"origin" "-370.3 1154.3 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 38
+{
+"angles" "0 90 0"
+"origin" "-337.1 1210.7 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 39
+{
+"angles" "0 60 0"
+"origin" "-329.1 1166.6 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 40
+{
+"angles" "0 44 0"
+"origin" "-325.9 1178.4 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 41
+{
+"angles" "0 208 0"
+"origin" "-267.7 1207.5 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 42
+{
+"angles" "0 45 0"
+"origin" "-314.4 1306.9 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 43
+{
+"angles" "0 15 0"
+"origin" "-339.9 1270.1 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 44
+{
+"angles" "0 74 0"
+"origin" "-359.9 1306.2 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 45
+{
+"angles" "0 359 0"
+"origin" "-329.3 1276.2 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 46
+{
+"angles" "0 163 0"
+"origin" "-267.6 1255.7 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 47
+{
+"angles" "0 180 0"
+"origin" "-425.1 1245.1 10.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 48
+{
+"angles" "0 105 0"
+"origin" "-404.6 1282.9 6.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 49
+{
+"angles" "0 89 0"
+"origin" "-410.7 1293.5 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 50
+{
+"angles" "0 19 0"
+"origin" "-652.7 875.9 12.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 51
+{
+"angles" "0 304 0"
+"origin" "-659.7 833.4 16.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 52
+{
+"angles" "0 214 0"
+"origin" "-505.8 805.6 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 53
+{
+"angles" "0 306 0"
+"origin" "-824.3 1004.0 16.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 54
+{
+"angles" "0 320 0"
+"origin" "-775.9 974.0 16.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 55
+{
+"angles" "0 290 0"
+"origin" "-814.8 996.2 16.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 56
+{
+"angles" "0 94 0"
+"origin" "-811.8 931.3 16.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 57
+{
+"angles" "0 336 0"
+"origin" "-691.2 997.9 8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 58
+{
+"angles" "0 261 0"
+"origin" "-725.3 971.7 8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 59
+{
+"angles" "0 320 0"
+"origin" "-684.2 975.3 8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 60
+{
+"angles" "0 275 0"
+"origin" "-712.3 916.3 8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 61
+{
+"angles" "0 49 0"
+"origin" "-767.9 911.5 16.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 62
+{
+"angles" "0 351 0"
+"origin" "-687.3 1025.6 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 63
+{
+"angles" "0 276 0"
+"origin" "-760.8 1308.5 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 64
+{
+"angles" "0 230 0"
+"origin" "-775.3 1339.5 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 65
+{
+"angles" "0 34 0"
+"origin" "-830.1 1304.4 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 66
+{
+"angles" "0 231 0"
+"origin" "-773.3 1210.5 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 67
+{
+"angles" "0 201 0"
+"origin" "-751.8 1249.7 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 68
+{
+"angles" "0 260 0"
+"origin" "-728.1 1215.9 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 69
+{
+"angles" "0 185 0"
+"origin" "-761.7 1242.5 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 70
+{
+"angles" "0 349 0"
+"origin" "-825.2 1256.5 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 71
+{
+"angles" "0 5.99999 0"
+"origin" "-669.7 1283.5 2.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 72
+{
+"angles" "0 291 0"
+"origin" "-686.1 1243.8 -2.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 73
+{
+"angles" "0 165 0"
+"origin" "-435.2 809.3 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 74
+{
+"angles" "0 149 0"
+"origin" "-443.1 827.6 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 75
+{
+"angles" "0 119 0"
+"origin" "-401.1 811.8 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 76
+{
+"angles" "0 283 0"
+"origin" "-414.3 875.4 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 77
+{
+"angles" "0 330 0"
+"origin" "-614.3 1026.6 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 78
+{
+"angles" "0 344 0"
+"origin" "-557.9 1018.9 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 79
+{
+"angles" "0 314 0"
+"origin" "-602.5 1023.4 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 80
+{
+"angles" "0 118 0"
+"origin" "-573.4 965.3 4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 81
+{
+"angles" "0 360 0"
+"origin" "-488.3 1075.3 22.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 82
+{
+"angles" "0 163 0"
+"origin" "-423.7 1087.7 18.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 83
+{
+"angles" "0 300 0"
+"origin" "-681.5 1338.0 -6.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 84
+{
+"angles" "0 254 0"
+"origin" "-709.3 1360.4 -8.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 85
+{
+"angles" "0 58 0"
+"origin" "-743.2 1306.1 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 86
+{
+"angles" "0 225 0"
+"origin" "-649.3 1287.9 2.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 87
+{
+"angles" "0 13 0"
+"origin" "-719.2 1264.3 2.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 88
+{
+"angles" "0 30 0"
+"origin" "-588.1 1352.2 -4.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 89
+{
+"angles" "0 229 0"
+"origin" "-575.5 1785.7 2.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 90
+{
+"angles" "0 64 0"
+"origin" "-737.9 1773.2 -18.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 91
+{
+"angles" "0 170 0"
+"origin" "-419.8 1762.4 -2.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 92
+{
+"angles" "0 186 0"
+"origin" "-481.2 1699.3 -10.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 93
+{
+"angles" "0 170 0"
+"origin" "-498.6 1715.4 -10.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 94
+{
+"angles" "0 259 0"
+"origin" "-458.0 1812.5 -2.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 95
+{
+"angles" "0 201 0"
+"origin" "-470.7 1673.4 -6.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 96
+{
+"angles" "0 126 0"
+"origin" "-265.6 1465.1 -6.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 97
+{
+"angles" "0 51 0"
+"origin" "-302.8 1511.6 -6.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 98
+{
+"angles" "0 35 0"
+"origin" "-297.9 1522.7 -6.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 99
+{
+"angles" "0 199 0"
+"origin" "-235.9 1542.4 -6.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 100
+{
+"angles" "0 216 0"
+"origin" "-357.0 1441.2 0.0"
+"model" "foliage_drygrass_squareclump_mp"
+"classname" "misc_model"
+}
+// entity 101
+{
+"origin" "-276.5 1560.2 13.6"
+"angles" "358.043 90.7639 53.6845"
+"model" "prefabs/misc_models/com_bike_destroyed.map"
+"classname" "misc_prefab"
+}
+// entity 102
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_red_pine_med.map"
+"origin" "-576.0 1280.0 20.0"
+}
+// entity 103
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/bc_military_tire04_big.map"
+"angles" "0 184 -90"
+"origin" "-286.0 1896.0 10.0"
+}
+// entity 104
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_dead_pine_lg.map"
+"angles" "0 255 0"
+"origin" "-298.4 1550.4 0.0"
+}
+// entity 105
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_tree_destoyed_trunk_b.map"
+"angles" "0 30 0"
+"origin" "-367.5 1811.4 24.0"
+}
+// entity 106
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_dead_pine_lg.map"
+"angles" "0 300 0"
+"origin" "-481.6 1663.0 -8.0"
+}
+// entity 107
+{
+"angles" "358.6 0 0"
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/com_bench.map"
+"origin" "-607.3 1904.0 1.0"
+}
+// entity 108
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_tree_river_birch_lg_a.map"
+"angles" "0 210 0"
+"origin" "-735.3 1766.2 -8.0"
+}
+// entity 109
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_tree_grey_oak_xl_a.map"
+"angles" "0 285 0"
+"origin" "-714.9 1533.6 8.0"
+}
+// entity 110
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_tree_river_birch_lg_a.map"
+"angles" "0 105 0"
+"origin" "-415.4 1372.2 16.0"
+}
+// entity 111
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_tree_river_birch_lg_b.map"
+"angles" "0 180 0"
+"origin" "-359.8 1159.4 16.0"
+}
+// entity 112
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_tree_grey_oak_xl_a.map"
+"angles" "0 300 0"
+"origin" "-168.0 1098.1 16.0"
+}
+// entity 113
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_tree_destoyed_trunk_b.map"
+"angles" "0 225 0"
+"origin" "-335.2 1004.2 24.0"
+}
+// entity 114
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_dead_pine_lg.map"
+"angles" "0 120 0"
+"origin" "-739.9 1125.0 0.0"
+}
+// entity 115
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_tree_river_birch_lg_b.map"
+"angles" "0 165 0"
+"origin" "-614.4 857.7 24.0"
+}
+// entity 116
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_tree_grey_oak_xl_a.map"
+"angles" "0 135 0"
+"origin" "-418.6 790.3 16.0"
+}
+// entity 117
+{
+"classname" "misc_prefab"
+"model" "prefabs/misc_models/foliage_red_pine_med.map"
+"origin" "-164.4 802.7 20.0"
+"angles" "0 315 0"
+}

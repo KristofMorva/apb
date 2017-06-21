@@ -1,0 +1,79 @@
+#include "SKUDP.h"
+
+bool SKUDP::init()
+{
+#ifdef WIN32
+	WSADATA wsaData;
+
+	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != NO_ERROR)
+	{
+		return false;
+	}
+#endif
+	return true;
+}
+
+SKUDP::SOCKET SKUDP::setup(unsigned short port)
+{
+	SKUDP::SOCKET RecvSocket;
+	if ((RecvSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == INVALID_SOCKET) {
+		return BADSOCKET;
+	}
+
+	sockaddr_in RecvAddr;
+
+#ifndef WIN32
+	bzero(&RecvAddr, sizeof(RecvAddr));
+#endif
+
+	RecvAddr.sin_family = AF_INET;
+	RecvAddr.sin_port = htons(port);
+	RecvAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+	if (bind(RecvSocket, (sockaddr*)&RecvAddr, sizeof(RecvAddr)) == SOCKET_ERROR)
+	{
+		return BADSOCKET;
+	}
+
+	return RecvSocket;
+}
+
+bool SKUDP::send(SKUDP::SOCKET& socket, sockaddr_in& recvAddr, const char* buf)
+{
+	if (sendto(socket, buf, strlen(buf), 0, (sockaddr*)&recvAddr, sizeof(recvAddr)) == SOCKET_ERROR)
+	{
+		return false;
+	}
+	return true;
+}
+
+void SKUDP::receive(SKUDP::SOCKET& socket, int buflen, void(*received)(SKUDP::SOCKET&, char*, sockaddr_in&, void*), void* state)
+{
+	sockaddr_in SenderAddr;
+	socklen_t SenderAddrSize = sizeof(SenderAddr);
+
+	while (true)
+	{
+		char* RecvBuf = new char[buflen];
+		memset(RecvBuf, 0, buflen);
+		if (recvfrom(socket, RecvBuf, buflen, 0, (sockaddr*)&SenderAddr, &SenderAddrSize) == SOCKET_ERROR)
+		{
+			continue;
+		}
+		char* buf = RecvBuf;
+		(*received)(socket, buf, SenderAddr, state);
+		delete[] RecvBuf;
+	}
+}
+
+std::string SKUDP::ntop(in_addr& addr)
+{
+/*#if _WIN32_WINNT >= 0x600
+	char str[INET_ADDRSTRLEN];
+	inet_ntop(AF_INET, &addr, str, INET_ADDRSTRLEN);
+	return str;
+#else*/
+	// WINDOWS XP COMPATIBILITY
+	return inet_ntoa(addr);
+//#endif
+}

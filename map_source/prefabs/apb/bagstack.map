@@ -1,0 +1,247 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"classname" "worldspawn"
+// brush 0
+{
+ ( 40 -24 0 ) ( 40 24 0 ) ( -24 24 0 ) clip_nosight 64 64 48 -32 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -20 24 28 ) ( 44 24 28 ) ( 44 -24 28 ) clip_nosight 64 64 48 -32 -90 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -32 24 16 ) ( -32 -24 16 ) ( -32 -24 8 ) clip_nosight 64 -64 48 -16 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -32 -24 16 ) ( 32 -24 16 ) ( 32 -24 8 ) clip_nosight 64 64 32 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 32 -24 16 ) ( 32 24 16 ) ( 32 24 8 ) clip_nosight 64 -64 48 -16 180 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 32 24 16 ) ( -32 24 16 ) ( -32 24 8 ) clip_nosight 64 64 32 16 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 1
+{
+"angles" "0 270 0"
+"origin" "0.0 0.0 0.0"
+"model" "com_pallet"
+"classname" "misc_model"
+}
+// entity 2
+{
+"angles" "0 285 0"
+"origin" "-23.9 -8.0 8.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 3
+{
+"angles" "0 90 0"
+"origin" "-24.0 8.0 8.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 4
+{
+"angles" "0 265 0"
+"origin" "-8.0 -8.0 8.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 5
+{
+"angles" "0 274 0"
+"origin" "-8.0 13.5 8.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 6
+{
+"angles" "0 270 0"
+"origin" "6.0 -8.0 8.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 7
+{
+"angles" "0 95 0"
+"origin" "8.0 8.0 8.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 8
+{
+"angles" "0 280 0"
+"origin" "22.0 -8.0 8.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 9
+{
+"angles" "0 90 0"
+"origin" "22.0 8.0 8.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 10
+{
+"angles" "0 270 0"
+"origin" "-24.0 -8.0 12.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 11
+{
+"angles" "0 105 0"
+"origin" "-20.1 8.0 12.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 12
+{
+"angles" "0 85 0"
+"origin" "-8.0 -11.5 12.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 13
+{
+"angles" "0 100 0"
+"origin" "-8.0 8.0 12.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 14
+{
+"angles" "0 270 0"
+"origin" "6.0 -8.0 12.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 15
+{
+"angles" "0 276 0"
+"origin" "8.0 13.5 12.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 16
+{
+"angles" "0 275 0"
+"origin" "22.0 -8.0 12.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 17
+{
+"angles" "0 87 0"
+"origin" "24.0 8.0 12.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 18
+{
+"angles" "0 260 0"
+"origin" "-24.0 -8.0 16.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 19
+{
+"angles" "0 90 0"
+"origin" "-24.0 8.0 16.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 20
+{
+"angles" "0 270 0"
+"origin" "-8.0 -4.0 16.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 21
+{
+"angles" "0 80 0"
+"origin" "-8.0 8.0 16.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 22
+{
+"angles" "0 270 0"
+"origin" "6.0 -8.0 16.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 23
+{
+"angles" "0 266 0"
+"origin" "8.0 13.5 16.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 24
+{
+"angles" "0 100 0"
+"origin" "22.0 -15.5 16.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 25
+{
+"angles" "0 100 0"
+"origin" "24.0 8.0 16.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 26
+{
+"angles" "0 310 0"
+"origin" "-23.8 -7.9 20.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 27
+{
+"angles" "0 115 0"
+"origin" "-22.1 10.0 20.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 28
+{
+"angles" "0 250 0"
+"origin" "-8.1 -8.0 20.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 29
+{
+"angles" "0 74 0"
+"origin" "-7.9 8.0 20.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 30
+{
+"angles" "0 102 0"
+"origin" "7.9 -15.5 20.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 31
+{
+"angles" "0 114 0"
+"origin" "9.9 8.0 20.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 32
+{
+"angles" "0 280 0"
+"origin" "22.0 -8.0 20.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
+// entity 33
+{
+"angles" "0 254 0"
+"origin" "23.9 13.5 20.0"
+"model" "mil_sandbag_desert_single_flat"
+"classname" "misc_model"
+}
